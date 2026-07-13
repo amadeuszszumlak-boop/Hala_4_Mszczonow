@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Types.PlcStruct ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="None">
+    <Member Name="Process Data Input - Angle Y / vibration acceleration Peak_max" Datatype="Int" />
+    <Member Name="Process Data Input - Angle X / effective value of the vibration velocity" Datatype="Int" />
+    <Member Name="Process Data Input - Diagnosis" Datatype="Byte" />
+    <Member Name="Process Data Input - OUT1" Datatype="Bool" />
+    <Member Name="Process Data Input - OUT2" Datatype="Bool" />
+    <Member Name="Reserved Bit" Datatype="Bool" />
+    <Member Name="Reserved Bit_1" Datatype="Bool" />
+    <Member Name="Process Data Input - Vibration measurement" Datatype="Bool" />
+    <Member Name="Process Data Input - Selftest running" Datatype="Bool" />
+    <Member Name="Reserved Bit_2" Datatype="Bool" />
+    <Member Name="Reserved Bit_3" Datatype="Bool" />
+  </Section>
+</Sections></Interface>
+      <Name>PII - JN2200</Name>
+      <Namespace />
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Types.PlcStruct>
+</Document>

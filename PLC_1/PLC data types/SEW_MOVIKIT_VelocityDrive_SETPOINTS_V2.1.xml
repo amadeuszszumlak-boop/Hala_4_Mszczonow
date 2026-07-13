@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Types.PlcStruct ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="None">
+    <Member Name="x_Bit_8_Fault_Reset" Datatype="Bool" />
+    <Member Name="x_Bit_9_Reserved" Datatype="Bool" />
+    <Member Name="x_Bit_10_Activate_DriveTrain2" Datatype="Bool" />
+    <Member Name="x_Bit_11_Reserved" Datatype="Bool" />
+    <Member Name="x_Bit_12_Deactivate_SW_Limit_switches" Datatype="Bool" />
+    <Member Name="x_Bit_13_Activate_Output_Stage_Inhibit" Datatype="Bool" />
+    <Member Name="x_Bit_14_Activate_StandBy_Mode" Datatype="Bool" />
+    <Member Name="x_Bit_15_Heartbeat_IN" Datatype="Bool" />
+    <Member Name="x_Bit_0_Enable_Emergency_Stop" Datatype="Bool" />
+    <Member Name="x_Bit_1_Enable_Application_Stop" Datatype="Bool" />
+    <Member Name="x_Bit_2_Reserved" Datatype="Bool" />
+    <Member Name="x_Bit_3_Release_Brake" Datatype="Bool" />
+    <Member Name="x_Bit_4_Jog_positive" Datatype="Bool" />
+    <Member Name="x_Bit_5_Jog_negative" Datatype="Bool" />
+    <Member Name="x_Bit_6_Apply_relative_Position" Datatype="Bool" />
+    <Member Name="x_Bit_7_Start_Stop" Datatype="Bool" />
+    <Member Name="iSetpoint_Speed" Datatype="Int" />
+    <Member Name="iSetpoint_Acceleration" Datatype="Int" />
+    <Member Name="iSetpoint_Deceleration" Datatype="Int" />
+    <Member Name="wDigital_Outputs" Datatype="Word" />
+  </Section>
+</Sections></Interface>
+      <Name>SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1</Name>
+      <Namespace />
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Types.PlcStruct>
+</Document>

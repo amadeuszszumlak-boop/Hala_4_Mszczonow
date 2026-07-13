@@ -1,0 +1,2966 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.OB ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input">
+    <Member Name="Initial_Call" Datatype="Bool" Informative="true">
+      <Comment>
+        <MultiLanguageText Lang="en-US">Initial call of this OB</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Remanence" Datatype="Bool" Informative="true">
+      <Comment>
+        <MultiLanguageText Lang="en-US">=True, if remanent data are available</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+  <Section Name="Temp" />
+  <Section Name="Constant" />
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <Name>Main</Name>
+      <Namespace />
+      <Number>1</Number>
+      <ProgrammingLanguage>LAD</ProgrammingLanguage>
+      <SecondaryType>ProgramCycle</SecondaryType>
+      <SetENOAutomatically>false</SetENOAutomatically>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="Sz1_Button_SS_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="Sz11_Button_SS_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="HMI_SideShifter_2" />
+        <Component Name="SR_SL_Hyd_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="Sz1_Button_SS_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="Sz11_Button_SS_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="HMI_SideShifter_2" />
+        <Component Name="SR_SL_Hyd_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
+      <Symbol>
+        <Component Name="Sz1_Button_SS_Drive_ST25" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="Sz11_Button_SS_Drive_ST25" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="29">
+      <Symbol>
+        <Component Name="HMI_SideShifter_2" />
+        <Component Name="Go_to_ST25" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="30">
+      <Symbol>
+        <Component Name="Sz1_Button_SS_Drive_ST24" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="31">
+      <Symbol>
+        <Component Name="Sz11_Button_SS_Drive_ST24" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="32">
+      <Symbol>
+        <Component Name="HMI_SideShifter_2" />
+        <Component Name="Go_to_ST24" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="33">
+      <Symbol>
+        <Component Name="Sz11_Button_SS_Drive_ST17" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="34">
+      <Symbol>
+        <Component Name="Sz1_Button_SS_Drive_ST17" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="35">
+      <Symbol>
+        <Component Name="HMI_SideShifter_2" />
+        <Component Name="Go_to_ST17" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="36">
+      <Symbol>
+        <Component Name="Sz1_Button_SS_Drive_ST14" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="37">
+      <Symbol>
+        <Component Name="Sz11_Button_SS_Drive_ST14" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="38">
+      <Symbol>
+        <Component Name="HMI_SideShifter_2" />
+        <Component Name="Go_to_ST14" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="39">
+      <Symbol>
+        <Component Name="HMI_SideShifter_2" />
+        <Component Name="Reset_Drives" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="40">
+      <Symbol>
+        <Component Name="Sz1_Button_Centering_ST22" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="41">
+      <Symbol>
+        <Component Name="HMI_SideShifter_2" />
+        <Component Name="Reset_Hydro" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="42">
+      <Symbol>
+        <Component Name="HMI_SideShifter_2" />
+        <Component Name="SL_Actuators_Push" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="43">
+      <Symbol>
+        <Component Name="HMI_SideShifter_2" />
+        <Component Name="SL_Actuators_Pull" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="44">
+      <Symbol>
+        <Component Name="HMI_SideShifter_2" />
+        <Component Name="SR_Actuators_Push" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="45">
+      <Symbol>
+        <Component Name="HMI_SideShifter_2" />
+        <Component Name="SR_Actuators_Pull" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="46">
+      <Symbol>
+        <Component Name="Pallets_Stations" />
+        <Component Name="Stations_ROW1" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>11</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="IsEmpty" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="47">
+      <Symbol>
+        <Component Name="Pallets_Stations" />
+        <Component Name="Stations_ROW2" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>11</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="IsEmpty" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="48">
+      <Symbol>
+        <Component Name="Pallets_Stations" />
+        <Component Name="Stations_ROW3" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>11</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="IsEmpty" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="49">
+      <Symbol>
+        <Component Name="Pallets_Stations" />
+        <Component Name="Stations_ROW4" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>11</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="IsEmpty" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="50">
+      <Symbol>
+        <Component Name="HMI_SideShifter_2" />
+        <Component Name="Homing_SR1" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="51">
+      <Symbol>
+        <Component Name="HMI_SideShifter_2" />
+        <Component Name="Homing_SR2" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="52">
+      <Symbol>
+        <Component Name="HMI_SideShifter_2" />
+        <Component Name="Homing_SR3" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="53">
+      <Symbol>
+        <Component Name="HMI_SideShifter_2" />
+        <Component Name="Homing_SR4" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="54">
+      <Symbol>
+        <Component Name="HMI_SideShifter_2" />
+        <Component Name="Homing_SL1" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="55">
+      <Symbol>
+        <Component Name="HMI_SideShifter_2" />
+        <Component Name="Homing_SL2" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="56">
+      <Symbol>
+        <Component Name="HMI_SideShifter_2" />
+        <Component Name="Homing_SL3" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="57">
+      <Symbol>
+        <Component Name="HMI_SideShifter_2" />
+        <Component Name="Homing_SL4" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="58">
+      <Symbol>
+        <Component Name="HMI_SideShifter_2" />
+        <Component Name="SL_Go_Forward" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="59">
+      <Symbol>
+        <Component Name="HMI_SideShifter_2" />
+        <Component Name="SL_Go_Backward" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="60">
+      <Symbol>
+        <Component Name="HMI_SideShifter_2" />
+        <Component Name="SR_Go_Forward" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="61">
+      <Symbol>
+        <Component Name="HMI_SideShifter_2" />
+        <Component Name="SR_Go_Backward" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="62">
+      <Symbol>
+        <Component Name="S1_R2_Sen_Drv_1" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="63">
+      <Symbol>
+        <Component Name="S1_R2_Sen_Drv_2" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="64">
+      <Symbol>
+        <Component Name="S1_R2_Sen_Drv_3" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="65">
+      <Symbol>
+        <Component Name="S1_R2_Sen_Drv_4" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="66">
+      <Symbol>
+        <Component Name="S1_R1_Sen_Drv_1" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="67">
+      <Symbol>
+        <Component Name="S1_R1_Sen_Drv_2" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="68">
+      <Symbol>
+        <Component Name="S1_R1_Sen_Drv_3" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="69">
+      <Symbol>
+        <Component Name="S1_R1_Sen_Drv_4" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="70">
+      <Symbol>
+        <Component Name="S2_R2_Sen_Val1_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="71">
+      <Symbol>
+        <Component Name="S2_R2_Sen_Val1_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="72">
+      <Symbol>
+        <Component Name="S2_R2_Sen_Val2_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="73">
+      <Symbol>
+        <Component Name="S2_R2_Sen_Val2_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="74">
+      <Symbol>
+        <Component Name="S2_R1_Sen_Val1_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="75">
+      <Symbol>
+        <Component Name="S2_R1_Sen_Val1_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="76">
+      <Symbol>
+        <Component Name="S2_R2_Sen_Val2_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="77">
+      <Symbol>
+        <Component Name="S2_R1_Sen_Val2_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="78">
+      <Symbol>
+        <Component Name="iS2L_Distance_Value" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="79">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="80">
+      <Symbol>
+        <Component Name="iSR_Distance_Value" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalConstant" UId="81">
+      <Constant Name="S2R2M~Module_I_O_(05_words)_1" />
+    </Access>
+    <Access Scope="GlobalConstant" UId="82">
+      <Constant Name="S2R1M~Module_I_O_(05_words)_1" />
+    </Access>
+    <Access Scope="GlobalVariable" UId="83">
+      <Symbol>
+        <Component Name="Side_MOVIKIT" />
+        <Component Name="S2_R1_PI" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="84">
+      <Symbol>
+        <Component Name="Side_MOVIKIT" />
+        <Component Name="S2_R2_PI" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="85">
+      <Symbol>
+        <Component Name="Side_MOVIKIT" />
+        <Component Name="S2_R1_PO" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="86">
+      <Symbol>
+        <Component Name="Side_MOVIKIT" />
+        <Component Name="S2_R2_PO" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="87">
+      <Symbol>
+        <Component Name="S2_R2_Valve_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="88">
+      <Symbol>
+        <Component Name="S2_R2_Valve_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="89">
+      <Symbol>
+        <Component Name="S2_R2_Hydraulic_Unit" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="90">
+      <Symbol>
+        <Component Name="S2_R1_Valve_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="91">
+      <Symbol>
+        <Component Name="S2_R1_Valve_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="92">
+      <Symbol>
+        <Component Name="S2_R1_Hydraulic_Unit" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="93">
+      <Symbol>
+        <Component Name="Sz1_Button_LED_SS_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="94">
+      <Symbol>
+        <Component Name="Sz11_Button_LED_SS_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="95">
+      <Symbol>
+        <Component Name="Sz1_Button_LED_SS_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="96">
+      <Symbol>
+        <Component Name="Sz11_Button_LED_SS_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="97">
+      <Symbol>
+        <Component Name="Sz1_Button_LED_SS_Drive_ST25" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="98">
+      <Symbol>
+        <Component Name="Sz11_Button_LED_SS_Drive_ST25" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="99">
+      <Symbol>
+        <Component Name="Sz1_Button_LED_SS_Drive_ST24" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="100">
+      <Symbol>
+        <Component Name="Sz11_Button_LED_SS_Drive_ST24" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="101">
+      <Symbol>
+        <Component Name="Sz1_Button_LED_SS_Drive_ST17" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="102">
+      <Symbol>
+        <Component Name="Sz11_Button_LED_SS_Drive_ST17" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="103">
+      <Symbol>
+        <Component Name="Sz1_Button_LED_SS_Drive_ST14" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="104">
+      <Symbol>
+        <Component Name="Sz11_Button_LED_SS_Drive_ST14" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="105" />
+    <Part Name="Contact" UId="106" />
+    <Part Name="Contact" UId="107" />
+    <Part Name="O" UId="108">
+      <TemplateValue Name="Card" Type="Cardinality">3</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="109" />
+    <Part Name="Contact" UId="110" />
+    <Part Name="Contact" UId="111" />
+    <Part Name="O" UId="112">
+      <TemplateValue Name="Card" Type="Cardinality">3</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="113" />
+    <Part Name="Contact" UId="114" />
+    <Part Name="Contact" UId="115" />
+    <Part Name="O" UId="116">
+      <TemplateValue Name="Card" Type="Cardinality">3</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="117" />
+    <Part Name="Contact" UId="118" />
+    <Part Name="Contact" UId="119" />
+    <Part Name="O" UId="120">
+      <TemplateValue Name="Card" Type="Cardinality">3</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="121" />
+    <Part Name="Contact" UId="122" />
+    <Part Name="Contact" UId="123" />
+    <Part Name="O" UId="124">
+      <TemplateValue Name="Card" Type="Cardinality">3</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="125" />
+    <Part Name="Contact" UId="126" />
+    <Part Name="Contact" UId="127" />
+    <Part Name="O" UId="128">
+      <TemplateValue Name="Card" Type="Cardinality">3</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="129" />
+    <Part Name="Contact" UId="130" />
+    <Part Name="O" UId="131">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="132" />
+    <Call UId="133">
+      <CallInfo Name="Side_Shifters" BlockType="FB">
+        <Instance Scope="GlobalVariable" UId="134">
+          <Component Name="Side_Shifters_SS2" />
+        </Instance>
+        <Parameter Name="set_Hydraulic_Up" Section="Input" Type="Bool" />
+        <Parameter Name="set_Hydraulic_Down" Section="Input" Type="Bool" />
+        <Parameter Name="set_SL_Hydraulic_Up" Section="Input" Type="Bool" />
+        <Parameter Name="set_SL_Hydraulic_Down" Section="Input" Type="Bool" />
+        <Parameter Name="set_SR_Hydraulic_Up" Section="Input" Type="Bool" />
+        <Parameter Name="set_SR_Hydraulic_Down" Section="Input" Type="Bool" />
+        <Parameter Name="set_SL_Hydraulic_Unit" Section="Input" Type="Bool" />
+        <Parameter Name="set_SR_Hydraulic_Unit" Section="Input" Type="Bool" />
+        <Parameter Name="set_Go_To_ST1" Section="Input" Type="Bool" />
+        <Parameter Name="set_Go_To_ST2" Section="Input" Type="Bool" />
+        <Parameter Name="set_Go_To_ST3" Section="Input" Type="Bool" />
+        <Parameter Name="set_Go_To_ST4" Section="Input" Type="Bool" />
+        <Parameter Name="ST1_Empty" Section="Input" Type="Bool" />
+        <Parameter Name="ST2_Empty" Section="Input" Type="Bool" />
+        <Parameter Name="ST3_Empty" Section="Input" Type="Bool" />
+        <Parameter Name="ST4_Empty" Section="Input" Type="Bool" />
+        <Parameter Name="Homing_1_SR" Section="Input" Type="Int" />
+        <Parameter Name="Homing_2_SR" Section="Input" Type="Int" />
+        <Parameter Name="Homing_3_SR" Section="Input" Type="Int" />
+        <Parameter Name="Homing_4_SR" Section="Input" Type="Int" />
+        <Parameter Name="Homing_1_SL" Section="Input" Type="Int" />
+        <Parameter Name="Homing_2_SL" Section="Input" Type="Int" />
+        <Parameter Name="Homing_3_SL" Section="Input" Type="Int" />
+        <Parameter Name="Homing_4_SL" Section="Input" Type="Int" />
+        <Parameter Name="SL_Drive_Forward" Section="Input" Type="Bool" />
+        <Parameter Name="SL_Drive_Backward" Section="Input" Type="Bool" />
+        <Parameter Name="SR_Drive_Forward" Section="Input" Type="Bool" />
+        <Parameter Name="SR_Drive_Backward" Section="Input" Type="Bool" />
+        <Parameter Name="iSL_Sen_Drv_1" Section="Input" Type="Bool" />
+        <Parameter Name="iSL_Sen_Drv_2" Section="Input" Type="Bool" />
+        <Parameter Name="iSL_Sen_Drv_3" Section="Input" Type="Bool" />
+        <Parameter Name="iSL_Sen_Drv_4" Section="Input" Type="Bool" />
+        <Parameter Name="iSR_Sen_Drv_1" Section="Input" Type="Bool" />
+        <Parameter Name="iSR_Sen_Drv_2" Section="Input" Type="Bool" />
+        <Parameter Name="iSR_Sen_Drv_3" Section="Input" Type="Bool" />
+        <Parameter Name="iSR_Sen_Drv_4" Section="Input" Type="Bool" />
+        <Parameter Name="iSL_Sen_Val1_Up" Section="Input" Type="Bool" />
+        <Parameter Name="iSL_Sen_Val1_Down" Section="Input" Type="Bool" />
+        <Parameter Name="iSL_Sen_Val2_Up" Section="Input" Type="Bool" />
+        <Parameter Name="iSL_Sen_Val2_Down" Section="Input" Type="Bool" />
+        <Parameter Name="iSR_Sen_Val1_Up" Section="Input" Type="Bool" />
+        <Parameter Name="iSR_Sen_Val1_Down" Section="Input" Type="Bool" />
+        <Parameter Name="iSR_Sen_Val2_Up" Section="Input" Type="Bool" />
+        <Parameter Name="iSR_Sen_Val2_Down" Section="Input" Type="Bool" />
+        <Parameter Name="iSL_Distance" Section="Input" Type="Int" />
+        <Parameter Name="iSR_Correct" Section="Input" Type="Int" />
+        <Parameter Name="iSR_Distance" Section="Input" Type="Int" />
+        <Parameter Name="iSL_Hydraulic_Filtr" Section="Input" Type="Bool" />
+        <Parameter Name="iSR_Hydraulic_Empty" Section="Input" Type="Bool" />
+        <Parameter Name="HWIdentSL" Section="Input" Type="HW_IO" />
+        <Parameter Name="HWIdentSR" Section="Input" Type="HW_IO" />
+        <Parameter Name="Reset_Drive" Section="Input" Type="Bool" />
+        <Parameter Name="Reset_Hydro" Section="Input" Type="Bool" />
+        <Parameter Name="oSL_Valve_Up" Section="Output" Type="Bool" />
+        <Parameter Name="oSL_Valve_Down" Section="Output" Type="Bool" />
+        <Parameter Name="oSL_Hydraulic_Unit" Section="Output" Type="Bool" />
+        <Parameter Name="oSR_Valve_Up" Section="Output" Type="Bool" />
+        <Parameter Name="oSR_Valve_Down" Section="Output" Type="Bool" />
+        <Parameter Name="oSR_Hydraulic_Unit" Section="Output" Type="Bool" />
+        <Parameter Name="oHydraulic_Status_LED_UP_1" Section="Output" Type="Bool" />
+        <Parameter Name="oHydraulic_Status_LED_UP_2" Section="Output" Type="Bool" />
+        <Parameter Name="oHydraulic_Status_LED_DOWN_1" Section="Output" Type="Bool" />
+        <Parameter Name="oHydraulic_Status_LED_DOWN_2" Section="Output" Type="Bool" />
+        <Parameter Name="oSL_Communication_OK" Section="Output" Type="Bool" />
+        <Parameter Name="oSR_Communication_OK" Section="Output" Type="Bool" />
+        <Parameter Name="oSL_Forward_Flag" Section="Output" Type="Bool" />
+        <Parameter Name="oSL_Backward_Flag" Section="Output" Type="Bool" />
+        <Parameter Name="oSR_Forward_Flag" Section="Output" Type="Bool" />
+        <Parameter Name="oSR_Backward_Flag" Section="Output" Type="Bool" />
+        <Parameter Name="oST1_1_Move_Flag" Section="Output" Type="Bool" />
+        <Parameter Name="oST1_2_Move_Flag" Section="Output" Type="Bool" />
+        <Parameter Name="oST2_1_Move_Flag" Section="Output" Type="Bool" />
+        <Parameter Name="oST2_2_Move_Flag" Section="Output" Type="Bool" />
+        <Parameter Name="oST3_1_Move_flag" Section="Output" Type="Bool" />
+        <Parameter Name="oST3_2_Move_Flag" Section="Output" Type="Bool" />
+        <Parameter Name="oST4_1_Move_Flag" Section="Output" Type="Bool" />
+        <Parameter Name="oST4_2_Move_Flag" Section="Output" Type="Bool" />
+        <Parameter Name="iSL_Drive_Param" Section="InOut" Type="&quot;SEW_MOVIKIT_VelocityDrive_STATUS_V2.1&quot;" />
+        <Parameter Name="iSR_Drive_Param" Section="InOut" Type="&quot;SEW_MOVIKIT_VelocityDrive_STATUS_V2.1&quot;" />
+        <Parameter Name="oSL_Drive_Param" Section="InOut" Type="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
+        <Parameter Name="oSR_Drive_Param" Section="InOut" Type="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="145">
+      <Powerrail />
+      <NameCon UId="133" Name="en" />
+      <NameCon UId="105" Name="in" />
+      <NameCon UId="106" Name="in" />
+      <NameCon UId="107" Name="in" />
+      <NameCon UId="109" Name="in" />
+      <NameCon UId="110" Name="in" />
+      <NameCon UId="111" Name="in" />
+      <NameCon UId="113" Name="in" />
+      <NameCon UId="114" Name="in" />
+      <NameCon UId="115" Name="in" />
+      <NameCon UId="117" Name="in" />
+      <NameCon UId="118" Name="in" />
+      <NameCon UId="119" Name="in" />
+      <NameCon UId="121" Name="in" />
+      <NameCon UId="122" Name="in" />
+      <NameCon UId="123" Name="in" />
+      <NameCon UId="125" Name="in" />
+      <NameCon UId="126" Name="in" />
+      <NameCon UId="127" Name="in" />
+      <NameCon UId="129" Name="in" />
+      <NameCon UId="130" Name="in" />
+      <NameCon UId="132" Name="in" />
+    </Wire>
+    <Wire UId="146">
+      <IdentCon UId="21" />
+      <NameCon UId="105" Name="operand" />
+    </Wire>
+    <Wire UId="147">
+      <NameCon UId="105" Name="out" />
+      <NameCon UId="108" Name="in1" />
+    </Wire>
+    <Wire UId="148">
+      <IdentCon UId="22" />
+      <NameCon UId="106" Name="operand" />
+    </Wire>
+    <Wire UId="149">
+      <NameCon UId="106" Name="out" />
+      <NameCon UId="108" Name="in2" />
+    </Wire>
+    <Wire UId="150">
+      <IdentCon UId="23" />
+      <NameCon UId="107" Name="operand" />
+    </Wire>
+    <Wire UId="151">
+      <NameCon UId="107" Name="out" />
+      <NameCon UId="108" Name="in3" />
+    </Wire>
+    <Wire UId="152">
+      <NameCon UId="108" Name="out" />
+      <NameCon UId="133" Name="set_Hydraulic_Up" />
+    </Wire>
+    <Wire UId="153">
+      <IdentCon UId="24" />
+      <NameCon UId="109" Name="operand" />
+    </Wire>
+    <Wire UId="154">
+      <NameCon UId="109" Name="out" />
+      <NameCon UId="112" Name="in1" />
+    </Wire>
+    <Wire UId="155">
+      <IdentCon UId="25" />
+      <NameCon UId="110" Name="operand" />
+    </Wire>
+    <Wire UId="156">
+      <NameCon UId="110" Name="out" />
+      <NameCon UId="112" Name="in2" />
+    </Wire>
+    <Wire UId="157">
+      <IdentCon UId="26" />
+      <NameCon UId="111" Name="operand" />
+    </Wire>
+    <Wire UId="158">
+      <NameCon UId="111" Name="out" />
+      <NameCon UId="112" Name="in3" />
+    </Wire>
+    <Wire UId="159">
+      <NameCon UId="112" Name="out" />
+      <NameCon UId="133" Name="set_Hydraulic_Down" />
+    </Wire>
+    <Wire UId="160">
+      <IdentCon UId="27" />
+      <NameCon UId="113" Name="operand" />
+    </Wire>
+    <Wire UId="161">
+      <NameCon UId="113" Name="out" />
+      <NameCon UId="116" Name="in1" />
+    </Wire>
+    <Wire UId="162">
+      <IdentCon UId="28" />
+      <NameCon UId="114" Name="operand" />
+    </Wire>
+    <Wire UId="163">
+      <NameCon UId="114" Name="out" />
+      <NameCon UId="116" Name="in2" />
+    </Wire>
+    <Wire UId="164">
+      <IdentCon UId="29" />
+      <NameCon UId="115" Name="operand" />
+    </Wire>
+    <Wire UId="165">
+      <NameCon UId="115" Name="out" />
+      <NameCon UId="116" Name="in3" />
+    </Wire>
+    <Wire UId="166">
+      <NameCon UId="116" Name="out" />
+      <NameCon UId="133" Name="set_Go_To_ST1" />
+    </Wire>
+    <Wire UId="167">
+      <IdentCon UId="30" />
+      <NameCon UId="117" Name="operand" />
+    </Wire>
+    <Wire UId="168">
+      <NameCon UId="117" Name="out" />
+      <NameCon UId="120" Name="in1" />
+    </Wire>
+    <Wire UId="169">
+      <IdentCon UId="31" />
+      <NameCon UId="118" Name="operand" />
+    </Wire>
+    <Wire UId="170">
+      <NameCon UId="118" Name="out" />
+      <NameCon UId="120" Name="in2" />
+    </Wire>
+    <Wire UId="171">
+      <IdentCon UId="32" />
+      <NameCon UId="119" Name="operand" />
+    </Wire>
+    <Wire UId="172">
+      <NameCon UId="119" Name="out" />
+      <NameCon UId="120" Name="in3" />
+    </Wire>
+    <Wire UId="173">
+      <NameCon UId="120" Name="out" />
+      <NameCon UId="133" Name="set_Go_To_ST2" />
+    </Wire>
+    <Wire UId="174">
+      <IdentCon UId="33" />
+      <NameCon UId="121" Name="operand" />
+    </Wire>
+    <Wire UId="175">
+      <NameCon UId="121" Name="out" />
+      <NameCon UId="124" Name="in1" />
+    </Wire>
+    <Wire UId="176">
+      <IdentCon UId="34" />
+      <NameCon UId="122" Name="operand" />
+    </Wire>
+    <Wire UId="177">
+      <NameCon UId="122" Name="out" />
+      <NameCon UId="124" Name="in2" />
+    </Wire>
+    <Wire UId="178">
+      <IdentCon UId="35" />
+      <NameCon UId="123" Name="operand" />
+    </Wire>
+    <Wire UId="179">
+      <NameCon UId="123" Name="out" />
+      <NameCon UId="124" Name="in3" />
+    </Wire>
+    <Wire UId="180">
+      <NameCon UId="124" Name="out" />
+      <NameCon UId="133" Name="set_Go_To_ST3" />
+    </Wire>
+    <Wire UId="181">
+      <IdentCon UId="36" />
+      <NameCon UId="125" Name="operand" />
+    </Wire>
+    <Wire UId="182">
+      <NameCon UId="125" Name="out" />
+      <NameCon UId="128" Name="in1" />
+    </Wire>
+    <Wire UId="183">
+      <IdentCon UId="37" />
+      <NameCon UId="126" Name="operand" />
+    </Wire>
+    <Wire UId="184">
+      <NameCon UId="126" Name="out" />
+      <NameCon UId="128" Name="in2" />
+    </Wire>
+    <Wire UId="185">
+      <IdentCon UId="38" />
+      <NameCon UId="127" Name="operand" />
+    </Wire>
+    <Wire UId="186">
+      <NameCon UId="127" Name="out" />
+      <NameCon UId="128" Name="in3" />
+    </Wire>
+    <Wire UId="187">
+      <NameCon UId="128" Name="out" />
+      <NameCon UId="133" Name="set_Go_To_ST4" />
+    </Wire>
+    <Wire UId="188">
+      <IdentCon UId="39" />
+      <NameCon UId="129" Name="operand" />
+    </Wire>
+    <Wire UId="189">
+      <NameCon UId="129" Name="out" />
+      <NameCon UId="131" Name="in1" />
+    </Wire>
+    <Wire UId="190">
+      <IdentCon UId="40" />
+      <NameCon UId="130" Name="operand" />
+    </Wire>
+    <Wire UId="191">
+      <NameCon UId="130" Name="out" />
+      <NameCon UId="131" Name="in2" />
+    </Wire>
+    <Wire UId="192">
+      <NameCon UId="131" Name="out" />
+      <NameCon UId="133" Name="Reset_Drive" />
+    </Wire>
+    <Wire UId="193">
+      <IdentCon UId="41" />
+      <NameCon UId="132" Name="operand" />
+    </Wire>
+    <Wire UId="194">
+      <NameCon UId="132" Name="out" />
+      <NameCon UId="133" Name="Reset_Hydro" />
+    </Wire>
+    <Wire UId="195">
+      <IdentCon UId="42" />
+      <NameCon UId="133" Name="set_SL_Hydraulic_Up" />
+    </Wire>
+    <Wire UId="196">
+      <IdentCon UId="43" />
+      <NameCon UId="133" Name="set_SL_Hydraulic_Down" />
+    </Wire>
+    <Wire UId="197">
+      <IdentCon UId="44" />
+      <NameCon UId="133" Name="set_SR_Hydraulic_Up" />
+    </Wire>
+    <Wire UId="198">
+      <IdentCon UId="45" />
+      <NameCon UId="133" Name="set_SR_Hydraulic_Down" />
+    </Wire>
+    <Wire UId="199">
+      <OpenCon UId="135" />
+      <NameCon UId="133" Name="set_SL_Hydraulic_Unit" />
+    </Wire>
+    <Wire UId="200">
+      <OpenCon UId="136" />
+      <NameCon UId="133" Name="set_SR_Hydraulic_Unit" />
+    </Wire>
+    <Wire UId="201">
+      <IdentCon UId="46" />
+      <NameCon UId="133" Name="ST1_Empty" />
+    </Wire>
+    <Wire UId="202">
+      <IdentCon UId="47" />
+      <NameCon UId="133" Name="ST2_Empty" />
+    </Wire>
+    <Wire UId="203">
+      <IdentCon UId="48" />
+      <NameCon UId="133" Name="ST3_Empty" />
+    </Wire>
+    <Wire UId="204">
+      <IdentCon UId="49" />
+      <NameCon UId="133" Name="ST4_Empty" />
+    </Wire>
+    <Wire UId="205">
+      <IdentCon UId="50" />
+      <NameCon UId="133" Name="Homing_1_SR" />
+    </Wire>
+    <Wire UId="206">
+      <IdentCon UId="51" />
+      <NameCon UId="133" Name="Homing_2_SR" />
+    </Wire>
+    <Wire UId="207">
+      <IdentCon UId="52" />
+      <NameCon UId="133" Name="Homing_3_SR" />
+    </Wire>
+    <Wire UId="208">
+      <IdentCon UId="53" />
+      <NameCon UId="133" Name="Homing_4_SR" />
+    </Wire>
+    <Wire UId="209">
+      <IdentCon UId="54" />
+      <NameCon UId="133" Name="Homing_1_SL" />
+    </Wire>
+    <Wire UId="210">
+      <IdentCon UId="55" />
+      <NameCon UId="133" Name="Homing_2_SL" />
+    </Wire>
+    <Wire UId="211">
+      <IdentCon UId="56" />
+      <NameCon UId="133" Name="Homing_3_SL" />
+    </Wire>
+    <Wire UId="212">
+      <IdentCon UId="57" />
+      <NameCon UId="133" Name="Homing_4_SL" />
+    </Wire>
+    <Wire UId="213">
+      <IdentCon UId="58" />
+      <NameCon UId="133" Name="SL_Drive_Forward" />
+    </Wire>
+    <Wire UId="214">
+      <IdentCon UId="59" />
+      <NameCon UId="133" Name="SL_Drive_Backward" />
+    </Wire>
+    <Wire UId="215">
+      <IdentCon UId="60" />
+      <NameCon UId="133" Name="SR_Drive_Forward" />
+    </Wire>
+    <Wire UId="216">
+      <IdentCon UId="61" />
+      <NameCon UId="133" Name="SR_Drive_Backward" />
+    </Wire>
+    <Wire UId="217">
+      <IdentCon UId="62" />
+      <NameCon UId="133" Name="iSL_Sen_Drv_1" />
+    </Wire>
+    <Wire UId="218">
+      <IdentCon UId="63" />
+      <NameCon UId="133" Name="iSL_Sen_Drv_2" />
+    </Wire>
+    <Wire UId="219">
+      <IdentCon UId="64" />
+      <NameCon UId="133" Name="iSL_Sen_Drv_3" />
+    </Wire>
+    <Wire UId="220">
+      <IdentCon UId="65" />
+      <NameCon UId="133" Name="iSL_Sen_Drv_4" />
+    </Wire>
+    <Wire UId="221">
+      <IdentCon UId="66" />
+      <NameCon UId="133" Name="iSR_Sen_Drv_1" />
+    </Wire>
+    <Wire UId="222">
+      <IdentCon UId="67" />
+      <NameCon UId="133" Name="iSR_Sen_Drv_2" />
+    </Wire>
+    <Wire UId="223">
+      <IdentCon UId="68" />
+      <NameCon UId="133" Name="iSR_Sen_Drv_3" />
+    </Wire>
+    <Wire UId="224">
+      <IdentCon UId="69" />
+      <NameCon UId="133" Name="iSR_Sen_Drv_4" />
+    </Wire>
+    <Wire UId="225">
+      <IdentCon UId="70" />
+      <NameCon UId="133" Name="iSL_Sen_Val1_Up" />
+    </Wire>
+    <Wire UId="226">
+      <IdentCon UId="71" />
+      <NameCon UId="133" Name="iSL_Sen_Val1_Down" />
+    </Wire>
+    <Wire UId="227">
+      <IdentCon UId="72" />
+      <NameCon UId="133" Name="iSL_Sen_Val2_Up" />
+    </Wire>
+    <Wire UId="228">
+      <IdentCon UId="73" />
+      <NameCon UId="133" Name="iSL_Sen_Val2_Down" />
+    </Wire>
+    <Wire UId="229">
+      <IdentCon UId="74" />
+      <NameCon UId="133" Name="iSR_Sen_Val1_Up" />
+    </Wire>
+    <Wire UId="230">
+      <IdentCon UId="75" />
+      <NameCon UId="133" Name="iSR_Sen_Val1_Down" />
+    </Wire>
+    <Wire UId="231">
+      <IdentCon UId="76" />
+      <NameCon UId="133" Name="iSR_Sen_Val2_Up" />
+    </Wire>
+    <Wire UId="232">
+      <IdentCon UId="77" />
+      <NameCon UId="133" Name="iSR_Sen_Val2_Down" />
+    </Wire>
+    <Wire UId="233">
+      <IdentCon UId="78" />
+      <NameCon UId="133" Name="iSL_Distance" />
+    </Wire>
+    <Wire UId="234">
+      <IdentCon UId="79" />
+      <NameCon UId="133" Name="iSR_Correct" />
+    </Wire>
+    <Wire UId="235">
+      <IdentCon UId="80" />
+      <NameCon UId="133" Name="iSR_Distance" />
+    </Wire>
+    <Wire UId="236">
+      <OpenCon UId="137" />
+      <NameCon UId="133" Name="iSL_Hydraulic_Filtr" />
+    </Wire>
+    <Wire UId="237">
+      <OpenCon UId="138" />
+      <NameCon UId="133" Name="iSR_Hydraulic_Empty" />
+    </Wire>
+    <Wire UId="238">
+      <IdentCon UId="81" />
+      <NameCon UId="133" Name="HWIdentSL" />
+    </Wire>
+    <Wire UId="239">
+      <IdentCon UId="82" />
+      <NameCon UId="133" Name="HWIdentSR" />
+    </Wire>
+    <Wire UId="240">
+      <IdentCon UId="83" />
+      <NameCon UId="133" Name="iSL_Drive_Param" />
+    </Wire>
+    <Wire UId="241">
+      <IdentCon UId="84" />
+      <NameCon UId="133" Name="iSR_Drive_Param" />
+    </Wire>
+    <Wire UId="242">
+      <IdentCon UId="85" />
+      <NameCon UId="133" Name="oSL_Drive_Param" />
+    </Wire>
+    <Wire UId="243">
+      <IdentCon UId="86" />
+      <NameCon UId="133" Name="oSR_Drive_Param" />
+    </Wire>
+    <Wire UId="244">
+      <NameCon UId="133" Name="oSL_Valve_Up" />
+      <IdentCon UId="87" />
+    </Wire>
+    <Wire UId="245">
+      <NameCon UId="133" Name="oSL_Valve_Down" />
+      <IdentCon UId="88" />
+    </Wire>
+    <Wire UId="246">
+      <NameCon UId="133" Name="oSL_Hydraulic_Unit" />
+      <IdentCon UId="89" />
+    </Wire>
+    <Wire UId="247">
+      <NameCon UId="133" Name="oSR_Valve_Up" />
+      <IdentCon UId="90" />
+    </Wire>
+    <Wire UId="248">
+      <NameCon UId="133" Name="oSR_Valve_Down" />
+      <IdentCon UId="91" />
+    </Wire>
+    <Wire UId="249">
+      <NameCon UId="133" Name="oSR_Hydraulic_Unit" />
+      <IdentCon UId="92" />
+    </Wire>
+    <Wire UId="250">
+      <NameCon UId="133" Name="oHydraulic_Status_LED_UP_1" />
+      <IdentCon UId="93" />
+    </Wire>
+    <Wire UId="251">
+      <NameCon UId="133" Name="oHydraulic_Status_LED_UP_2" />
+      <IdentCon UId="94" />
+    </Wire>
+    <Wire UId="252">
+      <NameCon UId="133" Name="oHydraulic_Status_LED_DOWN_1" />
+      <IdentCon UId="95" />
+    </Wire>
+    <Wire UId="253">
+      <NameCon UId="133" Name="oHydraulic_Status_LED_DOWN_2" />
+      <IdentCon UId="96" />
+    </Wire>
+    <Wire UId="254">
+      <NameCon UId="133" Name="oSL_Communication_OK" />
+      <OpenCon UId="139" />
+    </Wire>
+    <Wire UId="255">
+      <NameCon UId="133" Name="oSR_Communication_OK" />
+      <OpenCon UId="140" />
+    </Wire>
+    <Wire UId="256">
+      <NameCon UId="133" Name="oSL_Forward_Flag" />
+      <OpenCon UId="141" />
+    </Wire>
+    <Wire UId="257">
+      <NameCon UId="133" Name="oSL_Backward_Flag" />
+      <OpenCon UId="142" />
+    </Wire>
+    <Wire UId="258">
+      <NameCon UId="133" Name="oSR_Forward_Flag" />
+      <OpenCon UId="143" />
+    </Wire>
+    <Wire UId="259">
+      <NameCon UId="133" Name="oSR_Backward_Flag" />
+      <OpenCon UId="144" />
+    </Wire>
+    <Wire UId="260">
+      <NameCon UId="133" Name="oST1_1_Move_Flag" />
+      <IdentCon UId="97" />
+    </Wire>
+    <Wire UId="261">
+      <NameCon UId="133" Name="oST1_2_Move_Flag" />
+      <IdentCon UId="98" />
+    </Wire>
+    <Wire UId="262">
+      <NameCon UId="133" Name="oST2_1_Move_Flag" />
+      <IdentCon UId="99" />
+    </Wire>
+    <Wire UId="263">
+      <NameCon UId="133" Name="oST2_2_Move_Flag" />
+      <IdentCon UId="100" />
+    </Wire>
+    <Wire UId="264">
+      <NameCon UId="133" Name="oST3_1_Move_flag" />
+      <IdentCon UId="101" />
+    </Wire>
+    <Wire UId="265">
+      <NameCon UId="133" Name="oST3_2_Move_Flag" />
+      <IdentCon UId="102" />
+    </Wire>
+    <Wire UId="266">
+      <NameCon UId="133" Name="oST4_1_Move_Flag" />
+      <IdentCon UId="103" />
+    </Wire>
+    <Wire UId="267">
+      <NameCon UId="133" Name="oST4_2_Move_Flag" />
+      <IdentCon UId="104" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>SideShifter2</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="S5_Button_SS1_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="Sz7_Button_SS_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="HMI_SideShifter_1" />
+        <Component Name="SR_SL_Hyd_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="S5_Button_SS1_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="Sz7_Button_SS_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="HMI_SideShifter_1" />
+        <Component Name="SR_SL_Hyd_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
+      <Symbol>
+        <Component Name="Sz7_Button_SS_Drive_ST35" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="S5_Button_ST35" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="29">
+      <Symbol>
+        <Component Name="HMI_SideShifter_1" />
+        <Component Name="Go_to_ST35" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="30">
+      <Symbol>
+        <Component Name="Sz7_Button_SS_Drive_ST02" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="31">
+      <Symbol>
+        <Component Name="S5_Button_ST02" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="32">
+      <Symbol>
+        <Component Name="HMI_SideShifter_1" />
+        <Component Name="Go_to_ST02" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="33">
+      <Symbol>
+        <Component Name="Sz7_Button_SS_Drive_ST03" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="34">
+      <Symbol>
+        <Component Name="S5_Button_ST03" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="35">
+      <Symbol>
+        <Component Name="HMI_SideShifter_1" />
+        <Component Name="Go_to_ST03" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="36">
+      <Symbol>
+        <Component Name="Sz7_Button_SS_Drive_ST04" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="37">
+      <Symbol>
+        <Component Name="S5_Button_ST04" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="38">
+      <Symbol>
+        <Component Name="HMI_SideShifter_1" />
+        <Component Name="Go_to_ST04" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="39">
+      <Symbol>
+        <Component Name="HMI_SideShifter_1" />
+        <Component Name="Reset_Drives" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="40">
+      <Symbol>
+        <Component Name="S5_Button_ST01_ST02" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="41">
+      <Symbol>
+        <Component Name="HMI_SideShifter_1" />
+        <Component Name="Reset_Hydro" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="42">
+      <Symbol>
+        <Component Name="HMI_SideShifter_1" />
+        <Component Name="SL_Actuators_Push" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="43">
+      <Symbol>
+        <Component Name="HMI_SideShifter_1" />
+        <Component Name="SL_Actuators_Pull" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="44">
+      <Symbol>
+        <Component Name="HMI_SideShifter_1" />
+        <Component Name="SR_Actuators_Push" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="45">
+      <Symbol>
+        <Component Name="HMI_SideShifter_1" />
+        <Component Name="SR_Actuators_Pull" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="46">
+      <Symbol>
+        <Component Name="Pallets_Stations" />
+        <Component Name="Stations_ROW1" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>1</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="IsEmpty" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="47">
+      <Symbol>
+        <Component Name="Pallets_Stations" />
+        <Component Name="Stations_ROW2" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>1</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="IsEmpty" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="48">
+      <Symbol>
+        <Component Name="Pallets_Stations" />
+        <Component Name="Stations_ROW3" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>1</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="IsEmpty" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="49">
+      <Symbol>
+        <Component Name="Pallets_Stations" />
+        <Component Name="Stations_ROW4" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>1</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+        <Component Name="IsEmpty" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="50">
+      <Symbol>
+        <Component Name="HMI_SideShifter_1" />
+        <Component Name="Homing_SR1" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="51">
+      <Symbol>
+        <Component Name="HMI_SideShifter_1" />
+        <Component Name="Homing_SR2" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="52">
+      <Symbol>
+        <Component Name="HMI_SideShifter_1" />
+        <Component Name="Homing_SR3" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="53">
+      <Symbol>
+        <Component Name="HMI_SideShifter_1" />
+        <Component Name="Homing_SR4" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="54">
+      <Symbol>
+        <Component Name="HMI_SideShifter_1" />
+        <Component Name="Homing_SL1" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="55">
+      <Symbol>
+        <Component Name="HMI_SideShifter_1" />
+        <Component Name="Homing_SL2" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="56">
+      <Symbol>
+        <Component Name="HMI_SideShifter_1" />
+        <Component Name="Homing_SL3" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="57">
+      <Symbol>
+        <Component Name="HMI_SideShifter_1" />
+        <Component Name="Homing_SL4" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="58">
+      <Symbol>
+        <Component Name="HMI_SideShifter_1" />
+        <Component Name="SL_Go_Forward" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="59">
+      <Symbol>
+        <Component Name="HMI_SideShifter_1" />
+        <Component Name="SL_Go_Backward" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="60">
+      <Symbol>
+        <Component Name="HMI_SideShifter_1" />
+        <Component Name="SR_Go_Forward" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="61">
+      <Symbol>
+        <Component Name="HMI_SideShifter_1" />
+        <Component Name="SR_Go_Backward" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="62">
+      <Symbol>
+        <Component Name="S1_R1_Sen_Drv_1" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="63">
+      <Symbol>
+        <Component Name="S1_R1_Sen_Drv_2" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="64">
+      <Symbol>
+        <Component Name="S1_R1_Sen_Drv_3" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="65">
+      <Symbol>
+        <Component Name="S1_R1_Sen_Drv_4" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="66">
+      <Symbol>
+        <Component Name="S1_R2_Sen_Drv_1" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="67">
+      <Symbol>
+        <Component Name="S1_R2_Sen_Drv_2" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="68">
+      <Symbol>
+        <Component Name="S1_R2_Sen_Drv_3" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="69">
+      <Symbol>
+        <Component Name="S1_R2_Sen_Drv_4" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="70">
+      <Symbol>
+        <Component Name="S1_R1_Sen_Val1_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="71">
+      <Symbol>
+        <Component Name="S1_R1_Sen_Val1_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="72">
+      <Symbol>
+        <Component Name="S1_R1_Sen_Val2_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="73">
+      <Symbol>
+        <Component Name="S1_R1_Sen_Val2_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="74">
+      <Symbol>
+        <Component Name="S1_R2_Sen_Val1_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="75">
+      <Symbol>
+        <Component Name="S1_R2_Sen_Val1_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="76">
+      <Symbol>
+        <Component Name="S1_R2_Sen_Val2_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="77">
+      <Symbol>
+        <Component Name="S1_R2_Sen_Val2_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="78">
+      <Symbol>
+        <Component Name="iS1L_Distance_Value" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="79">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>8</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="80">
+      <Symbol>
+        <Component Name="iS1R_Distance_Value" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalConstant" UId="81">
+      <Constant Name="S1R1M~Module_I_O_(05_words)_1" />
+    </Access>
+    <Access Scope="GlobalConstant" UId="82">
+      <Constant Name="S1R2M~Module_I_O_(05_words)_1" />
+    </Access>
+    <Access Scope="GlobalVariable" UId="83">
+      <Symbol>
+        <Component Name="Side_MOVIKIT" />
+        <Component Name="S1_R1_PI" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="84">
+      <Symbol>
+        <Component Name="Side_MOVIKIT" />
+        <Component Name="S1_R2_PI" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="85">
+      <Symbol>
+        <Component Name="Side_MOVIKIT" />
+        <Component Name="S1_R1_PO" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="86">
+      <Symbol>
+        <Component Name="Side_MOVIKIT" />
+        <Component Name="S1_R2_PO" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="87">
+      <Symbol>
+        <Component Name="S1_R1_Valve_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="88">
+      <Symbol>
+        <Component Name="S1_R1_Valve_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="89">
+      <Symbol>
+        <Component Name="S1_R1_Hydraulic_Unit" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="90">
+      <Symbol>
+        <Component Name="S1_R2_Valve_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="91">
+      <Symbol>
+        <Component Name="S1_R2_Valve_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="92">
+      <Symbol>
+        <Component Name="S1_R2_Hydraulic_Unit" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="93">
+      <Symbol>
+        <Component Name="Sz7_Button_LED_SS_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="94">
+      <Symbol>
+        <Component Name="S5_Button_LED_SS1_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="95">
+      <Symbol>
+        <Component Name="Sz7_Button_LED_SS_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="96">
+      <Symbol>
+        <Component Name="S5_Button_LED_SS1_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="97">
+      <Symbol>
+        <Component Name="S5_Button_LED_ST35" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="98">
+      <Symbol>
+        <Component Name="Sz7_Button_LED_SS_Drive_ST35" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="99">
+      <Symbol>
+        <Component Name="S5_Button_LED_ST02" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="100">
+      <Symbol>
+        <Component Name="Sz7_Button_LED_SS_Drive_ST02" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="101">
+      <Symbol>
+        <Component Name="S5_Button_LED_ST03" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="102">
+      <Symbol>
+        <Component Name="Sz7_Button_LED_SS_Drive_ST03" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="103">
+      <Symbol>
+        <Component Name="S5_Button_LED_ST04" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="104">
+      <Symbol>
+        <Component Name="Sz7_Button_LED_SS_Drive_ST04" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="105" />
+    <Part Name="Contact" UId="106" />
+    <Part Name="Contact" UId="107" />
+    <Part Name="O" UId="108">
+      <TemplateValue Name="Card" Type="Cardinality">3</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="109" />
+    <Part Name="Contact" UId="110" />
+    <Part Name="Contact" UId="111" />
+    <Part Name="O" UId="112">
+      <TemplateValue Name="Card" Type="Cardinality">3</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="113" />
+    <Part Name="Contact" UId="114" />
+    <Part Name="Contact" UId="115" />
+    <Part Name="O" UId="116">
+      <TemplateValue Name="Card" Type="Cardinality">3</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="117" />
+    <Part Name="Contact" UId="118" />
+    <Part Name="Contact" UId="119" />
+    <Part Name="O" UId="120">
+      <TemplateValue Name="Card" Type="Cardinality">3</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="121" />
+    <Part Name="Contact" UId="122" />
+    <Part Name="Contact" UId="123" />
+    <Part Name="O" UId="124">
+      <TemplateValue Name="Card" Type="Cardinality">3</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="125" />
+    <Part Name="Contact" UId="126" />
+    <Part Name="Contact" UId="127" />
+    <Part Name="O" UId="128">
+      <TemplateValue Name="Card" Type="Cardinality">3</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="129" />
+    <Part Name="Contact" UId="130" />
+    <Part Name="O" UId="131">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="132" />
+    <Call UId="133">
+      <CallInfo Name="Side_Shifters" BlockType="FB">
+        <Instance Scope="GlobalVariable" UId="134">
+          <Component Name="Side_Shifters_SS1" />
+        </Instance>
+        <Parameter Name="set_Hydraulic_Up" Section="Input" Type="Bool" />
+        <Parameter Name="set_Hydraulic_Down" Section="Input" Type="Bool" />
+        <Parameter Name="set_SL_Hydraulic_Up" Section="Input" Type="Bool" />
+        <Parameter Name="set_SL_Hydraulic_Down" Section="Input" Type="Bool" />
+        <Parameter Name="set_SR_Hydraulic_Up" Section="Input" Type="Bool" />
+        <Parameter Name="set_SR_Hydraulic_Down" Section="Input" Type="Bool" />
+        <Parameter Name="set_SL_Hydraulic_Unit" Section="Input" Type="Bool" />
+        <Parameter Name="set_SR_Hydraulic_Unit" Section="Input" Type="Bool" />
+        <Parameter Name="set_Go_To_ST1" Section="Input" Type="Bool" />
+        <Parameter Name="set_Go_To_ST2" Section="Input" Type="Bool" />
+        <Parameter Name="set_Go_To_ST3" Section="Input" Type="Bool" />
+        <Parameter Name="set_Go_To_ST4" Section="Input" Type="Bool" />
+        <Parameter Name="ST1_Empty" Section="Input" Type="Bool" />
+        <Parameter Name="ST2_Empty" Section="Input" Type="Bool" />
+        <Parameter Name="ST3_Empty" Section="Input" Type="Bool" />
+        <Parameter Name="ST4_Empty" Section="Input" Type="Bool" />
+        <Parameter Name="Homing_1_SR" Section="Input" Type="Int" />
+        <Parameter Name="Homing_2_SR" Section="Input" Type="Int" />
+        <Parameter Name="Homing_3_SR" Section="Input" Type="Int" />
+        <Parameter Name="Homing_4_SR" Section="Input" Type="Int" />
+        <Parameter Name="Homing_1_SL" Section="Input" Type="Int" />
+        <Parameter Name="Homing_2_SL" Section="Input" Type="Int" />
+        <Parameter Name="Homing_3_SL" Section="Input" Type="Int" />
+        <Parameter Name="Homing_4_SL" Section="Input" Type="Int" />
+        <Parameter Name="SL_Drive_Forward" Section="Input" Type="Bool" />
+        <Parameter Name="SL_Drive_Backward" Section="Input" Type="Bool" />
+        <Parameter Name="SR_Drive_Forward" Section="Input" Type="Bool" />
+        <Parameter Name="SR_Drive_Backward" Section="Input" Type="Bool" />
+        <Parameter Name="iSL_Sen_Drv_1" Section="Input" Type="Bool" />
+        <Parameter Name="iSL_Sen_Drv_2" Section="Input" Type="Bool" />
+        <Parameter Name="iSL_Sen_Drv_3" Section="Input" Type="Bool" />
+        <Parameter Name="iSL_Sen_Drv_4" Section="Input" Type="Bool" />
+        <Parameter Name="iSR_Sen_Drv_1" Section="Input" Type="Bool" />
+        <Parameter Name="iSR_Sen_Drv_2" Section="Input" Type="Bool" />
+        <Parameter Name="iSR_Sen_Drv_3" Section="Input" Type="Bool" />
+        <Parameter Name="iSR_Sen_Drv_4" Section="Input" Type="Bool" />
+        <Parameter Name="iSL_Sen_Val1_Up" Section="Input" Type="Bool" />
+        <Parameter Name="iSL_Sen_Val1_Down" Section="Input" Type="Bool" />
+        <Parameter Name="iSL_Sen_Val2_Up" Section="Input" Type="Bool" />
+        <Parameter Name="iSL_Sen_Val2_Down" Section="Input" Type="Bool" />
+        <Parameter Name="iSR_Sen_Val1_Up" Section="Input" Type="Bool" />
+        <Parameter Name="iSR_Sen_Val1_Down" Section="Input" Type="Bool" />
+        <Parameter Name="iSR_Sen_Val2_Up" Section="Input" Type="Bool" />
+        <Parameter Name="iSR_Sen_Val2_Down" Section="Input" Type="Bool" />
+        <Parameter Name="iSL_Distance" Section="Input" Type="Int" />
+        <Parameter Name="iSR_Correct" Section="Input" Type="Int" />
+        <Parameter Name="iSR_Distance" Section="Input" Type="Int" />
+        <Parameter Name="iSL_Hydraulic_Filtr" Section="Input" Type="Bool" />
+        <Parameter Name="iSR_Hydraulic_Empty" Section="Input" Type="Bool" />
+        <Parameter Name="HWIdentSL" Section="Input" Type="HW_IO" />
+        <Parameter Name="HWIdentSR" Section="Input" Type="HW_IO" />
+        <Parameter Name="Reset_Drive" Section="Input" Type="Bool" />
+        <Parameter Name="Reset_Hydro" Section="Input" Type="Bool" />
+        <Parameter Name="oSL_Valve_Up" Section="Output" Type="Bool" />
+        <Parameter Name="oSL_Valve_Down" Section="Output" Type="Bool" />
+        <Parameter Name="oSL_Hydraulic_Unit" Section="Output" Type="Bool" />
+        <Parameter Name="oSR_Valve_Up" Section="Output" Type="Bool" />
+        <Parameter Name="oSR_Valve_Down" Section="Output" Type="Bool" />
+        <Parameter Name="oSR_Hydraulic_Unit" Section="Output" Type="Bool" />
+        <Parameter Name="oHydraulic_Status_LED_UP_1" Section="Output" Type="Bool" />
+        <Parameter Name="oHydraulic_Status_LED_UP_2" Section="Output" Type="Bool" />
+        <Parameter Name="oHydraulic_Status_LED_DOWN_1" Section="Output" Type="Bool" />
+        <Parameter Name="oHydraulic_Status_LED_DOWN_2" Section="Output" Type="Bool" />
+        <Parameter Name="oSL_Communication_OK" Section="Output" Type="Bool" />
+        <Parameter Name="oSR_Communication_OK" Section="Output" Type="Bool" />
+        <Parameter Name="oSL_Forward_Flag" Section="Output" Type="Bool" />
+        <Parameter Name="oSL_Backward_Flag" Section="Output" Type="Bool" />
+        <Parameter Name="oSR_Forward_Flag" Section="Output" Type="Bool" />
+        <Parameter Name="oSR_Backward_Flag" Section="Output" Type="Bool" />
+        <Parameter Name="oST1_1_Move_Flag" Section="Output" Type="Bool" />
+        <Parameter Name="oST1_2_Move_Flag" Section="Output" Type="Bool" />
+        <Parameter Name="oST2_1_Move_Flag" Section="Output" Type="Bool" />
+        <Parameter Name="oST2_2_Move_Flag" Section="Output" Type="Bool" />
+        <Parameter Name="oST3_1_Move_flag" Section="Output" Type="Bool" />
+        <Parameter Name="oST3_2_Move_Flag" Section="Output" Type="Bool" />
+        <Parameter Name="oST4_1_Move_Flag" Section="Output" Type="Bool" />
+        <Parameter Name="oST4_2_Move_Flag" Section="Output" Type="Bool" />
+        <Parameter Name="iSL_Drive_Param" Section="InOut" Type="&quot;SEW_MOVIKIT_VelocityDrive_STATUS_V2.1&quot;" />
+        <Parameter Name="iSR_Drive_Param" Section="InOut" Type="&quot;SEW_MOVIKIT_VelocityDrive_STATUS_V2.1&quot;" />
+        <Parameter Name="oSL_Drive_Param" Section="InOut" Type="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
+        <Parameter Name="oSR_Drive_Param" Section="InOut" Type="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="145">
+      <Powerrail />
+      <NameCon UId="133" Name="en" />
+      <NameCon UId="105" Name="in" />
+      <NameCon UId="106" Name="in" />
+      <NameCon UId="107" Name="in" />
+      <NameCon UId="109" Name="in" />
+      <NameCon UId="110" Name="in" />
+      <NameCon UId="111" Name="in" />
+      <NameCon UId="113" Name="in" />
+      <NameCon UId="114" Name="in" />
+      <NameCon UId="115" Name="in" />
+      <NameCon UId="117" Name="in" />
+      <NameCon UId="118" Name="in" />
+      <NameCon UId="119" Name="in" />
+      <NameCon UId="121" Name="in" />
+      <NameCon UId="122" Name="in" />
+      <NameCon UId="123" Name="in" />
+      <NameCon UId="125" Name="in" />
+      <NameCon UId="126" Name="in" />
+      <NameCon UId="127" Name="in" />
+      <NameCon UId="129" Name="in" />
+      <NameCon UId="130" Name="in" />
+      <NameCon UId="132" Name="in" />
+    </Wire>
+    <Wire UId="146">
+      <IdentCon UId="21" />
+      <NameCon UId="105" Name="operand" />
+    </Wire>
+    <Wire UId="147">
+      <NameCon UId="105" Name="out" />
+      <NameCon UId="108" Name="in1" />
+    </Wire>
+    <Wire UId="148">
+      <IdentCon UId="22" />
+      <NameCon UId="106" Name="operand" />
+    </Wire>
+    <Wire UId="149">
+      <NameCon UId="106" Name="out" />
+      <NameCon UId="108" Name="in2" />
+    </Wire>
+    <Wire UId="150">
+      <IdentCon UId="23" />
+      <NameCon UId="107" Name="operand" />
+    </Wire>
+    <Wire UId="151">
+      <NameCon UId="107" Name="out" />
+      <NameCon UId="108" Name="in3" />
+    </Wire>
+    <Wire UId="152">
+      <NameCon UId="108" Name="out" />
+      <NameCon UId="133" Name="set_Hydraulic_Up" />
+    </Wire>
+    <Wire UId="153">
+      <IdentCon UId="24" />
+      <NameCon UId="109" Name="operand" />
+    </Wire>
+    <Wire UId="154">
+      <NameCon UId="109" Name="out" />
+      <NameCon UId="112" Name="in1" />
+    </Wire>
+    <Wire UId="155">
+      <IdentCon UId="25" />
+      <NameCon UId="110" Name="operand" />
+    </Wire>
+    <Wire UId="156">
+      <NameCon UId="110" Name="out" />
+      <NameCon UId="112" Name="in2" />
+    </Wire>
+    <Wire UId="157">
+      <IdentCon UId="26" />
+      <NameCon UId="111" Name="operand" />
+    </Wire>
+    <Wire UId="158">
+      <NameCon UId="111" Name="out" />
+      <NameCon UId="112" Name="in3" />
+    </Wire>
+    <Wire UId="159">
+      <NameCon UId="112" Name="out" />
+      <NameCon UId="133" Name="set_Hydraulic_Down" />
+    </Wire>
+    <Wire UId="160">
+      <IdentCon UId="27" />
+      <NameCon UId="113" Name="operand" />
+    </Wire>
+    <Wire UId="161">
+      <NameCon UId="113" Name="out" />
+      <NameCon UId="116" Name="in1" />
+    </Wire>
+    <Wire UId="162">
+      <IdentCon UId="28" />
+      <NameCon UId="114" Name="operand" />
+    </Wire>
+    <Wire UId="163">
+      <NameCon UId="114" Name="out" />
+      <NameCon UId="116" Name="in2" />
+    </Wire>
+    <Wire UId="164">
+      <IdentCon UId="29" />
+      <NameCon UId="115" Name="operand" />
+    </Wire>
+    <Wire UId="165">
+      <NameCon UId="115" Name="out" />
+      <NameCon UId="116" Name="in3" />
+    </Wire>
+    <Wire UId="166">
+      <NameCon UId="116" Name="out" />
+      <NameCon UId="133" Name="set_Go_To_ST1" />
+    </Wire>
+    <Wire UId="167">
+      <IdentCon UId="30" />
+      <NameCon UId="117" Name="operand" />
+    </Wire>
+    <Wire UId="168">
+      <NameCon UId="117" Name="out" />
+      <NameCon UId="120" Name="in1" />
+    </Wire>
+    <Wire UId="169">
+      <IdentCon UId="31" />
+      <NameCon UId="118" Name="operand" />
+    </Wire>
+    <Wire UId="170">
+      <NameCon UId="118" Name="out" />
+      <NameCon UId="120" Name="in2" />
+    </Wire>
+    <Wire UId="171">
+      <IdentCon UId="32" />
+      <NameCon UId="119" Name="operand" />
+    </Wire>
+    <Wire UId="172">
+      <NameCon UId="119" Name="out" />
+      <NameCon UId="120" Name="in3" />
+    </Wire>
+    <Wire UId="173">
+      <NameCon UId="120" Name="out" />
+      <NameCon UId="133" Name="set_Go_To_ST2" />
+    </Wire>
+    <Wire UId="174">
+      <IdentCon UId="33" />
+      <NameCon UId="121" Name="operand" />
+    </Wire>
+    <Wire UId="175">
+      <NameCon UId="121" Name="out" />
+      <NameCon UId="124" Name="in1" />
+    </Wire>
+    <Wire UId="176">
+      <IdentCon UId="34" />
+      <NameCon UId="122" Name="operand" />
+    </Wire>
+    <Wire UId="177">
+      <NameCon UId="122" Name="out" />
+      <NameCon UId="124" Name="in2" />
+    </Wire>
+    <Wire UId="178">
+      <IdentCon UId="35" />
+      <NameCon UId="123" Name="operand" />
+    </Wire>
+    <Wire UId="179">
+      <NameCon UId="123" Name="out" />
+      <NameCon UId="124" Name="in3" />
+    </Wire>
+    <Wire UId="180">
+      <NameCon UId="124" Name="out" />
+      <NameCon UId="133" Name="set_Go_To_ST3" />
+    </Wire>
+    <Wire UId="181">
+      <IdentCon UId="36" />
+      <NameCon UId="125" Name="operand" />
+    </Wire>
+    <Wire UId="182">
+      <NameCon UId="125" Name="out" />
+      <NameCon UId="128" Name="in1" />
+    </Wire>
+    <Wire UId="183">
+      <IdentCon UId="37" />
+      <NameCon UId="126" Name="operand" />
+    </Wire>
+    <Wire UId="184">
+      <NameCon UId="126" Name="out" />
+      <NameCon UId="128" Name="in2" />
+    </Wire>
+    <Wire UId="185">
+      <IdentCon UId="38" />
+      <NameCon UId="127" Name="operand" />
+    </Wire>
+    <Wire UId="186">
+      <NameCon UId="127" Name="out" />
+      <NameCon UId="128" Name="in3" />
+    </Wire>
+    <Wire UId="187">
+      <NameCon UId="128" Name="out" />
+      <NameCon UId="133" Name="set_Go_To_ST4" />
+    </Wire>
+    <Wire UId="188">
+      <IdentCon UId="39" />
+      <NameCon UId="129" Name="operand" />
+    </Wire>
+    <Wire UId="189">
+      <NameCon UId="129" Name="out" />
+      <NameCon UId="131" Name="in1" />
+    </Wire>
+    <Wire UId="190">
+      <IdentCon UId="40" />
+      <NameCon UId="130" Name="operand" />
+    </Wire>
+    <Wire UId="191">
+      <NameCon UId="130" Name="out" />
+      <NameCon UId="131" Name="in2" />
+    </Wire>
+    <Wire UId="192">
+      <NameCon UId="131" Name="out" />
+      <NameCon UId="133" Name="Reset_Drive" />
+    </Wire>
+    <Wire UId="193">
+      <IdentCon UId="41" />
+      <NameCon UId="132" Name="operand" />
+    </Wire>
+    <Wire UId="194">
+      <NameCon UId="132" Name="out" />
+      <NameCon UId="133" Name="Reset_Hydro" />
+    </Wire>
+    <Wire UId="195">
+      <IdentCon UId="42" />
+      <NameCon UId="133" Name="set_SL_Hydraulic_Up" />
+    </Wire>
+    <Wire UId="196">
+      <IdentCon UId="43" />
+      <NameCon UId="133" Name="set_SL_Hydraulic_Down" />
+    </Wire>
+    <Wire UId="197">
+      <IdentCon UId="44" />
+      <NameCon UId="133" Name="set_SR_Hydraulic_Up" />
+    </Wire>
+    <Wire UId="198">
+      <IdentCon UId="45" />
+      <NameCon UId="133" Name="set_SR_Hydraulic_Down" />
+    </Wire>
+    <Wire UId="199">
+      <OpenCon UId="135" />
+      <NameCon UId="133" Name="set_SL_Hydraulic_Unit" />
+    </Wire>
+    <Wire UId="200">
+      <OpenCon UId="136" />
+      <NameCon UId="133" Name="set_SR_Hydraulic_Unit" />
+    </Wire>
+    <Wire UId="201">
+      <IdentCon UId="46" />
+      <NameCon UId="133" Name="ST1_Empty" />
+    </Wire>
+    <Wire UId="202">
+      <IdentCon UId="47" />
+      <NameCon UId="133" Name="ST2_Empty" />
+    </Wire>
+    <Wire UId="203">
+      <IdentCon UId="48" />
+      <NameCon UId="133" Name="ST3_Empty" />
+    </Wire>
+    <Wire UId="204">
+      <IdentCon UId="49" />
+      <NameCon UId="133" Name="ST4_Empty" />
+    </Wire>
+    <Wire UId="205">
+      <IdentCon UId="50" />
+      <NameCon UId="133" Name="Homing_1_SR" />
+    </Wire>
+    <Wire UId="206">
+      <IdentCon UId="51" />
+      <NameCon UId="133" Name="Homing_2_SR" />
+    </Wire>
+    <Wire UId="207">
+      <IdentCon UId="52" />
+      <NameCon UId="133" Name="Homing_3_SR" />
+    </Wire>
+    <Wire UId="208">
+      <IdentCon UId="53" />
+      <NameCon UId="133" Name="Homing_4_SR" />
+    </Wire>
+    <Wire UId="209">
+      <IdentCon UId="54" />
+      <NameCon UId="133" Name="Homing_1_SL" />
+    </Wire>
+    <Wire UId="210">
+      <IdentCon UId="55" />
+      <NameCon UId="133" Name="Homing_2_SL" />
+    </Wire>
+    <Wire UId="211">
+      <IdentCon UId="56" />
+      <NameCon UId="133" Name="Homing_3_SL" />
+    </Wire>
+    <Wire UId="212">
+      <IdentCon UId="57" />
+      <NameCon UId="133" Name="Homing_4_SL" />
+    </Wire>
+    <Wire UId="213">
+      <IdentCon UId="58" />
+      <NameCon UId="133" Name="SL_Drive_Forward" />
+    </Wire>
+    <Wire UId="214">
+      <IdentCon UId="59" />
+      <NameCon UId="133" Name="SL_Drive_Backward" />
+    </Wire>
+    <Wire UId="215">
+      <IdentCon UId="60" />
+      <NameCon UId="133" Name="SR_Drive_Forward" />
+    </Wire>
+    <Wire UId="216">
+      <IdentCon UId="61" />
+      <NameCon UId="133" Name="SR_Drive_Backward" />
+    </Wire>
+    <Wire UId="217">
+      <IdentCon UId="62" />
+      <NameCon UId="133" Name="iSL_Sen_Drv_1" />
+    </Wire>
+    <Wire UId="218">
+      <IdentCon UId="63" />
+      <NameCon UId="133" Name="iSL_Sen_Drv_2" />
+    </Wire>
+    <Wire UId="219">
+      <IdentCon UId="64" />
+      <NameCon UId="133" Name="iSL_Sen_Drv_3" />
+    </Wire>
+    <Wire UId="220">
+      <IdentCon UId="65" />
+      <NameCon UId="133" Name="iSL_Sen_Drv_4" />
+    </Wire>
+    <Wire UId="221">
+      <IdentCon UId="66" />
+      <NameCon UId="133" Name="iSR_Sen_Drv_1" />
+    </Wire>
+    <Wire UId="222">
+      <IdentCon UId="67" />
+      <NameCon UId="133" Name="iSR_Sen_Drv_2" />
+    </Wire>
+    <Wire UId="223">
+      <IdentCon UId="68" />
+      <NameCon UId="133" Name="iSR_Sen_Drv_3" />
+    </Wire>
+    <Wire UId="224">
+      <IdentCon UId="69" />
+      <NameCon UId="133" Name="iSR_Sen_Drv_4" />
+    </Wire>
+    <Wire UId="225">
+      <IdentCon UId="70" />
+      <NameCon UId="133" Name="iSL_Sen_Val1_Up" />
+    </Wire>
+    <Wire UId="226">
+      <IdentCon UId="71" />
+      <NameCon UId="133" Name="iSL_Sen_Val1_Down" />
+    </Wire>
+    <Wire UId="227">
+      <IdentCon UId="72" />
+      <NameCon UId="133" Name="iSL_Sen_Val2_Up" />
+    </Wire>
+    <Wire UId="228">
+      <IdentCon UId="73" />
+      <NameCon UId="133" Name="iSL_Sen_Val2_Down" />
+    </Wire>
+    <Wire UId="229">
+      <IdentCon UId="74" />
+      <NameCon UId="133" Name="iSR_Sen_Val1_Up" />
+    </Wire>
+    <Wire UId="230">
+      <IdentCon UId="75" />
+      <NameCon UId="133" Name="iSR_Sen_Val1_Down" />
+    </Wire>
+    <Wire UId="231">
+      <IdentCon UId="76" />
+      <NameCon UId="133" Name="iSR_Sen_Val2_Up" />
+    </Wire>
+    <Wire UId="232">
+      <IdentCon UId="77" />
+      <NameCon UId="133" Name="iSR_Sen_Val2_Down" />
+    </Wire>
+    <Wire UId="233">
+      <IdentCon UId="78" />
+      <NameCon UId="133" Name="iSL_Distance" />
+    </Wire>
+    <Wire UId="234">
+      <IdentCon UId="79" />
+      <NameCon UId="133" Name="iSR_Correct" />
+    </Wire>
+    <Wire UId="235">
+      <IdentCon UId="80" />
+      <NameCon UId="133" Name="iSR_Distance" />
+    </Wire>
+    <Wire UId="236">
+      <OpenCon UId="137" />
+      <NameCon UId="133" Name="iSL_Hydraulic_Filtr" />
+    </Wire>
+    <Wire UId="237">
+      <OpenCon UId="138" />
+      <NameCon UId="133" Name="iSR_Hydraulic_Empty" />
+    </Wire>
+    <Wire UId="238">
+      <IdentCon UId="81" />
+      <NameCon UId="133" Name="HWIdentSL" />
+    </Wire>
+    <Wire UId="239">
+      <IdentCon UId="82" />
+      <NameCon UId="133" Name="HWIdentSR" />
+    </Wire>
+    <Wire UId="240">
+      <IdentCon UId="83" />
+      <NameCon UId="133" Name="iSL_Drive_Param" />
+    </Wire>
+    <Wire UId="241">
+      <IdentCon UId="84" />
+      <NameCon UId="133" Name="iSR_Drive_Param" />
+    </Wire>
+    <Wire UId="242">
+      <IdentCon UId="85" />
+      <NameCon UId="133" Name="oSL_Drive_Param" />
+    </Wire>
+    <Wire UId="243">
+      <IdentCon UId="86" />
+      <NameCon UId="133" Name="oSR_Drive_Param" />
+    </Wire>
+    <Wire UId="244">
+      <NameCon UId="133" Name="oSL_Valve_Up" />
+      <IdentCon UId="87" />
+    </Wire>
+    <Wire UId="245">
+      <NameCon UId="133" Name="oSL_Valve_Down" />
+      <IdentCon UId="88" />
+    </Wire>
+    <Wire UId="246">
+      <NameCon UId="133" Name="oSL_Hydraulic_Unit" />
+      <IdentCon UId="89" />
+    </Wire>
+    <Wire UId="247">
+      <NameCon UId="133" Name="oSR_Valve_Up" />
+      <IdentCon UId="90" />
+    </Wire>
+    <Wire UId="248">
+      <NameCon UId="133" Name="oSR_Valve_Down" />
+      <IdentCon UId="91" />
+    </Wire>
+    <Wire UId="249">
+      <NameCon UId="133" Name="oSR_Hydraulic_Unit" />
+      <IdentCon UId="92" />
+    </Wire>
+    <Wire UId="250">
+      <NameCon UId="133" Name="oHydraulic_Status_LED_UP_1" />
+      <IdentCon UId="93" />
+    </Wire>
+    <Wire UId="251">
+      <NameCon UId="133" Name="oHydraulic_Status_LED_UP_2" />
+      <IdentCon UId="94" />
+    </Wire>
+    <Wire UId="252">
+      <NameCon UId="133" Name="oHydraulic_Status_LED_DOWN_1" />
+      <IdentCon UId="95" />
+    </Wire>
+    <Wire UId="253">
+      <NameCon UId="133" Name="oHydraulic_Status_LED_DOWN_2" />
+      <IdentCon UId="96" />
+    </Wire>
+    <Wire UId="254">
+      <NameCon UId="133" Name="oSL_Communication_OK" />
+      <OpenCon UId="139" />
+    </Wire>
+    <Wire UId="255">
+      <NameCon UId="133" Name="oSR_Communication_OK" />
+      <OpenCon UId="140" />
+    </Wire>
+    <Wire UId="256">
+      <NameCon UId="133" Name="oSL_Forward_Flag" />
+      <OpenCon UId="141" />
+    </Wire>
+    <Wire UId="257">
+      <NameCon UId="133" Name="oSL_Backward_Flag" />
+      <OpenCon UId="142" />
+    </Wire>
+    <Wire UId="258">
+      <NameCon UId="133" Name="oSR_Forward_Flag" />
+      <OpenCon UId="143" />
+    </Wire>
+    <Wire UId="259">
+      <NameCon UId="133" Name="oSR_Backward_Flag" />
+      <OpenCon UId="144" />
+    </Wire>
+    <Wire UId="260">
+      <NameCon UId="133" Name="oST1_1_Move_Flag" />
+      <IdentCon UId="97" />
+    </Wire>
+    <Wire UId="261">
+      <NameCon UId="133" Name="oST1_2_Move_Flag" />
+      <IdentCon UId="98" />
+    </Wire>
+    <Wire UId="262">
+      <NameCon UId="133" Name="oST2_1_Move_Flag" />
+      <IdentCon UId="99" />
+    </Wire>
+    <Wire UId="263">
+      <NameCon UId="133" Name="oST2_2_Move_Flag" />
+      <IdentCon UId="100" />
+    </Wire>
+    <Wire UId="264">
+      <NameCon UId="133" Name="oST3_1_Move_flag" />
+      <IdentCon UId="101" />
+    </Wire>
+    <Wire UId="265">
+      <NameCon UId="133" Name="oST3_2_Move_Flag" />
+      <IdentCon UId="102" />
+    </Wire>
+    <Wire UId="266">
+      <NameCon UId="133" Name="oST4_1_Move_Flag" />
+      <IdentCon UId="103" />
+    </Wire>
+    <Wire UId="267">
+      <NameCon UId="133" Name="oST4_2_Move_Flag" />
+      <IdentCon UId="104" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>SideShifter 1</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="D" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Call UId="21">
+      <CallInfo Name="System_To_Moving_Pallets" BlockType="FB">
+        <Instance Scope="GlobalVariable" UId="22">
+          <Component Name="System_To_Moving_Pallets_DB" />
+        </Instance>
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="23">
+      <Powerrail />
+      <NameCon UId="21" Name="en" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="E" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="10" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Pallet Circulation</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="12" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="S5_Button_ST01_ST02" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="Sz11_Button_SS_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="Sz10_Button_ST11_ST12" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="Sz1_Button_Centering_ST22" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="Tag_43" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="HMI_DB" />
+        <Component Name="Reset_Safety" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
+      <Symbol>
+        <Component Name="HMI_DB" />
+        <Component Name="Reset_Reinicialisation" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="Data_To_Safety" />
+        <Component Name="Reset_ESTOPS" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="29">
+      <Symbol>
+        <Component Name="Data_To_Safety" />
+        <Component Name="Reset_REI" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="30" />
+    <Part Name="Contact" UId="31" />
+    <Part Name="Contact" UId="32" />
+    <Part Name="Contact" UId="33" />
+    <Part Name="Contact" UId="34" />
+    <Part Name="Contact" UId="35" />
+    <Part Name="Contact" UId="36" />
+    <Part Name="O" UId="37">
+      <TemplateValue Name="Card" Type="Cardinality">7</TemplateValue>
+    </Part>
+    <Part Name="Coil" UId="38" />
+    <Part Name="Coil" UId="39" />
+  </Parts>
+  <Wires>
+    <Wire UId="40">
+      <Powerrail />
+      <NameCon UId="30" Name="in" />
+      <NameCon UId="31" Name="in" />
+      <NameCon UId="32" Name="in" />
+      <NameCon UId="33" Name="in" />
+      <NameCon UId="34" Name="in" />
+      <NameCon UId="35" Name="in" />
+      <NameCon UId="36" Name="in" />
+    </Wire>
+    <Wire UId="41">
+      <IdentCon UId="21" />
+      <NameCon UId="30" Name="operand" />
+    </Wire>
+    <Wire UId="42">
+      <NameCon UId="30" Name="out" />
+      <NameCon UId="37" Name="in1" />
+    </Wire>
+    <Wire UId="43">
+      <IdentCon UId="22" />
+      <NameCon UId="31" Name="operand" />
+    </Wire>
+    <Wire UId="44">
+      <NameCon UId="31" Name="out" />
+      <NameCon UId="37" Name="in2" />
+    </Wire>
+    <Wire UId="45">
+      <IdentCon UId="23" />
+      <NameCon UId="32" Name="operand" />
+    </Wire>
+    <Wire UId="46">
+      <NameCon UId="32" Name="out" />
+      <NameCon UId="37" Name="in3" />
+    </Wire>
+    <Wire UId="47">
+      <IdentCon UId="24" />
+      <NameCon UId="33" Name="operand" />
+    </Wire>
+    <Wire UId="48">
+      <NameCon UId="33" Name="out" />
+      <NameCon UId="37" Name="in4" />
+    </Wire>
+    <Wire UId="49">
+      <IdentCon UId="25" />
+      <NameCon UId="34" Name="operand" />
+    </Wire>
+    <Wire UId="50">
+      <NameCon UId="34" Name="out" />
+      <NameCon UId="37" Name="in5" />
+    </Wire>
+    <Wire UId="51">
+      <IdentCon UId="26" />
+      <NameCon UId="35" Name="operand" />
+    </Wire>
+    <Wire UId="52">
+      <NameCon UId="35" Name="out" />
+      <NameCon UId="37" Name="in6" />
+    </Wire>
+    <Wire UId="53">
+      <IdentCon UId="27" />
+      <NameCon UId="36" Name="operand" />
+    </Wire>
+    <Wire UId="54">
+      <NameCon UId="36" Name="out" />
+      <NameCon UId="37" Name="in7" />
+    </Wire>
+    <Wire UId="55">
+      <NameCon UId="37" Name="out" />
+      <NameCon UId="38" Name="in" />
+      <NameCon UId="39" Name="in" />
+    </Wire>
+    <Wire UId="56">
+      <IdentCon UId="28" />
+      <NameCon UId="38" Name="operand" />
+    </Wire>
+    <Wire UId="57">
+      <IdentCon UId="29" />
+      <NameCon UId="39" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="13" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="15" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="16" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Reset Safety</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="17" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="QR_Reader" />
+      </Symbol>
+    </Access>
+    <Call UId="22">
+      <CallInfo Name="CentralShifter" BlockType="FB">
+        <Instance Scope="GlobalVariable" UId="23">
+          <Component Name="CentralShifter_DB" />
+        </Instance>
+        <Parameter Name="QR_Reader" Section="Input" Type="DInt" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="24">
+      <Powerrail />
+      <NameCon UId="22" Name="en" />
+    </Wire>
+    <Wire UId="25">
+      <IdentCon UId="21" />
+      <NameCon UId="22" Name="QR_Reader" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="18" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="19" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="1A" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="1B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>CentralShifter</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="1C" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Call UId="21">
+      <CallInfo Name="Lights" BlockType="FC" />
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="22">
+      <Powerrail />
+      <NameCon UId="21" Name="en" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="1D" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="1E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="1F" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="20" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Lights</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="21" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="HMI_DB" />
+        <Component Name="Reset_Drives" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="Data_To_Safety" />
+        <Component Name="Main_Valve_HydRolls" />
+      </Symbol>
+    </Access>
+    <Call UId="23">
+      <CallInfo Name="CC_Main" BlockType="FB">
+        <Instance Scope="GlobalVariable" UId="24">
+          <Component Name="DB_CC_Main" />
+        </Instance>
+        <Parameter Name="HMI_Reset" Section="Input" Type="Bool" />
+        <Parameter Name="ST23_Selected" Section="Input" Type="Bool" />
+        <Parameter Name="CNT_DownPos1" Section="Input" Type="Bool" />
+        <Parameter Name="CNT_DownPos2" Section="Input" Type="Bool" />
+        <Parameter Name="CNT_UpPos1" Section="Input" Type="Bool" />
+        <Parameter Name="CNT_UpPos2" Section="Input" Type="Bool" />
+        <Parameter Name="Hydraulic_Roller_DownPos1" Section="Input" Type="Bool" />
+        <Parameter Name="Hydraulic_Roller_DownPos2" Section="Input" Type="Bool" />
+        <Parameter Name="Hydraulic_Roller_UpPos1" Section="Input" Type="Bool" />
+        <Parameter Name="Hydraulic_Roller_UpPos2" Section="Input" Type="Bool" />
+        <Parameter Name="Drive_Roller_DownPos1" Section="Input" Type="Bool" />
+        <Parameter Name="Drive_Roller_DownPos2" Section="Input" Type="Bool" />
+        <Parameter Name="Drive_Roller_UpPos1" Section="Input" Type="Bool" />
+        <Parameter Name="Drive_Roller_UpPos2" Section="Input" Type="Bool" />
+        <Parameter Name="Module_DownPos1" Section="Input" Type="Bool" />
+        <Parameter Name="Module_DownPos2" Section="Input" Type="Bool" />
+        <Parameter Name="Module_UpPos1" Section="Input" Type="Bool" />
+        <Parameter Name="Module_UpPos2" Section="Input" Type="Bool" />
+        <Parameter Name="Hydraulic_Main_Valve_Control" Section="Output" Type="Bool" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="42">
+      <Powerrail />
+      <NameCon UId="23" Name="en" />
+    </Wire>
+    <Wire UId="43">
+      <IdentCon UId="21" />
+      <NameCon UId="23" Name="HMI_Reset" />
+    </Wire>
+    <Wire UId="44">
+      <OpenCon UId="25" />
+      <NameCon UId="23" Name="ST23_Selected" />
+    </Wire>
+    <Wire UId="45">
+      <OpenCon UId="26" />
+      <NameCon UId="23" Name="CNT_DownPos1" />
+    </Wire>
+    <Wire UId="46">
+      <OpenCon UId="27" />
+      <NameCon UId="23" Name="CNT_DownPos2" />
+    </Wire>
+    <Wire UId="47">
+      <OpenCon UId="28" />
+      <NameCon UId="23" Name="CNT_UpPos1" />
+    </Wire>
+    <Wire UId="48">
+      <OpenCon UId="29" />
+      <NameCon UId="23" Name="CNT_UpPos2" />
+    </Wire>
+    <Wire UId="49">
+      <OpenCon UId="30" />
+      <NameCon UId="23" Name="Hydraulic_Roller_DownPos1" />
+    </Wire>
+    <Wire UId="50">
+      <OpenCon UId="31" />
+      <NameCon UId="23" Name="Hydraulic_Roller_DownPos2" />
+    </Wire>
+    <Wire UId="51">
+      <OpenCon UId="32" />
+      <NameCon UId="23" Name="Hydraulic_Roller_UpPos1" />
+    </Wire>
+    <Wire UId="52">
+      <OpenCon UId="33" />
+      <NameCon UId="23" Name="Hydraulic_Roller_UpPos2" />
+    </Wire>
+    <Wire UId="53">
+      <OpenCon UId="34" />
+      <NameCon UId="23" Name="Drive_Roller_DownPos1" />
+    </Wire>
+    <Wire UId="54">
+      <OpenCon UId="35" />
+      <NameCon UId="23" Name="Drive_Roller_DownPos2" />
+    </Wire>
+    <Wire UId="55">
+      <OpenCon UId="36" />
+      <NameCon UId="23" Name="Drive_Roller_UpPos1" />
+    </Wire>
+    <Wire UId="56">
+      <OpenCon UId="37" />
+      <NameCon UId="23" Name="Drive_Roller_UpPos2" />
+    </Wire>
+    <Wire UId="57">
+      <OpenCon UId="38" />
+      <NameCon UId="23" Name="Module_DownPos1" />
+    </Wire>
+    <Wire UId="58">
+      <OpenCon UId="39" />
+      <NameCon UId="23" Name="Module_DownPos2" />
+    </Wire>
+    <Wire UId="59">
+      <OpenCon UId="40" />
+      <NameCon UId="23" Name="Module_UpPos1" />
+    </Wire>
+    <Wire UId="60">
+      <OpenCon UId="41" />
+      <NameCon UId="23" Name="Module_UpPos2" />
+    </Wire>
+    <Wire UId="61">
+      <NameCon UId="23" Name="Hydraulic_Main_Valve_Control" />
+      <IdentCon UId="22" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="22" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="23" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="24" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="25" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Concrate Compaction</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="26" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="Data_From_Safety" />
+        <Component Name="Safety_Active" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="Sz9_Oil_Pump_Status" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="Sz9_Oil_Error" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="System_To_Moving_Pallets_DB" />
+        <Component Name="ST09_ST10" />
+        <Component Name="Jog_StD" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="Sz9_Oil_Pump" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="Sz9_Oil_Main_Valve" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
+      <Symbol>
+        <Component Name="Sz9_Oil_Preparation_Valve" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="Sz9_Oil_Open_Nozzle" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="29">
+      <Symbol>
+        <Component Name="Sz9_Oil_Pump_Volume" />
+      </Symbol>
+    </Access>
+    <Call UId="30">
+      <CallInfo Name="Oil" BlockType="FB">
+        <Instance Scope="GlobalVariable" UId="31">
+          <Component Name="Oil_DB" />
+        </Instance>
+        <Parameter Name="Safety_OK" Section="Input" Type="Bool" />
+        <Parameter Name="Pump_status" Section="Input" Type="Bool" />
+        <Parameter Name="Pump_error" Section="Input" Type="Bool" />
+        <Parameter Name="Pallette_Moving" Section="Input" Type="Bool" />
+        <Parameter Name="Pump" Section="Output" Type="Bool" />
+        <Parameter Name="Main_Valve" Section="Output" Type="Bool" />
+        <Parameter Name="Preparation_Valve" Section="Output" Type="Bool" />
+        <Parameter Name="Nozzle_Valve" Section="Output" Type="Bool" />
+        <Parameter Name="Pump_Volume_Output" Section="Output" Type="Int" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="32">
+      <Powerrail />
+      <NameCon UId="30" Name="en" />
+    </Wire>
+    <Wire UId="33">
+      <IdentCon UId="21" />
+      <NameCon UId="30" Name="Safety_OK" />
+    </Wire>
+    <Wire UId="34">
+      <IdentCon UId="22" />
+      <NameCon UId="30" Name="Pump_status" />
+    </Wire>
+    <Wire UId="35">
+      <IdentCon UId="23" />
+      <NameCon UId="30" Name="Pump_error" />
+    </Wire>
+    <Wire UId="36">
+      <IdentCon UId="24" />
+      <NameCon UId="30" Name="Pallette_Moving" />
+    </Wire>
+    <Wire UId="37">
+      <NameCon UId="30" Name="Pump" />
+      <IdentCon UId="25" />
+    </Wire>
+    <Wire UId="38">
+      <NameCon UId="30" Name="Main_Valve" />
+      <IdentCon UId="26" />
+    </Wire>
+    <Wire UId="39">
+      <NameCon UId="30" Name="Preparation_Valve" />
+      <IdentCon UId="27" />
+    </Wire>
+    <Wire UId="40">
+      <NameCon UId="30" Name="Nozzle_Valve" />
+      <IdentCon UId="28" />
+    </Wire>
+    <Wire UId="41">
+      <NameCon UId="30" Name="Pump_Volume_Output" />
+      <IdentCon UId="29" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="27" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="28" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="29" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="2A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Oil</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="2B" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="2C" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>"Main Program Sweep (Cycle)"</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.OB>
+</Document>

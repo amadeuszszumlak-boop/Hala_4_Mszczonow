@@ -1,0 +1,839 @@
+﻿FUNCTION_BLOCK "AnalyzeTokens"
+TITLE = AnalyzeData
+{ S7_Optimized_Access := 'TRUE' }
+AUTHOR : 'SIEMENS AG'
+VERSION : 3.0
+//FB for analyzing raw SELECT batch data from Tabular Data Stream (tdsTelegramArray). It splits them into TDS header and Tokens, especially ColumnMetaData and Error token information. Output parameter also contain the number of received rows and their start and length in tdsTelegramArray
+   VAR_INPUT 
+      tdsTelegramArrayLength { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : UDInt;   // number of bytes received by TDS
+      execute { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // bit flag for FB execution
+   END_VAR
+
+   VAR_OUTPUT 
+      status { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Word := 16#0;   // output status code
+      error { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool := FALSE;   // output error bit
+      busy { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool := FALSE;   // output gor busy state
+      done { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool := FALSE;   // flag for successful execution
+      metaDataAndRowsAvailable { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // flag for successful execution AND data contain ColumnMetaData and Rows
+      tdsHeader { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : "LSql_typePacketHeader";
+      columnCount { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : UInt := 0;   // number of columns
+      rowCount { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : UDInt := 0;   // number of rows
+      rowDataStart { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : UInt := 0;   // start byte address of row data area
+      rowDataLength { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : UDInt := 0;   // byte length of row data area
+      errorToken { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : "LSql_typeErrorToken";
+   END_VAR
+
+   VAR_IN_OUT 
+      tdsTelegramArray : Array[*] of Byte;   // array of bytes received by TDS
+      columns : Array[*] of "LSql_typeColumn";
+   END_VAR
+
+   VAR 
+      statDone { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // static value for output 'done'
+      statError { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // static value or output 'error'
+      statBusy { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // static value for output 'busy'
+      statRowsAvailable { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // static value for output 'metaDataAndRowsAvailable' - Rows available
+      statMetaDataAvailable { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // static value for output 'metaDataAndRowsAvailable' - ColumnMetaData available
+   END_VAR
+
+   VAR_TEMP 
+      tempDeserializePOS : DInt;   // temorary output value of Deserialize function
+      tempByteCharArray : Array[0..507] of Byte;   // temporary array of Byte to be transformed to String
+      tempTypeLengthOffset : USInt;   // byte address offset for additional length information of data type
+      tempColumnSizeFieldSize : USInt;   // size of the area to encode the size of a a value in that column
+      tempColumnSize : UDInt;   // size of a value in that column
+      tempMoveBlkVariantRetVal : Int;   // return value of MOVE_BLK_VARIANT
+      tempTokenEndStatus : UInt;   // temporary value for status to end token
+      tempTokenType : Byte;   // temporary value for calculating token type
+      tempTableNameParts : USInt;   // number of table name parts in ColumnMeataData
+      tempTableNameLength : UInt;   // length of table name parts read from ColumnMetaData
+      tempTableNameTotalLength : UInt;   // total length of table name parts in ColumnMetaData
+      tempTableNamePartCounter : USInt;   // temporary counter for iteration through able name parts in ColumnMetaData
+      tempTableNameByteCounter : DInt;   // comulative counter for Byte address of table name parts in TDS telegram array
+      tempRowDataTextptrLen : USInt;   // length of additional field 'Textptr' in Row token
+      tempRowDataTextTotalLength : UDInt;   // total length of additional fields 'Text' in Row data
+      tempByteAddressCounter : DInt;   // incremental byte address counter
+      tempTokenLength : UInt;   // temporary total token length
+      tempColumnLength : UDInt;   // column size of real data
+      tempColumnLoopCounter : UInt;   // iterative loop counter for the columns
+   END_VAR
+
+   VAR CONSTANT 
+      BYTE_EMPTY : Byte := 16#0;   // empty Byte
+      TDS_TOKEN_TYPEFIELDLENGTH : USInt := 1;   // length of the Token Tpye field
+      TDS_TOKEN_LENGTHFIELDLENGTH : USInt := 2;   // length of the field for Token length
+      TDS_TOKENROW_TOKENTYPE : Byte := 16#D1;   // Token Type of TDS Row Token
+      TDS_COLUMNTYPE_TEXT : UInt := 35;   // identifier of SQL column tpye 'TEXT'
+      TDS_COLUMNTYPE_NTEXT : UInt := 99;   // identifier of SQL column type 'NTEXT'
+      TDS_COLUMNTYPE_VARIANT : UInt := 98;   // identifier of SQL column type 'VARIANT'
+      TDS_COLUMNTYPE_VARIANT_MAXLENGTH : UInt := 8009;   // 'MaxLength for an SSVARIANTTYPE is 8009 (8000 for strings).'
+      TDS_TOKENROW_DATATEXTTIMESTAMP_LENGTH : USInt := 8;   // length of field 'Data Text timesatmp'
+      TDS_COLUMNMETADATA_TOKENTYPE : Byte := 16#81;   // Token Type of TDS ColumnMetaData Token
+      TDS_COLUMNMETADATA_STARTPOS : USInt := 3;   // start Byte of ColumneMetaData
+      TDS_COLUMNMETADATA_COLUMNCOUNTPOS : USInt := 1;   // start Byte of CoulmnCount
+      TDS_COLUMNMETADATA_TOKENTYPEPOS : USInt := 8;   // start Byte of TokenType
+      TDS_COLUMNMETADATA_USERTYPEPOSOFFSET : USInt := 3;   // position offset for user type
+      TDS_COLUMNMETADATA_COLUMNTYPEPOSOFFSET : USInt := 6;   // position offset for column type
+      TDS_COLUMNMETADATA_COLUMNNAMEPOSOFFSET : USInt := 7;   // position offset for column name
+      TDS_COLUMNMETADATA_COLUMNFLAGSPOSOFFSET : USInt := 4;   // position offset for column flags
+      TDS_COLUMNMETADATA_COLUMNNAMEPOS : USInt := 8;   // position offset for column name
+      TDS_COLUMNMETADATA_FLAGS_NULLABLE : Byte := B#2#0000_0001;   // pattern mask for flag 'nullable'
+      TDS_COLUMNMETADATA_FLAGS_CASESENSITIVE : Byte := B#2#0000_0010;   // pattern mask for flag 'case sensitive'
+      TDS_COLUMNMETADATA_FLAGS_UPDATEABLE_MASK1100 : Byte := B#2#0000_1100;   // pattern mask for flag 'updateable'
+      TDS_COLUMNMETADATA_FLAGS_UPDATEABLE_MASK1000 : Byte := B#2#0000_1000;   // pattern mask for flag 'updateable'
+      TDS_COLUMNMETADATA_FLAGS_UPDATEABLE_MASK0100 : Byte := B#2#0000_0100;   // pattern mask for flag 'updateable'
+      TDS_COLUMNMETADATA_FLAGS_UPDATEABLE_READONLY : USInt := 0;   // flag value for column is read-only
+      TDS_COLUMNMETADATA_FLAGS_UPDATEABLE_READWRITE : USInt := 1;   // flag value for column is read+write
+      TDS_COLUMNMETADATA_FLAGS_UPDATEABLE_UNKNOWN : USInt := 2;   // flag value for column access right unknown
+      TDS_COLUMNMETADATA_FLAGS_IDENTITY : Byte := B#2#0001_0000;   // pattern mask for flag 'identity'
+      TDS_COLUMNMETADATA_FLAGS_COMPUTED : Byte := B#2#0010_0000;   // pattern mask for flag 'computed'
+      TDS_COLUMNMETADATA_COLLATELENGTH : USInt := 5;   // byte length of additional collation values (codepage + flags + charset)
+      TDS_HEADER_TYPEPOS : USInt := 0;   // byte position in TDS header for 'Type'
+      TDS_HEADER_STATUSPOS : USInt := 1;   // byte position in TDS header for 'Status'
+      TDS_HEADER_STATUSGOOD : Byte := 16#01;   // value for TDS header status 'Good'
+      TDS_HEADER_LENGTHPOS : USInt := 2;   // byte position in TDS header for 'Length'
+      TDS_HEADER_SPIDPOS : USInt := 4;   // byte position in TDS header for 'SPID'
+      TDS_HEADER_PACKETIDPOS : USInt := 6;   // byte position in TDS header for 'PacketID'
+      TDS_HEADER_WINDOWPOS : USInt := 7;   // byte position in TDS header for 'Window'
+      TDS_HEADER_LENGTH : USInt := 8;   // length of TDS header
+      TDS_COLUMN_SIZEFIELDSIZE_0 : USInt := 0;   // size information is in field of size 0 byte
+      TDS_COLUMN_SIZEFIELDSIZE_1 : USInt := 1;   // size information is in field of size 1 byte
+      TDS_COLUMN_SIZEFIELDSIZE_2 : USInt := 2;   // size information is in field of size 2 byte
+      TDS_COLUMN_SIZEFIELDSIZE_4 : USInt := 4;   // size information is in field of size 4 byte
+      TDS_COLUMN_SIZEFIELDSIZE_8 : USInt := 8;   // size information is in field of size 8 byte
+      TDS_COLUMN_SIZE_1 : USInt := 1;   // column value size of 1 byte
+      TDS_COLUMN_SIZE_2 : USInt := 2;   // column value size of 2 byte
+      TDS_COLUMN_SIZE_4 : USInt := 4;   // column value size of 4 byte
+      TDS_COLUMN_SIZE_4_MAXVALUE : UDInt := 16#7FFFFFFE;   // column value size of 4 byte
+      TDS_COLUMN_SIZE_8 : USInt := 8;   // column value size of 8 byte
+      TDS_TOKENDONE_TOKENTYPE : Byte := 16#FD;   // TokenType of TDS Done Token
+      TDS_TOKENDONE_STATUSDONEFINAL : UInt := 16#00;   // 'This DONE is the final DONE in the request.'
+      TDS_TOKENDONE_STATUSDONEMORE : UInt := 16#01;   // 'This DONE message is not the final DONE message in the response. Subsequent data streams to follow.'
+      TDS_TOKENDONE_STATUSDONEERROR : UInt := 16#02;   // 'An error occurred on the current SQL statement. A preceding ERROR token SHOULD be sent when this bit is set.'
+      TDS_TOKENDONE_STATUSDONEINXACT : UInt := 16#04;   // 'A transaction is in progress.'
+      TDS_TOKENDONE_STATUSDONECOUNT : UInt := 16#10;   // 'The DoneRowCount value is valid. This is used to distinguish between a valid value of 0 for DoneRowCount or just an initialized variable.'
+      TDS_TOKENDONE_STATUSDONEATTN : UInt := 16#20;   // 'The DONE message is a server acknowledgement of a client ATTENTION message.'
+      TDS_TOKENDONE_STATUSDONESRVERROR : UInt := 16#100;   // Used in place of DONE_ERROR when an error occurred on the current SQL statement, which is severe enough to require the result set, if any, to be discarded.
+      TDS_TOKENDONE_STATUSDONE_ROWCOUNTPOS : USInt := 5;   // byte position of RowCount in Done Token
+      TDS_TOKENDONE_LENGTH : USInt := 13;   // length of a Done Token
+      TDS_TOKENERROR_TOKENTYPE : Byte := 16#AA;   // tokenType of TDS Error Token
+      TDS_TOKENERROR_TOKENLENGTHPOS : USInt := 1;   // byte position in Error Token for 'TokenLength'
+      TDS_TOKENERROR_SQLERRORNUMBERPOS : USInt := 3;   // byte position in Error Token for 'SQLErrorNumber'
+      TDS_TOKENERROR_STATEPOS : USInt := 7;   // byte position in Error Token for 'State'
+      TDS_TOKENERROR_CLASSPOS : USInt := 8;   // byte position in Error Token for 'Class'
+      TDS_TOKENERROR_ERRORMESSAGELENGTHPOS : USInt := 9;   // byte position in Error Token for 'ErrorMessageLength'
+      TDS_TOKENERROR_ERRORMESSAGELENGTHLENGTH : USInt := 2;   // byte length in Error Token for 'ErrorMessageLength'
+      TDS_TOKENERROR_SERVERNAMELENGTHLENGTH : USInt := 1;   // byte length in Error Token for 'ServerNameLength'
+      TDS_TOKENERROR_PROCNAMELENGTHLENGTH : USInt := 1;   // byte length in Error Token for 'ProcNameLength'
+      TDS_TOKENERROR_LINENUMBERLENGTH : USInt := 4;   // byte length in Error Token for 'LineNumber' (documenation says 2 or 8 byte)
+      TDS_TOKENDONEINPROC_TOKENTYPE : Byte := 16#FF;   // token type of a TDS DoneInProc Token
+      TDS_TOKENDONEINPROC_LENGTH : USInt := 13;   // length of a DoneInProc Token
+      TDS_TOKENDONEINPROC_ROWCOUNTPOS : USInt := 5;   // position of value for row count in DoneInProc Token
+      TDS_TOKENRETURNSTATUS_TOKENTYPE : Byte := 16#79;   // token type of ReturnStatus Token
+      TDS_TOKENRETURNSTATUS_LENGTH : USInt := 5;   // length of ReturnStatus Token
+      TDS_TOKENDONEPROC_TOKENTYPE : Byte := 16#FE;   // token type of DoneProc Token
+      TDS_TOKENDONEPROC_LENGTH : USInt := 13;   // length of DoneProc Token
+      TDS_TOKENENVCHANGE_TOKENTYPE : Byte := 16#E3;   // token type of EnvChange Token
+      TDS_TOKENINFO_TOKENTYPE : Byte := 16#AB;   // token type of Info Token
+      TDS_TOKENORDER_TOKENTYPE : Byte := 16#A9;   // length of Order Token
+      ERR_NOERROR : Word := 16#0000;   // No Error.
+      ERR_UNKNOWNTOKEN : Word := 16#8601;   // Error: Unknown Token Type.
+      ERR_HEADER_INCORRECTLENGTH : Word := 16#8602;   // Error: Incorrect length in response header.
+      ERR_COLUMNS_SIZENOTDEFINED : Word := 16#8603;   // Error: At least one column size is not defined.
+      ERR_COLUMNS_TYPENOTDEFINED : Word := 16#8604;   // Error: At least one column type is not defined or unknown.
+      ERR_COLUMNS_OVERFLOW : Word := 16#8605;   // Error: Column overflow.
+      ERR_TOKENDONE_UNKNOWNSTATUS : Word := 16#8606;   // Error: 'Done' Token has unknown status.
+      ERR_TOKENDONE_WRONGTOKENTYPE : Word := 16#8607;   // Error: 'Done' token has wrong Token Type. (outdated)
+      ERR_HEADER_WRONGSTATUS : Word := 16#8608;   // Error: Wrong Status in TDS header.
+      ERR_TOKENERROR : Word := 16#8609;   // Error: 'Error' Token detected.
+      ERR_TOKENROW_NOMETADATA : Word := 16#8610;   // Error: No ColumnMetaData decoded for decoding token row.
+      ERR_LENGTHINCORRECT : Word := 16#8611;   // Error: Length of analyzed bytes not matching total TDS telegram length.
+      ERR_TYPESIZEINCORRECT : Word := 16#8612;   // Error: A Type Size is incorrect or exceeding the internal array boundaries.
+   END_VAR
+
+
+BEGIN
+	REGION BLOCK INFO HEADER
+	  //=============================================================================
+	  // Siemens AG (c)Copyright (2022)
+	  //-----------------------------------------------------------------------------
+	  // Library:       SQL
+	  // Target:        S7-1500 V2.9 / S7-1200 V4.5
+	  // Engineering:   TIA Portal V17
+	  // Restrictions:  no
+	  // Requirements:  S7-1500 CPU / S7-1200 CPU
+	  // Functionality: split SELECT data array from SQL into TDS header, Tokens (especially ColumnMetaData and Error Token) and row payload data
+	  //-----------------------------------------------------------------------------
+	  // Change log table:
+	  // Version    Date         Expert in charge           Changes applied
+	  // 01.00.00   31.01.2022   Siemens SUP Applications   initially added to project
+	  // 01.00.01   05.07.2022   Siemens SUP Applications   bugfixes:
+	  //                                                    - #tempColumnMetaDataByteCounter of type 'USInt' was too short (0-255) --> changed to Datatype 'UInt'
+	  //                                                    - #tempColumnSize was not set for columnType 'REAL'
+	  //                                                    - #ERR_COLUMNS_OVERFLOW was not checked correctly (#columnCount compared to "NUMBER_OF_COLUMNS")
+	  // 01.01.00   06.07.2022   Siemens SUP Applications   added analyzing of Error Token (e.g. after an INSERT command)
+	  // 01.02.00   29.09.2022   Siemens SUP Applications   - improved program logic for flexible analyzing of any combination of Tokens
+	  //                                                    - added additional TokenTypes: DoneInProc, DoneProc, ResultStatus, Info, EnvChange, Order
+	  //                                                    - activated IEC check and adapted formatting
+	  //                                                    - including LGF functions for value transformations from Bytes
+	  //                                                    - deleted section for clearing unused columns because the number of valid columns is given explicitly
+	  // 01.03.00   06.10.2022   Siemens SUP Applications   using FC 'Lsql_BytesToString' for transforming character-based bytes to String                                            
+	  //=============================================================================
+	END_REGION
+	
+	//check execute flag
+	IF (#execute AND NOT #statDone AND NOT #statError) THEN
+	  
+	  REGION Execution
+	    
+	    REGION reset ouput values
+	      #statError := FALSE;
+	      #statBusy := TRUE;
+	      #statDone := FALSE;
+	      #statRowsAvailable := FALSE;
+	      #statMetaDataAvailable := FALSE;
+	      #status := #ERR_NOERROR;
+	      #rowCount := 0;
+	      #rowDataStart := 0;
+	      #rowDataLength := 0;
+	      #columnCount := 0;
+	      
+	      #errorToken.Class := 0;
+	      #errorToken.ErrorMessage := '';
+	      #errorToken.ErrorMessageLength := 0;
+	      #errorToken.LineNumber := 0;
+	      #errorToken.ProcName := '';
+	      #errorToken.ProcNameLength := 0;
+	      #errorToken.ServerName := '';
+	      #errorToken.ServerNameLength := 0;
+	      #errorToken.SQLErrorNumber := 0;
+	      #errorToken.State := 0;
+	      #errorToken.TokenLength := 0;
+	    END_REGION reset ouput values
+	    
+	    REGION Header
+	      //deserialize 8 byte header information onto tdsHeader
+	      #tdsHeader.type := #tdsTelegramArray[#TDS_HEADER_TYPEPOS];
+	      #tdsHeader.status := #tdsTelegramArray[#TDS_HEADER_STATUSPOS];
+	      #tdsHeader.length := WORD_TO_UINT("LGF_MergeBytesToWord"(byte0 := #tdsTelegramArray[#TDS_HEADER_LENGTHPOS + 1], byte1 := #tdsTelegramArray[#TDS_HEADER_LENGTHPOS]));
+	      #tdsHeader.spId.%B1 := #tdsTelegramArray[#TDS_HEADER_SPIDPOS];
+	      #tdsHeader.spId.%B0 := #tdsTelegramArray[#TDS_HEADER_SPIDPOS + 1];
+	      #tdsHeader.packetID := #tdsTelegramArray[#TDS_HEADER_PACKETIDPOS];
+	      #tdsHeader.window := #tdsTelegramArray[#TDS_HEADER_WINDOWPOS];
+	      
+	      //increment byte position
+	      #tempByteAddressCounter := #TDS_HEADER_LENGTH;
+	      
+	      //check header values
+	      IF #tdsHeader.length <= 0 THEN
+	        //length value in header is incorrect
+	        #status := #ERR_HEADER_INCORRECTLENGTH;
+	        #statError := TRUE;
+	        #statBusy := FALSE;
+	        GOTO END;
+	      ELSIF NOT #tdsHeader.status = #TDS_HEADER_STATUSGOOD THEN
+	        //status value in header is incorrect
+	        #status := #ERR_HEADER_WRONGSTATUS;
+	        #statError := TRUE;
+	        #statBusy := FALSE;
+	        GOTO END;
+	      END_IF;
+	      
+	    END_REGION Header
+	    
+	    REGION Tokens
+	      
+	      //loop through all availabe bytes
+	      WHILE #tempByteAddressCounter < #tdsHeader.length DO
+	        
+	        //get Token Type of current token
+	        #tempTokenType := #tdsTelegramArray[#tempByteAddressCounter];
+	        
+	        //case selection depending on Token Type
+	        CASE #tempTokenType OF
+	            
+	          #TDS_COLUMNMETADATA_TOKENTYPE:
+	            REGION Token - ColumnMetaData
+	              
+	              REGION column count
+	                //column count is on 1st and 2nd byte
+	                #columnCount := WORD_TO_UINT("LGF_MergeBytesToWord"(byte0 := #tdsTelegramArray[#tempByteAddressCounter + #TDS_COLUMNMETADATA_COLUMNCOUNTPOS], byte1 := #tdsTelegramArray[#tempByteAddressCounter + #TDS_COLUMNMETADATA_COLUMNCOUNTPOS + 1]));
+	                
+	                //check size of column collection to be big enough for all received columns
+	                IF #columnCount > ("LSQL_NUMBER_OF_COLUMNS_MAX" + 1) THEN
+	                  #status := #ERR_COLUMNS_OVERFLOW;
+	                  #statError := TRUE;
+	                  GOTO END;
+	                END_IF;
+	              END_REGION column count
+	              
+	              REGION columns
+	                //jump to start of column data
+	                #tempByteAddressCounter += #TDS_COLUMNMETADATA_STARTPOS;
+	                
+	                //iteration over all column items in tdscolumnMetaData.columns
+	                FOR #tempColumnLoopCounter := 0 TO "LSQL_NUMBER_OF_COLUMNS_MAX" BY 1
+	                DO
+	                  //check if number of columns from SELECT is higher than current iteration index
+	                  IF (#tempColumnLoopCounter < #columnCount) THEN
+	                    
+	                    REGION user type
+	                      //get user type of current column
+	                      #columns[#tempColumnLoopCounter].userType := BYTE_TO_UDINT(#tdsTelegramArray[#tempByteAddressCounter + #TDS_COLUMNMETADATA_USERTYPEPOSOFFSET]);
+	                    END_REGION user type
+	                    
+	                    REGION flags
+	                      //get column properties flags by bit masquerading as additional information about current column
+	                      
+	                      //property 'nullable'
+	                      #columns[#tempColumnLoopCounter].flags.nullable := ((#tdsTelegramArray[#tempByteAddressCounter + #TDS_COLUMNMETADATA_COLUMNFLAGSPOSOFFSET] AND #TDS_COLUMNMETADATA_FLAGS_NULLABLE) > 0);
+	                      //property 'caseSensitive'
+	                      #columns[#tempColumnLoopCounter].flags.caseSensitive := ((#tdsTelegramArray[#tempByteAddressCounter + #TDS_COLUMNMETADATA_COLUMNFLAGSPOSOFFSET] AND #TDS_COLUMNMETADATA_FLAGS_CASESENSITIVE) > 0);
+	                      
+	                      //property 'updateable'
+	                      IF ((#tdsTelegramArray[#tempByteAddressCounter + #TDS_COLUMNMETADATA_COLUMNFLAGSPOSOFFSET] AND #TDS_COLUMNMETADATA_FLAGS_UPDATEABLE_MASK1100) > 0) THEN
+	                        #columns[#tempColumnLoopCounter].flags.updateable := #TDS_COLUMNMETADATA_FLAGS_UPDATEABLE_UNKNOWN;
+	                      ELSIF ((#tdsTelegramArray[#tempByteAddressCounter + #TDS_COLUMNMETADATA_COLUMNFLAGSPOSOFFSET] AND #TDS_COLUMNMETADATA_FLAGS_UPDATEABLE_MASK0100) > 0) THEN
+	                        #columns[#tempColumnLoopCounter].flags.updateable := #TDS_COLUMNMETADATA_FLAGS_UPDATEABLE_READWRITE;
+	                      ELSIF ((#tdsTelegramArray[#tempByteAddressCounter + #TDS_COLUMNMETADATA_COLUMNFLAGSPOSOFFSET] AND #TDS_COLUMNMETADATA_FLAGS_UPDATEABLE_MASK1000) > 0) THEN
+	                        #columns[#tempColumnLoopCounter].flags.updateable := #TDS_COLUMNMETADATA_FLAGS_UPDATEABLE_UNKNOWN;
+	                      ELSE
+	                        #columns[#tempColumnLoopCounter].flags.updateable := #TDS_COLUMNMETADATA_FLAGS_UPDATEABLE_READONLY;
+	                      END_IF;
+	                      
+	                      //property 'identity'
+	                      #columns[#tempColumnLoopCounter].flags.identity := ((#tdsTelegramArray[#tempByteAddressCounter + #TDS_COLUMNMETADATA_COLUMNFLAGSPOSOFFSET] AND #TDS_COLUMNMETADATA_FLAGS_IDENTITY) > 0);
+	                      //property 'computed'
+	                      #columns[#tempColumnLoopCounter].flags.computed := ((#tdsTelegramArray[#tempByteAddressCounter + #TDS_COLUMNMETADATA_COLUMNFLAGSPOSOFFSET] AND #TDS_COLUMNMETADATA_FLAGS_COMPUTED) > 0);
+	                    END_REGION flags
+	                    
+	                    REGION column type
+	                      //get column type as important information about data type and encoding sizes
+	                      
+	                      #columns[#tempColumnLoopCounter].columnType := BYTE_TO_UINT(IN := #tdsTelegramArray[#tempByteAddressCounter + #TDS_COLUMNMETADATA_COLUMNTYPEPOSOFFSET]);
+	                    END_REGION column type
+	                    
+	                    REGION type length
+	                      //read or set type lengths depending on columnType:
+	                      //e.g. columnType '56' means 'INT4': value field size is not given in telegram data (#tempColumnSizeFieldSize := 0) because value always has a size of 4 byte (#tempColumnSize := 4)
+	                      //e.g. columnType '167' means 'VARCHAR': value field size is given in 2 additional byte (#tempColumnSizeFieldSize := 2) in which the size (#tempColumnSize) of the string will be given
+	                      //
+	                      //table source:
+	                      //https://www.freetds.org/tds.html#types
+	                      
+	                      #tempColumnSize := 0;
+	                      
+	                      CASE #columns[#tempColumnLoopCounter].columnType OF
+	                        31://VOID
+	                          #tempColumnSizeFieldSize := #TDS_COLUMN_SIZEFIELDSIZE_0;
+	                          #tempTypeLengthOffset := #tempColumnSizeFieldSize;
+	                        34://IMAGE
+	                          #tempColumnSizeFieldSize := #TDS_COLUMN_SIZEFIELDSIZE_4;
+	                          #tempTypeLengthOffset := #tempColumnSizeFieldSize;
+	                        #TDS_COLUMNTYPE_TEXT://35 - TEXT
+	                          #tempColumnSizeFieldSize := #TDS_COLUMN_SIZEFIELDSIZE_4;
+	                          
+	                          REGION Table Names
+	                            #tempTableNameByteCounter := #tempByteAddressCounter + USINT_TO_DINT(IN := #TDS_COLUMNMETADATA_COLUMNTYPEPOSOFFSET) + 1 + USINT_TO_DINT(IN := #tempColumnSizeFieldSize) + #TDS_COLUMNMETADATA_COLLATELENGTH;
+	                            
+	                            //table name parts:
+	                            #tempTableNameParts := BYTE_TO_USINT(IN := #tdsTelegramArray[#tempTableNameByteCounter]);
+	                            #tempTableNameByteCounter += 1;
+	                            #tempTableNameTotalLength := 1;
+	                            
+	                            IF (#tempTableNameParts > 0) THEN
+	                              
+	                              //iteration throuh all table name parts
+	                              FOR #tempTableNamePartCounter := 1 TO #tempTableNameParts DO
+	                                //first two Bytes give table name length
+	                                #tempTableNameLength := WORD_TO_UINT("LGF_MergeBytesToWord"(byte0 := #tdsTelegramArray[#tempTableNameByteCounter], byte1 := #tdsTelegramArray[#tempTableNameByteCounter + 1]));
+	                                
+	                                //each 1 character length takes 2 Bytes
+	                                #tempTableNameByteCounter += 2 + 2 * UDINT_TO_DINT(#tempTableNameLength);
+	                                #tempTableNameTotalLength += 2 + 2 * #tempTableNameLength;
+	                                
+	                              END_FOR;
+	                              
+	                            END_IF;
+	                          END_REGION Table Names
+	                          
+	                          #tempTypeLengthOffset := #tempColumnSizeFieldSize + #TDS_COLUMNMETADATA_COLLATELENGTH + UDINT_TO_USINT(#tempTableNameTotalLength);
+	                          
+	                        36..47://UNIQUE, VARBINARY, INTN, VARCHAR, BINARY, CHAR
+	                          #tempColumnSizeFieldSize := #TDS_COLUMN_SIZEFIELDSIZE_1;
+	                          #tempTypeLengthOffset := #tempColumnSizeFieldSize;
+	                        48..67:
+	                          #tempColumnSizeFieldSize := #TDS_COLUMN_SIZEFIELDSIZE_0;
+	                          #tempTypeLengthOffset := #tempColumnSizeFieldSize;
+	                          CASE #columns[#tempColumnLoopCounter].columnType OF
+	                            48://INT1
+	                              #tempColumnSize := #TDS_COLUMN_SIZE_1;
+	                            50://BIT
+	                              #tempColumnSize := #TDS_COLUMN_SIZE_1;
+	                            52://INT2
+	                              #tempColumnSize := #TDS_COLUMN_SIZE_2;
+	                            56://INT4
+	                              #tempColumnSize := #TDS_COLUMN_SIZE_4;
+	                            58://DATETIME4
+	                              #tempColumnSize := #TDS_COLUMN_SIZE_4;
+	                            59://REAL
+	                              #tempColumnSize := #TDS_COLUMN_SIZE_4;
+	                            60://MONEY
+	                              #tempColumnSize := #TDS_COLUMN_SIZE_8;
+	                            61://DATETIME
+	                              #tempColumnSize := #TDS_COLUMN_SIZE_8;
+	                            62://FLT8
+	                              #tempColumnSize := #TDS_COLUMN_SIZE_8;
+	                            64://SINT1
+	                              #tempColumnSize := #TDS_COLUMN_SIZE_1;
+	                            65://UINT2
+	                              #tempColumnSize := #TDS_COLUMN_SIZE_2;
+	                            66://UINT4
+	                              #tempColumnSize := #TDS_COLUMN_SIZE_4;
+	                            67://UINT8
+	                              #tempColumnSize := #TDS_COLUMN_SIZE_8;
+	                            ELSE
+	                              #status := #ERR_COLUMNS_TYPENOTDEFINED;
+	                              #statError := TRUE;
+	                              GOTO END;
+	                          END_CASE;
+	                        98://VARIANT
+	                          #tempColumnSizeFieldSize := #TDS_COLUMN_SIZEFIELDSIZE_4;
+	                          #tempTypeLengthOffset := #tempColumnSizeFieldSize;
+	                        #TDS_COLUMNTYPE_NTEXT://99 - NTEXT
+	                          #tempColumnSizeFieldSize := #TDS_COLUMN_SIZEFIELDSIZE_4;
+	                          
+	                          REGION Table Names
+	                            #tempTableNameByteCounter := #tempByteAddressCounter + #TDS_COLUMNMETADATA_COLUMNTYPEPOSOFFSET + 1 + #tempColumnSizeFieldSize + #TDS_COLUMNMETADATA_COLLATELENGTH;
+	                            
+	                            //table name parts:
+	                            #tempTableNameParts := BYTE_TO_USINT(IN := #tdsTelegramArray[#tempTableNameByteCounter]);
+	                            #tempTableNameByteCounter += 1;
+	                            #tempTableNameTotalLength := 1;
+	                            
+	                            IF (#tempTableNameParts > 0) THEN
+	                              
+	                              //iteration throuh all table name parts
+	                              FOR #tempTableNamePartCounter := 1 TO #tempTableNameParts DO
+	                                //first two Bytes give table name length
+	                                #tempTableNameLength := WORD_TO_UINT("LGF_MergeBytesToWord"(byte0 := #tdsTelegramArray[#tempTableNameByteCounter], byte1 := #tdsTelegramArray[#tempTableNameByteCounter + 1]));
+	                                
+	                                //each 1 character length takes 2 Bytes
+	                                #tempTableNameByteCounter += 2 + 2 * UDINT_TO_DINT(#tempTableNameLength);
+	                                #tempTableNameTotalLength += 2 + 2 * #tempTableNameLength;
+	                                
+	                              END_FOR;
+	                              
+	                            END_IF;
+	                          END_REGION Table Names
+	                          
+	                          #tempTypeLengthOffset := #tempColumnSizeFieldSize + #TDS_COLUMNMETADATA_COLLATELENGTH + UDINT_TO_USINT(#tempTableNameTotalLength);
+	                        103..104://NVARCHAR, BITN
+	                          #tempColumnSizeFieldSize := #TDS_COLUMN_SIZEFIELDSIZE_1;
+	                          #tempTypeLengthOffset := #tempColumnSizeFieldSize;
+	                        106..108://DECIMAL, NUMERIC
+	                          #tempColumnSizeFieldSize := #TDS_COLUMN_SIZEFIELDSIZE_1;
+	                          #tempTypeLengthOffset := #tempColumnSizeFieldSize + 2;//type length size + precision + scale
+	                        109..111://FLTN, MONEYN, DATETIMN
+	                          #tempColumnSizeFieldSize := #TDS_COLUMN_SIZEFIELDSIZE_1;
+	                          #tempTypeLengthOffset := #tempColumnSizeFieldSize;
+	                        122://MONEY4
+	                          #tempColumnSizeFieldSize := #TDS_COLUMN_SIZEFIELDSIZE_0;
+	                          #tempTypeLengthOffset := #tempColumnSizeFieldSize;
+	                          #tempColumnSize := #TDS_COLUMN_SIZE_4;
+	                        127://INT8
+	                          #tempColumnSizeFieldSize := #TDS_COLUMN_SIZEFIELDSIZE_0;
+	                          #tempTypeLengthOffset := #tempColumnSizeFieldSize;
+	                          #tempColumnSize := #TDS_COLUMN_SIZE_8;
+	                        165://VARBINARY
+	                          #tempColumnSizeFieldSize := #TDS_COLUMN_SIZEFIELDSIZE_2;
+	                          #tempTypeLengthOffset := #tempColumnSizeFieldSize;
+	                        167://VARCHAR
+	                          #tempColumnSizeFieldSize := #TDS_COLUMN_SIZEFIELDSIZE_2;
+	                          #tempTypeLengthOffset := #tempColumnSizeFieldSize + #TDS_COLUMNMETADATA_COLLATELENGTH;
+	                        173://BINARY
+	                          #tempColumnSizeFieldSize := #TDS_COLUMN_SIZEFIELDSIZE_2;
+	                          #tempTypeLengthOffset := #tempColumnSizeFieldSize;
+	                        175://CHAR
+	                          #tempColumnSizeFieldSize := #TDS_COLUMN_SIZEFIELDSIZE_2;
+	                          #tempTypeLengthOffset := #tempColumnSizeFieldSize + #TDS_COLUMNMETADATA_COLLATELENGTH;
+	                        225://LONGBINARY
+	                          #tempColumnSizeFieldSize := #TDS_COLUMN_SIZEFIELDSIZE_4;
+	                          #tempTypeLengthOffset := #tempColumnSizeFieldSize;
+	                        231..239://NVARCHAR, NCHAR
+	                          #tempColumnSizeFieldSize := #TDS_COLUMN_SIZEFIELDSIZE_2;
+	                          #tempTypeLengthOffset := #tempColumnSizeFieldSize + #TDS_COLUMNMETADATA_COLLATELENGTH;
+	                        ELSE
+	                          #status := #ERR_COLUMNS_TYPENOTDEFINED;
+	                          #statError := TRUE;
+	                          GOTO END;
+	                      END_CASE;
+	                      
+	                      //write column size field size to current column collection item
+	                      #columns[#tempColumnLoopCounter].columnSizeFieldSize := UINT_TO_USINT(#tempColumnSizeFieldSize);
+	                      
+	                      //read column size from the size field (if the size field size was > 0)
+	                      IF (#tempColumnSizeFieldSize > #TDS_COLUMN_SIZEFIELDSIZE_0) THEN
+	                        CASE #tempColumnSizeFieldSize OF
+	                          #TDS_COLUMN_SIZEFIELDSIZE_1:
+	                            //extract column size from the given field of a size of 1 byte
+	                            #tempColumnSize := BYTE_TO_UDINT(#tdsTelegramArray[#tempByteAddressCounter + #TDS_COLUMNMETADATA_COLUMNTYPEPOSOFFSET + 1]);
+	                          #TDS_COLUMN_SIZEFIELDSIZE_2:
+	                            //extract column size from the given field of a size of 2 byte
+	                            #tempColumnSize := DWORD_TO_UDINT("LGF_MergeBytesToDWord"(byte0 := #tdsTelegramArray[#tempByteAddressCounter + #TDS_COLUMNMETADATA_COLUMNTYPEPOSOFFSET + 1], byte1 := #tdsTelegramArray[#tempByteAddressCounter + #TDS_COLUMNMETADATA_COLUMNTYPEPOSOFFSET + 2], byte2 := #BYTE_EMPTY, byte3 := #BYTE_EMPTY));
+	                          #TDS_COLUMN_SIZEFIELDSIZE_4:
+	                            //extract column size from the given field of a size of 4 byte
+	                            #tempColumnSize := DWORD_TO_UDINT("LGF_MergeBytesToDWord"(byte0 := #tdsTelegramArray[#tempByteAddressCounter + #TDS_COLUMNMETADATA_COLUMNTYPEPOSOFFSET + 1], byte1 := #tdsTelegramArray[#tempByteAddressCounter + #TDS_COLUMNMETADATA_COLUMNTYPEPOSOFFSET + 2], byte2 := #tdsTelegramArray[#tempByteAddressCounter + #TDS_COLUMNMETADATA_COLUMNTYPEPOSOFFSET + 3], byte3 := #tdsTelegramArray[#tempByteAddressCounter + #TDS_COLUMNMETADATA_COLUMNTYPEPOSOFFSET + 4]));
+	                        END_CASE;
+	                      END_IF;
+	                      
+	                      //finally write column size to current column collection item
+	                      #columns[#tempColumnLoopCounter].columnSize := #tempColumnSize;
+	                      
+	                      //check column size to be a reasonable value
+	                      IF (#tempColumnSize <= 0) THEN
+	                        //cloumn size is negative
+	                        #status := #ERR_COLUMNS_SIZENOTDEFINED;
+	                        #statError := TRUE;
+	                        GOTO END;
+	                      ELSIF ((#tempColumnSize > (UPPER_BOUND(ARR := #tdsTelegramArray, DIM := 1) - #tempByteAddressCounter))) THEN
+	                        //column size is larger than the rest of the data array and would cause this user program to crash
+	                        
+	                        //exclude special values from this check, e.g. a max. value 16#7FFFFFFE has a special meaning of NULL
+	                        IF NOT (#tempColumnSizeFieldSize = #TDS_COLUMN_SIZE_4 AND #tempColumnSize >= #TDS_COLUMN_SIZE_4_MAXVALUE) AND NOT (#columns[#tempColumnLoopCounter].columnType = #TDS_COLUMNTYPE_VARIANT AND #tempColumnSize >= #TDS_COLUMNTYPE_VARIANT_MAXLENGTH) THEN
+	                          #status := #ERR_TYPESIZEINCORRECT;
+	                          #statError := TRUE;
+	                          GOTO END;
+	                        END_IF;
+	                      END_IF;
+	                      
+	                    END_REGION type length
+	                    
+	                    REGION column name
+	                      //get the length of the column name from next byte
+	                      #columns[#tempColumnLoopCounter].columnNameLength := BYTE_TO_INT(IN := #tdsTelegramArray[#tempByteAddressCounter + #TDS_COLUMNMETADATA_COLUMNNAMEPOSOFFSET + #tempTypeLengthOffset]);
+	                      
+	                      //move bytes to temporary array and then call function for transformation of Bytes to String
+	                      MOVE_BLK(IN    := #tdsTelegramArray[#tempByteAddressCounter + #TDS_COLUMNMETADATA_COLUMNNAMEPOSOFFSET + 1 + #tempTypeLengthOffset],
+	                               COUNT := 2 * INT_TO_UDINT(#columns[#tempColumnLoopCounter].columnNameLength),
+	                               OUT   => #tempByteCharArray[0]);
+	                      
+	                      #columns[#tempColumnLoopCounter].columnName := "LSql_BytesToString"(columnType := 0, byteArray := #tempByteCharArray, numberOfBytes := 2 * INT_TO_UINT(#columns[#tempColumnLoopCounter].columnNameLength));
+	                    END_REGION column name
+	                    
+	                    //increment byte address counter by the size/length of all values that haven been used for the current column
+	                    #tempByteAddressCounter += INT_TO_USINT(#TDS_COLUMNMETADATA_COLUMNNAMEPOS + USINT_TO_INT(#tempTypeLengthOffset) + 2 * #columns[#tempColumnLoopCounter].columnNameLength);
+	                    
+	                    //check whether last column has been analyzed
+	                    IF (#tempColumnLoopCounter >= #columnCount - 1) THEN
+	                      #statMetaDataAvailable := true;
+	                    END_IF;
+	                    
+	                  ELSE
+	                    //the upper slots of the column array will not be filled with received columns anymore
+	                    //loop execiution can be ended
+	                    //the number of valid columns is explicitly given as output parameter
+	                    EXIT;
+	                    
+	                  END_IF;
+	                  
+	                END_FOR;
+	                
+	              END_REGION #columns
+	              
+	            END_REGION Token - ColumnMetaData
+	            
+	          #TDS_TOKENROW_TOKENTYPE:
+	            REGION Token - Row
+	              
+	              //check that ColumnMetaData have been anaylzed before accessing the row tokens
+	              IF #statMetaDataAvailable THEN
+	                
+	                // set rowDataStart at first passing
+	                IF (#rowDataStart <= 0) THEN
+	                  #rowDataStart := DINT_TO_UINT(#tempByteAddressCounter);
+	                END_IF;
+	                
+	                //increment for token type 'D1'
+	                #tempByteAddressCounter += #TDS_TOKEN_TYPEFIELDLENGTH;
+	                #rowDataLength += #TDS_TOKEN_TYPEFIELDLENGTH;
+	                
+	                //loop through the known colum meta data
+	                FOR #tempColumnLoopCounter := 0 TO #columnCount - 1 BY 1
+	                DO
+	                  #tempColumnLength := #columns[#tempColumnLoopCounter].columnSize;
+	                  
+	                  //datatypes TEXT and NTEXT bring additional Data: 'Data Textptr Len', 'Data Textptr' and 'Data Text timestamp'
+	                  IF (#columns[#tempColumnLoopCounter].columnType = #TDS_COLUMNTYPE_TEXT OR #columns[#tempColumnLoopCounter].columnType = #TDS_COLUMNTYPE_NTEXT) THEN
+	                    #tempRowDataTextptrLen := BYTE_TO_USINT(#tdsTelegramArray[#tempByteAddressCounter]);
+	                    
+	                    //increment counter by lengths of the additional fields
+	                    #tempRowDataTextTotalLength := 1 + #tempRowDataTextptrLen + #TDS_TOKENROW_DATATEXTTIMESTAMP_LENGTH;
+	                    #tempByteAddressCounter += UDINT_TO_DINT(#tempRowDataTextTotalLength);
+	                  ELSE
+	                    #tempRowDataTextTotalLength := 0;
+	                  END_IF;
+	                  
+	                  //check if there is a field for the column size
+	                  IF (#columns[#tempColumnLoopCounter].columnSizeFieldSize > 0) THEN
+	                    #tempColumnLength := 0;
+	                    
+	                    //read out the actual length
+	                    CASE #columns[#tempColumnLoopCounter].columnSizeFieldSize OF
+	                      #TDS_COLUMN_SIZEFIELDSIZE_1:
+	                        #tempColumnLength := DWORD_TO_UDINT("LGF_MergeBytesToDWord"(byte0 := #tdsTelegramArray[#tempByteAddressCounter], byte1 := #BYTE_EMPTY, byte2 := #BYTE_EMPTY, byte3 := #BYTE_EMPTY));
+	                      #TDS_COLUMN_SIZEFIELDSIZE_2:
+	                        #tempColumnLength := DWORD_TO_UDINT("LGF_MergeBytesToDWord"(byte0 := #tdsTelegramArray[#tempByteAddressCounter], byte1 := #tdsTelegramArray[#tempByteAddressCounter + 1], byte2 := #BYTE_EMPTY, byte3 := #BYTE_EMPTY));
+	                      #TDS_COLUMN_SIZEFIELDSIZE_4:
+	                        #tempColumnLength := DWORD_TO_UDINT("LGF_MergeBytesToDWord"(byte0 := #tdsTelegramArray[#tempByteAddressCounter], byte1 := #tdsTelegramArray[#tempByteAddressCounter + 1], byte2 := #tdsTelegramArray[#tempByteAddressCounter + 2], byte3 := #tdsTelegramArray[#tempByteAddressCounter + 3]));
+	                      ELSE
+	                        #tempColumnLength := #columns[#tempColumnLoopCounter].columnSize;
+	                    END_CASE;
+	                    
+	                    //check if the value is out of range
+	                    IF (#tempColumnLength < 0 OR #tempColumnLength > #columns[#tempColumnLoopCounter].columnSize) THEN
+	                      #tempColumnLength := 0;
+	                    END_IF;
+	                  END_IF;
+	                  
+	                  //check wehther the given length of the value exceeds the byte array boundaries and would cause a program crash
+	                  IF (#tempColumnLength > UPPER_BOUND(ARR := #tdsTelegramArray, DIM := 1) - #tempByteAddressCounter) THEN
+	                    #status := #ERR_TYPESIZEINCORRECT;
+	                    #statBusy := FALSE;
+	                    #statError := TRUE;
+	                    GOTO END;
+	                  ELSE
+	                    //increment counter by length field and length value
+	                    #tempByteAddressCounter += #columns[#tempColumnLoopCounter].columnSizeFieldSize + UDINT_TO_DINT(#tempColumnLength);
+	                    #rowDataLength += #columns[#tempColumnLoopCounter].columnSizeFieldSize + #tempColumnLength;
+	                  END_IF;
+	                  
+	                END_FOR;
+	                
+	                //set output that telegram contains rows and they are available
+	                #statRowsAvailable := TRUE;
+	                
+	              ELSE
+	                //there are no ColumnMetaData information to be used for analyzing the rows
+	                #status := #ERR_TOKENROW_NOMETADATA;
+	                #statBusy := FALSE;
+	                #statError := TRUE;
+	                GOTO END;
+	              END_IF;
+	              
+	            END_REGION Token - Row
+	            
+	          #TDS_TOKENORDER_TOKENTYPE:
+	            REGION Token - Order
+	              //total token length is given in the token itself
+	              #tempTokenLength := WORD_TO_UINT("LGF_MergeBytesToWord"(byte0 := #tdsTelegramArray[#tempByteAddressCounter + 1], byte1 := #tdsTelegramArray[#tempByteAddressCounter + 2]));
+	              
+	              //increment counter by length field and length value
+	              #tempByteAddressCounter += #TDS_TOKEN_TYPEFIELDLENGTH + #TDS_TOKEN_LENGTHFIELDLENGTH + #tempTokenLength;
+	            END_REGION Token - Order
+	            
+	          #TDS_TOKENERROR_TOKENTYPE:
+	            REGION Token - Error
+	              #status := #ERR_TOKENERROR;
+	              #statError := TRUE;
+	              
+	              REGION Token Length
+	                #errorToken.TokenLength := WORD_TO_UINT("LGF_MergeBytesToWord"(byte0 := #tdsTelegramArray[#tempByteAddressCounter + #TDS_TOKENERROR_TOKENLENGTHPOS], byte1 := #tdsTelegramArray[#tempByteAddressCounter + #TDS_TOKENERROR_TOKENLENGTHPOS + 1]));
+	              END_REGION Token Length
+	              
+	              REGION SQL Error Number
+	                #errorToken.SQLErrorNumber := DWORD_TO_UDINT("LGF_MergeBytesToDWord"(byte3 := #tdsTelegramArray[#tempByteAddressCounter + #TDS_TOKENERROR_SQLERRORNUMBERPOS + 3], byte2 := #tdsTelegramArray[#tempByteAddressCounter + #TDS_TOKENERROR_SQLERRORNUMBERPOS + 2], byte1 := #tdsTelegramArray[#tempByteAddressCounter + #TDS_TOKENERROR_SQLERRORNUMBERPOS + 1], byte0 := #tdsTelegramArray[#tempByteAddressCounter + #TDS_TOKENERROR_SQLERRORNUMBERPOS]));
+	              END_REGION SQL Error Number
+	              
+	              REGION State and Class
+	                #errorToken.State := #tdsTelegramArray[#tempByteAddressCounter + #TDS_TOKENERROR_STATEPOS];
+	                #errorToken.Class := BYTE_TO_USINT(#tdsTelegramArray[#tempByteAddressCounter + #TDS_TOKENERROR_CLASSPOS]);
+	              END_REGION State and Class
+	              
+	              REGION Error Message
+	                //field 'ErrorMessageLength'
+	                #tempByteAddressCounter += #TDS_TOKENERROR_ERRORMESSAGELENGTHPOS;
+	                #errorToken.ErrorMessageLength := WORD_TO_UINT("LGF_MergeBytesToWord"(byte0 := #tdsTelegramArray[#tempByteAddressCounter], byte1 := #tdsTelegramArray[#tempByteAddressCounter + 1]));
+	                
+	                //field "ErrorMessage' as String
+	                //move bytes to temporary array and then call function for transformation of Bytes to String
+	                MOVE_BLK(IN    := #tdsTelegramArray[#tempByteAddressCounter + #TDS_TOKENERROR_ERRORMESSAGELENGTHLENGTH],
+	                         COUNT := 2 * #errorToken.ErrorMessageLength,
+	                         OUT   => #tempByteCharArray[0]);
+	                
+	                #errorToken.ErrorMessage := "LSql_BytesToString"(columnType := 0, byteArray := #tempByteCharArray, numberOfBytes := 2 * #errorToken.ErrorMessageLength);
+	                
+	                //increment address counter by length field and dynamic value length
+	                #tempByteAddressCounter += #TDS_TOKENERROR_ERRORMESSAGELENGTHLENGTH + (#errorToken.ErrorMessageLength * 2);
+	              END_REGION Error Message
+	              
+	              REGION Server Name
+	                //field "ServerNameLength'
+	                #errorToken.ServerNameLength := BYTE_TO_USINT(#tdsTelegramArray[#tempByteAddressCounter]);
+	                
+	                //field "ServerName' as String
+	                //move bytes to temporary array and then call function for transformation of Bytes to String
+	                MOVE_BLK(IN    := #tdsTelegramArray[#tempByteAddressCounter + #TDS_TOKENERROR_SERVERNAMELENGTHLENGTH],
+	                         COUNT := 2 * #errorToken.ServerNameLength,
+	                         OUT   => #tempByteCharArray[0]);
+	                
+	                #errorToken.ServerName := "LSql_BytesToString"(columnType := 0, byteArray := #tempByteCharArray, numberOfBytes := 2 * #errorToken.ServerNameLength);
+	                
+	                //increment address counter by length field and dynamic value length
+	                #tempByteAddressCounter += #TDS_TOKENERROR_SERVERNAMELENGTHLENGTH + (#errorToken.ServerNameLength * 2);
+	              END_REGION Server Name
+	              
+	              REGION Procedure Name
+	                //field 'ProcNameLength'
+	                #errorToken.ProcNameLength := BYTE_TO_USINT(#tdsTelegramArray[#tempByteAddressCounter]);
+	                
+	                //field 'ProcName' as String
+	                //move bytes to temporary array and then call function for transformation of Bytes to String
+	                MOVE_BLK(IN    := #tdsTelegramArray[#tempByteAddressCounter + #TDS_TOKENERROR_PROCNAMELENGTHLENGTH],
+	                         COUNT := 2 * #errorToken.ProcNameLength,
+	                         OUT   => #tempByteCharArray[0]);
+	                
+	                #errorToken.ProcName := "LSql_BytesToString"(columnType := 0, byteArray := #tempByteCharArray, numberOfBytes := 2 * #errorToken.ProcNameLength);
+	                
+	                //increment address counter by length field and dynamic value length
+	                #tempByteAddressCounter += + #TDS_TOKENERROR_PROCNAMELENGTHLENGTH + (#errorToken.ProcNameLength * 2);
+	              END_REGION Procedure Name
+	              
+	              REGION Line Number
+	                #errorToken.LineNumber := DWORD_TO_UDINT("LGF_MergeBytesToDWord"(byte0 := #tdsTelegramArray[#tempByteAddressCounter], byte1 := #tdsTelegramArray[#tempByteAddressCounter + 1], byte2 := #tdsTelegramArray[#tempByteAddressCounter + 2], byte3 := #tdsTelegramArray[#tempByteAddressCounter + 3]));
+	                
+	                //increment counter by field length
+	                #tempByteAddressCounter += #TDS_TOKENERROR_LINENUMBERLENGTH;
+	              END_REGION Line Number
+	              
+	            END_REGION Token - Error
+	            
+	          #TDS_TOKENDONE_TOKENTYPE:
+	            REGION Token - Done
+	              //next two byte are status field
+	              #tempTokenEndStatus := WORD_TO_UINT("LGF_MergeBytesToWord"(byte0 := #tdsTelegramArray[#tempByteAddressCounter + 1], byte1 := #tdsTelegramArray[#tempByteAddressCounter + 2]));
+	              
+	              CASE #tempTokenEndStatus OF
+	                #TDS_TOKENDONE_STATUSDONEFINAL:
+	                  //status case not handled in this application example
+	                  ;
+	                #TDS_TOKENDONE_STATUSDONEMORE:
+	                  //status case not handled in this application example
+	                  ;
+	                #TDS_TOKENDONE_STATUSDONEERROR:
+	                  //status case not handled in this application example
+	                  ;
+	                #TDS_TOKENDONE_STATUSDONEINXACT:
+	                  //status case not handled in this application example
+	                  ;
+	                #TDS_TOKENDONE_STATUSDONECOUNT:
+	                  //tokenDone contains the number of tokenRows
+	                  #rowCount := DWORD_TO_UDINT("LGF_MergeBytesToDWord"(byte0 := #tdsTelegramArray[#tempByteAddressCounter + #TDS_TOKENDONE_STATUSDONE_ROWCOUNTPOS], byte1 := #tdsTelegramArray[#tempByteAddressCounter + #TDS_TOKENDONE_STATUSDONE_ROWCOUNTPOS + 1], byte2 := #tdsTelegramArray[#tempByteAddressCounter + #TDS_TOKENDONE_STATUSDONE_ROWCOUNTPOS + 2], byte3 := #tdsTelegramArray[#tempByteAddressCounter + #TDS_TOKENDONE_STATUSDONE_ROWCOUNTPOS + 3]));
+	                #TDS_TOKENDONE_STATUSDONEATTN:
+	                  //status case not handled in this application example
+	                  ;
+	                #TDS_TOKENDONE_STATUSDONESRVERROR:
+	                  //status case not handled in this application example
+	                  ;
+	                ELSE
+	                  //unknown or wrong status of Token Done
+	                  #status := #ERR_TOKENDONE_UNKNOWNSTATUS;
+	                  #statBusy := FALSE;
+	                  #statError := TRUE;
+	                  //reset rowCount output value
+	                  #rowCount := 0;
+	                  GOTO END;
+	              END_CASE;
+	              
+	              //increment counter by fixed length value
+	              #tempByteAddressCounter += #TDS_TOKENDONE_LENGTH;
+	            END_REGION Token - Done
+	            
+	          #TDS_TOKENDONEINPROC_TOKENTYPE:
+	            REGION Token - DoneInProc
+	              //tokenDone contains the number of tokenRows
+	              #rowCount := DWORD_TO_UDINT("LGF_MergeBytesToDWord"(byte0 := #tdsTelegramArray[#tempByteAddressCounter + #TDS_TOKENDONEINPROC_ROWCOUNTPOS], byte1 := #tdsTelegramArray[#tempByteAddressCounter + #TDS_TOKENDONEINPROC_ROWCOUNTPOS + 1], byte2 := #tdsTelegramArray[#tempByteAddressCounter + #TDS_TOKENDONEINPROC_ROWCOUNTPOS + 2], byte3 := #tdsTelegramArray[#tempByteAddressCounter + #TDS_TOKENDONEINPROC_ROWCOUNTPOS + 3]));
+	              
+	              //increment counter by fixed length value
+	              #tempByteAddressCounter += #TDS_TOKENDONEINPROC_LENGTH;
+	            END_REGION Token - DoneInProc
+	            
+	          #TDS_TOKENRETURNSTATUS_TOKENTYPE:
+	            REGION Token - ReturnStatus
+	              //increment counter by fixed length value
+	              #tempByteAddressCounter += #TDS_TOKENRETURNSTATUS_LENGTH;
+	            END_REGION Token - ReturnStatus
+	            
+	          #TDS_TOKENDONEPROC_TOKENTYPE:
+	            REGION Token - DoneProc
+	              //increment counter by fixed length value
+	              #tempByteAddressCounter += #TDS_TOKENDONEPROC_LENGTH;
+	            END_REGION Token - DoneProc
+	            
+	          #TDS_TOKENINFO_TOKENTYPE:
+	            REGION Token - Info
+	              #tempTokenLength := WORD_TO_UINT("LGF_MergeBytesToWord"(byte0 := #tdsTelegramArray[#tempByteAddressCounter + 1], byte1 := #tdsTelegramArray[#tempByteAddressCounter + 2]));
+	              
+	              //increment counter by length field and length value
+	              #tempByteAddressCounter += #TDS_TOKEN_TYPEFIELDLENGTH + #TDS_TOKEN_LENGTHFIELDLENGTH + #tempTokenLength;
+	            END_REGION Token - Info
+	            
+	          #TDS_TOKENENVCHANGE_TOKENTYPE:
+	            REGION Token - EnvChange
+	              #tempTokenLength := WORD_TO_UINT("LGF_MergeBytesToWord"(byte0 := #tdsTelegramArray[#tempByteAddressCounter + 1], byte1 := #tdsTelegramArray[#tempByteAddressCounter + 2]));
+	              
+	              //increment counter by length field and length value
+	              #tempByteAddressCounter += #TDS_TOKEN_TYPEFIELDLENGTH + #TDS_TOKEN_LENGTHFIELDLENGTH + #tempTokenLength;
+	            END_REGION Token - EnvChange
+	            
+	          ELSE
+	            REGION Unknown token type
+	              //the token type is unknown, the iteration can not go on because there is no length information about that next token
+	              #status := #ERR_UNKNOWNTOKEN;
+	              #statBusy := FALSE;
+	              #statError := TRUE;
+	              GOTO END;
+	            END_REGION Unknown token type
+	        END_CASE;
+	        
+	      END_WHILE;
+	      
+	    END_REGION Tokens
+	    
+	    //reconfirm that the number of analyzed bytes is exactly matching the total telegram length:
+	    IF (#tempByteAddressCounter = #tdsHeader.length) THEN
+	      //operation completed
+	      #statBusy := FALSE;
+	      #statDone := TRUE;
+	    ELSE
+	      #status := #ERR_LENGTHINCORRECT;
+	      #statBusy := FALSE;
+	      #statError := TRUE;
+	      GOTO END;
+	    END_IF;
+	    
+	  END_REGION Execution
+	  
+	ELSIF NOT #execute THEN
+	  REGION Idle state
+	    //not executing, reset output values
+	    #statDone := FALSE;
+	    #statBusy := FALSE;
+	    #statError := FALSE;
+	    #status := #ERR_NOERROR;
+	    #statRowsAvailable := FALSE;
+	    #statMetaDataAvailable := FALSE;
+	    #rowCount := 0;
+	  END_REGION Idle state
+	END_IF;
+	
+	END:
+	REGION WRITE OUTPUTS
+	  //finally write static values to outputs
+	  #metaDataAndRowsAvailable := #statRowsAvailable AND #statMetaDataAvailable AND #statDone;
+	  #error := #statError;
+	  #busy := #statBusy;
+	  #done := #statDone;
+	END_REGION WRITE OUTPUTS
+END_FUNCTION_BLOCK
+

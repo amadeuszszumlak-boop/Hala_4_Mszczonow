@@ -1,0 +1,1548 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.FB ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input" />
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="NumberOfPallet" Datatype="Int">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Map" Datatype="Array[1..4, 1..12] of Bool" />
+    <Member Name="MoveDirection" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="en-US">1-L, 2-Up, 3-R, 4-Down</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="FoundSelectedPallet" Datatype="Bool" />
+    <Member Name="CanMove" Datatype="Bool" />
+    <Member Name="Station_Next_Position" Datatype="Array[1..2] of Int" />
+    <Member Name="SelectedPalletFound" Datatype="Bool" />
+  </Section>
+  <Section Name="Temp">
+    <Member Name="i" Datatype="Int" />
+    <Member Name="j" Datatype="Int" />
+    <Member Name="k" Datatype="Int" />
+  </Section>
+  <Section Name="Constant" />
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>Pallets_Transport_System</Name>
+      <Namespace />
+      <Number>9</Number>
+      <ProgrammingLanguage>LAD</ProgrammingLanguage>
+      <SetENOAutomatically>false</SetENOAutomatically>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <Access Scope="LocalVariable" UId="21">
+    <Symbol UId="22">
+      <Component Name="SelectedPalletFound" UId="23" />
+    </Symbol>
+  </Access>
+  <Blank UId="24" />
+  <Token Text=":=" UId="25" />
+  <Blank UId="26" />
+  <Access Scope="LiteralConstant" UId="27">
+    <Constant UId="28">
+      <ConstantValue UId="30">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="31" />
+  <NewLine Num="2" UId="32" />
+  <Token Text="FOR" UId="33" />
+  <Blank UId="34" />
+  <Access Scope="LocalVariable" UId="35">
+    <Symbol UId="36">
+      <Component Name="k" UId="37" />
+    </Symbol>
+  </Access>
+  <Blank UId="38" />
+  <Token Text=":=" UId="39" />
+  <Blank UId="40" />
+  <Access Scope="LiteralConstant" UId="41">
+    <Constant UId="42">
+      <ConstantValue UId="44">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="45" />
+  <Token Text="TO" UId="46" />
+  <Blank UId="47" />
+  <Access Scope="LiteralConstant" UId="48">
+    <Constant UId="49">
+      <ConstantValue UId="51">24</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="52" />
+  <Token Text="DO" UId="53" />
+  <NewLine UId="54" />
+  <Blank Num="4" UId="55" />
+  <Token Text="IF" UId="56" />
+  <Blank UId="57" />
+  <Access Scope="GlobalVariable" UId="58">
+    <Symbol UId="59">
+      <Component Name="Pallets_Stations" UId="60">
+        <BooleanAttribute Name="HasQuotes" UId="61">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="62" />
+      <Component Name="Pallets" UId="63">
+        <Token Text="[" UId="64" />
+        <Access Scope="LocalVariable" UId="65">
+          <Symbol UId="66">
+            <Component Name="k" UId="67" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="68" />
+      </Component>
+      <Token Text="." UId="69" />
+      <Component Name="IsSelected" UId="70" />
+    </Symbol>
+  </Access>
+  <Blank UId="71" />
+  <Token Text="THEN" UId="72" />
+  <NewLine UId="73" />
+  <Blank Num="8" UId="74" />
+  <Access Scope="LocalVariable" UId="75">
+    <Symbol UId="76">
+      <Component Name="SelectedPalletFound" UId="77" />
+    </Symbol>
+  </Access>
+  <Blank UId="78" />
+  <Token Text=":=" UId="79" />
+  <Blank UId="80" />
+  <Access Scope="LiteralConstant" UId="81">
+    <Constant UId="82">
+      <ConstantValue UId="84">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="85" />
+  <NewLine UId="86" />
+  <Blank Num="8" UId="87" />
+  <Token Text="EXIT" UId="88" />
+  <Token Text=";" UId="89" />
+  <NewLine UId="90" />
+  <Blank Num="4" UId="91" />
+  <Token Text="END_IF" UId="92" />
+  <Token Text=";" UId="93" />
+  <NewLine UId="94" />
+  <Token Text="END_FOR" UId="95" />
+  <Token Text=";" UId="96" />
+  <NewLine Num="2" UId="97" />
+  <Token Text="IF" UId="98" />
+  <Blank UId="99" />
+  <Access Scope="LocalVariable" UId="100">
+    <Symbol UId="101">
+      <Component Name="SelectedPalletFound" UId="102" />
+    </Symbol>
+  </Access>
+  <Blank UId="103" />
+  <Token Text="THEN" UId="104" />
+  <NewLine UId="105" />
+  <Blank Num="4" UId="106" />
+  <Access Scope="LocalVariable" UId="107">
+    <Symbol UId="108">
+      <Component Name="Station_Next_Position" UId="109" />
+    </Symbol>
+  </Access>
+  <Blank UId="110" />
+  <Token Text=":=" UId="111" />
+  <Blank UId="112" />
+  <Access Scope="GlobalVariable" UId="113">
+    <Symbol UId="114">
+      <Component Name="Pallets_Stations" UId="115">
+        <BooleanAttribute Name="HasQuotes" UId="116">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="117" />
+      <Component Name="Pallets" UId="118">
+        <Token Text="[" UId="119" />
+        <Access Scope="LocalVariable" UId="120">
+          <Symbol UId="121">
+            <Component Name="k" UId="122" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="123" />
+      </Component>
+      <Token Text="." UId="124" />
+      <Component Name="Station_Current_Position" UId="125" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="126" />
+  <NewLine UId="127" />
+  <Blank Num="4" UId="128" />
+  <NewLine UId="129" />
+  <Blank Num="12" UId="130" />
+  <Token Text="CASE" UId="131" />
+  <Blank UId="132" />
+  <Access Scope="LocalVariable" UId="133">
+    <Symbol UId="134">
+      <Component Name="MoveDirection" UId="135" />
+    </Symbol>
+  </Access>
+  <Blank UId="136" />
+  <Token Text="OF" UId="137" />
+  <NewLine UId="138" />
+  <Blank Num="16" UId="139" />
+  <Access Scope="LiteralConstant" UId="140">
+    <Constant UId="141">
+      <ConstantValue UId="143">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="144" />
+  <NewLine UId="145" />
+  <Blank Num="20" UId="146" />
+  <Token Text="IF" UId="147" />
+  <Blank UId="148" />
+  <Access Scope="LocalVariable" UId="149">
+    <Symbol UId="150">
+      <Component Name="Station_Next_Position" UId="151">
+        <Token Text="[" UId="152" />
+        <Access Scope="LiteralConstant" UId="153">
+          <Constant UId="154">
+            <ConstantValue UId="156">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="157" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="158" />
+  <Token Text="&gt;" UId="159" />
+  <Blank UId="160" />
+  <Access Scope="LiteralConstant" UId="161">
+    <Constant UId="162">
+      <ConstantValue UId="164">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="165" />
+  <Token Text="THEN" UId="166" />
+  <Blank Num="2" UId="167" />
+  <LineComment UId="168">
+    <Text UId="169"> Check Left</Text>
+  </LineComment>
+  <NewLine UId="170" />
+  <Blank Num="24" UId="171" />
+  <Access Scope="LocalVariable" UId="172">
+    <Symbol UId="173">
+      <Component Name="Station_Next_Position" UId="174">
+        <Token Text="[" UId="175" />
+        <Access Scope="LiteralConstant" UId="176">
+          <Constant UId="177">
+            <ConstantValue UId="179">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="180" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="181" />
+  <Token Text=":=" UId="182" />
+  <Blank UId="183" />
+  <Access Scope="LocalVariable" UId="184">
+    <Symbol UId="185">
+      <Component Name="Station_Next_Position" UId="186">
+        <Token Text="[" UId="187" />
+        <Access Scope="LiteralConstant" UId="188">
+          <Constant UId="189">
+            <ConstantValue UId="191">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="192" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="193" />
+  <Token Text="-" UId="194" />
+  <Blank UId="195" />
+  <Access Scope="LiteralConstant" UId="196">
+    <Constant UId="197">
+      <ConstantValue UId="199">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="200" />
+  <NewLine UId="201" />
+  <Blank Num="20" UId="202" />
+  <Token Text="ELSE" UId="203" />
+  <NewLine UId="204" />
+  <Blank Num="24" UId="205" />
+  <Access Scope="LocalVariable" UId="206">
+    <Symbol UId="207">
+      <Component Name="CanMove" UId="208" />
+    </Symbol>
+  </Access>
+  <Blank UId="209" />
+  <Token Text=":=" UId="210" />
+  <Blank UId="211" />
+  <Access Scope="LiteralConstant" UId="212">
+    <Constant UId="213">
+      <ConstantValue UId="215">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="216" />
+  <NewLine UId="217" />
+  <Blank Num="20" UId="218" />
+  <Token Text="END_IF" UId="219" />
+  <Token Text=";" UId="220" />
+  <NewLine UId="221" />
+  <Blank Num="16" UId="222" />
+  <Access Scope="LiteralConstant" UId="223">
+    <Constant UId="224">
+      <ConstantValue UId="226">3</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="227" />
+  <NewLine UId="228" />
+  <Blank Num="20" UId="229" />
+  <Token Text="IF" UId="230" />
+  <Blank UId="231" />
+  <Token Text="(" UId="232" />
+  <Access Scope="LocalVariable" UId="233">
+    <Symbol UId="234">
+      <Component Name="Station_Next_Position" UId="235">
+        <Token Text="[" UId="236" />
+        <Access Scope="LiteralConstant" UId="237">
+          <Constant UId="238">
+            <ConstantValue UId="240">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="241" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="242" />
+  <Token Text="&lt;" UId="243" />
+  <Blank UId="244" />
+  <Access Scope="LiteralConstant" UId="245">
+    <Constant UId="246">
+      <ConstantValue UId="248">12</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=")" UId="249" />
+  <Blank UId="250" />
+  <Token Text="AND" UId="251" />
+  <Blank UId="252" />
+  <LineComment UId="253">
+    <Text UId="254"> Check Right</Text>
+  </LineComment>
+  <NewLine UId="255" />
+  <Blank Num="24" UId="256" />
+  <Token Text="(" UId="257" />
+  <Token Text="(" UId="258" />
+  <Access Scope="LocalVariable" UId="259">
+    <Symbol UId="260">
+      <Component Name="Station_Next_Position" UId="261">
+        <Token Text="[" UId="262" />
+        <Access Scope="LiteralConstant" UId="263">
+          <Constant UId="264">
+            <ConstantValue UId="266">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="267" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="268" />
+  <Token Text="=" UId="269" />
+  <Blank UId="270" />
+  <Access Scope="LiteralConstant" UId="271">
+    <Constant UId="272">
+      <ConstantValue UId="274">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="275" />
+  <Token Text="AND" UId="276" />
+  <Blank UId="277" />
+  <Access Scope="LocalVariable" UId="278">
+    <Symbol UId="279">
+      <Component Name="Station_Next_Position" UId="280">
+        <Token Text="[" UId="281" />
+        <Access Scope="LiteralConstant" UId="282">
+          <Constant UId="283">
+            <ConstantValue UId="285">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="286" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="287" />
+  <Token Text="&lt;" UId="288" />
+  <Blank UId="289" />
+  <Access Scope="LiteralConstant" UId="290">
+    <Constant UId="291">
+      <ConstantValue UId="293">12</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=")" UId="294" />
+  <Blank UId="295" />
+  <Token Text="OR" UId="296" />
+  <Blank UId="297" />
+  <Token Text="(" UId="298" />
+  <Access Scope="LocalVariable" UId="299">
+    <Symbol UId="300">
+      <Component Name="Station_Next_Position" UId="301">
+        <Token Text="[" UId="302" />
+        <Access Scope="LiteralConstant" UId="303">
+          <Constant UId="304">
+            <ConstantValue UId="306">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="307" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="308" />
+  <Token Text="&lt;&gt;" UId="309" />
+  <Blank UId="310" />
+  <Access Scope="LiteralConstant" UId="311">
+    <Constant UId="312">
+      <ConstantValue UId="314">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="315" />
+  <Token Text="AND" UId="316" />
+  <Blank UId="317" />
+  <Access Scope="LocalVariable" UId="318">
+    <Symbol UId="319">
+      <Component Name="Station_Next_Position" UId="320">
+        <Token Text="[" UId="321" />
+        <Access Scope="LiteralConstant" UId="322">
+          <Constant UId="323">
+            <ConstantValue UId="325">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="326" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="327" />
+  <Token Text="&lt;" UId="328" />
+  <Blank UId="329" />
+  <Access Scope="LiteralConstant" UId="330">
+    <Constant UId="331">
+      <ConstantValue UId="333">11</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=")" UId="334" />
+  <Token Text=")" UId="335" />
+  <Blank UId="336" />
+  <Token Text="THEN" UId="337" />
+  <NewLine UId="338" />
+  <Blank Num="24" UId="339" />
+  <Access Scope="LocalVariable" UId="340">
+    <Symbol UId="341">
+      <Component Name="Station_Next_Position" UId="342">
+        <Token Text="[" UId="343" />
+        <Access Scope="LiteralConstant" UId="344">
+          <Constant UId="345">
+            <ConstantValue UId="347">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="348" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="349" />
+  <Token Text=":=" UId="350" />
+  <Blank UId="351" />
+  <Access Scope="LocalVariable" UId="352">
+    <Symbol UId="353">
+      <Component Name="Station_Next_Position" UId="354">
+        <Token Text="[" UId="355" />
+        <Access Scope="LiteralConstant" UId="356">
+          <Constant UId="357">
+            <ConstantValue UId="359">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="360" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="361" />
+  <Token Text="+" UId="362" />
+  <Blank UId="363" />
+  <Access Scope="LiteralConstant" UId="364">
+    <Constant UId="365">
+      <ConstantValue UId="367">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="368" />
+  <NewLine UId="369" />
+  <Blank Num="20" UId="370" />
+  <Token Text="ELSE" UId="371" />
+  <NewLine UId="372" />
+  <Blank Num="24" UId="373" />
+  <Access Scope="LocalVariable" UId="374">
+    <Symbol UId="375">
+      <Component Name="CanMove" UId="376" />
+    </Symbol>
+  </Access>
+  <Blank UId="377" />
+  <Token Text=":=" UId="378" />
+  <Blank UId="379" />
+  <Access Scope="LiteralConstant" UId="380">
+    <Constant UId="381">
+      <ConstantValue UId="383">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="384" />
+  <Blank UId="385" />
+  <NewLine UId="386" />
+  <Blank Num="20" UId="387" />
+  <Token Text="END_IF" UId="388" />
+  <Token Text=";" UId="389" />
+  <NewLine UId="390" />
+  <Blank Num="16" UId="391" />
+  <Access Scope="LiteralConstant" UId="392">
+    <Constant UId="393">
+      <ConstantValue UId="395">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="396" />
+  <NewLine UId="397" />
+  <Blank Num="20" UId="398" />
+  <Token Text="IF" UId="399" />
+  <Blank UId="400" />
+  <Token Text="(" UId="401" />
+  <Access Scope="LocalVariable" UId="402">
+    <Symbol UId="403">
+      <Component Name="Station_Next_Position" UId="404">
+        <Token Text="[" UId="405" />
+        <Access Scope="LiteralConstant" UId="406">
+          <Constant UId="407">
+            <ConstantValue UId="409">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="410" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="411" />
+  <Token Text="=" UId="412" />
+  <Blank UId="413" />
+  <Access Scope="LiteralConstant" UId="414">
+    <Constant UId="415">
+      <ConstantValue UId="417">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=")" UId="418" />
+  <Blank UId="419" />
+  <Token Text="OR" UId="420" />
+  <NewLine UId="421" />
+  <Blank Num="24" UId="422" />
+  <Token Text="(" UId="423" />
+  <Token Text="(" UId="424" />
+  <Access Scope="LocalVariable" UId="425">
+    <Symbol UId="426">
+      <Component Name="Station_Next_Position" UId="427">
+        <Token Text="[" UId="428" />
+        <Access Scope="LiteralConstant" UId="429">
+          <Constant UId="430">
+            <ConstantValue UId="432">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="433" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="434" />
+  <Token Text="=" UId="435" />
+  <Blank UId="436" />
+  <Access Scope="LiteralConstant" UId="437">
+    <Constant UId="438">
+      <ConstantValue UId="440">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="441" />
+  <Token Text="AND" UId="442" />
+  <Blank UId="443" />
+  <Access Scope="LocalVariable" UId="444">
+    <Symbol UId="445">
+      <Component Name="Station_Next_Position" UId="446">
+        <Token Text="[" UId="447" />
+        <Access Scope="LiteralConstant" UId="448">
+          <Constant UId="449">
+            <ConstantValue UId="451">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="452" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="453" />
+  <Token Text="=" UId="454" />
+  <Blank UId="455" />
+  <Access Scope="LiteralConstant" UId="456">
+    <Constant UId="457">
+      <ConstantValue UId="459">11</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=")" UId="460" />
+  <Blank UId="461" />
+  <Token Text="OR" UId="462" />
+  <NewLine UId="463" />
+  <Blank Num="24" UId="464" />
+  <Token Text="(" UId="465" />
+  <Access Scope="LocalVariable" UId="466">
+    <Symbol UId="467">
+      <Component Name="Station_Next_Position" UId="468">
+        <Token Text="[" UId="469" />
+        <Access Scope="LiteralConstant" UId="470">
+          <Constant UId="471">
+            <ConstantValue UId="473">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="474" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="475" />
+  <Token Text="=" UId="476" />
+  <Blank UId="477" />
+  <Access Scope="LiteralConstant" UId="478">
+    <Constant UId="479">
+      <ConstantValue UId="481">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="482" />
+  <Token Text="AND" UId="483" />
+  <Blank UId="484" />
+  <Access Scope="LocalVariable" UId="485">
+    <Symbol UId="486">
+      <Component Name="Station_Next_Position" UId="487">
+        <Token Text="[" UId="488" />
+        <Access Scope="LiteralConstant" UId="489">
+          <Constant UId="490">
+            <ConstantValue UId="492">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="493" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="494" />
+  <Token Text="=" UId="495" />
+  <Blank UId="496" />
+  <Access Scope="LiteralConstant" UId="497">
+    <Constant UId="498">
+      <ConstantValue UId="500">12</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=")" UId="501" />
+  <Blank UId="502" />
+  <Token Text="OR" UId="503" />
+  <NewLine UId="504" />
+  <Blank Num="24" UId="505" />
+  <Token Text="(" UId="506" />
+  <Access Scope="LocalVariable" UId="507">
+    <Symbol UId="508">
+      <Component Name="Station_Next_Position" UId="509">
+        <Token Text="[" UId="510" />
+        <Access Scope="LiteralConstant" UId="511">
+          <Constant UId="512">
+            <ConstantValue UId="514">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="515" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="516" />
+  <Token Text="=" UId="517" />
+  <Blank UId="518" />
+  <Access Scope="LiteralConstant" UId="519">
+    <Constant UId="520">
+      <ConstantValue UId="522">3</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="523" />
+  <Token Text="AND" UId="524" />
+  <Blank UId="525" />
+  <Access Scope="LocalVariable" UId="526">
+    <Symbol UId="527">
+      <Component Name="Station_Next_Position" UId="528">
+        <Token Text="[" UId="529" />
+        <Access Scope="LiteralConstant" UId="530">
+          <Constant UId="531">
+            <ConstantValue UId="533">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="534" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="535" />
+  <Token Text="=" UId="536" />
+  <Blank UId="537" />
+  <Access Scope="LiteralConstant" UId="538">
+    <Constant UId="539">
+      <ConstantValue UId="541">11</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=")" UId="542" />
+  <Blank UId="543" />
+  <Token Text="OR" UId="544" />
+  <NewLine UId="545" />
+  <Blank Num="24" UId="546" />
+  <Token Text="(" UId="547" />
+  <Access Scope="LocalVariable" UId="548">
+    <Symbol UId="549">
+      <Component Name="Station_Next_Position" UId="550">
+        <Token Text="[" UId="551" />
+        <Access Scope="LiteralConstant" UId="552">
+          <Constant UId="553">
+            <ConstantValue UId="555">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="556" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="557" />
+  <Token Text="=" UId="558" />
+  <Blank UId="559" />
+  <Access Scope="LiteralConstant" UId="560">
+    <Constant UId="561">
+      <ConstantValue UId="563">4</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="564" />
+  <Token Text="AND" UId="565" />
+  <Blank UId="566" />
+  <Access Scope="LocalVariable" UId="567">
+    <Symbol UId="568">
+      <Component Name="Station_Next_Position" UId="569">
+        <Token Text="[" UId="570" />
+        <Access Scope="LiteralConstant" UId="571">
+          <Constant UId="572">
+            <ConstantValue UId="574">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="575" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="576" />
+  <Token Text="=" UId="577" />
+  <Blank UId="578" />
+  <Access Scope="LiteralConstant" UId="579">
+    <Constant UId="580">
+      <ConstantValue UId="582">11</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=")" UId="583" />
+  <Token Text=")" UId="584" />
+  <Blank UId="585" />
+  <Token Text="THEN" UId="586" />
+  <NewLine UId="587" />
+  <Blank Num="24" UId="588" />
+  <Token Text="IF" UId="589" />
+  <Blank UId="590" />
+  <Access Scope="LocalVariable" UId="591">
+    <Symbol UId="592">
+      <Component Name="Station_Next_Position" UId="593">
+        <Token Text="[" UId="594" />
+        <Access Scope="LiteralConstant" UId="595">
+          <Constant UId="596">
+            <ConstantValue UId="598">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="599" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="600" />
+  <Token Text="&gt;" UId="601" />
+  <Blank UId="602" />
+  <Access Scope="LiteralConstant" UId="603">
+    <Constant UId="604">
+      <ConstantValue UId="606">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="607" />
+  <Token Text="THEN" UId="608" />
+  <NewLine UId="609" />
+  <Blank Num="28" UId="610" />
+  <LineComment UId="611">
+    <Text UId="612"> Ruch w ostatniej kolumnie</Text>
+  </LineComment>
+  <NewLine UId="613" />
+  <Blank Num="28" UId="614" />
+  <Token Text="IF" UId="615" />
+  <Blank UId="616" />
+  <Access Scope="LocalVariable" UId="617">
+    <Symbol UId="618">
+      <Component Name="Station_Next_Position" UId="619">
+        <Token Text="[" UId="620" />
+        <Access Scope="LiteralConstant" UId="621">
+          <Constant UId="622">
+            <ConstantValue UId="624">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="625" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="626" />
+  <Token Text="=" UId="627" />
+  <Blank UId="628" />
+  <Access Scope="LiteralConstant" UId="629">
+    <Constant UId="630">
+      <ConstantValue UId="632">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="633" />
+  <Token Text="AND" UId="634" />
+  <Blank UId="635" />
+  <Access Scope="LocalVariable" UId="636">
+    <Symbol UId="637">
+      <Component Name="Station_Next_Position" UId="638">
+        <Token Text="[" UId="639" />
+        <Access Scope="LiteralConstant" UId="640">
+          <Constant UId="641">
+            <ConstantValue UId="643">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="644" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="645" />
+  <Token Text="=" UId="646" />
+  <Blank UId="647" />
+  <Access Scope="LiteralConstant" UId="648">
+    <Constant UId="649">
+      <ConstantValue UId="651">12</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="652" />
+  <Token Text="THEN" UId="653" />
+  <NewLine UId="654" />
+  <Blank Num="32" UId="655" />
+  <Access Scope="LocalVariable" UId="656">
+    <Symbol UId="657">
+      <Component Name="Station_Next_Position" UId="658">
+        <Token Text="[" UId="659" />
+        <Access Scope="LiteralConstant" UId="660">
+          <Constant UId="661">
+            <ConstantValue UId="663">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="664" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="665" />
+  <Token Text=":=" UId="666" />
+  <Blank UId="667" />
+  <Access Scope="LiteralConstant" UId="668">
+    <Constant UId="669">
+      <ConstantValue UId="671">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="672" />
+  <NewLine UId="673" />
+  <Blank Num="32" UId="674" />
+  <Access Scope="LocalVariable" UId="675">
+    <Symbol UId="676">
+      <Component Name="Station_Next_Position" UId="677">
+        <Token Text="[" UId="678" />
+        <Access Scope="LiteralConstant" UId="679">
+          <Constant UId="680">
+            <ConstantValue UId="682">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="683" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="684" />
+  <Token Text=":=" UId="685" />
+  <Blank UId="686" />
+  <Access Scope="LiteralConstant" UId="687">
+    <Constant UId="688">
+      <ConstantValue UId="690">11</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="691" />
+  <NewLine UId="692" />
+  <Blank Num="28" UId="693" />
+  <Token Text="ELSE" UId="694" />
+  <NewLine UId="695" />
+  <Blank Num="32" UId="696" />
+  <Access Scope="LocalVariable" UId="697">
+    <Symbol UId="698">
+      <Component Name="Station_Next_Position" UId="699">
+        <Token Text="[" UId="700" />
+        <Access Scope="LiteralConstant" UId="701">
+          <Constant UId="702">
+            <ConstantValue UId="704">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="705" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="706" />
+  <Token Text=":=" UId="707" />
+  <Blank UId="708" />
+  <Access Scope="LocalVariable" UId="709">
+    <Symbol UId="710">
+      <Component Name="Station_Next_Position" UId="711">
+        <Token Text="[" UId="712" />
+        <Access Scope="LiteralConstant" UId="713">
+          <Constant UId="714">
+            <ConstantValue UId="716">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="717" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="718" />
+  <Token Text="-" UId="719" />
+  <Blank UId="720" />
+  <Access Scope="LiteralConstant" UId="721">
+    <Constant UId="722">
+      <ConstantValue UId="724">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="725" />
+  <NewLine UId="726" />
+  <Blank Num="28" UId="727" />
+  <Token Text="END_IF" UId="728" />
+  <Token Text=";" UId="729" />
+  <NewLine UId="730" />
+  <Blank Num="24" UId="731" />
+  <Token Text="ELSE" UId="732" />
+  <NewLine UId="733" />
+  <Blank Num="28" UId="734" />
+  <Access Scope="LocalVariable" UId="735">
+    <Symbol UId="736">
+      <Component Name="CanMove" UId="737" />
+    </Symbol>
+  </Access>
+  <Blank UId="738" />
+  <Token Text=":=" UId="739" />
+  <Blank UId="740" />
+  <Access Scope="LiteralConstant" UId="741">
+    <Constant UId="742">
+      <ConstantValue UId="744">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="745" />
+  <NewLine UId="746" />
+  <Blank Num="24" UId="747" />
+  <Token Text="END_IF" UId="748" />
+  <Token Text=";" UId="749" />
+  <NewLine UId="750" />
+  <Blank Num="20" UId="751" />
+  <Token Text="ELSE" UId="752" />
+  <NewLine UId="753" />
+  <Blank Num="24" UId="754" />
+  <Access Scope="LocalVariable" UId="755">
+    <Symbol UId="756">
+      <Component Name="CanMove" UId="757" />
+    </Symbol>
+  </Access>
+  <Blank UId="758" />
+  <Token Text=":=" UId="759" />
+  <Blank UId="760" />
+  <Access Scope="LiteralConstant" UId="761">
+    <Constant UId="762">
+      <ConstantValue UId="764">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="765" />
+  <NewLine UId="766" />
+  <Blank Num="20" UId="767" />
+  <Token Text="END_IF" UId="768" />
+  <Token Text=";" UId="769" />
+  <NewLine UId="770" />
+  <Blank Num="16" UId="771" />
+  <Access Scope="LiteralConstant" UId="772">
+    <Constant UId="773">
+      <ConstantValue UId="775">4</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="776" />
+  <NewLine UId="777" />
+  <Blank Num="20" UId="778" />
+  <Token Text="IF" UId="779" />
+  <Blank UId="780" />
+  <Token Text="(" UId="781" />
+  <Access Scope="LocalVariable" UId="782">
+    <Symbol UId="783">
+      <Component Name="Station_Next_Position" UId="784">
+        <Token Text="[" UId="785" />
+        <Access Scope="LiteralConstant" UId="786">
+          <Constant UId="787">
+            <ConstantValue UId="789">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="790" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="791" />
+  <Token Text="=" UId="792" />
+  <Blank UId="793" />
+  <Access Scope="LiteralConstant" UId="794">
+    <Constant UId="795">
+      <ConstantValue UId="797">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=")" UId="798" />
+  <Blank UId="799" />
+  <Token Text="OR" UId="800" />
+  <NewLine UId="801" />
+  <Blank Num="24" UId="802" />
+  <Token Text="(" UId="803" />
+  <Token Text="(" UId="804" />
+  <Access Scope="LocalVariable" UId="805">
+    <Symbol UId="806">
+      <Component Name="Station_Next_Position" UId="807">
+        <Token Text="[" UId="808" />
+        <Access Scope="LiteralConstant" UId="809">
+          <Constant UId="810">
+            <ConstantValue UId="812">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="813" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="814" />
+  <Token Text="=" UId="815" />
+  <Blank UId="816" />
+  <Access Scope="LiteralConstant" UId="817">
+    <Constant UId="818">
+      <ConstantValue UId="820">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="821" />
+  <Token Text="AND" UId="822" />
+  <Blank UId="823" />
+  <Access Scope="LocalVariable" UId="824">
+    <Symbol UId="825">
+      <Component Name="Station_Next_Position" UId="826">
+        <Token Text="[" UId="827" />
+        <Access Scope="LiteralConstant" UId="828">
+          <Constant UId="829">
+            <ConstantValue UId="831">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="832" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="833" />
+  <Token Text="=" UId="834" />
+  <Blank UId="835" />
+  <Access Scope="LiteralConstant" UId="836">
+    <Constant UId="837">
+      <ConstantValue UId="839">11</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=")" UId="840" />
+  <Blank UId="841" />
+  <Token Text="OR" UId="842" />
+  <NewLine UId="843" />
+  <Blank Num="24" UId="844" />
+  <Token Text="(" UId="845" />
+  <Access Scope="LocalVariable" UId="846">
+    <Symbol UId="847">
+      <Component Name="Station_Next_Position" UId="848">
+        <Token Text="[" UId="849" />
+        <Access Scope="LiteralConstant" UId="850">
+          <Constant UId="851">
+            <ConstantValue UId="853">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="854" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="855" />
+  <Token Text="=" UId="856" />
+  <Blank UId="857" />
+  <Access Scope="LiteralConstant" UId="858">
+    <Constant UId="859">
+      <ConstantValue UId="861">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="862" />
+  <Token Text="AND" UId="863" />
+  <Blank UId="864" />
+  <Access Scope="LocalVariable" UId="865">
+    <Symbol UId="866">
+      <Component Name="Station_Next_Position" UId="867">
+        <Token Text="[" UId="868" />
+        <Access Scope="LiteralConstant" UId="869">
+          <Constant UId="870">
+            <ConstantValue UId="872">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="873" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="874" />
+  <Token Text="=" UId="875" />
+  <Blank UId="876" />
+  <Access Scope="LiteralConstant" UId="877">
+    <Constant UId="878">
+      <ConstantValue UId="880">12</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=")" UId="881" />
+  <Blank UId="882" />
+  <Token Text="OR" UId="883" />
+  <NewLine UId="884" />
+  <Blank Num="24" UId="885" />
+  <Token Text="(" UId="886" />
+  <Access Scope="LocalVariable" UId="887">
+    <Symbol UId="888">
+      <Component Name="Station_Next_Position" UId="889">
+        <Token Text="[" UId="890" />
+        <Access Scope="LiteralConstant" UId="891">
+          <Constant UId="892">
+            <ConstantValue UId="894">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="895" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="896" />
+  <Token Text="=" UId="897" />
+  <Blank UId="898" />
+  <Access Scope="LiteralConstant" UId="899">
+    <Constant UId="900">
+      <ConstantValue UId="902">3</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="903" />
+  <Token Text="AND" UId="904" />
+  <Blank UId="905" />
+  <Access Scope="LocalVariable" UId="906">
+    <Symbol UId="907">
+      <Component Name="Station_Next_Position" UId="908">
+        <Token Text="[" UId="909" />
+        <Access Scope="LiteralConstant" UId="910">
+          <Constant UId="911">
+            <ConstantValue UId="913">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="914" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="915" />
+  <Token Text="=" UId="916" />
+  <Blank UId="917" />
+  <Access Scope="LiteralConstant" UId="918">
+    <Constant UId="919">
+      <ConstantValue UId="921">11</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=")" UId="922" />
+  <Blank UId="923" />
+  <Token Text="OR" UId="924" />
+  <NewLine UId="925" />
+  <Blank Num="24" UId="926" />
+  <Token Text="(" UId="927" />
+  <Access Scope="LocalVariable" UId="928">
+    <Symbol UId="929">
+      <Component Name="Station_Next_Position" UId="930">
+        <Token Text="[" UId="931" />
+        <Access Scope="LiteralConstant" UId="932">
+          <Constant UId="933">
+            <ConstantValue UId="935">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="936" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="937" />
+  <Token Text="=" UId="938" />
+  <Blank UId="939" />
+  <Access Scope="LiteralConstant" UId="940">
+    <Constant UId="941">
+      <ConstantValue UId="943">4</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="944" />
+  <Token Text="AND" UId="945" />
+  <Blank UId="946" />
+  <Access Scope="LocalVariable" UId="947">
+    <Symbol UId="948">
+      <Component Name="Station_Next_Position" UId="949">
+        <Token Text="[" UId="950" />
+        <Access Scope="LiteralConstant" UId="951">
+          <Constant UId="952">
+            <ConstantValue UId="954">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="955" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="956" />
+  <Token Text="=" UId="957" />
+  <Blank UId="958" />
+  <Access Scope="LiteralConstant" UId="959">
+    <Constant UId="960">
+      <ConstantValue UId="962">11</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=")" UId="963" />
+  <Token Text=")" UId="964" />
+  <Blank UId="965" />
+  <Token Text="THEN" UId="966" />
+  <NewLine UId="967" />
+  <Blank Num="24" UId="968" />
+  <Token Text="IF" UId="969" />
+  <Blank UId="970" />
+  <Access Scope="LocalVariable" UId="971">
+    <Symbol UId="972">
+      <Component Name="Station_Next_Position" UId="973">
+        <Token Text="[" UId="974" />
+        <Access Scope="LiteralConstant" UId="975">
+          <Constant UId="976">
+            <ConstantValue UId="978">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="979" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="980" />
+  <Token Text="&lt;" UId="981" />
+  <Blank UId="982" />
+  <Access Scope="LiteralConstant" UId="983">
+    <Constant UId="984">
+      <ConstantValue UId="986">4</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="987" />
+  <Token Text="THEN" UId="988" />
+  <NewLine UId="989" />
+  <Blank Num="28" UId="990" />
+  <LineComment UId="991">
+    <Text UId="992"> Ruch w ostatniej kolumnie</Text>
+  </LineComment>
+  <NewLine UId="993" />
+  <Blank Num="28" UId="994" />
+  <Token Text="IF" UId="995" />
+  <Blank UId="996" />
+  <Access Scope="LocalVariable" UId="997">
+    <Symbol UId="998">
+      <Component Name="Station_Next_Position" UId="999">
+        <Token Text="[" UId="1000" />
+        <Access Scope="LiteralConstant" UId="1001">
+          <Constant UId="1002">
+            <ConstantValue UId="1004">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="1005" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="1006" />
+  <Token Text="=" UId="1007" />
+  <Blank UId="1008" />
+  <Access Scope="LiteralConstant" UId="1009">
+    <Constant UId="1010">
+      <ConstantValue UId="1012">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="1013" />
+  <Token Text="AND" UId="1014" />
+  <Blank UId="1015" />
+  <Access Scope="LocalVariable" UId="1016">
+    <Symbol UId="1017">
+      <Component Name="Station_Next_Position" UId="1018">
+        <Token Text="[" UId="1019" />
+        <Access Scope="LiteralConstant" UId="1020">
+          <Constant UId="1021">
+            <ConstantValue UId="1023">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="1024" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="1025" />
+  <Token Text="=" UId="1026" />
+  <Blank UId="1027" />
+  <Access Scope="LiteralConstant" UId="1028">
+    <Constant UId="1029">
+      <ConstantValue UId="1031">11</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="1032" />
+  <Token Text="THEN" UId="1033" />
+  <NewLine UId="1034" />
+  <Blank Num="32" UId="1035" />
+  <Access Scope="LocalVariable" UId="1036">
+    <Symbol UId="1037">
+      <Component Name="Station_Next_Position" UId="1038">
+        <Token Text="[" UId="1039" />
+        <Access Scope="LiteralConstant" UId="1040">
+          <Constant UId="1041">
+            <ConstantValue UId="1043">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="1044" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="1045" />
+  <Token Text=":=" UId="1046" />
+  <Blank UId="1047" />
+  <Access Scope="LiteralConstant" UId="1048">
+    <Constant UId="1049">
+      <ConstantValue UId="1051">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1052" />
+  <NewLine UId="1053" />
+  <Blank Num="32" UId="1054" />
+  <Access Scope="LocalVariable" UId="1055">
+    <Symbol UId="1056">
+      <Component Name="Station_Next_Position" UId="1057">
+        <Token Text="[" UId="1058" />
+        <Access Scope="LiteralConstant" UId="1059">
+          <Constant UId="1060">
+            <ConstantValue UId="1062">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="1063" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="1064" />
+  <Token Text=":=" UId="1065" />
+  <Blank UId="1066" />
+  <Access Scope="LiteralConstant" UId="1067">
+    <Constant UId="1068">
+      <ConstantValue UId="1070">12</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1071" />
+  <NewLine UId="1072" />
+  <Blank Num="28" UId="1073" />
+  <Token Text="ELSE" UId="1074" />
+  <NewLine UId="1075" />
+  <Blank Num="32" UId="1076" />
+  <Access Scope="LocalVariable" UId="1077">
+    <Symbol UId="1078">
+      <Component Name="Station_Next_Position" UId="1079">
+        <Token Text="[" UId="1080" />
+        <Access Scope="LiteralConstant" UId="1081">
+          <Constant UId="1082">
+            <ConstantValue UId="1084">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="1085" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="1086" />
+  <Token Text=":=" UId="1087" />
+  <Blank UId="1088" />
+  <Access Scope="LocalVariable" UId="1089">
+    <Symbol UId="1090">
+      <Component Name="Station_Next_Position" UId="1091">
+        <Token Text="[" UId="1092" />
+        <Access Scope="LiteralConstant" UId="1093">
+          <Constant UId="1094">
+            <ConstantValue UId="1096">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="1097" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="1098" />
+  <Token Text="+" UId="1099" />
+  <Blank UId="1100" />
+  <Access Scope="LiteralConstant" UId="1101">
+    <Constant UId="1102">
+      <ConstantValue UId="1104">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1105" />
+  <NewLine UId="1106" />
+  <Blank Num="28" UId="1107" />
+  <Token Text="END_IF" UId="1108" />
+  <Token Text=";" UId="1109" />
+  <NewLine UId="1110" />
+  <Blank Num="24" UId="1111" />
+  <Token Text="ELSE" UId="1112" />
+  <NewLine UId="1113" />
+  <Blank Num="28" UId="1114" />
+  <Access Scope="LocalVariable" UId="1115">
+    <Symbol UId="1116">
+      <Component Name="CanMove" UId="1117" />
+    </Symbol>
+  </Access>
+  <Blank UId="1118" />
+  <Token Text=":=" UId="1119" />
+  <Blank UId="1120" />
+  <Access Scope="LiteralConstant" UId="1121">
+    <Constant UId="1122">
+      <ConstantValue UId="1124">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1125" />
+  <NewLine UId="1126" />
+  <Blank Num="24" UId="1127" />
+  <Token Text="END_IF" UId="1128" />
+  <Token Text=";" UId="1129" />
+  <NewLine UId="1130" />
+  <Blank Num="20" UId="1131" />
+  <Token Text="ELSE" UId="1132" />
+  <NewLine UId="1133" />
+  <Blank Num="24" UId="1134" />
+  <Access Scope="LocalVariable" UId="1135">
+    <Symbol UId="1136">
+      <Component Name="CanMove" UId="1137" />
+    </Symbol>
+  </Access>
+  <Blank UId="1138" />
+  <Token Text=":=" UId="1139" />
+  <Blank UId="1140" />
+  <Access Scope="LiteralConstant" UId="1141">
+    <Constant UId="1142">
+      <ConstantValue UId="1144">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1145" />
+  <NewLine UId="1146" />
+  <Blank Num="20" UId="1147" />
+  <Token Text="END_IF" UId="1148" />
+  <Token Text=";" UId="1149" />
+  <NewLine UId="1150" />
+  <Blank Num="12" UId="1151" />
+  <Token Text="END_CASE" UId="1152" />
+  <Token Text=";" UId="1153" />
+  <NewLine UId="1154" />
+  <Blank Num="12" UId="1155" />
+  <NewLine UId="1156" />
+  <Blank Num="12" UId="1157" />
+  <Access Scope="GlobalVariable" UId="1158">
+    <Symbol UId="1159">
+      <Component Name="Pallets_Stations" UId="1160">
+        <BooleanAttribute Name="HasQuotes" UId="1161">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="1162" />
+      <Component Name="Pallets" UId="1163">
+        <Token Text="[" UId="1164" />
+        <Access Scope="LocalVariable" UId="1165">
+          <Symbol UId="1166">
+            <Component Name="k" UId="1167" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="1168" />
+      </Component>
+      <Token Text="." UId="1169" />
+      <Component Name="Station_Current_Position" UId="1170" />
+    </Symbol>
+  </Access>
+  <Blank UId="1171" />
+  <Token Text=":=" UId="1172" />
+  <Blank UId="1173" />
+  <Access Scope="LocalVariable" UId="1174">
+    <Symbol UId="1175">
+      <Component Name="Station_Next_Position" UId="1176" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="1177" />
+  <NewLine UId="1178" />
+  <Blank Num="12" UId="1179" />
+  <NewLine UId="1180" />
+  <Blank Num="8" UId="1181" />
+  <Token Text="ELSE" UId="1182" />
+  <NewLine UId="1183" />
+  <Blank Num="12" UId="1184" />
+  <Access Scope="LocalVariable" UId="1185">
+    <Symbol UId="1186">
+      <Component Name="CanMove" UId="1187" />
+    </Symbol>
+  </Access>
+  <Blank UId="1188" />
+  <Token Text=":=" UId="1189" />
+  <Blank UId="1190" />
+  <Access Scope="LiteralConstant" UId="1191">
+    <Constant UId="1192">
+      <ConstantValue UId="1194">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1195" />
+  <Blank UId="1196" />
+  <LineComment UId="1197">
+    <Text UId="1198"> żaden pallet nie był wybrany</Text>
+  </LineComment>
+  <NewLine UId="1199" />
+  <Blank Num="8" UId="1200" />
+  <Token Text="END_IF" UId="1201" />
+  <Token Text=";" UId="1202" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Sprawdzenie, które elementy sa wybrane i nadanie im nowej pozycji</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="8" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="9" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FB>
+</Document>

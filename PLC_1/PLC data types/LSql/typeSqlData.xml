@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Types.PlcStruct ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="None">
+    <Member Name="tdsHeader" Datatype="&quot;LSql_typePacketHeader&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="None">
+          <Member Name="type" Datatype="Byte">
+            <Comment>
+              <MultiLanguageText Lang="en-US">type of TDS package (4 = Server Response)</MultiLanguageText>
+            </Comment>
+          </Member>
+          <Member Name="status" Datatype="Byte">
+            <Comment>
+              <MultiLanguageText Lang="en-US">status of the TDS package (1= last package, 0 = more packages follow)</MultiLanguageText>
+            </Comment>
+          </Member>
+          <Member Name="length" Datatype="UInt">
+            <Comment>
+              <MultiLanguageText Lang="en-US">length of the TDS response</MultiLanguageText>
+            </Comment>
+          </Member>
+          <Member Name="spId" Datatype="Word">
+            <Comment>
+              <MultiLanguageText Lang="en-US">process id of the SQL server</MultiLanguageText>
+            </Comment>
+          </Member>
+          <Member Name="packetID" Datatype="Byte">
+            <Comment>
+              <MultiLanguageText Lang="en-US">id of one message for a paket</MultiLanguageText>
+            </Comment>
+          </Member>
+          <Member Name="window" Datatype="Byte">
+            <Comment>
+              <MultiLanguageText Lang="en-US">not used  - should be ignored by user</MultiLanguageText>
+            </Comment>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="columnCount" Datatype="UInt">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">number of received columns</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="columns" Datatype="Array[0..&quot;LSQL_NUMBER_OF_COLUMNS_MAX&quot;] of &quot;LSql_typeColumn&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="rowDataStart" Datatype="UInt">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">start address byte of rowData in TDS telegram</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="rowDataLength" Datatype="UDInt">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">area length of rowData in TDS telegram</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="rowCount" Datatype="UDInt">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">number of rows</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="rowOverflow" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">true = more rows (RowCount) than available UDT tokenRows</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="rows" Datatype="Array[0..&quot;LSQL_NUMBER_OF_ROWS_MAX&quot;] of &quot;typeTokenRow&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="errorToken" Datatype="&quot;LSql_typeErrorToken&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <Name>typeSqlData</Name>
+      <Namespace />
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>structure for SQL data received from SELECT command</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>typeSqlData</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Types.PlcStruct>
+</Document>

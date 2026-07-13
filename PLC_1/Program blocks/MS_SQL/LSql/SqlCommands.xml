@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <HeaderAuthor>SIEMENS SUP Applications</HeaderAuthor>
+      <HeaderVersion>1.1</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="currentSqlCommand" Datatype="USInt">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">index of current SQL command to be executed (zero-based)</MultiLanguageText>
+      </Comment>
+      <StartValue>6</StartValue>
+    </Member>
+    <Member Name="sqlCommands" Datatype="Array[0..25] of String">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">array of SQL command strings</MultiLanguageText>
+      </Comment>
+      <Subelement Path="0">
+        <StartValue>'insert into PLCDATA_1 values (7,8, 9)'</StartValue>
+      </Subelement>
+      <Subelement Path="1">
+        <StartValue>'Update PLCDATA_1 set IntegerValue1 = 7, IntegerValue2 = 7, IntegerValue3 = 7 where IntegerValue2 = 7'</StartValue>
+      </Subelement>
+      <Subelement Path="2">
+        <StartValue>'Select IntegerValue1 from PLCDATA_1'</StartValue>
+      </Subelement>
+      <Subelement Path="3">
+        <StartValue>'Select Fruit from PLCDATA_2 where Amount != 0'</StartValue>
+      </Subelement>
+      <Subelement Path="4">
+        <StartValue>'Select Fruit from PLCDATA_2 where color = $'red$''</StartValue>
+      </Subelement>
+      <Subelement Path="5">
+        <StartValue>'insert into PLCDATA_3 values (7, $'2020-01-01 10:23:24.125$')'</StartValue>
+      </Subelement>
+      <Subelement Path="6">
+        <StartValue>'SELECT TOP (3) * FROM PLCDATA ORDER BY Temperature'</StartValue>
+      </Subelement>
+      <Subelement Path="7">
+        <StartValue>'execute myProcedureIn @input1=30, @input2=6, @input3=84'</StartValue>
+      </Subelement>
+      <Subelement Path="8">
+        <StartValue>'execute myProcedureSelect'</StartValue>
+      </Subelement>
+      <Subelement Path="9">
+        <StartValue>'declare @myout1 char(30),  @myout2 int execute myProcedureInOut @in1=$'pear$', @in2=$'yellow$', @in3=3, @out1=@myout1 OUTPUT, @out2=@myout2 OUTPUT select @myout1 as $'myOut1$', @myOut2 as $'myOut2$''</StartValue>
+      </Subelement>
+      <Subelement Path="10">
+        <StartValue>'INSERT INTO [dbo].[errors] ([Text]) VALUES ($'remotetest$')'</StartValue>
+      </Subelement>
+      <Subelement Path="11">
+        <StartValue>'SELECT TOP (10) ValueReal1, ValueReal2, ValueReal3, ValueReal4, ValueReal5, ValueReal6, ValueReal7, ValueReal8, ValueReal9 FROM TestJulian'</StartValue>
+      </Subelement>
+      <Subelement Path="12">
+        <StartValue>'SELECT * FROM KompressionLog ORDER BY StentNr'</StartValue>
+      </Subelement>
+      <Subelement Path="13">
+        <StartValue>'execute SelectProc1'</StartValue>
+      </Subelement>
+      <Subelement Path="14">
+        <StartValue>'insert into TestDateTime values ($'01.01.1990 12:00:00$')'</StartValue>
+      </Subelement>
+      <Subelement Path="15">
+        <StartValue>'exec SetDateTime @Input1 = $'07.30.1990 12:00:00$''</StartValue>
+      </Subelement>
+      <Subelement Path="16">
+        <StartValue>'SELECT TOP (100) MesId, MesId2, MesId3 FROM TestJulian'</StartValue>
+      </Subelement>
+      <Subelement Path="17">
+        <StartValue>'SELECT TOP (1) DateTime FROM TestDateTime'</StartValue>
+      </Subelement>
+      <Subelement Path="18">
+        <StartValue>'SELECT TOP 2 * FROM FunctionTest ORDER BY ID'</StartValue>
+      </Subelement>
+      <Subelement Path="19">
+        <StartValue>'INSERT INTO [dbo].[FunctionTest] DEFAULT VALUES'</StartValue>
+      </Subelement>
+      <Subelement Path="20">
+        <StartValue>'use [SQLFromPLC] declare @myout1 bit  execute  NachtragDatensaetze @inDateiPfad= $'C:\Program Files\Microsoft SQL Server\MSSQL14.SQLEXPRESS\MSSQL\DATA\iO.csv$', @outDone=@myout1 OUTPUT select @myout1 as $'myOut1$''</StartValue>
+      </Subelement>
+      <Subelement Path="21">
+        <StartValue>'UPDATE [dbo].[KompressionLog] SET LotNummer = $'Test234$' WHERE KammerId = $'3$''</StartValue>
+      </Subelement>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>0</MemoryReserve>
+      <Name>SqlCommands</Name>
+      <Namespace />
+      <Number>3</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>DB for holding the command strings for a Tabular Data Stream command to a SQL database</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>SqlCommands</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

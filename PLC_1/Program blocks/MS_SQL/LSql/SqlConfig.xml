@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <HeaderAuthor>SIEMENS SUP Applications</HeaderAuthor>
+      <HeaderVersion>1.1</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="connectionSettings" Datatype="&quot;LSql_typeConnectionSettings&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="None">
+          <Member Name="interfaceSettings" Datatype="TCON_IP_v4" Version="1.0">
+            <Sections>
+              <Section Name="None">
+                <Member Name="InterfaceId" Datatype="HW_ANY">
+                  <StartValue>64</StartValue>
+                </Member>
+                <Member Name="ID" Datatype="CONN_OUC">
+                  <StartValue>16#10</StartValue>
+                </Member>
+                <Member Name="ActiveEstablished" Datatype="Bool">
+                  <StartValue>true</StartValue>
+                </Member>
+                <Member Name="RemoteAddress" Datatype="IP_V4" Version="1.0">
+                  <Sections>
+                    <Section Name="None">
+                      <Member Name="ADDR" Datatype="Array[1..4] of Byte">
+                        <Subelement Path="1">
+                          <StartValue>10</StartValue>
+                        </Subelement>
+                        <Subelement Path="2">
+                          <StartValue>30</StartValue>
+                        </Subelement>
+                        <Subelement Path="3">
+                          <StartValue>30</StartValue>
+                        </Subelement>
+                        <Subelement Path="4">
+                          <StartValue>222</StartValue>
+                        </Subelement>
+                      </Member>
+                    </Section>
+                  </Sections>
+                </Member>
+                <Member Name="RemotePort" Datatype="UInt">
+                  <StartValue>1433</StartValue>
+                </Member>
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="loginInformation" Datatype="&quot;LSql_typeLoginInformation&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="userName" Datatype="String">
+                  <StartValue>'SQL_S71500'</StartValue>
+                </Member>
+                <Member Name="password" Datatype="String">
+                  <StartValue>'SQL_S71500'</StartValue>
+                </Member>
+                <Member Name="serverName" Datatype="String">
+                  <StartValue>'SQLEXPRESS'</StartValue>
+                </Member>
+                <Member Name="databaseName" Datatype="String">
+                  <StartValue>'S71500SQLDB'</StartValue>
+                </Member>
+              </Section>
+            </Sections>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="enableLSql" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">enables LSql block (starts connection and login, waits for execute commands)</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="diagnostics" Datatype="&quot;LSql_typeDiagnostics&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="executeSqlCommand" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">trigger to execute a single sql command. EnableLSql must be true before triggering</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>SqlConfig</Name>
+      <Namespace />
+      <Number>7</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>DB for providing the connection settings for a Tabuar Data Stream to a SQL database</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>SqlConfig</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

@@ -1,0 +1,597 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.FC ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input" />
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Temp">
+    <Member Name="tempDataReceived" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="en-US">temp flag for 'dataReceived' from FB 'LSql_Microsoft'</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="tempAnalyzeDone" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="en-US">temp flag for 'done' from FB 'AnalyzeTokens'</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="tempMetaDataAndRowsAvailable" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="en-US">temp flag for 'metaDataAndRowsAvailable' from FB 'AnalyzeTokens'</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+  <Section Name="Constant" />
+  <Section Name="Return">
+    <Member Name="Ret_Val" Datatype="Void" />
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <Name>SQL</Name>
+      <Namespace />
+      <Number>2</Number>
+      <ProgrammingLanguage>LAD</ProgrammingLanguage>
+      <SetENOAutomatically>false</SetENOAutomatically>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="SqlConfig" />
+        <Component Name="enableLSql" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="SqlConfig" />
+        <Component Name="connectionSettings" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="SqlCommands" />
+        <Component Name="sqlCommands" AccessModifier="Array">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="SqlCommands" />
+              <Component Name="currentSqlCommand" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="SqlConfig" />
+        <Component Name="executeSqlCommand" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="SqlTdsReceive" />
+        <Component Name="tdsTelegramArray" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="SqlConfig" />
+        <Component Name="diagnostics" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="27">
+      <Symbol>
+        <Component Name="tempDataReceived" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="SqlTdsReceive" />
+        <Component Name="tdsTelegramArrayLength" />
+      </Symbol>
+    </Access>
+    <Call UId="29">
+      <CallInfo Name="LSql_Microsoft" BlockType="FB">
+        <Instance Scope="GlobalVariable" UId="30">
+          <Component Name="InstLSql_Microsoft" />
+        </Instance>
+        <Parameter Name="enable" Section="Input" Type="Bool" />
+        <Parameter Name="connectionSettings" Section="Input" Type="&quot;LSql_typeConnectionSettings&quot;" />
+        <Parameter Name="command" Section="Input" Type="String" />
+        <Parameter Name="executeCommand" Section="Input" Type="Bool" />
+        <Parameter Name="valid" Section="Output" Type="Bool" />
+        <Parameter Name="busy" Section="Output" Type="Bool" />
+        <Parameter Name="error" Section="Output" Type="Bool" />
+        <Parameter Name="status" Section="Output" Type="Word" />
+        <Parameter Name="diagnostics" Section="Output" Type="&quot;LSql_typeDiagnostics&quot;" />
+        <Parameter Name="dataReceived" Section="Output" Type="Bool" />
+        <Parameter Name="tdsTelegramArrayLength" Section="Output" Type="UDInt" />
+        <Parameter Name="tdsTelegramArray" Section="InOut" Type="Array[*] of Byte" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="35">
+      <Powerrail />
+      <NameCon UId="29" Name="en" />
+    </Wire>
+    <Wire UId="36">
+      <IdentCon UId="21" />
+      <NameCon UId="29" Name="enable" />
+    </Wire>
+    <Wire UId="37">
+      <IdentCon UId="22" />
+      <NameCon UId="29" Name="connectionSettings" />
+    </Wire>
+    <Wire UId="38">
+      <IdentCon UId="23" />
+      <NameCon UId="29" Name="command" />
+    </Wire>
+    <Wire UId="39">
+      <IdentCon UId="24" />
+      <NameCon UId="29" Name="executeCommand" />
+    </Wire>
+    <Wire UId="40">
+      <IdentCon UId="25" />
+      <NameCon UId="29" Name="tdsTelegramArray" />
+    </Wire>
+    <Wire UId="41">
+      <NameCon UId="29" Name="valid" />
+      <OpenCon UId="31" />
+    </Wire>
+    <Wire UId="42">
+      <NameCon UId="29" Name="busy" />
+      <OpenCon UId="32" />
+    </Wire>
+    <Wire UId="43">
+      <NameCon UId="29" Name="error" />
+      <OpenCon UId="33" />
+    </Wire>
+    <Wire UId="44">
+      <NameCon UId="29" Name="status" />
+      <OpenCon UId="34" />
+    </Wire>
+    <Wire UId="45">
+      <NameCon UId="29" Name="diagnostics" />
+      <IdentCon UId="26" />
+    </Wire>
+    <Wire UId="46">
+      <NameCon UId="29" Name="dataReceived" />
+      <IdentCon UId="27" />
+    </Wire>
+    <Wire UId="47">
+      <NameCon UId="29" Name="tdsTelegramArrayLength" />
+      <IdentCon UId="28" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>this network handles the TDS connection and communication</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>TDS Connection and Communication Handling</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="SqlTdsReceive" />
+        <Component Name="tdsTelegramArrayLength" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="tempDataReceived" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="SqlTdsReceive" />
+        <Component Name="tdsTelegramArray" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="SqlData" />
+        <Component Name="data" />
+        <Component Name="columns" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="25">
+      <Symbol>
+        <Component Name="tempAnalyzeDone" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="26">
+      <Symbol>
+        <Component Name="tempMetaDataAndRowsAvailable" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
+      <Symbol>
+        <Component Name="SqlData" />
+        <Component Name="data" />
+        <Component Name="tdsHeader" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="SqlData" />
+        <Component Name="data" />
+        <Component Name="columnCount" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="29">
+      <Symbol>
+        <Component Name="SqlData" />
+        <Component Name="data" />
+        <Component Name="rowCount" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="30">
+      <Symbol>
+        <Component Name="SqlData" />
+        <Component Name="data" />
+        <Component Name="rowDataStart" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="31">
+      <Symbol>
+        <Component Name="SqlData" />
+        <Component Name="data" />
+        <Component Name="rowDataLength" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="32">
+      <Symbol>
+        <Component Name="SqlData" />
+        <Component Name="data" />
+        <Component Name="errorToken" />
+      </Symbol>
+    </Access>
+    <Call UId="33">
+      <CallInfo Name="AnalyzeTokens" BlockType="FB">
+        <Instance Scope="GlobalVariable" UId="34">
+          <Component Name="InstAnalyzeTokens" />
+        </Instance>
+        <Parameter Name="tdsTelegramArrayLength" Section="Input" Type="UDInt" />
+        <Parameter Name="execute" Section="Input" Type="Bool" />
+        <Parameter Name="status" Section="Output" Type="Word" />
+        <Parameter Name="error" Section="Output" Type="Bool" />
+        <Parameter Name="busy" Section="Output" Type="Bool" />
+        <Parameter Name="done" Section="Output" Type="Bool" />
+        <Parameter Name="metaDataAndRowsAvailable" Section="Output" Type="Bool" />
+        <Parameter Name="tdsHeader" Section="Output" Type="&quot;LSql_typePacketHeader&quot;" />
+        <Parameter Name="columnCount" Section="Output" Type="UInt" />
+        <Parameter Name="rowCount" Section="Output" Type="UDInt" />
+        <Parameter Name="rowDataStart" Section="Output" Type="UInt" />
+        <Parameter Name="rowDataLength" Section="Output" Type="UDInt" />
+        <Parameter Name="errorToken" Section="Output" Type="&quot;LSql_typeErrorToken&quot;" />
+        <Parameter Name="tdsTelegramArray" Section="InOut" Type="Array[*] of Byte" />
+        <Parameter Name="columns" Section="InOut" Type="Array[*] of &quot;LSql_typeColumn&quot;" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="38">
+      <Powerrail />
+      <NameCon UId="33" Name="en" />
+    </Wire>
+    <Wire UId="39">
+      <IdentCon UId="21" />
+      <NameCon UId="33" Name="tdsTelegramArrayLength" />
+    </Wire>
+    <Wire UId="40">
+      <IdentCon UId="22" />
+      <NameCon UId="33" Name="execute" />
+    </Wire>
+    <Wire UId="41">
+      <IdentCon UId="23" />
+      <NameCon UId="33" Name="tdsTelegramArray" />
+    </Wire>
+    <Wire UId="42">
+      <IdentCon UId="24" />
+      <NameCon UId="33" Name="columns" />
+    </Wire>
+    <Wire UId="43">
+      <NameCon UId="33" Name="status" />
+      <OpenCon UId="35" />
+    </Wire>
+    <Wire UId="44">
+      <NameCon UId="33" Name="error" />
+      <OpenCon UId="36" />
+    </Wire>
+    <Wire UId="45">
+      <NameCon UId="33" Name="busy" />
+      <OpenCon UId="37" />
+    </Wire>
+    <Wire UId="46">
+      <NameCon UId="33" Name="done" />
+      <IdentCon UId="25" />
+    </Wire>
+    <Wire UId="47">
+      <NameCon UId="33" Name="metaDataAndRowsAvailable" />
+      <IdentCon UId="26" />
+    </Wire>
+    <Wire UId="48">
+      <NameCon UId="33" Name="tdsHeader" />
+      <IdentCon UId="27" />
+    </Wire>
+    <Wire UId="49">
+      <NameCon UId="33" Name="columnCount" />
+      <IdentCon UId="28" />
+    </Wire>
+    <Wire UId="50">
+      <NameCon UId="33" Name="rowCount" />
+      <IdentCon UId="29" />
+    </Wire>
+    <Wire UId="51">
+      <NameCon UId="33" Name="rowDataStart" />
+      <IdentCon UId="30" />
+    </Wire>
+    <Wire UId="52">
+      <NameCon UId="33" Name="rowDataLength" />
+      <IdentCon UId="31" />
+    </Wire>
+    <Wire UId="53">
+      <NameCon UId="33" Name="errorToken" />
+      <IdentCon UId="32" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>this network anaylzes the raw telegram data (tdsTelegramArray) and splits them into TDS header, ColumnMetaData and row information</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Analyze ColumnMetaData and Tokens</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="D" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="SqlData" />
+        <Component Name="data" />
+        <Component Name="columnCount" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="SqlData" />
+        <Component Name="data" />
+        <Component Name="columns" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="SqlData" />
+        <Component Name="data" />
+        <Component Name="rowCount" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="SqlData" />
+        <Component Name="data" />
+        <Component Name="rowDataStart" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="SqlData" />
+        <Component Name="data" />
+        <Component Name="rowDataLength" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalConstant" UId="26">
+      <Constant Name="LSQL_NUMBER_OF_ROWS_PER_CYCLE" />
+    </Access>
+    <Access Scope="LocalVariable" UId="27">
+      <Symbol>
+        <Component Name="tempMetaDataAndRowsAvailable" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="SqlTdsReceive" />
+        <Component Name="tdsTelegramArray" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="29">
+      <Symbol>
+        <Component Name="SqlData" />
+        <Component Name="data" />
+        <Component Name="rows" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="30">
+      <Symbol>
+        <Component Name="SqlData" />
+        <Component Name="data" />
+        <Component Name="rowOverflow" />
+      </Symbol>
+    </Access>
+    <Call UId="31">
+      <CallInfo Name="DeserializeRows" BlockType="FB">
+        <Instance Scope="GlobalVariable" UId="32">
+          <Component Name="InstDeserializeRows" />
+        </Instance>
+        <Parameter Name="columnCount" Section="Input" Type="UInt" />
+        <Parameter Name="columns" Section="Input" Type="Array[0..&quot;LSQL_NUMBER_OF_COLUMNS_MAX&quot;] of &quot;LSql_typeColumn&quot;" />
+        <Parameter Name="rowCount" Section="Input" Type="UDInt" />
+        <Parameter Name="rowDataStart" Section="Input" Type="UInt" />
+        <Parameter Name="rowDataLength" Section="Input" Type="UDInt" />
+        <Parameter Name="numberOfRowsPerCycle" Section="Input" Type="USInt" />
+        <Parameter Name="execute" Section="Input" Type="Bool" />
+        <Parameter Name="busy" Section="Output" Type="Bool" />
+        <Parameter Name="done" Section="Output" Type="Bool" />
+        <Parameter Name="error" Section="Output" Type="Bool" />
+        <Parameter Name="warning" Section="Output" Type="Bool" />
+        <Parameter Name="rowOverflow" Section="Output" Type="Bool" />
+        <Parameter Name="status" Section="Output" Type="Word" />
+        <Parameter Name="tdsTelegramArray" Section="InOut" Type="Array[*] of Byte" />
+        <Parameter Name="rows" Section="InOut" Type="Array[*] of &quot;typeTokenRow&quot;" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="38">
+      <Powerrail />
+      <NameCon UId="31" Name="en" />
+    </Wire>
+    <Wire UId="39">
+      <IdentCon UId="21" />
+      <NameCon UId="31" Name="columnCount" />
+    </Wire>
+    <Wire UId="40">
+      <IdentCon UId="22" />
+      <NameCon UId="31" Name="columns" />
+    </Wire>
+    <Wire UId="41">
+      <IdentCon UId="23" />
+      <NameCon UId="31" Name="rowCount" />
+    </Wire>
+    <Wire UId="42">
+      <IdentCon UId="24" />
+      <NameCon UId="31" Name="rowDataStart" />
+    </Wire>
+    <Wire UId="43">
+      <IdentCon UId="25" />
+      <NameCon UId="31" Name="rowDataLength" />
+    </Wire>
+    <Wire UId="44">
+      <IdentCon UId="26" />
+      <NameCon UId="31" Name="numberOfRowsPerCycle" />
+    </Wire>
+    <Wire UId="45">
+      <IdentCon UId="27" />
+      <NameCon UId="31" Name="execute" />
+    </Wire>
+    <Wire UId="46">
+      <IdentCon UId="28" />
+      <NameCon UId="31" Name="tdsTelegramArray" />
+    </Wire>
+    <Wire UId="47">
+      <IdentCon UId="29" />
+      <NameCon UId="31" Name="rows" />
+    </Wire>
+    <Wire UId="48">
+      <NameCon UId="31" Name="busy" />
+      <OpenCon UId="33" />
+    </Wire>
+    <Wire UId="49">
+      <NameCon UId="31" Name="done" />
+      <OpenCon UId="34" />
+    </Wire>
+    <Wire UId="50">
+      <NameCon UId="31" Name="error" />
+      <OpenCon UId="35" />
+    </Wire>
+    <Wire UId="51">
+      <NameCon UId="31" Name="warning" />
+      <OpenCon UId="36" />
+    </Wire>
+    <Wire UId="52">
+      <NameCon UId="31" Name="rowOverflow" />
+      <IdentCon UId="30" />
+    </Wire>
+    <Wire UId="53">
+      <NameCon UId="31" Name="status" />
+      <OpenCon UId="37" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="E" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>this network uses the ColumnMetaData and rowCount information in order to transform the row payload of the tdsTelegramArray (Byte) into tokenRows of use case specific structure</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="10" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Payload Transformation</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="12" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="13" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FC>
+</Document>
