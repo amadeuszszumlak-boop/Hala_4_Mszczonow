@@ -1,0 +1,2943 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.FB ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input">
+    <Member Name="Source_X" Datatype="SInt" />
+    <Member Name="Source_Z" Datatype="SInt" />
+    <Member Name="Destination_X" Datatype="SInt" />
+    <Member Name="Destination_Z" Datatype="SInt" />
+    <Member Name="Stations" Datatype="Array[0..3] of &quot;Station&quot;" />
+    <Member Name="Station_ST31" Datatype="&quot;Station&quot;" />
+    <Member Name="Station_ST32" Datatype="&quot;Station&quot;" />
+    <Member Name="Station_ST34" Datatype="&quot;Station&quot;" />
+    <Member Name="Station_Lift" Datatype="&quot;Station&quot;" />
+    <Member Name="Lift_On_The_Floor" Datatype="Bool" />
+    <Member Name="Lift_On_Num_Floor" Datatype="SInt" />
+    <Member Name="Manual" Datatype="Bool" />
+  </Section>
+  <Section Name="Output">
+    <Member Name="oButton_StS_StD_LED" Datatype="Bool" />
+    <Member Name="oStatus_HMI_StS_StD" Datatype="Bool" />
+    <Member Name="oStatus_HMI_StD_StS" Datatype="Bool" />
+    <Member Name="oCentering" Datatype="Bool" />
+    <Member Name="Stop_Drive_Button" Datatype="Bool" />
+    <Member Name="Stop_Drive_HMI" Datatype="Bool" />
+  </Section>
+  <Section Name="InOut">
+    <Member Name="iDriveST31_Param" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
+    <Member Name="oDriveST31_Param" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_STATUS_V2.1&quot;" />
+    <Member Name="iDriveST32_Param" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
+    <Member Name="oDriveST32_Param" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_STATUS_V2.1&quot;" />
+    <Member Name="iDriveST34_Param" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
+    <Member Name="oDriveST34_Param" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_STATUS_V2.1&quot;" />
+    <Member Name="iDriveLift_Param" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
+    <Member Name="oDriveLiftParam" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_STATUS_V2.1&quot;" />
+    <Member Name="HMI_StS_StD" Datatype="Bool" />
+    <Member Name="HMI_StD_StS" Datatype="Bool" />
+  </Section>
+  <Section Name="Static">
+    <Member Name="Drive_To_Destination" Datatype="Bool" />
+    <Member Name="Set_Speed" Datatype="Int" />
+    <Member Name="Set_Speed_Reverse" Datatype="Int" />
+    <Member Name="CommunicationOk" Datatype="Bool" />
+    <Member Name="Jog_StS" Datatype="Bool" />
+    <Member Name="Jog_StD" Datatype="Bool" />
+    <Member Name="CenteringStep" Datatype="Int" />
+    <Member Name="TON_Centering" Datatype="TON_TIME" Version="1.0" />
+    <Member Name="trigTimeout" Datatype="R_TRIG" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Trig_StS_StD" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Trig_StD_StS" Datatype="Bool" />
+    <Member Name="Reset_StS_StD" Datatype="Bool" />
+    <Member Name="Reset_StD_StS" Datatype="Bool" />
+    <Member Name="Timer_Drive_Error_Button" Datatype="TON_TIME" Version="1.0" />
+    <Member Name="Timer_Drive_Error_HMI" Datatype="TON_TIME" Version="1.0" />
+    <Member Name="STOP_DRIVERS" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="PathFree" Datatype="Bool" />
+  </Section>
+  <Section Name="Temp">
+    <Member Name="LED_StD_STS" Datatype="Bool" />
+    <Member Name="LED_StS_STD" Datatype="Bool" />
+    <Member Name="minIdx" Datatype="SInt" />
+    <Member Name="maxIdx" Datatype="SInt" />
+    <Member Name="i" Datatype="SInt" />
+  </Section>
+  <Section Name="Constant">
+    <Member Name="ACC" Datatype="Int">
+      <StartValue>300</StartValue>
+    </Member>
+    <Member Name="DCC" Datatype="Int">
+      <StartValue>400</StartValue>
+    </Member>
+    <Member Name="SPEED_BACK" Datatype="Int">
+      <StartValue>-100</StartValue>
+    </Member>
+    <Member Name="SPEED_FWD" Datatype="Int">
+      <StartValue>100</StartValue>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>Pallet_Transport</Name>
+      <Namespace />
+      <Number>14</Number>
+      <ProgrammingLanguage>LAD</ProgrammingLanguage>
+      <SetENOAutomatically>false</SetENOAutomatically>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="Jog_StS" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="Jog_StD" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="23">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="LocalVariable" UId="24">
+      <Symbol>
+        <Component Name="Set_Speed" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="25">
+      <Symbol>
+        <Component Name="LED_StS_STD" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="26">
+      <Symbol>
+        <Component Name="LED_StD_STS" />
+      </Symbol>
+    </Access>
+    <Part Name="RCoil" UId="27" />
+    <Part Name="RCoil" UId="28" />
+    <Part Name="Move" UId="29" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+    </Part>
+    <Part Name="RCoil" UId="30" />
+    <Part Name="RCoil" UId="31" />
+  </Parts>
+  <Wires>
+    <Wire UId="32">
+      <Powerrail />
+      <NameCon UId="27" Name="in" />
+      <NameCon UId="28" Name="in" />
+      <NameCon UId="29" Name="en" />
+      <NameCon UId="30" Name="in" />
+      <NameCon UId="31" Name="in" />
+    </Wire>
+    <Wire UId="33">
+      <IdentCon UId="21" />
+      <NameCon UId="27" Name="operand" />
+    </Wire>
+    <Wire UId="34">
+      <IdentCon UId="22" />
+      <NameCon UId="28" Name="operand" />
+    </Wire>
+    <Wire UId="35">
+      <IdentCon UId="23" />
+      <NameCon UId="29" Name="in" />
+    </Wire>
+    <Wire UId="36">
+      <NameCon UId="29" Name="out1" />
+      <IdentCon UId="24" />
+    </Wire>
+    <Wire UId="37">
+      <IdentCon UId="25" />
+      <NameCon UId="30" Name="operand" />
+    </Wire>
+    <Wire UId="38">
+      <IdentCon UId="26" />
+      <NameCon UId="31" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Reset commands</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <Access Scope="LocalVariable" UId="21">
+    <Symbol UId="22">
+      <Component Name="Timer_Drive_Error_HMI" UId="23" />
+    </Symbol>
+  </Access>
+  <Access Scope="Call" UId="24">
+    <Instruction UId="25">
+      <Token Text="(" UId="26" />
+      <NewLine UId="27" />
+      <Blank Num="23" UId="28" />
+      <Parameter Name="IN" UId="29">
+        <Blank UId="30" />
+        <Token Text=":=" UId="31" />
+        <NewLine UId="32" />
+        <Blank Num="23" UId="33" />
+        <Token Text="(" UId="34" />
+        <NewLine UId="35" />
+        <Blank Num="23" UId="36" />
+        <Access Scope="LocalVariable" UId="37">
+          <Symbol UId="38">
+            <Component Name="HMI_StS_StD" UId="39" />
+          </Symbol>
+        </Access>
+        <Blank UId="40" />
+        <Token Text="OR" UId="41" />
+        <NewLine UId="42" />
+        <Blank Num="23" UId="43" />
+        <Access Scope="LocalVariable" UId="44">
+          <Symbol UId="45">
+            <Component Name="HMI_StD_StS" UId="46" />
+          </Symbol>
+        </Access>
+        <NewLine UId="47" />
+        <Blank Num="23" UId="48" />
+        <Token Text=")" UId="49" />
+        <NewLine UId="50" />
+        <Blank Num="23" UId="51" />
+        <Token Text="AND" UId="52" />
+        <Blank UId="53" />
+        <Token Text="NOT" UId="54" />
+        <Blank UId="55" />
+        <Token Text="(" UId="56" />
+        <NewLine UId="57" />
+        <Blank Num="23" UId="58" />
+        <Access Scope="LocalVariable" UId="59">
+          <Symbol UId="60">
+            <Component Name="oDriveST31_Param" UId="61" />
+            <Token Text="." UId="62" />
+            <Component Name="x_Bit_4_Motor_turning" UId="63" />
+          </Symbol>
+        </Access>
+        <Blank UId="64" />
+        <Token Text="OR" UId="65" />
+        <NewLine UId="66" />
+        <Blank Num="23" UId="67" />
+        <Access Scope="LocalVariable" UId="68">
+          <Symbol UId="69">
+            <Component Name="oDriveST32_Param" UId="70" />
+            <Token Text="." UId="71" />
+            <Component Name="x_Bit_4_Motor_turning" UId="72" />
+          </Symbol>
+        </Access>
+        <NewLine UId="73" />
+        <Blank Num="23" UId="74" />
+        <Token Text=")" UId="75" />
+      </Parameter>
+      <Token Text="," UId="76" />
+      <NewLine UId="77" />
+      <Blank Num="23" UId="78" />
+      <Parameter Name="PT" UId="79">
+        <Blank UId="80" />
+        <Token Text=":=" UId="81" />
+        <Blank UId="82" />
+        <Access Scope="TypedConstant" UId="83">
+          <Constant UId="84">
+            <ConstantValue UId="85">T#10s</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <NewLine UId="86" />
+      <Token Text=")" UId="87" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="88" />
+  <NewLine Num="2" UId="89" />
+  <Token Text="IF" UId="90" />
+  <Blank UId="91" />
+  <Access Scope="LocalVariable" UId="92">
+    <Symbol UId="93">
+      <Component Name="Timer_Drive_Error_Button" UId="94" />
+      <Token Text="." UId="95" />
+      <Component Name="Q" UId="96" />
+    </Symbol>
+  </Access>
+  <Blank UId="97" />
+  <Token Text="THEN" UId="98" />
+  <NewLine UId="99" />
+  <Blank Num="4" UId="100" />
+  <Access Scope="LocalVariable" UId="101">
+    <Symbol UId="102">
+      <Component Name="STOP_DRIVERS" UId="103" />
+    </Symbol>
+  </Access>
+  <Blank UId="104" />
+  <Token Text=":=" UId="105" />
+  <Blank UId="106" />
+  <Access Scope="LiteralConstant" UId="107">
+    <Constant UId="108">
+      <ConstantValue UId="110">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="111" />
+  <NewLine UId="112" />
+  <Blank Num="4" UId="113" />
+  <Access Scope="LocalVariable" UId="114">
+    <Symbol UId="115">
+      <Component Name="Stop_Drive_Button" UId="116" />
+    </Symbol>
+  </Access>
+  <Blank UId="117" />
+  <Token Text=":=" UId="118" />
+  <Blank UId="119" />
+  <Access Scope="LiteralConstant" UId="120">
+    <Constant UId="121">
+      <ConstantValue UId="123">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="124" />
+  <NewLine UId="125" />
+  <Token Text="END_IF" UId="126" />
+  <Token Text=";" UId="127" />
+  <NewLine Num="2" UId="128" />
+  <Token Text="IF" UId="129" />
+  <Blank UId="130" />
+  <Access Scope="LocalVariable" UId="131">
+    <Symbol UId="132">
+      <Component Name="Timer_Drive_Error_HMI" UId="133" />
+      <Token Text="." UId="134" />
+      <Component Name="Q" UId="135" />
+    </Symbol>
+  </Access>
+  <Blank UId="136" />
+  <Token Text="THEN" UId="137" />
+  <NewLine UId="138" />
+  <Blank Num="4" UId="139" />
+  <Access Scope="LocalVariable" UId="140">
+    <Symbol UId="141">
+      <Component Name="STOP_DRIVERS" UId="142" />
+    </Symbol>
+  </Access>
+  <Blank UId="143" />
+  <Token Text=":=" UId="144" />
+  <Blank UId="145" />
+  <Access Scope="LiteralConstant" UId="146">
+    <Constant UId="147">
+      <ConstantValue UId="149">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="150" />
+  <NewLine UId="151" />
+  <Blank Num="4" UId="152" />
+  <Access Scope="LocalVariable" UId="153">
+    <Symbol UId="154">
+      <Component Name="Stop_Drive_HMI" UId="155" />
+    </Symbol>
+  </Access>
+  <Blank UId="156" />
+  <Token Text=":=" UId="157" />
+  <Blank UId="158" />
+  <Access Scope="LiteralConstant" UId="159">
+    <Constant UId="160">
+      <ConstantValue UId="162">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="163" />
+  <NewLine UId="164" />
+  <Blank Num="4" UId="165" />
+  <Access Scope="LocalVariable" UId="166">
+    <Symbol UId="167">
+      <Component Name="HMI_StS_StD" UId="168" />
+    </Symbol>
+  </Access>
+  <Blank UId="169" />
+  <Token Text=":=" UId="170" />
+  <Blank UId="171" />
+  <Access Scope="LiteralConstant" UId="172">
+    <Constant UId="173">
+      <ConstantValue UId="175">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="176" />
+  <NewLine UId="177" />
+  <Blank Num="4" UId="178" />
+  <Access Scope="LocalVariable" UId="179">
+    <Symbol UId="180">
+      <Component Name="HMI_StD_StS" UId="181" />
+    </Symbol>
+  </Access>
+  <Blank UId="182" />
+  <Token Text=":=" UId="183" />
+  <Blank UId="184" />
+  <Access Scope="LiteralConstant" UId="185">
+    <Constant UId="186">
+      <ConstantValue UId="188">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="189" />
+  <NewLine UId="190" />
+  <Token Text="END_IF" UId="191" />
+  <Token Text=";" UId="192" />
+  <NewLine Num="2" UId="193" />
+  <Token Text="IF" UId="194" />
+  <Blank UId="195" />
+  <Access Scope="GlobalVariable" UId="196">
+    <Symbol UId="197">
+      <Component Name="HMI" UId="198">
+        <BooleanAttribute Name="HasQuotes" UId="199">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="200" />
+      <Component Name="Reset_Motors" UId="201" />
+    </Symbol>
+  </Access>
+  <Blank UId="202" />
+  <Token Text="THEN" UId="203" />
+  <NewLine UId="204" />
+  <Blank Num="4" UId="205" />
+  <Access Scope="LocalVariable" UId="206">
+    <Symbol UId="207">
+      <Component Name="STOP_DRIVERS" UId="208" />
+    </Symbol>
+  </Access>
+  <Blank UId="209" />
+  <Token Text=":=" UId="210" />
+  <Blank UId="211" />
+  <Access Scope="LiteralConstant" UId="212">
+    <Constant UId="213">
+      <ConstantValue UId="215">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="216" />
+  <NewLine UId="217" />
+  <Blank Num="4" UId="218" />
+  <Access Scope="LocalVariable" UId="219">
+    <Symbol UId="220">
+      <Component Name="Stop_Drive_Button" UId="221" />
+    </Symbol>
+  </Access>
+  <Blank UId="222" />
+  <Token Text=":=" UId="223" />
+  <Blank UId="224" />
+  <Access Scope="LiteralConstant" UId="225">
+    <Constant UId="226">
+      <ConstantValue UId="228">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="229" />
+  <NewLine UId="230" />
+  <Blank Num="4" UId="231" />
+  <Access Scope="LocalVariable" UId="232">
+    <Symbol UId="233">
+      <Component Name="Stop_Drive_HMI" UId="234" />
+    </Symbol>
+  </Access>
+  <Blank UId="235" />
+  <Token Text=":=" UId="236" />
+  <Blank UId="237" />
+  <Access Scope="LiteralConstant" UId="238">
+    <Constant UId="239">
+      <ConstantValue UId="241">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="242" />
+  <NewLine UId="243" />
+  <Token Text="END_IF" UId="244" />
+  <Token Text=";" UId="245" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Triggers STOP_DRIVERS after 8 s of active move command without motion</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="D" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <Access Scope="LocalVariable" UId="21">
+    <Symbol UId="22">
+      <Component Name="minIdx" UId="23" />
+    </Symbol>
+  </Access>
+  <Blank UId="24" />
+  <Token Text=":=" UId="25" />
+  <Blank UId="26" />
+  <Access Scope="Call" UId="27">
+    <Instruction Name="MIN" UId="28">
+      <TemplateValue Name="value_type" Type="Type" UId="29">SInt</TemplateValue>
+      <Token Text="(" UId="30" />
+      <Parameter Name="IN1" UId="31">
+        <Token Text=":=" UId="32" />
+        <Access Scope="LocalVariable" UId="33">
+          <Symbol UId="34">
+            <Component Name="Source_X" UId="35" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="36" />
+      <Blank UId="37" />
+      <Parameter Name="IN2" UId="38">
+        <Token Text=":=" UId="39" />
+        <Access Scope="LocalVariable" UId="40">
+          <Symbol UId="41">
+            <Component Name="Destination_X" UId="42" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="44" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="45" />
+  <NewLine UId="46" />
+  <Access Scope="LocalVariable" UId="47">
+    <Symbol UId="48">
+      <Component Name="maxIdx" UId="49" />
+    </Symbol>
+  </Access>
+  <Blank UId="50" />
+  <Token Text=":=" UId="51" />
+  <Blank UId="52" />
+  <Access Scope="Call" UId="53">
+    <Instruction Name="MAX" UId="54">
+      <TemplateValue Name="value_type" Type="Type" UId="55">SInt</TemplateValue>
+      <Token Text="(" UId="56" />
+      <Parameter Name="IN1" UId="57">
+        <Token Text=":=" UId="58" />
+        <Access Scope="LocalVariable" UId="59">
+          <Symbol UId="60">
+            <Component Name="Source_X" UId="61" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="62" />
+      <Blank UId="63" />
+      <Parameter Name="IN2" UId="64">
+        <Token Text=":=" UId="65" />
+        <Access Scope="LocalVariable" UId="66">
+          <Symbol UId="67">
+            <Component Name="Destination_X" UId="68" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="70" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="71" />
+  <NewLine Num="2" UId="72" />
+  <Access Scope="LocalVariable" UId="73">
+    <Symbol UId="74">
+      <Component Name="PathFree" UId="75" />
+    </Symbol>
+  </Access>
+  <Blank UId="76" />
+  <Token Text=":=" UId="77" />
+  <Blank UId="78" />
+  <Access Scope="LiteralConstant" UId="79">
+    <Constant UId="80">
+      <ConstantValue UId="82">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="83" />
+  <NewLine Num="2" UId="84" />
+  <Token Text="FOR" UId="85" />
+  <Blank UId="86" />
+  <Access Scope="LocalVariable" UId="87">
+    <Symbol UId="88">
+      <Component Name="i" UId="89" />
+    </Symbol>
+  </Access>
+  <Blank UId="90" />
+  <Token Text=":=" UId="91" />
+  <Blank UId="92" />
+  <Access Scope="LocalVariable" UId="93">
+    <Symbol UId="94">
+      <Component Name="minIdx" UId="95" />
+    </Symbol>
+  </Access>
+  <Blank UId="96" />
+  <Token Text="+" UId="97" />
+  <Blank UId="98" />
+  <Access Scope="LiteralConstant" UId="99">
+    <Constant UId="100">
+      <ConstantValue UId="102">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="103" />
+  <Token Text="TO" UId="104" />
+  <Blank UId="105" />
+  <Access Scope="LocalVariable" UId="106">
+    <Symbol UId="107">
+      <Component Name="maxIdx" UId="108" />
+    </Symbol>
+  </Access>
+  <Blank UId="109" />
+  <Token Text="DO" UId="110" />
+  <NewLine UId="111" />
+  <Blank Num="4" UId="112" />
+  <Token Text="IF" UId="113" />
+  <Blank UId="114" />
+  <Access Scope="LocalVariable" UId="115">
+    <Symbol UId="116">
+      <Component Name="Stations" UId="117">
+        <Token Text="[" UId="118" />
+        <Access Scope="LocalVariable" UId="119">
+          <Symbol UId="120">
+            <Component Name="i" UId="121" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="122" />
+      </Component>
+      <Token Text="." UId="123" />
+      <Component Name="isEmpty" UId="124" />
+    </Symbol>
+  </Access>
+  <Blank UId="125" />
+  <Token Text="=" UId="126" />
+  <Blank UId="127" />
+  <Access Scope="LiteralConstant" UId="128">
+    <Constant UId="129">
+      <ConstantValue UId="131">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="132" />
+  <Token Text="THEN" UId="133" />
+  <NewLine UId="134" />
+  <Blank Num="8" UId="135" />
+  <Access Scope="LocalVariable" UId="136">
+    <Symbol UId="137">
+      <Component Name="PathFree" UId="138" />
+    </Symbol>
+  </Access>
+  <Blank UId="139" />
+  <Token Text=":=" UId="140" />
+  <Blank UId="141" />
+  <Access Scope="LiteralConstant" UId="142">
+    <Constant UId="143">
+      <ConstantValue UId="145">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="146" />
+  <NewLine UId="147" />
+  <Blank Num="8" UId="148" />
+  <Token Text="EXIT" UId="149" />
+  <Token Text=";" UId="150" />
+  <NewLine UId="151" />
+  <Blank Num="4" UId="152" />
+  <Token Text="END_IF" UId="153" />
+  <Token Text=";" UId="154" />
+  <NewLine UId="155" />
+  <Token Text="END_FOR" UId="156" />
+  <Token Text=";" UId="157" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="E" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="10" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Check free path</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="12" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="HMI_StS_StD" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="STOP_DRIVERS" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="Station_ST32" />
+        <Component Name="SensorA" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="24">
+      <Symbol>
+        <Component Name="Station_ST32" />
+        <Component Name="SensorB" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="25">
+      <Symbol>
+        <Component Name="Station_ST32" />
+        <Component Name="SensorC" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="26">
+      <Symbol>
+        <Component Name="Station_ST32" />
+        <Component Name="SensorD" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="27">
+      <Symbol>
+        <Component Name="Jog_StS" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="28">
+      <Symbol>
+        <Component Name="Jog_StD" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="29">
+      <Symbol>
+        <Component Name="LED_StS_STD" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="30">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>1650</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="LocalVariable" UId="31">
+      <Symbol>
+        <Component Name="Set_Speed" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="32">
+      <Symbol>
+        <Component Name="HMI_StD_StS" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="33">
+      <Symbol>
+        <Component Name="STOP_DRIVERS" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="34">
+      <Symbol>
+        <Component Name="Station_ST31" />
+        <Component Name="SensorA" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="35">
+      <Symbol>
+        <Component Name="Station_ST31" />
+        <Component Name="SensorB" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="36">
+      <Symbol>
+        <Component Name="Station_ST31" />
+        <Component Name="SensorC" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="37">
+      <Symbol>
+        <Component Name="Station_ST31" />
+        <Component Name="SensorD" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="38">
+      <Symbol>
+        <Component Name="Jog_StS" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="39">
+      <Symbol>
+        <Component Name="Jog_StD" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="40">
+      <Symbol>
+        <Component Name="LED_StD_STS" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="41">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>1650</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="LocalVariable" UId="42">
+      <Symbol>
+        <Component Name="Set_Speed" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="43" />
+    <Part Name="Contact" UId="44">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="45">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="46">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="47">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="48">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="SCoil" UId="49" />
+    <Part Name="SCoil" UId="50" />
+    <Part Name="SCoil" UId="51" />
+    <Part Name="Move" UId="52" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="53" />
+    <Part Name="Contact" UId="54">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="55">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="56">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="57">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="58">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="SCoil" UId="59" />
+    <Part Name="SCoil" UId="60" />
+    <Part Name="SCoil" UId="61" />
+    <Part Name="Move" UId="62" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+    </Part>
+  </Parts>
+  <Wires>
+    <Wire UId="63">
+      <Powerrail />
+      <NameCon UId="43" Name="in" />
+      <NameCon UId="53" Name="in" />
+    </Wire>
+    <Wire UId="64">
+      <IdentCon UId="21" />
+      <NameCon UId="43" Name="operand" />
+    </Wire>
+    <Wire UId="65">
+      <NameCon UId="43" Name="out" />
+      <NameCon UId="44" Name="in" />
+    </Wire>
+    <Wire UId="66">
+      <IdentCon UId="22" />
+      <NameCon UId="44" Name="operand" />
+    </Wire>
+    <Wire UId="67">
+      <NameCon UId="44" Name="out" />
+      <NameCon UId="45" Name="in" />
+    </Wire>
+    <Wire UId="68">
+      <IdentCon UId="23" />
+      <NameCon UId="45" Name="operand" />
+    </Wire>
+    <Wire UId="69">
+      <NameCon UId="45" Name="out" />
+      <NameCon UId="46" Name="in" />
+    </Wire>
+    <Wire UId="70">
+      <IdentCon UId="24" />
+      <NameCon UId="46" Name="operand" />
+    </Wire>
+    <Wire UId="71">
+      <NameCon UId="46" Name="out" />
+      <NameCon UId="47" Name="in" />
+    </Wire>
+    <Wire UId="72">
+      <IdentCon UId="25" />
+      <NameCon UId="47" Name="operand" />
+    </Wire>
+    <Wire UId="73">
+      <NameCon UId="47" Name="out" />
+      <NameCon UId="48" Name="in" />
+    </Wire>
+    <Wire UId="74">
+      <IdentCon UId="26" />
+      <NameCon UId="48" Name="operand" />
+    </Wire>
+    <Wire UId="75">
+      <NameCon UId="48" Name="out" />
+      <NameCon UId="49" Name="in" />
+      <NameCon UId="50" Name="in" />
+      <NameCon UId="51" Name="in" />
+      <NameCon UId="52" Name="en" />
+    </Wire>
+    <Wire UId="76">
+      <IdentCon UId="27" />
+      <NameCon UId="49" Name="operand" />
+    </Wire>
+    <Wire UId="77">
+      <IdentCon UId="28" />
+      <NameCon UId="50" Name="operand" />
+    </Wire>
+    <Wire UId="78">
+      <IdentCon UId="29" />
+      <NameCon UId="51" Name="operand" />
+    </Wire>
+    <Wire UId="79">
+      <IdentCon UId="30" />
+      <NameCon UId="52" Name="in" />
+    </Wire>
+    <Wire UId="80">
+      <NameCon UId="52" Name="out1" />
+      <IdentCon UId="31" />
+    </Wire>
+    <Wire UId="81">
+      <IdentCon UId="32" />
+      <NameCon UId="53" Name="operand" />
+    </Wire>
+    <Wire UId="82">
+      <NameCon UId="53" Name="out" />
+      <NameCon UId="54" Name="in" />
+    </Wire>
+    <Wire UId="83">
+      <IdentCon UId="33" />
+      <NameCon UId="54" Name="operand" />
+    </Wire>
+    <Wire UId="84">
+      <NameCon UId="54" Name="out" />
+      <NameCon UId="55" Name="in" />
+    </Wire>
+    <Wire UId="85">
+      <IdentCon UId="34" />
+      <NameCon UId="55" Name="operand" />
+    </Wire>
+    <Wire UId="86">
+      <NameCon UId="55" Name="out" />
+      <NameCon UId="56" Name="in" />
+    </Wire>
+    <Wire UId="87">
+      <IdentCon UId="35" />
+      <NameCon UId="56" Name="operand" />
+    </Wire>
+    <Wire UId="88">
+      <NameCon UId="56" Name="out" />
+      <NameCon UId="57" Name="in" />
+    </Wire>
+    <Wire UId="89">
+      <IdentCon UId="36" />
+      <NameCon UId="57" Name="operand" />
+    </Wire>
+    <Wire UId="90">
+      <NameCon UId="57" Name="out" />
+      <NameCon UId="58" Name="in" />
+    </Wire>
+    <Wire UId="91">
+      <IdentCon UId="37" />
+      <NameCon UId="58" Name="operand" />
+    </Wire>
+    <Wire UId="92">
+      <NameCon UId="58" Name="out" />
+      <NameCon UId="59" Name="in" />
+      <NameCon UId="60" Name="in" />
+      <NameCon UId="61" Name="in" />
+      <NameCon UId="62" Name="en" />
+    </Wire>
+    <Wire UId="93">
+      <IdentCon UId="38" />
+      <NameCon UId="59" Name="operand" />
+    </Wire>
+    <Wire UId="94">
+      <IdentCon UId="39" />
+      <NameCon UId="60" Name="operand" />
+    </Wire>
+    <Wire UId="95">
+      <IdentCon UId="40" />
+      <NameCon UId="61" Name="operand" />
+    </Wire>
+    <Wire UId="96">
+      <IdentCon UId="41" />
+      <NameCon UId="62" Name="in" />
+    </Wire>
+    <Wire UId="97">
+      <NameCon UId="62" Name="out1" />
+      <IdentCon UId="42" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="13" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="15" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="16" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Set command step1</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="17" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="HMI_StS_StD" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="STOP_DRIVERS" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="Station_ST32" />
+        <Component Name="SensorA" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="24">
+      <Symbol>
+        <Component Name="Station_ST32" />
+        <Component Name="SensorC" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="25">
+      <Symbol>
+        <Component Name="Station_ST32" />
+        <Component Name="SensorD" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="26">
+      <Symbol>
+        <Component Name="Jog_StS" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="27">
+      <Symbol>
+        <Component Name="Jog_StD" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="28">
+      <Symbol>
+        <Component Name="LED_StS_STD" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="29">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>1650</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="LocalVariable" UId="30">
+      <Symbol>
+        <Component Name="Set_Speed" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="31">
+      <Symbol>
+        <Component Name="HMI_StD_StS" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="32">
+      <Symbol>
+        <Component Name="STOP_DRIVERS" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="33">
+      <Symbol>
+        <Component Name="Station_ST31" />
+        <Component Name="SensorA" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="34">
+      <Symbol>
+        <Component Name="Station_ST31" />
+        <Component Name="SensorB" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="35">
+      <Symbol>
+        <Component Name="Station_ST31" />
+        <Component Name="SensorD" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="36">
+      <Symbol>
+        <Component Name="Jog_StS" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="37">
+      <Symbol>
+        <Component Name="Jog_StD" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="38">
+      <Symbol>
+        <Component Name="LED_StD_STS" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="39">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>1650</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="LocalVariable" UId="40">
+      <Symbol>
+        <Component Name="Set_Speed" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="41" />
+    <Part Name="Contact" UId="42">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="43" />
+    <Part Name="Contact" UId="44">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="45">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="SCoil" UId="46" />
+    <Part Name="SCoil" UId="47" />
+    <Part Name="SCoil" UId="48" />
+    <Part Name="Move" UId="49" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="50" />
+    <Part Name="Contact" UId="51">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="52">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="53">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="54" />
+    <Part Name="SCoil" UId="55" />
+    <Part Name="SCoil" UId="56" />
+    <Part Name="SCoil" UId="57" />
+    <Part Name="Move" UId="58" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+    </Part>
+  </Parts>
+  <Wires>
+    <Wire UId="59">
+      <Powerrail />
+      <NameCon UId="41" Name="in" />
+      <NameCon UId="50" Name="in" />
+    </Wire>
+    <Wire UId="60">
+      <IdentCon UId="21" />
+      <NameCon UId="41" Name="operand" />
+    </Wire>
+    <Wire UId="61">
+      <NameCon UId="41" Name="out" />
+      <NameCon UId="42" Name="in" />
+    </Wire>
+    <Wire UId="62">
+      <IdentCon UId="22" />
+      <NameCon UId="42" Name="operand" />
+    </Wire>
+    <Wire UId="63">
+      <NameCon UId="42" Name="out" />
+      <NameCon UId="43" Name="in" />
+    </Wire>
+    <Wire UId="64">
+      <IdentCon UId="23" />
+      <NameCon UId="43" Name="operand" />
+    </Wire>
+    <Wire UId="65">
+      <NameCon UId="43" Name="out" />
+      <NameCon UId="44" Name="in" />
+    </Wire>
+    <Wire UId="66">
+      <IdentCon UId="24" />
+      <NameCon UId="44" Name="operand" />
+    </Wire>
+    <Wire UId="67">
+      <NameCon UId="44" Name="out" />
+      <NameCon UId="45" Name="in" />
+    </Wire>
+    <Wire UId="68">
+      <IdentCon UId="25" />
+      <NameCon UId="45" Name="operand" />
+    </Wire>
+    <Wire UId="69">
+      <NameCon UId="45" Name="out" />
+      <NameCon UId="46" Name="in" />
+      <NameCon UId="47" Name="in" />
+      <NameCon UId="48" Name="in" />
+      <NameCon UId="49" Name="en" />
+    </Wire>
+    <Wire UId="70">
+      <IdentCon UId="26" />
+      <NameCon UId="46" Name="operand" />
+    </Wire>
+    <Wire UId="71">
+      <IdentCon UId="27" />
+      <NameCon UId="47" Name="operand" />
+    </Wire>
+    <Wire UId="72">
+      <IdentCon UId="28" />
+      <NameCon UId="48" Name="operand" />
+    </Wire>
+    <Wire UId="73">
+      <IdentCon UId="29" />
+      <NameCon UId="49" Name="in" />
+    </Wire>
+    <Wire UId="74">
+      <NameCon UId="49" Name="out1" />
+      <IdentCon UId="30" />
+    </Wire>
+    <Wire UId="75">
+      <IdentCon UId="31" />
+      <NameCon UId="50" Name="operand" />
+    </Wire>
+    <Wire UId="76">
+      <NameCon UId="50" Name="out" />
+      <NameCon UId="51" Name="in" />
+    </Wire>
+    <Wire UId="77">
+      <IdentCon UId="32" />
+      <NameCon UId="51" Name="operand" />
+    </Wire>
+    <Wire UId="78">
+      <NameCon UId="51" Name="out" />
+      <NameCon UId="52" Name="in" />
+    </Wire>
+    <Wire UId="79">
+      <IdentCon UId="33" />
+      <NameCon UId="52" Name="operand" />
+    </Wire>
+    <Wire UId="80">
+      <NameCon UId="52" Name="out" />
+      <NameCon UId="53" Name="in" />
+    </Wire>
+    <Wire UId="81">
+      <IdentCon UId="34" />
+      <NameCon UId="53" Name="operand" />
+    </Wire>
+    <Wire UId="82">
+      <NameCon UId="53" Name="out" />
+      <NameCon UId="54" Name="in" />
+    </Wire>
+    <Wire UId="83">
+      <IdentCon UId="35" />
+      <NameCon UId="54" Name="operand" />
+    </Wire>
+    <Wire UId="84">
+      <NameCon UId="54" Name="out" />
+      <NameCon UId="55" Name="in" />
+      <NameCon UId="56" Name="in" />
+      <NameCon UId="57" Name="in" />
+      <NameCon UId="58" Name="en" />
+    </Wire>
+    <Wire UId="85">
+      <IdentCon UId="36" />
+      <NameCon UId="55" Name="operand" />
+    </Wire>
+    <Wire UId="86">
+      <IdentCon UId="37" />
+      <NameCon UId="56" Name="operand" />
+    </Wire>
+    <Wire UId="87">
+      <IdentCon UId="38" />
+      <NameCon UId="57" Name="operand" />
+    </Wire>
+    <Wire UId="88">
+      <IdentCon UId="39" />
+      <NameCon UId="58" Name="in" />
+    </Wire>
+    <Wire UId="89">
+      <NameCon UId="58" Name="out1" />
+      <IdentCon UId="40" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="18" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="19" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="1A" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="1B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Set command step2</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="1C" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="HMI_StS_StD" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="STOP_DRIVERS" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="Station_ST32" />
+        <Component Name="SensorA" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="24">
+      <Symbol>
+        <Component Name="Station_ST32" />
+        <Component Name="SensorB" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="25">
+      <Symbol>
+        <Component Name="Station_ST32" />
+        <Component Name="SensorC" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="26">
+      <Symbol>
+        <Component Name="Station_ST32" />
+        <Component Name="SensorD" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="27">
+      <Symbol>
+        <Component Name="STOP_DRIVERS" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="28">
+      <Symbol>
+        <Component Name="Station_ST32" />
+        <Component Name="SensorA" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="29">
+      <Symbol>
+        <Component Name="Station_ST32" />
+        <Component Name="SensorB" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="30">
+      <Symbol>
+        <Component Name="Station_ST32" />
+        <Component Name="SensorC" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="31">
+      <Symbol>
+        <Component Name="Jog_StD" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="32">
+      <Symbol>
+        <Component Name="LED_StS_STD" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="33">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>400</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="LocalVariable" UId="34">
+      <Symbol>
+        <Component Name="Set_Speed" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="35">
+      <Symbol>
+        <Component Name="Trig_StS_StD" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="36">
+      <Symbol>
+        <Component Name="Reset_StS_StD" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="37">
+      <Symbol>
+        <Component Name="HMI_StD_StS" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="38">
+      <Symbol>
+        <Component Name="STOP_DRIVERS" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="39">
+      <Symbol>
+        <Component Name="Station_ST31" />
+        <Component Name="SensorA" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="40">
+      <Symbol>
+        <Component Name="Station_ST31" />
+        <Component Name="SensorB" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="41">
+      <Symbol>
+        <Component Name="Station_ST31" />
+        <Component Name="SensorC" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="42">
+      <Symbol>
+        <Component Name="Station_ST31" />
+        <Component Name="SensorD" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="43">
+      <Symbol>
+        <Component Name="STOP_DRIVERS" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="44">
+      <Symbol>
+        <Component Name="Station_ST31" />
+        <Component Name="SensorB" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="45">
+      <Symbol>
+        <Component Name="Station_ST31" />
+        <Component Name="SensorC" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="46">
+      <Symbol>
+        <Component Name="Station_ST31" />
+        <Component Name="SensorD" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="47">
+      <Symbol>
+        <Component Name="Jog_StS" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="48">
+      <Symbol>
+        <Component Name="LED_StD_STS" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="49">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>400</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="LocalVariable" UId="50">
+      <Symbol>
+        <Component Name="Set_Speed" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="51">
+      <Symbol>
+        <Component Name="Trig_StD_StS" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="52">
+      <Symbol>
+        <Component Name="Reset_StD_StS" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="53" />
+    <Part Name="Contact" UId="54">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="55" />
+    <Part Name="Contact" UId="56" />
+    <Part Name="Contact" UId="57" />
+    <Part Name="Contact" UId="58">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="59">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="60" />
+    <Part Name="Contact" UId="61" />
+    <Part Name="Contact" UId="62" />
+    <Part Name="O" UId="63">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="SCoil" UId="64" />
+    <Part Name="SCoil" UId="65" />
+    <Part Name="Move" UId="66" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+    </Part>
+    <Part Name="NBox" UId="67" />
+    <Part Name="Coil" UId="68" />
+    <Part Name="Contact" UId="69" />
+    <Part Name="Contact" UId="70">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="71">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="72" />
+    <Part Name="Contact" UId="73" />
+    <Part Name="Contact" UId="74" />
+    <Part Name="Contact" UId="75">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="76" />
+    <Part Name="Contact" UId="77" />
+    <Part Name="Contact" UId="78" />
+    <Part Name="O" UId="79">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="SCoil" UId="80" />
+    <Part Name="SCoil" UId="81" />
+    <Part Name="Move" UId="82" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+    </Part>
+    <Part Name="NBox" UId="83" />
+    <Part Name="Coil" UId="84" />
+  </Parts>
+  <Wires>
+    <Wire UId="85">
+      <Powerrail />
+      <NameCon UId="53" Name="in" />
+      <NameCon UId="69" Name="in" />
+    </Wire>
+    <Wire UId="86">
+      <IdentCon UId="21" />
+      <NameCon UId="53" Name="operand" />
+    </Wire>
+    <Wire UId="87">
+      <NameCon UId="53" Name="out" />
+      <NameCon UId="54" Name="in" />
+      <NameCon UId="59" Name="in" />
+    </Wire>
+    <Wire UId="88">
+      <IdentCon UId="22" />
+      <NameCon UId="54" Name="operand" />
+    </Wire>
+    <Wire UId="89">
+      <NameCon UId="54" Name="out" />
+      <NameCon UId="55" Name="in" />
+    </Wire>
+    <Wire UId="90">
+      <IdentCon UId="23" />
+      <NameCon UId="55" Name="operand" />
+    </Wire>
+    <Wire UId="91">
+      <NameCon UId="55" Name="out" />
+      <NameCon UId="56" Name="in" />
+    </Wire>
+    <Wire UId="92">
+      <IdentCon UId="24" />
+      <NameCon UId="56" Name="operand" />
+    </Wire>
+    <Wire UId="93">
+      <NameCon UId="56" Name="out" />
+      <NameCon UId="57" Name="in" />
+    </Wire>
+    <Wire UId="94">
+      <IdentCon UId="25" />
+      <NameCon UId="57" Name="operand" />
+    </Wire>
+    <Wire UId="95">
+      <NameCon UId="57" Name="out" />
+      <NameCon UId="58" Name="in" />
+    </Wire>
+    <Wire UId="96">
+      <IdentCon UId="26" />
+      <NameCon UId="58" Name="operand" />
+    </Wire>
+    <Wire UId="97">
+      <NameCon UId="58" Name="out" />
+      <NameCon UId="63" Name="in1" />
+    </Wire>
+    <Wire UId="98">
+      <IdentCon UId="27" />
+      <NameCon UId="59" Name="operand" />
+    </Wire>
+    <Wire UId="99">
+      <NameCon UId="59" Name="out" />
+      <NameCon UId="60" Name="in" />
+    </Wire>
+    <Wire UId="100">
+      <IdentCon UId="28" />
+      <NameCon UId="60" Name="operand" />
+    </Wire>
+    <Wire UId="101">
+      <NameCon UId="60" Name="out" />
+      <NameCon UId="61" Name="in" />
+    </Wire>
+    <Wire UId="102">
+      <IdentCon UId="29" />
+      <NameCon UId="61" Name="operand" />
+    </Wire>
+    <Wire UId="103">
+      <NameCon UId="61" Name="out" />
+      <NameCon UId="62" Name="in" />
+    </Wire>
+    <Wire UId="104">
+      <IdentCon UId="30" />
+      <NameCon UId="62" Name="operand" />
+    </Wire>
+    <Wire UId="105">
+      <NameCon UId="62" Name="out" />
+      <NameCon UId="63" Name="in2" />
+    </Wire>
+    <Wire UId="106">
+      <NameCon UId="63" Name="out" />
+      <NameCon UId="64" Name="in" />
+      <NameCon UId="65" Name="in" />
+      <NameCon UId="66" Name="en" />
+      <NameCon UId="67" Name="in" />
+    </Wire>
+    <Wire UId="107">
+      <IdentCon UId="31" />
+      <NameCon UId="64" Name="operand" />
+    </Wire>
+    <Wire UId="108">
+      <IdentCon UId="32" />
+      <NameCon UId="65" Name="operand" />
+    </Wire>
+    <Wire UId="109">
+      <IdentCon UId="33" />
+      <NameCon UId="66" Name="in" />
+    </Wire>
+    <Wire UId="110">
+      <NameCon UId="66" Name="out1" />
+      <IdentCon UId="34" />
+    </Wire>
+    <Wire UId="111">
+      <IdentCon UId="35" />
+      <NameCon UId="67" Name="bit" />
+    </Wire>
+    <Wire UId="112">
+      <NameCon UId="67" Name="out" />
+      <NameCon UId="68" Name="in" />
+    </Wire>
+    <Wire UId="113">
+      <IdentCon UId="36" />
+      <NameCon UId="68" Name="operand" />
+    </Wire>
+    <Wire UId="114">
+      <IdentCon UId="37" />
+      <NameCon UId="69" Name="operand" />
+    </Wire>
+    <Wire UId="115">
+      <NameCon UId="69" Name="out" />
+      <NameCon UId="70" Name="in" />
+      <NameCon UId="75" Name="in" />
+    </Wire>
+    <Wire UId="116">
+      <IdentCon UId="38" />
+      <NameCon UId="70" Name="operand" />
+    </Wire>
+    <Wire UId="117">
+      <NameCon UId="70" Name="out" />
+      <NameCon UId="71" Name="in" />
+    </Wire>
+    <Wire UId="118">
+      <IdentCon UId="39" />
+      <NameCon UId="71" Name="operand" />
+    </Wire>
+    <Wire UId="119">
+      <NameCon UId="71" Name="out" />
+      <NameCon UId="72" Name="in" />
+    </Wire>
+    <Wire UId="120">
+      <IdentCon UId="40" />
+      <NameCon UId="72" Name="operand" />
+    </Wire>
+    <Wire UId="121">
+      <NameCon UId="72" Name="out" />
+      <NameCon UId="73" Name="in" />
+    </Wire>
+    <Wire UId="122">
+      <IdentCon UId="41" />
+      <NameCon UId="73" Name="operand" />
+    </Wire>
+    <Wire UId="123">
+      <NameCon UId="73" Name="out" />
+      <NameCon UId="74" Name="in" />
+    </Wire>
+    <Wire UId="124">
+      <IdentCon UId="42" />
+      <NameCon UId="74" Name="operand" />
+    </Wire>
+    <Wire UId="125">
+      <NameCon UId="74" Name="out" />
+      <NameCon UId="79" Name="in1" />
+    </Wire>
+    <Wire UId="126">
+      <IdentCon UId="43" />
+      <NameCon UId="75" Name="operand" />
+    </Wire>
+    <Wire UId="127">
+      <NameCon UId="75" Name="out" />
+      <NameCon UId="76" Name="in" />
+    </Wire>
+    <Wire UId="128">
+      <IdentCon UId="44" />
+      <NameCon UId="76" Name="operand" />
+    </Wire>
+    <Wire UId="129">
+      <NameCon UId="76" Name="out" />
+      <NameCon UId="77" Name="in" />
+    </Wire>
+    <Wire UId="130">
+      <IdentCon UId="45" />
+      <NameCon UId="77" Name="operand" />
+    </Wire>
+    <Wire UId="131">
+      <NameCon UId="77" Name="out" />
+      <NameCon UId="78" Name="in" />
+    </Wire>
+    <Wire UId="132">
+      <IdentCon UId="46" />
+      <NameCon UId="78" Name="operand" />
+    </Wire>
+    <Wire UId="133">
+      <NameCon UId="78" Name="out" />
+      <NameCon UId="79" Name="in2" />
+    </Wire>
+    <Wire UId="134">
+      <NameCon UId="79" Name="out" />
+      <NameCon UId="80" Name="in" />
+      <NameCon UId="81" Name="in" />
+      <NameCon UId="82" Name="en" />
+      <NameCon UId="83" Name="in" />
+    </Wire>
+    <Wire UId="135">
+      <IdentCon UId="47" />
+      <NameCon UId="80" Name="operand" />
+    </Wire>
+    <Wire UId="136">
+      <IdentCon UId="48" />
+      <NameCon UId="81" Name="operand" />
+    </Wire>
+    <Wire UId="137">
+      <IdentCon UId="49" />
+      <NameCon UId="82" Name="in" />
+    </Wire>
+    <Wire UId="138">
+      <NameCon UId="82" Name="out1" />
+      <IdentCon UId="50" />
+    </Wire>
+    <Wire UId="139">
+      <IdentCon UId="51" />
+      <NameCon UId="83" Name="bit" />
+    </Wire>
+    <Wire UId="140">
+      <NameCon UId="83" Name="out" />
+      <NameCon UId="84" Name="in" />
+    </Wire>
+    <Wire UId="141">
+      <IdentCon UId="52" />
+      <NameCon UId="84" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="1D" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="1E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="1F" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="20" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Set command step3</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="21" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="Reset_StS_StD" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="HMI_StS_StD" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="Reset_StD_StS" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="24">
+      <Symbol>
+        <Component Name="HMI_StD_StS" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="25" />
+    <Part Name="RCoil" UId="26" />
+    <Part Name="Contact" UId="27" />
+    <Part Name="RCoil" UId="28" />
+  </Parts>
+  <Wires>
+    <Wire UId="29">
+      <Powerrail />
+      <NameCon UId="25" Name="in" />
+      <NameCon UId="27" Name="in" />
+    </Wire>
+    <Wire UId="30">
+      <IdentCon UId="21" />
+      <NameCon UId="25" Name="operand" />
+    </Wire>
+    <Wire UId="31">
+      <NameCon UId="25" Name="out" />
+      <NameCon UId="26" Name="in" />
+    </Wire>
+    <Wire UId="32">
+      <IdentCon UId="22" />
+      <NameCon UId="26" Name="operand" />
+    </Wire>
+    <Wire UId="33">
+      <IdentCon UId="23" />
+      <NameCon UId="27" Name="operand" />
+    </Wire>
+    <Wire UId="34">
+      <NameCon UId="27" Name="out" />
+      <NameCon UId="28" Name="in" />
+    </Wire>
+    <Wire UId="35">
+      <IdentCon UId="24" />
+      <NameCon UId="28" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="22" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="23" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="24" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="25" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="26" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="HMI_StD_StS" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="Set_Speed" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="23">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>-1</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="LocalVariable" UId="24">
+      <Symbol>
+        <Component Name="Set_Speed_Reverse" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="25" />
+    <Part Name="Mul" UId="26" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+      <AutomaticTyped Name="SrcType" />
+    </Part>
+  </Parts>
+  <Wires>
+    <Wire UId="27">
+      <Powerrail />
+      <NameCon UId="25" Name="in" />
+    </Wire>
+    <Wire UId="28">
+      <IdentCon UId="21" />
+      <NameCon UId="25" Name="operand" />
+    </Wire>
+    <Wire UId="29">
+      <NameCon UId="25" Name="out" />
+      <NameCon UId="26" Name="en" />
+    </Wire>
+    <Wire UId="30">
+      <IdentCon UId="22" />
+      <NameCon UId="26" Name="in1" />
+    </Wire>
+    <Wire UId="31">
+      <IdentCon UId="23" />
+      <NameCon UId="26" Name="in2" />
+    </Wire>
+    <Wire UId="32">
+      <NameCon UId="26" Name="out" />
+      <IdentCon UId="24" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="27" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="28" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="29" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="2A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Reverse direction</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="2B" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="Jog_StS" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="Lift_On_The_Floor" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="STOP_DRIVERS" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="24">
+      <Symbol>
+        <Component Name="oDriveST31_Param" />
+        <Component Name="x_Bit_0_Ready" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="25">
+      <Symbol>
+        <Component Name="iDriveST31_Param" />
+        <Component Name="x_Bit_0_Enable_Emergency_Stop" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="26">
+      <Symbol>
+        <Component Name="iDriveST31_Param" />
+        <Component Name="x_Bit_1_Enable_Application_Stop" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="27">
+      <Symbol>
+        <Component Name="iDriveST31_Param" />
+        <Component Name="x_Bit_7_Start_Stop" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalConstant" UId="28">
+      <Constant Name="ACC" />
+    </Access>
+    <Access Scope="LocalVariable" UId="29">
+      <Symbol>
+        <Component Name="iDriveST31_Param" />
+        <Component Name="iSetpoint_Acceleration" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalConstant" UId="30">
+      <Constant Name="DCC" />
+    </Access>
+    <Access Scope="LocalVariable" UId="31">
+      <Symbol>
+        <Component Name="iDriveST31_Param" />
+        <Component Name="iSetpoint_Deceleration" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="32">
+      <Symbol>
+        <Component Name="HMI_StS_StD" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="33">
+      <Symbol>
+        <Component Name="Set_Speed" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="34">
+      <Symbol>
+        <Component Name="iDriveST31_Param" />
+        <Component Name="iSetpoint_Speed" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="35">
+      <Symbol>
+        <Component Name="HMI_StD_StS" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="36">
+      <Symbol>
+        <Component Name="Set_Speed_Reverse" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="37">
+      <Symbol>
+        <Component Name="iDriveST31_Param" />
+        <Component Name="iSetpoint_Speed" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="38" />
+    <Part Name="Contact" UId="39" />
+    <Part Name="Contact" UId="40">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="41" />
+    <Part Name="SCoil" UId="42" />
+    <Part Name="SCoil" UId="43" />
+    <Part Name="SCoil" UId="44" />
+    <Part Name="Move" UId="45" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+    </Part>
+    <Part Name="Move" UId="46" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="47" />
+    <Part Name="Move" UId="48" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="49" />
+    <Part Name="Move" UId="50" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+    </Part>
+  </Parts>
+  <Wires>
+    <Wire UId="51">
+      <Powerrail />
+      <NameCon UId="38" Name="in" />
+    </Wire>
+    <Wire UId="52">
+      <IdentCon UId="21" />
+      <NameCon UId="38" Name="operand" />
+    </Wire>
+    <Wire UId="53">
+      <NameCon UId="38" Name="out" />
+      <NameCon UId="39" Name="in" />
+    </Wire>
+    <Wire UId="54">
+      <IdentCon UId="22" />
+      <NameCon UId="39" Name="operand" />
+    </Wire>
+    <Wire UId="55">
+      <NameCon UId="39" Name="out" />
+      <NameCon UId="40" Name="in" />
+    </Wire>
+    <Wire UId="56">
+      <IdentCon UId="23" />
+      <NameCon UId="40" Name="operand" />
+    </Wire>
+    <Wire UId="57">
+      <NameCon UId="40" Name="out" />
+      <NameCon UId="41" Name="in" />
+    </Wire>
+    <Wire UId="58">
+      <IdentCon UId="24" />
+      <NameCon UId="41" Name="operand" />
+    </Wire>
+    <Wire UId="59">
+      <NameCon UId="41" Name="out" />
+      <NameCon UId="42" Name="in" />
+      <NameCon UId="43" Name="in" />
+      <NameCon UId="44" Name="in" />
+      <NameCon UId="45" Name="en" />
+      <NameCon UId="46" Name="en" />
+      <NameCon UId="47" Name="in" />
+      <NameCon UId="49" Name="in" />
+    </Wire>
+    <Wire UId="60">
+      <IdentCon UId="25" />
+      <NameCon UId="42" Name="operand" />
+    </Wire>
+    <Wire UId="61">
+      <IdentCon UId="26" />
+      <NameCon UId="43" Name="operand" />
+    </Wire>
+    <Wire UId="62">
+      <IdentCon UId="27" />
+      <NameCon UId="44" Name="operand" />
+    </Wire>
+    <Wire UId="63">
+      <IdentCon UId="28" />
+      <NameCon UId="45" Name="in" />
+    </Wire>
+    <Wire UId="64">
+      <NameCon UId="45" Name="out1" />
+      <IdentCon UId="29" />
+    </Wire>
+    <Wire UId="65">
+      <IdentCon UId="30" />
+      <NameCon UId="46" Name="in" />
+    </Wire>
+    <Wire UId="66">
+      <NameCon UId="46" Name="out1" />
+      <IdentCon UId="31" />
+    </Wire>
+    <Wire UId="67">
+      <IdentCon UId="32" />
+      <NameCon UId="47" Name="operand" />
+    </Wire>
+    <Wire UId="68">
+      <NameCon UId="47" Name="out" />
+      <NameCon UId="48" Name="en" />
+    </Wire>
+    <Wire UId="69">
+      <IdentCon UId="33" />
+      <NameCon UId="48" Name="in" />
+    </Wire>
+    <Wire UId="70">
+      <NameCon UId="48" Name="out1" />
+      <IdentCon UId="34" />
+    </Wire>
+    <Wire UId="71">
+      <IdentCon UId="35" />
+      <NameCon UId="49" Name="operand" />
+    </Wire>
+    <Wire UId="72">
+      <NameCon UId="49" Name="out" />
+      <NameCon UId="50" Name="en" />
+    </Wire>
+    <Wire UId="73">
+      <IdentCon UId="36" />
+      <NameCon UId="50" Name="in" />
+    </Wire>
+    <Wire UId="74">
+      <NameCon UId="50" Name="out1" />
+      <IdentCon UId="37" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="2C" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="2D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="2E" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="2F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>StS Drive </Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="30" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="Jog_StD" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="Lift_On_The_Floor" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="STOP_DRIVERS" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="24">
+      <Symbol>
+        <Component Name="oDriveST32_Param" />
+        <Component Name="x_Bit_0_Ready" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="25">
+      <Symbol>
+        <Component Name="iDriveST32_Param" />
+        <Component Name="x_Bit_0_Enable_Emergency_Stop" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="26">
+      <Symbol>
+        <Component Name="iDriveST32_Param" />
+        <Component Name="x_Bit_1_Enable_Application_Stop" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="27">
+      <Symbol>
+        <Component Name="iDriveST32_Param" />
+        <Component Name="x_Bit_7_Start_Stop" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalConstant" UId="28">
+      <Constant Name="ACC" />
+    </Access>
+    <Access Scope="LocalVariable" UId="29">
+      <Symbol>
+        <Component Name="iDriveST32_Param" />
+        <Component Name="iSetpoint_Acceleration" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalConstant" UId="30">
+      <Constant Name="DCC" />
+    </Access>
+    <Access Scope="LocalVariable" UId="31">
+      <Symbol>
+        <Component Name="iDriveST32_Param" />
+        <Component Name="iSetpoint_Deceleration" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="32">
+      <Symbol>
+        <Component Name="HMI_StS_StD" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="33">
+      <Symbol>
+        <Component Name="Set_Speed" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="34">
+      <Symbol>
+        <Component Name="iDriveST32_Param" />
+        <Component Name="iSetpoint_Speed" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="35">
+      <Symbol>
+        <Component Name="HMI_StD_StS" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="36">
+      <Symbol>
+        <Component Name="Set_Speed_Reverse" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="37">
+      <Symbol>
+        <Component Name="iDriveST32_Param" />
+        <Component Name="iSetpoint_Speed" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="38" />
+    <Part Name="Contact" UId="39" />
+    <Part Name="Contact" UId="40">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="41" />
+    <Part Name="SCoil" UId="42" />
+    <Part Name="SCoil" UId="43" />
+    <Part Name="SCoil" UId="44" />
+    <Part Name="Move" UId="45" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+    </Part>
+    <Part Name="Move" UId="46" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="47" />
+    <Part Name="Move" UId="48" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="49" />
+    <Part Name="Move" UId="50" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+    </Part>
+  </Parts>
+  <Wires>
+    <Wire UId="51">
+      <Powerrail />
+      <NameCon UId="38" Name="in" />
+    </Wire>
+    <Wire UId="52">
+      <IdentCon UId="21" />
+      <NameCon UId="38" Name="operand" />
+    </Wire>
+    <Wire UId="53">
+      <NameCon UId="38" Name="out" />
+      <NameCon UId="39" Name="in" />
+    </Wire>
+    <Wire UId="54">
+      <IdentCon UId="22" />
+      <NameCon UId="39" Name="operand" />
+    </Wire>
+    <Wire UId="55">
+      <NameCon UId="39" Name="out" />
+      <NameCon UId="40" Name="in" />
+    </Wire>
+    <Wire UId="56">
+      <IdentCon UId="23" />
+      <NameCon UId="40" Name="operand" />
+    </Wire>
+    <Wire UId="57">
+      <NameCon UId="40" Name="out" />
+      <NameCon UId="41" Name="in" />
+    </Wire>
+    <Wire UId="58">
+      <IdentCon UId="24" />
+      <NameCon UId="41" Name="operand" />
+    </Wire>
+    <Wire UId="59">
+      <NameCon UId="41" Name="out" />
+      <NameCon UId="42" Name="in" />
+      <NameCon UId="43" Name="in" />
+      <NameCon UId="44" Name="in" />
+      <NameCon UId="45" Name="en" />
+      <NameCon UId="46" Name="en" />
+      <NameCon UId="47" Name="in" />
+      <NameCon UId="49" Name="in" />
+    </Wire>
+    <Wire UId="60">
+      <IdentCon UId="25" />
+      <NameCon UId="42" Name="operand" />
+    </Wire>
+    <Wire UId="61">
+      <IdentCon UId="26" />
+      <NameCon UId="43" Name="operand" />
+    </Wire>
+    <Wire UId="62">
+      <IdentCon UId="27" />
+      <NameCon UId="44" Name="operand" />
+    </Wire>
+    <Wire UId="63">
+      <IdentCon UId="28" />
+      <NameCon UId="45" Name="in" />
+    </Wire>
+    <Wire UId="64">
+      <NameCon UId="45" Name="out1" />
+      <IdentCon UId="29" />
+    </Wire>
+    <Wire UId="65">
+      <IdentCon UId="30" />
+      <NameCon UId="46" Name="in" />
+    </Wire>
+    <Wire UId="66">
+      <NameCon UId="46" Name="out1" />
+      <IdentCon UId="31" />
+    </Wire>
+    <Wire UId="67">
+      <IdentCon UId="32" />
+      <NameCon UId="47" Name="operand" />
+    </Wire>
+    <Wire UId="68">
+      <NameCon UId="47" Name="out" />
+      <NameCon UId="48" Name="en" />
+    </Wire>
+    <Wire UId="69">
+      <IdentCon UId="33" />
+      <NameCon UId="48" Name="in" />
+    </Wire>
+    <Wire UId="70">
+      <NameCon UId="48" Name="out1" />
+      <IdentCon UId="34" />
+    </Wire>
+    <Wire UId="71">
+      <IdentCon UId="35" />
+      <NameCon UId="49" Name="operand" />
+    </Wire>
+    <Wire UId="72">
+      <NameCon UId="49" Name="out" />
+      <NameCon UId="50" Name="en" />
+    </Wire>
+    <Wire UId="73">
+      <IdentCon UId="36" />
+      <NameCon UId="50" Name="in" />
+    </Wire>
+    <Wire UId="74">
+      <NameCon UId="50" Name="out1" />
+      <IdentCon UId="37" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="31" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="32" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="33" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="34" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>StC Drive </Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="35" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="LED_StS_STD" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="Clock_2Hz" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="Station_ST32" />
+        <Component Name="SensorD" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="24">
+      <Symbol>
+        <Component Name="Station_ST32" />
+        <Component Name="SensorA" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="25">
+      <Symbol>
+        <Component Name="Station_ST32" />
+        <Component Name="SensorD" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="26">
+      <Symbol>
+        <Component Name="oButton_StS_StD_LED" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="27">
+      <Symbol>
+        <Component Name="oStatus_HMI_StS_StD" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="28" />
+    <Part Name="Contact" UId="29" />
+    <Part Name="Contact" UId="30" />
+    <Part Name="Contact" UId="31">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="32" />
+    <Part Name="O" UId="33">
+      <TemplateValue Name="Card" Type="Cardinality">3</TemplateValue>
+    </Part>
+    <Part Name="Coil" UId="34" />
+    <Part Name="Coil" UId="35" />
+  </Parts>
+  <Wires>
+    <Wire UId="36">
+      <Powerrail />
+      <NameCon UId="28" Name="in" />
+      <NameCon UId="30" Name="in" />
+      <NameCon UId="31" Name="in" />
+    </Wire>
+    <Wire UId="37">
+      <IdentCon UId="21" />
+      <NameCon UId="28" Name="operand" />
+    </Wire>
+    <Wire UId="38">
+      <NameCon UId="28" Name="out" />
+      <NameCon UId="29" Name="in" />
+    </Wire>
+    <Wire UId="39">
+      <IdentCon UId="22" />
+      <NameCon UId="29" Name="operand" />
+    </Wire>
+    <Wire UId="40">
+      <NameCon UId="29" Name="out" />
+      <NameCon UId="33" Name="in1" />
+    </Wire>
+    <Wire UId="41">
+      <IdentCon UId="23" />
+      <NameCon UId="30" Name="operand" />
+    </Wire>
+    <Wire UId="42">
+      <NameCon UId="30" Name="out" />
+      <NameCon UId="33" Name="in2" />
+    </Wire>
+    <Wire UId="43">
+      <IdentCon UId="24" />
+      <NameCon UId="31" Name="operand" />
+    </Wire>
+    <Wire UId="44">
+      <NameCon UId="31" Name="out" />
+      <NameCon UId="32" Name="in" />
+    </Wire>
+    <Wire UId="45">
+      <IdentCon UId="25" />
+      <NameCon UId="32" Name="operand" />
+    </Wire>
+    <Wire UId="46">
+      <NameCon UId="32" Name="out" />
+      <NameCon UId="33" Name="in3" />
+    </Wire>
+    <Wire UId="47">
+      <NameCon UId="33" Name="out" />
+      <NameCon UId="34" Name="in" />
+      <NameCon UId="35" Name="in" />
+    </Wire>
+    <Wire UId="48">
+      <IdentCon UId="26" />
+      <NameCon UId="34" Name="operand" />
+    </Wire>
+    <Wire UId="49">
+      <IdentCon UId="27" />
+      <NameCon UId="35" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="36" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="37" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="38" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="39" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>StS -> StD Status</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="3A" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="LED_StD_STS" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="Clock_2Hz" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="Station_ST31" />
+        <Component Name="SensorA" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="24">
+      <Symbol>
+        <Component Name="Station_ST31" />
+        <Component Name="SensorD" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="25">
+      <Symbol>
+        <Component Name="Station_ST31" />
+        <Component Name="SensorA" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="26">
+      <Symbol>
+        <Component Name="oStatus_HMI_StD_StS" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="27" />
+    <Part Name="Contact" UId="28" />
+    <Part Name="Contact" UId="29" />
+    <Part Name="Contact" UId="30">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="31" />
+    <Part Name="O" UId="32">
+      <TemplateValue Name="Card" Type="Cardinality">3</TemplateValue>
+    </Part>
+    <Part Name="Coil" UId="33" />
+  </Parts>
+  <Wires>
+    <Wire UId="34">
+      <Powerrail />
+      <NameCon UId="27" Name="in" />
+      <NameCon UId="29" Name="in" />
+      <NameCon UId="30" Name="in" />
+    </Wire>
+    <Wire UId="35">
+      <IdentCon UId="21" />
+      <NameCon UId="27" Name="operand" />
+    </Wire>
+    <Wire UId="36">
+      <NameCon UId="27" Name="out" />
+      <NameCon UId="28" Name="in" />
+    </Wire>
+    <Wire UId="37">
+      <IdentCon UId="22" />
+      <NameCon UId="28" Name="operand" />
+    </Wire>
+    <Wire UId="38">
+      <NameCon UId="28" Name="out" />
+      <NameCon UId="32" Name="in1" />
+    </Wire>
+    <Wire UId="39">
+      <IdentCon UId="23" />
+      <NameCon UId="29" Name="operand" />
+    </Wire>
+    <Wire UId="40">
+      <NameCon UId="29" Name="out" />
+      <NameCon UId="32" Name="in2" />
+    </Wire>
+    <Wire UId="41">
+      <IdentCon UId="24" />
+      <NameCon UId="30" Name="operand" />
+    </Wire>
+    <Wire UId="42">
+      <NameCon UId="30" Name="out" />
+      <NameCon UId="31" Name="in" />
+    </Wire>
+    <Wire UId="43">
+      <IdentCon UId="25" />
+      <NameCon UId="31" Name="operand" />
+    </Wire>
+    <Wire UId="44">
+      <NameCon UId="31" Name="out" />
+      <NameCon UId="32" Name="in3" />
+    </Wire>
+    <Wire UId="45">
+      <NameCon UId="32" Name="out" />
+      <NameCon UId="33" Name="in" />
+    </Wire>
+    <Wire UId="46">
+      <IdentCon UId="26" />
+      <NameCon UId="33" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="3B" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="3C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="3D" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="3E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>StD - > StS status</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="3F" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="Lift_On_The_Floor" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="iDriveST32_Param" />
+        <Component Name="x_Bit_0_Enable_Emergency_Stop" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="iDriveST32_Param" />
+        <Component Name="x_Bit_1_Enable_Application_Stop" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="24">
+      <Symbol>
+        <Component Name="iDriveST32_Param" />
+        <Component Name="x_Bit_7_Start_Stop" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="25">
+      <Symbol>
+        <Component Name="iDriveST31_Param" />
+        <Component Name="x_Bit_0_Enable_Emergency_Stop" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="26">
+      <Symbol>
+        <Component Name="iDriveST31_Param" />
+        <Component Name="x_Bit_1_Enable_Application_Stop" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="27">
+      <Symbol>
+        <Component Name="iDriveST31_Param" />
+        <Component Name="x_Bit_7_Start_Stop" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="28">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="RCoil" UId="29" />
+    <Part Name="RCoil" UId="30" />
+    <Part Name="RCoil" UId="31" />
+    <Part Name="RCoil" UId="32" />
+    <Part Name="RCoil" UId="33" />
+    <Part Name="RCoil" UId="34" />
+  </Parts>
+  <Wires>
+    <Wire UId="35">
+      <Powerrail />
+      <NameCon UId="28" Name="in" />
+    </Wire>
+    <Wire UId="36">
+      <IdentCon UId="21" />
+      <NameCon UId="28" Name="operand" />
+    </Wire>
+    <Wire UId="37">
+      <NameCon UId="28" Name="out" />
+      <NameCon UId="29" Name="in" />
+      <NameCon UId="30" Name="in" />
+      <NameCon UId="31" Name="in" />
+      <NameCon UId="32" Name="in" />
+      <NameCon UId="33" Name="in" />
+      <NameCon UId="34" Name="in" />
+    </Wire>
+    <Wire UId="38">
+      <IdentCon UId="22" />
+      <NameCon UId="29" Name="operand" />
+    </Wire>
+    <Wire UId="39">
+      <IdentCon UId="23" />
+      <NameCon UId="30" Name="operand" />
+    </Wire>
+    <Wire UId="40">
+      <IdentCon UId="24" />
+      <NameCon UId="31" Name="operand" />
+    </Wire>
+    <Wire UId="41">
+      <IdentCon UId="25" />
+      <NameCon UId="32" Name="operand" />
+    </Wire>
+    <Wire UId="42">
+      <IdentCon UId="26" />
+      <NameCon UId="33" Name="operand" />
+    </Wire>
+    <Wire UId="43">
+      <IdentCon UId="27" />
+      <NameCon UId="34" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="40" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="41" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="42" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="43" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="44" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="45" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FB>
+</Document>
