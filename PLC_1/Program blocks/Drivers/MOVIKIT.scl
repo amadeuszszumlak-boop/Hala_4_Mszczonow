@@ -1,0 +1,121 @@
+﻿FUNCTION "MOVIKIT" : Void
+{ S7_Optimized_Access := 'FALSE' }
+AUTHOR : SVSPASE
+FAMILY : MOVIKIT
+VERSION : 2.1
+   VAR_INPUT 
+      HW_IDENTIFIER : HW_IO;
+      IProper : "SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1";
+   END_VAR
+
+   VAR_OUTPUT 
+      COMMUNICATION_OK : Bool;
+      oProper : "SEW_MOVIKIT_VelocityDrive_STATUS_V2.1";
+   END_VAR
+
+   VAR_TEMP 
+      PI : "SEW_MOVIKIT_VelocityDrive_STATUS_V2.1";
+      PO : "SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1";
+      DPRD_RET_VAL : Int;
+      DPWR_RET_VAL : Int;
+   END_VAR
+
+
+BEGIN
+	(*This sample program only demonstrates the basic approach. We do not accept any legal or other liability for incorrect program functions and their consequences!
+	
+	The FC121 serves as a program module for controlling the MOVIKIT module "Velocity Drive+UDT" for the Generation C device series. With the help of the FC121,
+	the converters can be controlled via PROFINET IO/PROFIBUS DP.
+	
+	Device & networks: To use this FC, a 5 PD slot must be configured.
+	
+	This FC uses the UDTs SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1 and SEW_MOVIKIT_VelocityDrive_STATUS_V2.1. 
+	Please make sure that these PLC data types are available in your TIA project.
+	These UDTs can be copied from the original TIA sample project or from the MOVIKIT_Vel_&_Pos_UDTs_V2.x.al14 library.
+	
+	Attention Input "HW_Identifier":
+	Assign the HW-Identifier of the 5 PD slot. S73xx/4xx:Change Data type from HW_IO to WORD;  Assign the peripheral address of the 5 PD slot
+	*)
+	
+	//DPRD_DAT: Reading Consistent Data of a DP Standard Slave/PROFINET IO device
+	#DPRD_RET_VAL := DPRD_DAT(LADDR := #HW_IDENTIFIER, RECORD => #PI);
+	
+	IF #DPRD_RET_VAL = 0 THEN //If no error occurs while the instruction is being executed...
+	    #COMMUNICATION_OK := TRUE;
+	    
+	    //Mapping the signals of the Status word:
+	    #oProper.x_Bit_0_Ready := #PI.x_Bit_0_Ready;
+	    #oProper.x_Bit_1_STO_inactive := #PI.x_Bit_1_STO_inactive;
+	    #oProper.x_Bit_2_Output_Stage_enabled := #PI.x_Bit_2_Output_Stage_enabled;
+	    #oProper.x_Bit_3_Brake_released := #PI.x_Bit_3_Brake_released;
+	    #oProper.x_Bit_4_Motor_turning :=#PI.x_Bit_4_Motor_turning;
+	    #oProper.x_Bit_8_Fault := #PI.x_Bit_8_Fault;
+	    #oProper.x_Bit_9_Warning := #PI.x_Bit_9_Warning;
+	    #oProper.x_Bit_10_DriveTrain2_active := #PI.x_Bit_10_DriveTrain2_active;
+	    #oProper.x_Bit_11_Setp_actual_speed_comp_signal_active := #PI.x_Bit_11_Setp_actual_speed_comp_signal_active;
+	    #oProper.x_Bit_14_StandBy_Mode_active := #PI.x_Bit_14_StandBy_Mode_active;
+	    #oProper.x_Bit_15_Heartbeat_OUT := #PI.x_Bit_15_Heartbeat_OUT;
+	    
+	    //Assign PI2..5
+	    #oProper.iActual_Speed := #PI.iActual_Speed;
+	    #oProper.wStatus_main_fault_sub_fault := #PI.wStatus_main_fault_sub_fault;
+	    #oProper.bStatus_Fault := #oProper.wStatus_main_fault_sub_fault.%B1;
+	    #oProper.bStatus_subFault := #oProper.wStatus_main_fault_sub_fault.%B0;
+	    #oProper.iActual_Torque := #PI.iActual_Torque;
+	    #oProper.wDigital_Inputs := #PI.wDigital_Inputs;
+	    
+	    //Mapping the signals of the control word:
+	    #PO.x_Bit_0_Enable_Emergency_Stop := #IProper.x_Bit_0_Enable_Emergency_Stop;
+	    #PO.x_Bit_1_Enable_Application_Stop := #IProper.x_Bit_1_Enable_Application_Stop;
+	    #PO.x_Bit_4_Jog_positive := #IProper.x_Bit_4_Jog_positive;
+	    #PO.x_Bit_5_Jog_negative := #IProper.x_Bit_5_Jog_negative;
+	    #PO.x_Bit_3_Release_Brake := #IProper.x_Bit_3_Release_Brake;
+	    #PO.x_Bit_7_Start_Stop := #IProper.x_Bit_7_Start_Stop;
+	    #PO.x_Bit_8_Fault_Reset := #IProper.x_Bit_8_Fault_Reset;
+	    #PO.x_Bit_10_Activate_DriveTrain2 := #IProper.x_Bit_10_Activate_DriveTrain2;
+	    #PO.x_Bit_13_Activate_Output_Stage_Inhibit := #IProper.x_Bit_13_Activate_Output_Stage_Inhibit;
+	    #PO.x_Bit_14_Activate_StandBy_Mode := #IProper.x_Bit_14_Activate_StandBy_Mode;
+	    #PO.x_Bit_15_Heartbeat_IN := #IProper.x_Bit_15_Heartbeat_IN;
+	    
+	    //Set the not used Bits to "false"
+	    #PO.x_Bit_2_Reserved:= FALSE;
+	    #PO.x_Bit_6_Apply_relative_Position := FALSE;
+	    #PO.x_Bit_9_Reserved := FALSE;
+	    #PO.x_Bit_11_Reserved := FALSE;
+	    #PO.x_Bit_12_Deactivate_SW_Limit_switches := false;
+	    
+	    //Assig the POs 2..5
+	    #PO.iSetpoint_Speed := #IProper.iSetpoint_Speed;
+	    #PO.iSetpoint_Acceleration := #IProper.iSetpoint_Acceleration;
+	    #PO.iSetpoint_Deceleration := #IProper.iSetpoint_Deceleration;
+	    #PO.wDigital_Outputs := #IProper.wDigital_Outputs;
+	    
+	ELSE
+	    GOTO END;
+	END_IF;
+	
+	//DPWR_DAT: Write consistent data of a DP standard slave/PROFINET IO device
+	#DPWR_RET_VAL := DPWR_DAT(LADDR := #HW_IDENTIFIER, RECORD := #PO);
+	
+	END:
+	IF #DPRD_RET_VAL <> 0 OR #DPWR_RET_VAL <> 0 THEN
+	    #COMMUNICATION_OK := FALSE;
+	    //Erase FC outputs in case of an error
+	    #oProper.x_Bit_0_Ready := FALSE;
+	    #oProper.x_Bit_1_STO_inactive := FALSE;
+	    #oProper.x_Bit_2_Output_Stage_enabled := FALSE;
+	    #oProper.x_Bit_3_Brake_released := FALSE;
+	    #oProper.x_Bit_4_Motor_turning := FALSE;
+	    #oProper.x_Bit_8_Fault := FALSE;
+	    #oProper.x_Bit_9_Warning := FALSE;
+	    #oProper.x_Bit_10_DriveTrain2_active := FALSE;
+	    #oProper.x_Bit_11_Setp_actual_speed_comp_signal_active := FALSE;
+	    #oProper.x_Bit_14_StandBy_Mode_active := FALSE;
+	    #oProper.x_Bit_15_Heartbeat_OUT := FALSE;
+	    #oProper.iActual_Speed := 0;
+	    #oProper.wStatus_main_fault_sub_fault := 0;
+	    #oProper.iActual_Torque := 0;
+	    #oProper.wDigital_Inputs := 0;
+	END_IF;
+END_FUNCTION
+

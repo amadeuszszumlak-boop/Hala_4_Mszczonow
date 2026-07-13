@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.InstanceDB ID="0">
+    <AttributeList>
+      <InstanceOfName>Side_Shifters</InstanceOfName>
+      <InstanceOfType>FB</InstanceOfType>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input">
+    <Member Name="set_Hydraulic_Up" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="set_Hydraulic_Down" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="set_SL_Hydraulic_Up" Datatype="Bool" />
+    <Member Name="set_SL_Hydraulic_Down" Datatype="Bool" />
+    <Member Name="set_SR_Hydraulic_Up" Datatype="Bool" />
+    <Member Name="set_SR_Hydraulic_Down" Datatype="Bool" />
+    <Member Name="set_SL_Hydraulic_Unit" Datatype="Bool" />
+    <Member Name="set_SR_Hydraulic_Unit" Datatype="Bool" />
+    <Member Name="set_Go_To_ST1" Datatype="Bool" />
+    <Member Name="set_Go_To_ST2" Datatype="Bool" />
+    <Member Name="set_Go_To_ST3" Datatype="Bool" />
+    <Member Name="set_Go_To_ST4" Datatype="Bool" />
+    <Member Name="ST1_Empty" Datatype="Bool" />
+    <Member Name="ST2_Empty" Datatype="Bool" />
+    <Member Name="ST3_Empty" Datatype="Bool" />
+    <Member Name="ST4_Empty" Datatype="Bool" />
+    <Member Name="Homing_1_SR" Datatype="Int" />
+    <Member Name="Homing_2_SR" Datatype="Int" />
+    <Member Name="Homing_3_SR" Datatype="Int" />
+    <Member Name="Homing_4_SR" Datatype="Int" />
+    <Member Name="Homing_1_SL" Datatype="Int" />
+    <Member Name="Homing_2_SL" Datatype="Int" />
+    <Member Name="Homing_3_SL" Datatype="Int" />
+    <Member Name="Homing_4_SL" Datatype="Int" />
+    <Member Name="SL_Drive_Forward" Datatype="Bool" />
+    <Member Name="SL_Drive_Backward" Datatype="Bool" />
+    <Member Name="SR_Drive_Forward" Datatype="Bool" />
+    <Member Name="SR_Drive_Backward" Datatype="Bool" />
+    <Member Name="iSL_Sen_Drv_1" Datatype="Bool" />
+    <Member Name="iSL_Sen_Drv_2" Datatype="Bool" />
+    <Member Name="iSL_Sen_Drv_3" Datatype="Bool" />
+    <Member Name="iSL_Sen_Drv_4" Datatype="Bool" />
+    <Member Name="iSR_Sen_Drv_1" Datatype="Bool" />
+    <Member Name="iSR_Sen_Drv_2" Datatype="Bool" />
+    <Member Name="iSR_Sen_Drv_3" Datatype="Bool" />
+    <Member Name="iSR_Sen_Drv_4" Datatype="Bool" />
+    <Member Name="iSL_Sen_Val1_Up" Datatype="Bool" />
+    <Member Name="iSL_Sen_Val1_Down" Datatype="Bool" />
+    <Member Name="iSL_Sen_Val2_Up" Datatype="Bool" />
+    <Member Name="iSL_Sen_Val2_Down" Datatype="Bool" />
+    <Member Name="iSR_Sen_Val1_Up" Datatype="Bool" />
+    <Member Name="iSR_Sen_Val1_Down" Datatype="Bool" />
+    <Member Name="iSR_Sen_Val2_Up" Datatype="Bool" />
+    <Member Name="iSR_Sen_Val2_Down" Datatype="Bool" />
+    <Member Name="iSL_Distance" Datatype="Int" />
+    <Member Name="iSR_Correct" Datatype="Int" />
+    <Member Name="iSR_Distance" Datatype="Int" />
+    <Member Name="iSL_Hydraulic_Filtr" Datatype="Bool" />
+    <Member Name="iSR_Hydraulic_Empty" Datatype="Bool" />
+    <Member Name="HWIdentSL" Datatype="HW_IO" />
+    <Member Name="HWIdentSR" Datatype="HW_IO" />
+    <Member Name="Reset_Drive" Datatype="Bool" />
+    <Member Name="Reset_Hydro" Datatype="Bool" />
+  </Section>
+  <Section Name="Output">
+    <Member Name="oSL_Valve_Up" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="oSL_Valve_Down" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="oSL_Hydraulic_Unit" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="oSR_Valve_Up" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="oSR_Valve_Down" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="oSR_Hydraulic_Unit" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="oHydraulic_Status_LED_UP_1" Datatype="Bool" />
+    <Member Name="oHydraulic_Status_LED_UP_2" Datatype="Bool" />
+    <Member Name="oHydraulic_Status_LED_DOWN_1" Datatype="Bool" />
+    <Member Name="oHydraulic_Status_LED_DOWN_2" Datatype="Bool" />
+    <Member Name="oSL_Communication_OK" Datatype="Bool" />
+    <Member Name="oSR_Communication_OK" Datatype="Bool" />
+    <Member Name="oSL_Forward_Flag" Datatype="Bool" />
+    <Member Name="oSL_Backward_Flag" Datatype="Bool" />
+    <Member Name="oSR_Forward_Flag" Datatype="Bool" />
+    <Member Name="oSR_Backward_Flag" Datatype="Bool" />
+    <Member Name="oST1_1_Move_Flag" Datatype="Bool" />
+    <Member Name="oST1_2_Move_Flag" Datatype="Bool" />
+    <Member Name="oST2_1_Move_Flag" Datatype="Bool" />
+    <Member Name="oST2_2_Move_Flag" Datatype="Bool" />
+    <Member Name="oST3_1_Move_flag" Datatype="Bool" />
+    <Member Name="oST3_2_Move_Flag" Datatype="Bool" />
+    <Member Name="oST4_1_Move_Flag" Datatype="Bool" />
+    <Member Name="oST4_2_Move_Flag" Datatype="Bool" />
+  </Section>
+  <Section Name="InOut">
+    <Member Name="iSL_Drive_Param" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_STATUS_V2.1&quot;" />
+    <Member Name="iSR_Drive_Param" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_STATUS_V2.1&quot;" />
+    <Member Name="oSL_Drive_Param" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
+    <Member Name="oSR_Drive_Param" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
+  </Section>
+  <Section Name="Static">
+    <Member Name="Hydraulic_SL" Datatype="&quot;Side_Hydraulic&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Hydraulic_SR" Datatype="&quot;Side_Hydraulic&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Side_Driver_Instance" Datatype="&quot;Side_Driver&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Side_Shifter_Auto_Instance" Datatype="&quot;Side_Shifter_Auto&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="SL_Auto_Speed" Datatype="Int">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="SR_Auto_Speed" Datatype="Int">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="SL_Auto_Forward" Datatype="Bool" />
+    <Member Name="SL_Auto_Backward" Datatype="Bool" />
+    <Member Name="SR_Auto_Forward" Datatype="Bool" />
+    <Member Name="SR_Auto_Backward" Datatype="Bool" />
+    <Member Name="SR_Distance_Correct" Datatype="Int" />
+    <Member Name="SL_Error_Laser" Datatype="Bool" />
+    <Member Name="SR_Error_Laser" Datatype="Bool" />
+    <Member Name="SL_SR_InPosition" Datatype="Bool" />
+    <Member Name="SL_Sen_Up" Datatype="Bool" />
+    <Member Name="SL_Sen_Down" Datatype="Bool" />
+    <Member Name="SR_Sen_Up" Datatype="Bool" />
+    <Member Name="SR_Sen_Down" Datatype="Bool" />
+    <Member Name="SL_Error_Hyd" Datatype="Bool" />
+    <Member Name="SR_Error_Hyd" Datatype="Bool" />
+    <Member Name="Error_Drive" Datatype="Bool" />
+    <Member Name="Error_Hydro" Datatype="Bool" />
+    <Member Name="Status_Sen_Up" Datatype="Bool" />
+    <Member Name="Status_Sen_Down" Datatype="Bool" />
+    <Member Name="RL_Speed" Datatype="Int" />
+    <Member Name="RR_Speed" Datatype="Int" />
+    <Member Name="Step_Move_Pallets" Datatype="Int" />
+    <Member Name="Row_Start" Datatype="Int" />
+    <Member Name="Row_Destination" Datatype="Int" />
+    <Member Name="Column_Start" Datatype="Int" />
+    <Member Name="Column_Destination" Datatype="Int" />
+    <Member Name="TON_iSR_Error" Datatype="TON_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="TON_iSL_Error" Datatype="TON_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <Name>Side_Shifters_SS2</Name>
+      <Namespace />
+      <Number>17</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.InstanceDB>
+</Document>

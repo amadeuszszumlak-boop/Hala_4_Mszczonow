@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.InstanceDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <InstanceOfName>Tippler</InstanceOfName>
+      <InstanceOfType>FB</InstanceOfType>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input">
+    <Member Name="Pallet_On_Tippler" Datatype="Bool" />
+    <Member Name="iA1LowClamp_BasePos" Datatype="Bool" />
+    <Member Name="iA1UpClamp_BasePos" Datatype="Bool" />
+    <Member Name="iA2LowClamp_BasePos" Datatype="Bool" />
+    <Member Name="iA2UpClamp_BasePos" Datatype="Bool" />
+    <Member Name="iA1LowClamp_WorkPos" Datatype="Bool" />
+    <Member Name="iA1UpClamp_WorkPos" Datatype="Bool" />
+    <Member Name="iA2LowClamp_WorkPos" Datatype="Bool" />
+    <Member Name="iA2UpClamp_WorkPos" Datatype="Bool" />
+    <Member Name="iArm1_AngleValue" Datatype="Int" />
+    <Member Name="iArm2_AngleValue" Datatype="Int" />
+    <Member Name="iArm1_BasePos" Datatype="Bool" />
+    <Member Name="iArm2_BasePos" Datatype="Bool" />
+    <Member Name="HMI_Control" Datatype="Bool" />
+    <Member Name="HMI_ButtonUp" Datatype="Bool" />
+    <Member Name="HMI_ButtonDown" Datatype="Bool" />
+    <Member Name="iButton_Down" Datatype="Bool" />
+    <Member Name="iButton_Up" Datatype="Bool" />
+  </Section>
+  <Section Name="Output">
+    <Member Name="Fq_Main_Valve_Arms" Datatype="Bool" />
+    <Member Name="Fq_Main_Valve_Clamps" Datatype="Bool" />
+    <Member Name="Fq_HydraulicUnit" Datatype="Bool" />
+    <Member Name="qArm1" Datatype="Int" />
+    <Member Name="qArm2" Datatype="Int" />
+    <Member Name="qLowerClamps_Backward" Datatype="Bool" />
+    <Member Name="qUpperClamps_Backward" Datatype="Bool" />
+    <Member Name="qLowerClamps_Forward" Datatype="Bool" />
+    <Member Name="qUpperClamps_Forward" Datatype="Bool" />
+  </Section>
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="Hydraulic_Ready" Datatype="TON_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Hydraulic_Off" Datatype="TON_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="LowerClamps" Datatype="&quot;Clamp&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="UpperClamps" Datatype="&quot;Clamp&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Arms" Datatype="&quot;Arms&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Step" Datatype="Int">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="ReqArmsDown" Datatype="Bool" />
+    <Member Name="ReqArmsUp" Datatype="Bool" />
+    <Member Name="Arms_workPos" Datatype="Bool" />
+    <Member Name="Arms_basePos" Datatype="Bool" />
+    <Member Name="Arms_clampsOperPos" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Tippler_maintenance" Datatype="&quot;Tippler_maintenance&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="ButtonArmsDown" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="ButtonArmsUp" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="ReqLowerClampsClose" Datatype="Bool" />
+    <Member Name="ReqUpperClampsClose" Datatype="Bool" />
+    <Member Name="ReqLowerClampsOpen" Datatype="Bool" />
+    <Member Name="ReqUpperClampsOpen" Datatype="Bool" />
+    <Member Name="Timer_ClampsWorkPos" Datatype="TON_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Timer_ClampsBasePos" Datatype="TON_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Tippler_keep_down" Datatype="TP_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="N_Trig_Button_Down" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <Name>Tippler_DB</Name>
+      <Namespace />
+      <Number>400</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.InstanceDB>
+</Document>

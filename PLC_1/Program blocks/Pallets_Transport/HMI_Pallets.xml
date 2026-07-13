@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="Reset_Drivers" Datatype="Bool" />
+    <Member Name="Row" Datatype="Int" />
+    <Member Name="Station_Row4" Datatype="Int" />
+    <Member Name="Station_Row2" Datatype="Int" />
+    <Member Name="Station_Row1" Datatype="Int" />
+    <Member Name="Run_Command_left_ROW1" Datatype="Array[1..12] of Bool" />
+    <Member Name="Run_Command_left_ROW2" Datatype="Array[1..12] of Bool" />
+    <Member Name="Run_Command_left_ROW3" Datatype="Array[1..12] of Bool" />
+    <Member Name="Run_Command_left_ROW4" Datatype="Array[1..12] of Bool" />
+    <Member Name="Run_Command_right_ROW1" Datatype="Array[1..12] of Bool" />
+    <Member Name="Run_Command_right_ROW2" Datatype="Array[1..12] of Bool" />
+    <Member Name="Run_Command_right_ROW3" Datatype="Array[1..12] of Bool" />
+    <Member Name="Run_Command_right_ROW4" Datatype="Array[1..12] of Bool" />
+    <Member Name="Run_Status_left_ROW1" Datatype="Array[1..12] of Bool" />
+    <Member Name="Run_Status_left_ROW2" Datatype="Array[1..12] of Bool" />
+    <Member Name="Run_Status_left_ROW3" Datatype="Array[1..12] of Bool" />
+    <Member Name="Run_Status_left_ROW4" Datatype="Array[1..12] of Bool" />
+    <Member Name="Run_Status_right_ROW1" Datatype="Array[1..12] of Bool" />
+    <Member Name="Run_Status_right_ROW2" Datatype="Array[1..12] of Bool" />
+    <Member Name="Run_Status_right_ROW3" Datatype="Array[1..12] of Bool" />
+    <Member Name="Run_Status_right_ROW4" Datatype="Array[1..12] of Bool" />
+    <Member Name="Number_Of_Pallet" Datatype="SInt" />
+    <Member Name="Stop_Driver_Button1" Datatype="DWord" />
+    <Member Name="Stop_Driver_HMI1" Datatype="DWord" />
+    <Member Name="Stop_Driver_Button2" Datatype="DWord" />
+    <Member Name="Stop_Driver_HMI2" Datatype="DWord" />
+    <Member Name="Stop_Driver_Status" Datatype="Bool" />
+    <Member Name="Drive_Error_Status" Datatype="Bool" />
+    <Member Name="Command_Run_W1" Datatype="Bool" />
+    <Member Name="Command_Run_W2" Datatype="Bool" />
+    <Member Name="Command_Run_W4" Datatype="Bool" />
+    <Member Name="Reset_Station_Block_Request" Datatype="Bool" />
+    <Member Name="Station_Block_Request_ROW1" Datatype="Array[1..12] of Bool" />
+    <Member Name="Station_Block_Request_ROW2" Datatype="Array[1..12] of Bool" />
+    <Member Name="Station_Block_Request_ROW3" Datatype="Array[1..12] of Bool" />
+    <Member Name="Station_Block_Request_ROW4" Datatype="Array[1..12] of Bool" />
+    <Member Name="Any_Station_Block_ACTIVE" Datatype="Bool" />
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>HMI_Pallets</Name>
+      <Namespace />
+      <Number>24</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

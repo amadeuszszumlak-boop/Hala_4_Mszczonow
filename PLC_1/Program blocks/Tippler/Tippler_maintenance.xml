@@ -1,0 +1,2534 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.FB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input">
+    <Member Name="hmi_arm_selection" Datatype="Int" />
+    <Member Name="hmi_button_up" Datatype="Bool" />
+    <Member Name="hmi_button_down" Datatype="Bool" />
+    <Member Name="hmi_set_angle" Datatype="Int" />
+    <Member Name="Arm_1_Angle_Value" Datatype="Real" />
+    <Member Name="Arm_2_Angle_Value" Datatype="Real" />
+    <Member Name="hmi_button_open" Datatype="Bool" />
+    <Member Name="hmi_button_close" Datatype="Bool" />
+  </Section>
+  <Section Name="Output">
+    <Member Name="Arm1" Datatype="Int" />
+    <Member Name="Arm2" Datatype="Int" />
+    <Member Name="closeUpperClamp" Datatype="Bool" />
+    <Member Name="openUpperClamp" Datatype="Bool" />
+    <Member Name="closeLowerClamp" Datatype="Bool" />
+    <Member Name="openLowerClamp" Datatype="Bool" />
+  </Section>
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="Arm1SetPosReached" Datatype="Bool" />
+    <Member Name="Arm2SetPosReached" Datatype="Bool" />
+    <Member Name="speed" Datatype="Int" />
+  </Section>
+  <Section Name="Temp" />
+  <Section Name="Constant" />
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>Tippler_maintenance</Name>
+      <Namespace />
+      <Number>401</Number>
+      <ProgrammingLanguage>LAD</ProgrammingLanguage>
+      <SetENOAutomatically>false</SetENOAutomatically>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <Access Scope="LocalVariable" UId="21">
+    <Symbol UId="22">
+      <Component Name="Arm1" UId="23" />
+    </Symbol>
+  </Access>
+  <Blank UId="24" />
+  <Token Text=":=" UId="25" />
+  <Blank UId="26" />
+  <Access Scope="LiteralConstant" UId="27">
+    <Constant UId="28">
+      <ConstantValue UId="30">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="31" />
+  <NewLine UId="32" />
+  <Access Scope="LocalVariable" UId="33">
+    <Symbol UId="34">
+      <Component Name="Arm2" UId="35" />
+    </Symbol>
+  </Access>
+  <Blank UId="36" />
+  <Token Text=":=" UId="37" />
+  <Blank UId="38" />
+  <Access Scope="LiteralConstant" UId="39">
+    <Constant UId="40">
+      <ConstantValue UId="42">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="43" />
+  <NewLine UId="44" />
+  <Access Scope="LocalVariable" UId="45">
+    <Symbol UId="46">
+      <Component Name="speed" UId="47" />
+    </Symbol>
+  </Access>
+  <Blank UId="48" />
+  <Token Text=":=" UId="49" />
+  <Blank UId="50" />
+  <Access Scope="LiteralConstant" UId="51">
+    <Constant UId="52">
+      <ConstantValue UId="54">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="55" />
+  <NewLine UId="56" />
+  <Token Text="IF" UId="57" />
+  <Blank UId="58" />
+  <Access Scope="LocalVariable" UId="59">
+    <Symbol UId="60">
+      <Component Name="Arm_1_Angle_Value" UId="61" />
+    </Symbol>
+  </Access>
+  <Blank UId="62" />
+  <Token Text="&gt;" UId="63" />
+  <Blank UId="64" />
+  <Access Scope="LiteralConstant" UId="65">
+    <Constant UId="66">
+      <ConstantValue UId="68">50</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="69" />
+  <Token Text="OR" UId="70" />
+  <Blank UId="71" />
+  <Access Scope="LocalVariable" UId="72">
+    <Symbol UId="73">
+      <Component Name="Arm_2_Angle_Value" UId="74" />
+    </Symbol>
+  </Access>
+  <Blank UId="75" />
+  <Token Text="&gt;" UId="76" />
+  <Blank UId="77" />
+  <Access Scope="LiteralConstant" UId="78">
+    <Constant UId="79">
+      <ConstantValue UId="81">50</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="82" />
+  <Token Text="THEN" UId="83" />
+  <NewLine UId="84" />
+  <Blank Num="4" UId="85" />
+  <Access Scope="LocalVariable" UId="86">
+    <Symbol UId="87">
+      <Component Name="speed" UId="88" />
+    </Symbol>
+  </Access>
+  <Blank UId="89" />
+  <Token Text=":=" UId="90" />
+  <Blank UId="91" />
+  <Access Scope="LiteralConstant" UId="92">
+    <Constant UId="93">
+      <ConstantValue UId="95">15000</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="96" />
+  <NewLine UId="97" />
+  <Token Text="ELSE" UId="98" />
+  <NewLine UId="99" />
+  <Blank Num="4" UId="100" />
+  <Access Scope="LocalVariable" UId="101">
+    <Symbol UId="102">
+      <Component Name="speed" UId="103" />
+    </Symbol>
+  </Access>
+  <Blank UId="104" />
+  <Token Text=":=" UId="105" />
+  <Blank UId="106" />
+  <Access Scope="LiteralConstant" UId="107">
+    <Constant UId="108">
+      <ConstantValue UId="110">20000</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="111" />
+  <NewLine UId="112" />
+  <Token Text="END_IF" UId="113" />
+  <Token Text=";" UId="114" />
+  <NewLine UId="115" />
+  <Token Text="IF" UId="116" />
+  <Blank UId="117" />
+  <Access Scope="LocalVariable" UId="118">
+    <Symbol UId="119">
+      <Component Name="hmi_arm_selection" UId="120" />
+    </Symbol>
+  </Access>
+  <Blank UId="121" />
+  <Token Text="=" UId="122" />
+  <Blank UId="123" />
+  <Access Scope="LiteralConstant" UId="124">
+    <Constant UId="125">
+      <ConstantValue UId="127">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="128" />
+  <Token Text="THEN" UId="129" />
+  <NewLine UId="130" />
+  <Blank Num="4" UId="131" />
+  <Token Text="IF" UId="132" />
+  <Blank UId="133" />
+  <Access Scope="LocalVariable" UId="134">
+    <Symbol UId="135">
+      <Component Name="hmi_button_up" UId="136" />
+    </Symbol>
+  </Access>
+  <Blank UId="137" />
+  <Token Text="AND" UId="138" />
+  <Blank UId="139" />
+  <Access Scope="LocalVariable" UId="140">
+    <Symbol UId="141">
+      <Component Name="hmi_set_angle" UId="142" />
+    </Symbol>
+  </Access>
+  <Blank UId="143" />
+  <Token Text="&gt;" UId="144" />
+  <Blank UId="145" />
+  <Access Scope="LocalVariable" UId="146">
+    <Symbol UId="147">
+      <Component Name="Arm_1_Angle_Value" UId="148" />
+    </Symbol>
+  </Access>
+  <Blank UId="149" />
+  <Token Text="THEN" UId="150" />
+  <NewLine UId="151" />
+  <Blank Num="8" UId="152" />
+  <Access Scope="LocalVariable" UId="153">
+    <Symbol UId="154">
+      <Component Name="Arm1" UId="155" />
+    </Symbol>
+  </Access>
+  <Blank UId="156" />
+  <Token Text=":=" UId="157" />
+  <Access Scope="LocalVariable" UId="158">
+    <Symbol UId="159">
+      <Component Name="speed" UId="160" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="161" />
+  <NewLine UId="162" />
+  <Blank Num="8" UId="163" />
+  <Access Scope="LocalVariable" UId="164">
+    <Symbol UId="165">
+      <Component Name="Arm2" UId="166" />
+    </Symbol>
+  </Access>
+  <Blank UId="167" />
+  <Token Text=":=" UId="168" />
+  <Blank UId="169" />
+  <Access Scope="LiteralConstant" UId="170">
+    <Constant UId="171">
+      <ConstantValue UId="173">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="174" />
+  <NewLine UId="175" />
+  <Blank Num="8" UId="176" />
+  <Access Scope="LocalVariable" UId="177">
+    <Symbol UId="178">
+      <Component Name="closeUpperClamp" UId="179" />
+    </Symbol>
+  </Access>
+  <Blank UId="180" />
+  <Token Text=":=" UId="181" />
+  <Blank UId="182" />
+  <Access Scope="LiteralConstant" UId="183">
+    <Constant UId="184">
+      <ConstantValue UId="186">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="187" />
+  <NewLine UId="188" />
+  <Blank Num="8" UId="189" />
+  <Access Scope="LocalVariable" UId="190">
+    <Symbol UId="191">
+      <Component Name="closeLowerClamp" UId="192" />
+    </Symbol>
+  </Access>
+  <Blank UId="193" />
+  <Token Text=":=" UId="194" />
+  <Blank UId="195" />
+  <Access Scope="LiteralConstant" UId="196">
+    <Constant UId="197">
+      <ConstantValue UId="199">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="200" />
+  <NewLine UId="201" />
+  <Blank Num="8" UId="202" />
+  <Access Scope="LocalVariable" UId="203">
+    <Symbol UId="204">
+      <Component Name="openUpperClamp" UId="205" />
+    </Symbol>
+  </Access>
+  <Blank UId="206" />
+  <Token Text=":=" UId="207" />
+  <Blank UId="208" />
+  <Access Scope="LiteralConstant" UId="209">
+    <Constant UId="210">
+      <ConstantValue UId="212">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="213" />
+  <NewLine UId="214" />
+  <Blank Num="8" UId="215" />
+  <Access Scope="LocalVariable" UId="216">
+    <Symbol UId="217">
+      <Component Name="openLowerClamp" UId="218" />
+    </Symbol>
+  </Access>
+  <Blank UId="219" />
+  <Token Text=":=" UId="220" />
+  <Blank UId="221" />
+  <Access Scope="LiteralConstant" UId="222">
+    <Constant UId="223">
+      <ConstantValue UId="225">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="226" />
+  <NewLine UId="227" />
+  <Blank Num="4" UId="228" />
+  <Token Text="ELSIF" UId="229" />
+  <Blank UId="230" />
+  <Access Scope="LocalVariable" UId="231">
+    <Symbol UId="232">
+      <Component Name="hmi_button_down" UId="233" />
+    </Symbol>
+  </Access>
+  <Blank UId="234" />
+  <Token Text="THEN" UId="235" />
+  <NewLine UId="236" />
+  <Blank Num="8" UId="237" />
+  <Access Scope="LocalVariable" UId="238">
+    <Symbol UId="239">
+      <Component Name="Arm1" UId="240" />
+    </Symbol>
+  </Access>
+  <Blank UId="241" />
+  <Token Text=":=" UId="242" />
+  <Blank UId="243" />
+  <Token Text="-" UId="244" />
+  <Access Scope="LocalVariable" UId="245">
+    <Symbol UId="246">
+      <Component Name="speed" UId="247" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="248" />
+  <NewLine UId="249" />
+  <Blank Num="8" UId="250" />
+  <Access Scope="LocalVariable" UId="251">
+    <Symbol UId="252">
+      <Component Name="Arm2" UId="253" />
+    </Symbol>
+  </Access>
+  <Blank UId="254" />
+  <Token Text=":=" UId="255" />
+  <Blank UId="256" />
+  <Access Scope="LiteralConstant" UId="257">
+    <Constant UId="258">
+      <ConstantValue UId="260">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="261" />
+  <NewLine UId="262" />
+  <Blank Num="8" UId="263" />
+  <Access Scope="LocalVariable" UId="264">
+    <Symbol UId="265">
+      <Component Name="closeUpperClamp" UId="266" />
+    </Symbol>
+  </Access>
+  <Blank UId="267" />
+  <Token Text=":=" UId="268" />
+  <Blank UId="269" />
+  <Access Scope="LiteralConstant" UId="270">
+    <Constant UId="271">
+      <ConstantValue UId="273">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="274" />
+  <NewLine UId="275" />
+  <Blank Num="8" UId="276" />
+  <Access Scope="LocalVariable" UId="277">
+    <Symbol UId="278">
+      <Component Name="closeLowerClamp" UId="279" />
+    </Symbol>
+  </Access>
+  <Blank UId="280" />
+  <Token Text=":=" UId="281" />
+  <Blank UId="282" />
+  <Access Scope="LiteralConstant" UId="283">
+    <Constant UId="284">
+      <ConstantValue UId="286">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="287" />
+  <NewLine UId="288" />
+  <Blank Num="8" UId="289" />
+  <Access Scope="LocalVariable" UId="290">
+    <Symbol UId="291">
+      <Component Name="openUpperClamp" UId="292" />
+    </Symbol>
+  </Access>
+  <Blank UId="293" />
+  <Token Text=":=" UId="294" />
+  <Blank UId="295" />
+  <Access Scope="LiteralConstant" UId="296">
+    <Constant UId="297">
+      <ConstantValue UId="299">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="300" />
+  <NewLine UId="301" />
+  <Blank Num="8" UId="302" />
+  <Access Scope="LocalVariable" UId="303">
+    <Symbol UId="304">
+      <Component Name="openLowerClamp" UId="305" />
+    </Symbol>
+  </Access>
+  <Blank UId="306" />
+  <Token Text=":=" UId="307" />
+  <Blank UId="308" />
+  <Access Scope="LiteralConstant" UId="309">
+    <Constant UId="310">
+      <ConstantValue UId="312">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="313" />
+  <NewLine UId="314" />
+  <Blank Num="4" UId="315" />
+  <Token Text="ELSIF" UId="316" />
+  <Blank UId="317" />
+  <Access Scope="LocalVariable" UId="318">
+    <Symbol UId="319">
+      <Component Name="hmi_button_close" UId="320" />
+    </Symbol>
+  </Access>
+  <Blank UId="321" />
+  <Token Text="THEN" UId="322" />
+  <NewLine UId="323" />
+  <Blank Num="8" UId="324" />
+  <Access Scope="LocalVariable" UId="325">
+    <Symbol UId="326">
+      <Component Name="Arm1" UId="327" />
+    </Symbol>
+  </Access>
+  <Blank UId="328" />
+  <Token Text=":=" UId="329" />
+  <Blank UId="330" />
+  <Access Scope="LiteralConstant" UId="331">
+    <Constant UId="332">
+      <ConstantValue UId="334">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="335" />
+  <NewLine UId="336" />
+  <Blank Num="8" UId="337" />
+  <Access Scope="LocalVariable" UId="338">
+    <Symbol UId="339">
+      <Component Name="Arm2" UId="340" />
+    </Symbol>
+  </Access>
+  <Blank UId="341" />
+  <Token Text=":=" UId="342" />
+  <Blank UId="343" />
+  <Access Scope="LiteralConstant" UId="344">
+    <Constant UId="345">
+      <ConstantValue UId="347">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="348" />
+  <NewLine UId="349" />
+  <Blank Num="8" UId="350" />
+  <Access Scope="LocalVariable" UId="351">
+    <Symbol UId="352">
+      <Component Name="closeUpperClamp" UId="353" />
+    </Symbol>
+  </Access>
+  <Blank UId="354" />
+  <Token Text=":=" UId="355" />
+  <Blank UId="356" />
+  <Access Scope="LiteralConstant" UId="357">
+    <Constant UId="358">
+      <ConstantValue UId="360">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="361" />
+  <NewLine UId="362" />
+  <Blank Num="8" UId="363" />
+  <Access Scope="LocalVariable" UId="364">
+    <Symbol UId="365">
+      <Component Name="closeLowerClamp" UId="366" />
+    </Symbol>
+  </Access>
+  <Blank UId="367" />
+  <Token Text=":=" UId="368" />
+  <Blank UId="369" />
+  <Access Scope="LiteralConstant" UId="370">
+    <Constant UId="371">
+      <ConstantValue UId="373">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="374" />
+  <NewLine UId="375" />
+  <Blank Num="8" UId="376" />
+  <Access Scope="LocalVariable" UId="377">
+    <Symbol UId="378">
+      <Component Name="openUpperClamp" UId="379" />
+    </Symbol>
+  </Access>
+  <Blank UId="380" />
+  <Token Text=":=" UId="381" />
+  <Blank UId="382" />
+  <Access Scope="LiteralConstant" UId="383">
+    <Constant UId="384">
+      <ConstantValue UId="386">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="387" />
+  <Blank UId="388" />
+  <NewLine UId="389" />
+  <Blank Num="8" UId="390" />
+  <Access Scope="LocalVariable" UId="391">
+    <Symbol UId="392">
+      <Component Name="openLowerClamp" UId="393" />
+    </Symbol>
+  </Access>
+  <Blank UId="394" />
+  <Token Text=":=" UId="395" />
+  <Blank UId="396" />
+  <Access Scope="LiteralConstant" UId="397">
+    <Constant UId="398">
+      <ConstantValue UId="400">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="401" />
+  <NewLine UId="402" />
+  <Blank Num="4" UId="403" />
+  <Token Text="ELSIF" UId="404" />
+  <Blank UId="405" />
+  <Access Scope="LocalVariable" UId="406">
+    <Symbol UId="407">
+      <Component Name="hmi_button_open" UId="408" />
+    </Symbol>
+  </Access>
+  <Blank UId="409" />
+  <Token Text="THEN" UId="410" />
+  <NewLine UId="411" />
+  <Blank Num="8" UId="412" />
+  <Access Scope="LocalVariable" UId="413">
+    <Symbol UId="414">
+      <Component Name="Arm1" UId="415" />
+    </Symbol>
+  </Access>
+  <Blank UId="416" />
+  <Token Text=":=" UId="417" />
+  <Blank UId="418" />
+  <Access Scope="LiteralConstant" UId="419">
+    <Constant UId="420">
+      <ConstantValue UId="422">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="423" />
+  <NewLine UId="424" />
+  <Blank Num="8" UId="425" />
+  <Access Scope="LocalVariable" UId="426">
+    <Symbol UId="427">
+      <Component Name="Arm2" UId="428" />
+    </Symbol>
+  </Access>
+  <Blank UId="429" />
+  <Token Text=":=" UId="430" />
+  <Blank UId="431" />
+  <Access Scope="LiteralConstant" UId="432">
+    <Constant UId="433">
+      <ConstantValue UId="435">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="436" />
+  <NewLine UId="437" />
+  <Blank Num="8" UId="438" />
+  <Access Scope="LocalVariable" UId="439">
+    <Symbol UId="440">
+      <Component Name="closeUpperClamp" UId="441" />
+    </Symbol>
+  </Access>
+  <Blank UId="442" />
+  <Token Text=":=" UId="443" />
+  <Blank UId="444" />
+  <Access Scope="LiteralConstant" UId="445">
+    <Constant UId="446">
+      <ConstantValue UId="448">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="449" />
+  <NewLine UId="450" />
+  <Blank Num="8" UId="451" />
+  <Access Scope="LocalVariable" UId="452">
+    <Symbol UId="453">
+      <Component Name="closeLowerClamp" UId="454" />
+    </Symbol>
+  </Access>
+  <Blank UId="455" />
+  <Token Text=":=" UId="456" />
+  <Blank UId="457" />
+  <Access Scope="LiteralConstant" UId="458">
+    <Constant UId="459">
+      <ConstantValue UId="461">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="462" />
+  <NewLine UId="463" />
+  <Blank Num="8" UId="464" />
+  <Access Scope="LocalVariable" UId="465">
+    <Symbol UId="466">
+      <Component Name="openUpperClamp" UId="467" />
+    </Symbol>
+  </Access>
+  <Blank UId="468" />
+  <Token Text=":=" UId="469" />
+  <Blank UId="470" />
+  <Access Scope="LiteralConstant" UId="471">
+    <Constant UId="472">
+      <ConstantValue UId="474">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="475" />
+  <NewLine UId="476" />
+  <Blank Num="8" UId="477" />
+  <Access Scope="LocalVariable" UId="478">
+    <Symbol UId="479">
+      <Component Name="openLowerClamp" UId="480" />
+    </Symbol>
+  </Access>
+  <Blank UId="481" />
+  <Token Text=":=" UId="482" />
+  <Blank UId="483" />
+  <Access Scope="LiteralConstant" UId="484">
+    <Constant UId="485">
+      <ConstantValue UId="487">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="488" />
+  <NewLine UId="489" />
+  <Blank Num="4" UId="490" />
+  <Token Text="ELSE" UId="491" />
+  <NewLine UId="492" />
+  <Blank Num="8" UId="493" />
+  <Access Scope="LocalVariable" UId="494">
+    <Symbol UId="495">
+      <Component Name="Arm1" UId="496" />
+    </Symbol>
+  </Access>
+  <Blank UId="497" />
+  <Token Text=":=" UId="498" />
+  <Blank UId="499" />
+  <Access Scope="LiteralConstant" UId="500">
+    <Constant UId="501">
+      <ConstantValue UId="503">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="504" />
+  <NewLine UId="505" />
+  <Blank Num="8" UId="506" />
+  <Access Scope="LocalVariable" UId="507">
+    <Symbol UId="508">
+      <Component Name="Arm2" UId="509" />
+    </Symbol>
+  </Access>
+  <Blank UId="510" />
+  <Token Text=":=" UId="511" />
+  <Blank UId="512" />
+  <Access Scope="LiteralConstant" UId="513">
+    <Constant UId="514">
+      <ConstantValue UId="516">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="517" />
+  <NewLine UId="518" />
+  <Blank Num="8" UId="519" />
+  <Access Scope="LocalVariable" UId="520">
+    <Symbol UId="521">
+      <Component Name="closeUpperClamp" UId="522" />
+    </Symbol>
+  </Access>
+  <Blank UId="523" />
+  <Token Text=":=" UId="524" />
+  <Blank UId="525" />
+  <Access Scope="LiteralConstant" UId="526">
+    <Constant UId="527">
+      <ConstantValue UId="529">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="530" />
+  <NewLine UId="531" />
+  <Blank Num="8" UId="532" />
+  <Access Scope="LocalVariable" UId="533">
+    <Symbol UId="534">
+      <Component Name="closeLowerClamp" UId="535" />
+    </Symbol>
+  </Access>
+  <Blank UId="536" />
+  <Token Text=":=" UId="537" />
+  <Blank UId="538" />
+  <Access Scope="LiteralConstant" UId="539">
+    <Constant UId="540">
+      <ConstantValue UId="542">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="543" />
+  <NewLine UId="544" />
+  <Blank Num="8" UId="545" />
+  <Access Scope="LocalVariable" UId="546">
+    <Symbol UId="547">
+      <Component Name="openUpperClamp" UId="548" />
+    </Symbol>
+  </Access>
+  <Blank UId="549" />
+  <Token Text=":=" UId="550" />
+  <Blank UId="551" />
+  <Access Scope="LiteralConstant" UId="552">
+    <Constant UId="553">
+      <ConstantValue UId="555">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="556" />
+  <NewLine UId="557" />
+  <Blank Num="8" UId="558" />
+  <Access Scope="LocalVariable" UId="559">
+    <Symbol UId="560">
+      <Component Name="openLowerClamp" UId="561" />
+    </Symbol>
+  </Access>
+  <Blank UId="562" />
+  <Token Text=":=" UId="563" />
+  <Blank UId="564" />
+  <Access Scope="LiteralConstant" UId="565">
+    <Constant UId="566">
+      <ConstantValue UId="568">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="569" />
+  <NewLine UId="570" />
+  <Blank Num="4" UId="571" />
+  <Token Text="END_IF" UId="572" />
+  <Token Text=";" UId="573" />
+  <NewLine UId="574" />
+  <Token Text="ELSIF" UId="575" />
+  <Blank UId="576" />
+  <Access Scope="LocalVariable" UId="577">
+    <Symbol UId="578">
+      <Component Name="hmi_arm_selection" UId="579" />
+    </Symbol>
+  </Access>
+  <Blank UId="580" />
+  <Token Text="=" UId="581" />
+  <Blank UId="582" />
+  <Access Scope="LiteralConstant" UId="583">
+    <Constant UId="584">
+      <ConstantValue UId="586">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="2" UId="587" />
+  <Token Text="THEN" UId="588" />
+  <NewLine UId="589" />
+  <Blank Num="4" UId="590" />
+  <Token Text="IF" UId="591" />
+  <Blank UId="592" />
+  <Access Scope="LocalVariable" UId="593">
+    <Symbol UId="594">
+      <Component Name="hmi_button_up" UId="595" />
+    </Symbol>
+  </Access>
+  <Blank UId="596" />
+  <Token Text="AND" UId="597" />
+  <Blank UId="598" />
+  <Access Scope="LocalVariable" UId="599">
+    <Symbol UId="600">
+      <Component Name="hmi_set_angle" UId="601" />
+    </Symbol>
+  </Access>
+  <Blank UId="602" />
+  <Token Text="&gt;" UId="603" />
+  <Blank UId="604" />
+  <Access Scope="LocalVariable" UId="605">
+    <Symbol UId="606">
+      <Component Name="Arm_2_Angle_Value" UId="607" />
+    </Symbol>
+  </Access>
+  <Blank UId="608" />
+  <Token Text="THEN" UId="609" />
+  <NewLine UId="610" />
+  <Blank Num="8" UId="611" />
+  <Access Scope="LocalVariable" UId="612">
+    <Symbol UId="613">
+      <Component Name="Arm2" UId="614" />
+    </Symbol>
+  </Access>
+  <Blank UId="615" />
+  <Token Text=":=" UId="616" />
+  <Blank UId="617" />
+  <Access Scope="LocalVariable" UId="618">
+    <Symbol UId="619">
+      <Component Name="speed" UId="620" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="621" />
+  <NewLine UId="622" />
+  <Blank Num="8" UId="623" />
+  <Access Scope="LocalVariable" UId="624">
+    <Symbol UId="625">
+      <Component Name="Arm1" UId="626" />
+    </Symbol>
+  </Access>
+  <Blank UId="627" />
+  <Token Text=":=" UId="628" />
+  <Blank UId="629" />
+  <Access Scope="LiteralConstant" UId="630">
+    <Constant UId="631">
+      <ConstantValue UId="633">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="634" />
+  <NewLine UId="635" />
+  <Blank Num="8" UId="636" />
+  <Access Scope="LocalVariable" UId="637">
+    <Symbol UId="638">
+      <Component Name="closeUpperClamp" UId="639" />
+    </Symbol>
+  </Access>
+  <Blank UId="640" />
+  <Token Text=":=" UId="641" />
+  <Blank UId="642" />
+  <Access Scope="LiteralConstant" UId="643">
+    <Constant UId="644">
+      <ConstantValue UId="646">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="647" />
+  <NewLine UId="648" />
+  <Blank Num="8" UId="649" />
+  <Access Scope="LocalVariable" UId="650">
+    <Symbol UId="651">
+      <Component Name="closeLowerClamp" UId="652" />
+    </Symbol>
+  </Access>
+  <Blank UId="653" />
+  <Token Text=":=" UId="654" />
+  <Blank UId="655" />
+  <Access Scope="LiteralConstant" UId="656">
+    <Constant UId="657">
+      <ConstantValue UId="659">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="660" />
+  <NewLine UId="661" />
+  <Blank Num="8" UId="662" />
+  <Access Scope="LocalVariable" UId="663">
+    <Symbol UId="664">
+      <Component Name="openUpperClamp" UId="665" />
+    </Symbol>
+  </Access>
+  <Blank UId="666" />
+  <Token Text=":=" UId="667" />
+  <Blank UId="668" />
+  <Access Scope="LiteralConstant" UId="669">
+    <Constant UId="670">
+      <ConstantValue UId="672">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="673" />
+  <NewLine UId="674" />
+  <Blank Num="8" UId="675" />
+  <Access Scope="LocalVariable" UId="676">
+    <Symbol UId="677">
+      <Component Name="openLowerClamp" UId="678" />
+    </Symbol>
+  </Access>
+  <Blank UId="679" />
+  <Token Text=":=" UId="680" />
+  <Blank UId="681" />
+  <Access Scope="LiteralConstant" UId="682">
+    <Constant UId="683">
+      <ConstantValue UId="685">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="686" />
+  <NewLine UId="687" />
+  <Blank Num="4" UId="688" />
+  <Token Text="ELSIF" UId="689" />
+  <Blank UId="690" />
+  <Access Scope="LocalVariable" UId="691">
+    <Symbol UId="692">
+      <Component Name="hmi_button_down" UId="693" />
+    </Symbol>
+  </Access>
+  <Blank UId="694" />
+  <Token Text="THEN" UId="695" />
+  <NewLine UId="696" />
+  <Blank Num="8" UId="697" />
+  <Access Scope="LocalVariable" UId="698">
+    <Symbol UId="699">
+      <Component Name="Arm2" UId="700" />
+    </Symbol>
+  </Access>
+  <Blank UId="701" />
+  <Token Text=":=" UId="702" />
+  <Blank UId="703" />
+  <Token Text="-" UId="704" />
+  <Access Scope="LocalVariable" UId="705">
+    <Symbol UId="706">
+      <Component Name="speed" UId="707" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="708" />
+  <NewLine UId="709" />
+  <Blank Num="8" UId="710" />
+  <Access Scope="LocalVariable" UId="711">
+    <Symbol UId="712">
+      <Component Name="Arm1" UId="713" />
+    </Symbol>
+  </Access>
+  <Blank UId="714" />
+  <Token Text=":=" UId="715" />
+  <Blank UId="716" />
+  <Access Scope="LiteralConstant" UId="717">
+    <Constant UId="718">
+      <ConstantValue UId="720">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="721" />
+  <NewLine UId="722" />
+  <Blank Num="8" UId="723" />
+  <Access Scope="LocalVariable" UId="724">
+    <Symbol UId="725">
+      <Component Name="closeUpperClamp" UId="726" />
+    </Symbol>
+  </Access>
+  <Blank UId="727" />
+  <Token Text=":=" UId="728" />
+  <Blank UId="729" />
+  <Access Scope="LiteralConstant" UId="730">
+    <Constant UId="731">
+      <ConstantValue UId="733">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="734" />
+  <NewLine UId="735" />
+  <Blank Num="8" UId="736" />
+  <Access Scope="LocalVariable" UId="737">
+    <Symbol UId="738">
+      <Component Name="closeLowerClamp" UId="739" />
+    </Symbol>
+  </Access>
+  <Blank UId="740" />
+  <Token Text=":=" UId="741" />
+  <Blank UId="742" />
+  <Access Scope="LiteralConstant" UId="743">
+    <Constant UId="744">
+      <ConstantValue UId="746">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="747" />
+  <NewLine UId="748" />
+  <Blank Num="8" UId="749" />
+  <Access Scope="LocalVariable" UId="750">
+    <Symbol UId="751">
+      <Component Name="openUpperClamp" UId="752" />
+    </Symbol>
+  </Access>
+  <Blank UId="753" />
+  <Token Text=":=" UId="754" />
+  <Blank UId="755" />
+  <Access Scope="LiteralConstant" UId="756">
+    <Constant UId="757">
+      <ConstantValue UId="759">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="760" />
+  <NewLine UId="761" />
+  <Blank Num="8" UId="762" />
+  <Access Scope="LocalVariable" UId="763">
+    <Symbol UId="764">
+      <Component Name="openLowerClamp" UId="765" />
+    </Symbol>
+  </Access>
+  <Blank UId="766" />
+  <Token Text=":=" UId="767" />
+  <Blank UId="768" />
+  <Access Scope="LiteralConstant" UId="769">
+    <Constant UId="770">
+      <ConstantValue UId="772">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="773" />
+  <NewLine UId="774" />
+  <Blank Num="4" UId="775" />
+  <Token Text="ELSIF" UId="776" />
+  <Blank UId="777" />
+  <Access Scope="LocalVariable" UId="778">
+    <Symbol UId="779">
+      <Component Name="hmi_button_close" UId="780" />
+    </Symbol>
+  </Access>
+  <Blank UId="781" />
+  <Token Text="THEN" UId="782" />
+  <NewLine UId="783" />
+  <Blank Num="8" UId="784" />
+  <Access Scope="LocalVariable" UId="785">
+    <Symbol UId="786">
+      <Component Name="Arm1" UId="787" />
+    </Symbol>
+  </Access>
+  <Blank UId="788" />
+  <Token Text=":=" UId="789" />
+  <Blank UId="790" />
+  <Access Scope="LiteralConstant" UId="791">
+    <Constant UId="792">
+      <ConstantValue UId="794">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="795" />
+  <NewLine UId="796" />
+  <Blank Num="8" UId="797" />
+  <Access Scope="LocalVariable" UId="798">
+    <Symbol UId="799">
+      <Component Name="Arm2" UId="800" />
+    </Symbol>
+  </Access>
+  <Blank UId="801" />
+  <Token Text=":=" UId="802" />
+  <Blank UId="803" />
+  <Access Scope="LiteralConstant" UId="804">
+    <Constant UId="805">
+      <ConstantValue UId="807">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="808" />
+  <NewLine UId="809" />
+  <Blank Num="8" UId="810" />
+  <Access Scope="LocalVariable" UId="811">
+    <Symbol UId="812">
+      <Component Name="closeUpperClamp" UId="813" />
+    </Symbol>
+  </Access>
+  <Blank UId="814" />
+  <Token Text=":=" UId="815" />
+  <Blank UId="816" />
+  <Access Scope="LiteralConstant" UId="817">
+    <Constant UId="818">
+      <ConstantValue UId="820">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="821" />
+  <NewLine UId="822" />
+  <Blank Num="8" UId="823" />
+  <Access Scope="LocalVariable" UId="824">
+    <Symbol UId="825">
+      <Component Name="closeLowerClamp" UId="826" />
+    </Symbol>
+  </Access>
+  <Blank UId="827" />
+  <Token Text=":=" UId="828" />
+  <Blank UId="829" />
+  <Access Scope="LiteralConstant" UId="830">
+    <Constant UId="831">
+      <ConstantValue UId="833">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="834" />
+  <NewLine UId="835" />
+  <Blank Num="8" UId="836" />
+  <Access Scope="LocalVariable" UId="837">
+    <Symbol UId="838">
+      <Component Name="openUpperClamp" UId="839" />
+    </Symbol>
+  </Access>
+  <Blank UId="840" />
+  <Token Text=":=" UId="841" />
+  <Blank UId="842" />
+  <Access Scope="LiteralConstant" UId="843">
+    <Constant UId="844">
+      <ConstantValue UId="846">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="847" />
+  <NewLine UId="848" />
+  <Blank Num="8" UId="849" />
+  <Access Scope="LocalVariable" UId="850">
+    <Symbol UId="851">
+      <Component Name="openLowerClamp" UId="852" />
+    </Symbol>
+  </Access>
+  <Blank UId="853" />
+  <Token Text=":=" UId="854" />
+  <Blank UId="855" />
+  <Access Scope="LiteralConstant" UId="856">
+    <Constant UId="857">
+      <ConstantValue UId="859">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="860" />
+  <NewLine UId="861" />
+  <Blank Num="4" UId="862" />
+  <Token Text="ELSIF" UId="863" />
+  <Blank UId="864" />
+  <Access Scope="LocalVariable" UId="865">
+    <Symbol UId="866">
+      <Component Name="hmi_button_open" UId="867" />
+    </Symbol>
+  </Access>
+  <Blank UId="868" />
+  <Token Text="THEN" UId="869" />
+  <NewLine UId="870" />
+  <Blank Num="8" UId="871" />
+  <Access Scope="LocalVariable" UId="872">
+    <Symbol UId="873">
+      <Component Name="Arm1" UId="874" />
+    </Symbol>
+  </Access>
+  <Blank UId="875" />
+  <Token Text=":=" UId="876" />
+  <Blank UId="877" />
+  <Access Scope="LiteralConstant" UId="878">
+    <Constant UId="879">
+      <ConstantValue UId="881">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="882" />
+  <NewLine UId="883" />
+  <Blank Num="8" UId="884" />
+  <Access Scope="LocalVariable" UId="885">
+    <Symbol UId="886">
+      <Component Name="Arm2" UId="887" />
+    </Symbol>
+  </Access>
+  <Blank UId="888" />
+  <Token Text=":=" UId="889" />
+  <Blank UId="890" />
+  <Access Scope="LiteralConstant" UId="891">
+    <Constant UId="892">
+      <ConstantValue UId="894">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="895" />
+  <NewLine UId="896" />
+  <Blank Num="8" UId="897" />
+  <Access Scope="LocalVariable" UId="898">
+    <Symbol UId="899">
+      <Component Name="closeUpperClamp" UId="900" />
+    </Symbol>
+  </Access>
+  <Blank UId="901" />
+  <Token Text=":=" UId="902" />
+  <Blank UId="903" />
+  <Access Scope="LiteralConstant" UId="904">
+    <Constant UId="905">
+      <ConstantValue UId="907">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="908" />
+  <NewLine UId="909" />
+  <Blank Num="8" UId="910" />
+  <Access Scope="LocalVariable" UId="911">
+    <Symbol UId="912">
+      <Component Name="closeLowerClamp" UId="913" />
+    </Symbol>
+  </Access>
+  <Blank UId="914" />
+  <Token Text=":=" UId="915" />
+  <Blank UId="916" />
+  <Access Scope="LiteralConstant" UId="917">
+    <Constant UId="918">
+      <ConstantValue UId="920">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="921" />
+  <NewLine UId="922" />
+  <Blank Num="8" UId="923" />
+  <Access Scope="LocalVariable" UId="924">
+    <Symbol UId="925">
+      <Component Name="openUpperClamp" UId="926" />
+    </Symbol>
+  </Access>
+  <Blank UId="927" />
+  <Token Text=":=" UId="928" />
+  <Blank UId="929" />
+  <Access Scope="LiteralConstant" UId="930">
+    <Constant UId="931">
+      <ConstantValue UId="933">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="934" />
+  <NewLine UId="935" />
+  <Blank Num="8" UId="936" />
+  <Access Scope="LocalVariable" UId="937">
+    <Symbol UId="938">
+      <Component Name="openLowerClamp" UId="939" />
+    </Symbol>
+  </Access>
+  <Blank UId="940" />
+  <Token Text=":=" UId="941" />
+  <Blank UId="942" />
+  <Access Scope="LiteralConstant" UId="943">
+    <Constant UId="944">
+      <ConstantValue UId="946">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="947" />
+  <NewLine UId="948" />
+  <Blank Num="4" UId="949" />
+  <Token Text="ELSE" UId="950" />
+  <NewLine UId="951" />
+  <Blank Num="8" UId="952" />
+  <Access Scope="LocalVariable" UId="953">
+    <Symbol UId="954">
+      <Component Name="Arm2" UId="955" />
+    </Symbol>
+  </Access>
+  <Blank UId="956" />
+  <Token Text=":=" UId="957" />
+  <Blank UId="958" />
+  <Access Scope="LiteralConstant" UId="959">
+    <Constant UId="960">
+      <ConstantValue UId="962">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="963" />
+  <NewLine UId="964" />
+  <Blank Num="8" UId="965" />
+  <Access Scope="LocalVariable" UId="966">
+    <Symbol UId="967">
+      <Component Name="Arm1" UId="968" />
+    </Symbol>
+  </Access>
+  <Blank UId="969" />
+  <Token Text=":=" UId="970" />
+  <Blank UId="971" />
+  <Access Scope="LiteralConstant" UId="972">
+    <Constant UId="973">
+      <ConstantValue UId="975">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="976" />
+  <NewLine UId="977" />
+  <Blank Num="8" UId="978" />
+  <Access Scope="LocalVariable" UId="979">
+    <Symbol UId="980">
+      <Component Name="closeUpperClamp" UId="981" />
+    </Symbol>
+  </Access>
+  <Blank UId="982" />
+  <Token Text=":=" UId="983" />
+  <Blank UId="984" />
+  <Access Scope="LiteralConstant" UId="985">
+    <Constant UId="986">
+      <ConstantValue UId="988">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="989" />
+  <NewLine UId="990" />
+  <Blank Num="8" UId="991" />
+  <Access Scope="LocalVariable" UId="992">
+    <Symbol UId="993">
+      <Component Name="closeLowerClamp" UId="994" />
+    </Symbol>
+  </Access>
+  <Blank UId="995" />
+  <Token Text=":=" UId="996" />
+  <Blank UId="997" />
+  <Access Scope="LiteralConstant" UId="998">
+    <Constant UId="999">
+      <ConstantValue UId="1001">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1002" />
+  <NewLine UId="1003" />
+  <Blank Num="8" UId="1004" />
+  <Access Scope="LocalVariable" UId="1005">
+    <Symbol UId="1006">
+      <Component Name="openUpperClamp" UId="1007" />
+    </Symbol>
+  </Access>
+  <Blank UId="1008" />
+  <Token Text=":=" UId="1009" />
+  <Blank UId="1010" />
+  <Access Scope="LiteralConstant" UId="1011">
+    <Constant UId="1012">
+      <ConstantValue UId="1014">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1015" />
+  <NewLine UId="1016" />
+  <Blank Num="8" UId="1017" />
+  <Access Scope="LocalVariable" UId="1018">
+    <Symbol UId="1019">
+      <Component Name="openLowerClamp" UId="1020" />
+    </Symbol>
+  </Access>
+  <Blank UId="1021" />
+  <Token Text=":=" UId="1022" />
+  <Blank UId="1023" />
+  <Access Scope="LiteralConstant" UId="1024">
+    <Constant UId="1025">
+      <ConstantValue UId="1027">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1028" />
+  <NewLine UId="1029" />
+  <Blank Num="4" UId="1030" />
+  <Token Text="END_IF" UId="1031" />
+  <Token Text=";" UId="1032" />
+  <NewLine UId="1033" />
+  <Token Text="ELSIF" UId="1034" />
+  <Blank UId="1035" />
+  <Access Scope="LocalVariable" UId="1036">
+    <Symbol UId="1037">
+      <Component Name="hmi_arm_selection" UId="1038" />
+    </Symbol>
+  </Access>
+  <Blank UId="1039" />
+  <Token Text="=" UId="1040" />
+  <Blank UId="1041" />
+  <Access Scope="LiteralConstant" UId="1042">
+    <Constant UId="1043">
+      <ConstantValue UId="1045">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="1046" />
+  <Token Text="THEN" UId="1047" />
+  <NewLine UId="1048" />
+  <Blank Num="4" UId="1049" />
+  <Token Text="IF" UId="1050" />
+  <Blank UId="1051" />
+  <Access Scope="LocalVariable" UId="1052">
+    <Symbol UId="1053">
+      <Component Name="hmi_button_up" UId="1054" />
+    </Symbol>
+  </Access>
+  <Blank UId="1055" />
+  <Token Text="THEN" UId="1056" />
+  <NewLine UId="1057" />
+  <Blank Num="8" UId="1058" />
+  <Token Text="IF" UId="1059" />
+  <Blank UId="1060" />
+  <Access Scope="LocalVariable" UId="1061">
+    <Symbol UId="1062">
+      <Component Name="hmi_set_angle" UId="1063" />
+    </Symbol>
+  </Access>
+  <Blank UId="1064" />
+  <Token Text="&gt;" UId="1065" />
+  <Blank UId="1066" />
+  <Access Scope="LocalVariable" UId="1067">
+    <Symbol UId="1068">
+      <Component Name="Arm_2_Angle_Value" UId="1069" />
+    </Symbol>
+  </Access>
+  <Blank UId="1070" />
+  <Token Text="AND" UId="1071" />
+  <Blank UId="1072" />
+  <Access Scope="LocalVariable" UId="1073">
+    <Symbol UId="1074">
+      <Component Name="hmi_set_angle" UId="1075" />
+    </Symbol>
+  </Access>
+  <Blank UId="1076" />
+  <Token Text="&gt;" UId="1077" />
+  <Blank UId="1078" />
+  <Access Scope="LocalVariable" UId="1079">
+    <Symbol UId="1080">
+      <Component Name="Arm_1_Angle_Value" UId="1081" />
+    </Symbol>
+  </Access>
+  <Blank UId="1082" />
+  <Token Text="THEN" UId="1083" />
+  <NewLine UId="1084" />
+  <Blank Num="12" UId="1085" />
+  <Access Scope="LocalVariable" UId="1086">
+    <Symbol UId="1087">
+      <Component Name="Arm1" UId="1088" />
+    </Symbol>
+  </Access>
+  <Blank UId="1089" />
+  <Token Text=":=" UId="1090" />
+  <Blank UId="1091" />
+  <Access Scope="LocalVariable" UId="1092">
+    <Symbol UId="1093">
+      <Component Name="speed" UId="1094" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="1095" />
+  <NewLine UId="1096" />
+  <Blank Num="12" UId="1097" />
+  <Access Scope="LocalVariable" UId="1098">
+    <Symbol UId="1099">
+      <Component Name="Arm2" UId="1100" />
+    </Symbol>
+  </Access>
+  <Blank UId="1101" />
+  <Token Text=":=" UId="1102" />
+  <Blank UId="1103" />
+  <Access Scope="LocalVariable" UId="1104">
+    <Symbol UId="1105">
+      <Component Name="speed" UId="1106" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="1107" />
+  <NewLine UId="1108" />
+  <Blank Num="12" UId="1109" />
+  <Access Scope="LocalVariable" UId="1110">
+    <Symbol UId="1111">
+      <Component Name="closeUpperClamp" UId="1112" />
+    </Symbol>
+  </Access>
+  <Blank UId="1113" />
+  <Token Text=":=" UId="1114" />
+  <Blank UId="1115" />
+  <Access Scope="LiteralConstant" UId="1116">
+    <Constant UId="1117">
+      <ConstantValue UId="1119">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1120" />
+  <NewLine UId="1121" />
+  <Blank Num="12" UId="1122" />
+  <Access Scope="LocalVariable" UId="1123">
+    <Symbol UId="1124">
+      <Component Name="closeLowerClamp" UId="1125" />
+    </Symbol>
+  </Access>
+  <Blank UId="1126" />
+  <Token Text=":=" UId="1127" />
+  <Blank UId="1128" />
+  <Access Scope="LiteralConstant" UId="1129">
+    <Constant UId="1130">
+      <ConstantValue UId="1132">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1133" />
+  <NewLine UId="1134" />
+  <Blank Num="12" UId="1135" />
+  <Access Scope="LocalVariable" UId="1136">
+    <Symbol UId="1137">
+      <Component Name="openUpperClamp" UId="1138" />
+    </Symbol>
+  </Access>
+  <Blank UId="1139" />
+  <Token Text=":=" UId="1140" />
+  <Blank UId="1141" />
+  <Access Scope="LiteralConstant" UId="1142">
+    <Constant UId="1143">
+      <ConstantValue UId="1145">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1146" />
+  <NewLine UId="1147" />
+  <Blank Num="12" UId="1148" />
+  <Access Scope="LocalVariable" UId="1149">
+    <Symbol UId="1150">
+      <Component Name="openLowerClamp" UId="1151" />
+    </Symbol>
+  </Access>
+  <Blank UId="1152" />
+  <Token Text=":=" UId="1153" />
+  <Blank UId="1154" />
+  <Access Scope="LiteralConstant" UId="1155">
+    <Constant UId="1156">
+      <ConstantValue UId="1158">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1159" />
+  <NewLine UId="1160" />
+  <Blank Num="8" UId="1161" />
+  <Token Text="ELSIF" UId="1162" />
+  <Blank UId="1163" />
+  <Access Scope="LocalVariable" UId="1164">
+    <Symbol UId="1165">
+      <Component Name="hmi_set_angle" UId="1166" />
+    </Symbol>
+  </Access>
+  <Blank UId="1167" />
+  <Token Text="&gt;" UId="1168" />
+  <Blank UId="1169" />
+  <Access Scope="LocalVariable" UId="1170">
+    <Symbol UId="1171">
+      <Component Name="Arm_2_Angle_Value" UId="1172" />
+    </Symbol>
+  </Access>
+  <Blank UId="1173" />
+  <Token Text="AND" UId="1174" />
+  <Blank UId="1175" />
+  <Access Scope="LocalVariable" UId="1176">
+    <Symbol UId="1177">
+      <Component Name="hmi_set_angle" UId="1178" />
+    </Symbol>
+  </Access>
+  <Blank UId="1179" />
+  <Token Text="&lt;" UId="1180" />
+  <Blank UId="1181" />
+  <Access Scope="LocalVariable" UId="1182">
+    <Symbol UId="1183">
+      <Component Name="Arm_1_Angle_Value" UId="1184" />
+    </Symbol>
+  </Access>
+  <Blank UId="1185" />
+  <Token Text="THEN" UId="1186" />
+  <NewLine UId="1187" />
+  <Blank Num="12" UId="1188" />
+  <Access Scope="LocalVariable" UId="1189">
+    <Symbol UId="1190">
+      <Component Name="Arm1" UId="1191" />
+    </Symbol>
+  </Access>
+  <Blank UId="1192" />
+  <Token Text=":=" UId="1193" />
+  <Blank UId="1194" />
+  <Access Scope="LiteralConstant" UId="1195">
+    <Constant UId="1196">
+      <ConstantValue UId="1198">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1199" />
+  <NewLine UId="1200" />
+  <Blank Num="12" UId="1201" />
+  <Access Scope="LocalVariable" UId="1202">
+    <Symbol UId="1203">
+      <Component Name="Arm2" UId="1204" />
+    </Symbol>
+  </Access>
+  <Blank UId="1205" />
+  <Token Text=":=" UId="1206" />
+  <Blank UId="1207" />
+  <Access Scope="LocalVariable" UId="1208">
+    <Symbol UId="1209">
+      <Component Name="speed" UId="1210" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="1211" />
+  <NewLine UId="1212" />
+  <Blank Num="12" UId="1213" />
+  <Access Scope="LocalVariable" UId="1214">
+    <Symbol UId="1215">
+      <Component Name="closeUpperClamp" UId="1216" />
+    </Symbol>
+  </Access>
+  <Blank UId="1217" />
+  <Token Text=":=" UId="1218" />
+  <Blank UId="1219" />
+  <Access Scope="LiteralConstant" UId="1220">
+    <Constant UId="1221">
+      <ConstantValue UId="1223">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1224" />
+  <NewLine UId="1225" />
+  <Blank Num="12" UId="1226" />
+  <Access Scope="LocalVariable" UId="1227">
+    <Symbol UId="1228">
+      <Component Name="closeLowerClamp" UId="1229" />
+    </Symbol>
+  </Access>
+  <Blank UId="1230" />
+  <Token Text=":=" UId="1231" />
+  <Blank UId="1232" />
+  <Access Scope="LiteralConstant" UId="1233">
+    <Constant UId="1234">
+      <ConstantValue UId="1236">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1237" />
+  <NewLine UId="1238" />
+  <Blank Num="12" UId="1239" />
+  <Access Scope="LocalVariable" UId="1240">
+    <Symbol UId="1241">
+      <Component Name="openUpperClamp" UId="1242" />
+    </Symbol>
+  </Access>
+  <Blank UId="1243" />
+  <Token Text=":=" UId="1244" />
+  <Blank UId="1245" />
+  <Access Scope="LiteralConstant" UId="1246">
+    <Constant UId="1247">
+      <ConstantValue UId="1249">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1250" />
+  <NewLine UId="1251" />
+  <Blank Num="12" UId="1252" />
+  <Access Scope="LocalVariable" UId="1253">
+    <Symbol UId="1254">
+      <Component Name="openLowerClamp" UId="1255" />
+    </Symbol>
+  </Access>
+  <Blank UId="1256" />
+  <Token Text=":=" UId="1257" />
+  <Blank UId="1258" />
+  <Access Scope="LiteralConstant" UId="1259">
+    <Constant UId="1260">
+      <ConstantValue UId="1262">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1263" />
+  <NewLine UId="1264" />
+  <Blank Num="8" UId="1265" />
+  <Token Text="ELSIF" UId="1266" />
+  <Blank UId="1267" />
+  <Access Scope="LocalVariable" UId="1268">
+    <Symbol UId="1269">
+      <Component Name="hmi_set_angle" UId="1270" />
+    </Symbol>
+  </Access>
+  <Blank UId="1271" />
+  <Token Text="&lt;" UId="1272" />
+  <Blank UId="1273" />
+  <Access Scope="LocalVariable" UId="1274">
+    <Symbol UId="1275">
+      <Component Name="Arm_2_Angle_Value" UId="1276" />
+    </Symbol>
+  </Access>
+  <Blank UId="1277" />
+  <Token Text="AND" UId="1278" />
+  <Blank UId="1279" />
+  <Access Scope="LocalVariable" UId="1280">
+    <Symbol UId="1281">
+      <Component Name="hmi_set_angle" UId="1282" />
+    </Symbol>
+  </Access>
+  <Blank UId="1283" />
+  <Token Text="&gt;" UId="1284" />
+  <Blank UId="1285" />
+  <Access Scope="LocalVariable" UId="1286">
+    <Symbol UId="1287">
+      <Component Name="Arm_1_Angle_Value" UId="1288" />
+    </Symbol>
+  </Access>
+  <Blank UId="1289" />
+  <Token Text="THEN" UId="1290" />
+  <NewLine UId="1291" />
+  <Blank Num="12" UId="1292" />
+  <Access Scope="LocalVariable" UId="1293">
+    <Symbol UId="1294">
+      <Component Name="Arm1" UId="1295" />
+    </Symbol>
+  </Access>
+  <Blank UId="1296" />
+  <Token Text=":=" UId="1297" />
+  <Blank UId="1298" />
+  <Access Scope="LocalVariable" UId="1299">
+    <Symbol UId="1300">
+      <Component Name="speed" UId="1301" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="1302" />
+  <NewLine UId="1303" />
+  <Blank Num="12" UId="1304" />
+  <Access Scope="LocalVariable" UId="1305">
+    <Symbol UId="1306">
+      <Component Name="Arm2" UId="1307" />
+    </Symbol>
+  </Access>
+  <Blank UId="1308" />
+  <Token Text=":=" UId="1309" />
+  <Blank UId="1310" />
+  <Access Scope="LiteralConstant" UId="1311">
+    <Constant UId="1312">
+      <ConstantValue UId="1314">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1315" />
+  <NewLine UId="1316" />
+  <Blank Num="12" UId="1317" />
+  <Access Scope="LocalVariable" UId="1318">
+    <Symbol UId="1319">
+      <Component Name="closeUpperClamp" UId="1320" />
+    </Symbol>
+  </Access>
+  <Blank UId="1321" />
+  <Token Text=":=" UId="1322" />
+  <Blank UId="1323" />
+  <Access Scope="LiteralConstant" UId="1324">
+    <Constant UId="1325">
+      <ConstantValue UId="1327">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1328" />
+  <NewLine UId="1329" />
+  <Blank Num="12" UId="1330" />
+  <Access Scope="LocalVariable" UId="1331">
+    <Symbol UId="1332">
+      <Component Name="closeLowerClamp" UId="1333" />
+    </Symbol>
+  </Access>
+  <Blank UId="1334" />
+  <Token Text=":=" UId="1335" />
+  <Blank UId="1336" />
+  <Access Scope="LiteralConstant" UId="1337">
+    <Constant UId="1338">
+      <ConstantValue UId="1340">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1341" />
+  <NewLine UId="1342" />
+  <Blank Num="12" UId="1343" />
+  <Access Scope="LocalVariable" UId="1344">
+    <Symbol UId="1345">
+      <Component Name="openUpperClamp" UId="1346" />
+    </Symbol>
+  </Access>
+  <Blank UId="1347" />
+  <Token Text=":=" UId="1348" />
+  <Blank UId="1349" />
+  <Access Scope="LiteralConstant" UId="1350">
+    <Constant UId="1351">
+      <ConstantValue UId="1353">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1354" />
+  <NewLine UId="1355" />
+  <Blank Num="12" UId="1356" />
+  <Access Scope="LocalVariable" UId="1357">
+    <Symbol UId="1358">
+      <Component Name="openLowerClamp" UId="1359" />
+    </Symbol>
+  </Access>
+  <Blank UId="1360" />
+  <Token Text=":=" UId="1361" />
+  <Blank UId="1362" />
+  <Access Scope="LiteralConstant" UId="1363">
+    <Constant UId="1364">
+      <ConstantValue UId="1366">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1367" />
+  <NewLine UId="1368" />
+  <Blank Num="8" UId="1369" />
+  <Token Text="ELSE" UId="1370" />
+  <NewLine UId="1371" />
+  <Blank Num="12" UId="1372" />
+  <Access Scope="LocalVariable" UId="1373">
+    <Symbol UId="1374">
+      <Component Name="Arm1" UId="1375" />
+    </Symbol>
+  </Access>
+  <Blank UId="1376" />
+  <Token Text=":=" UId="1377" />
+  <Blank UId="1378" />
+  <Access Scope="LiteralConstant" UId="1379">
+    <Constant UId="1380">
+      <ConstantValue UId="1382">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1383" />
+  <NewLine UId="1384" />
+  <Blank Num="12" UId="1385" />
+  <Access Scope="LocalVariable" UId="1386">
+    <Symbol UId="1387">
+      <Component Name="Arm2" UId="1388" />
+    </Symbol>
+  </Access>
+  <Blank UId="1389" />
+  <Token Text=":=" UId="1390" />
+  <Blank UId="1391" />
+  <Access Scope="LiteralConstant" UId="1392">
+    <Constant UId="1393">
+      <ConstantValue UId="1395">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1396" />
+  <NewLine UId="1397" />
+  <Blank Num="12" UId="1398" />
+  <Access Scope="LocalVariable" UId="1399">
+    <Symbol UId="1400">
+      <Component Name="closeUpperClamp" UId="1401" />
+    </Symbol>
+  </Access>
+  <Blank UId="1402" />
+  <Token Text=":=" UId="1403" />
+  <Blank UId="1404" />
+  <Access Scope="LiteralConstant" UId="1405">
+    <Constant UId="1406">
+      <ConstantValue UId="1408">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1409" />
+  <NewLine UId="1410" />
+  <Blank Num="12" UId="1411" />
+  <Access Scope="LocalVariable" UId="1412">
+    <Symbol UId="1413">
+      <Component Name="closeLowerClamp" UId="1414" />
+    </Symbol>
+  </Access>
+  <Blank UId="1415" />
+  <Token Text=":=" UId="1416" />
+  <Blank UId="1417" />
+  <Access Scope="LiteralConstant" UId="1418">
+    <Constant UId="1419">
+      <ConstantValue UId="1421">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1422" />
+  <NewLine UId="1423" />
+  <Blank Num="12" UId="1424" />
+  <Access Scope="LocalVariable" UId="1425">
+    <Symbol UId="1426">
+      <Component Name="openUpperClamp" UId="1427" />
+    </Symbol>
+  </Access>
+  <Blank UId="1428" />
+  <Token Text=":=" UId="1429" />
+  <Blank UId="1430" />
+  <Access Scope="LiteralConstant" UId="1431">
+    <Constant UId="1432">
+      <ConstantValue UId="1434">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1435" />
+  <NewLine UId="1436" />
+  <Blank Num="12" UId="1437" />
+  <Access Scope="LocalVariable" UId="1438">
+    <Symbol UId="1439">
+      <Component Name="openLowerClamp" UId="1440" />
+    </Symbol>
+  </Access>
+  <Blank UId="1441" />
+  <Token Text=":=" UId="1442" />
+  <Blank UId="1443" />
+  <Access Scope="LiteralConstant" UId="1444">
+    <Constant UId="1445">
+      <ConstantValue UId="1447">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1448" />
+  <NewLine UId="1449" />
+  <Blank Num="8" UId="1450" />
+  <Token Text="END_IF" UId="1451" />
+  <Token Text=";" UId="1452" />
+  <NewLine UId="1453" />
+  <Blank Num="4" UId="1454" />
+  <Token Text="ELSIF" UId="1455" />
+  <Blank UId="1456" />
+  <Access Scope="LocalVariable" UId="1457">
+    <Symbol UId="1458">
+      <Component Name="hmi_button_down" UId="1459" />
+    </Symbol>
+  </Access>
+  <Blank UId="1460" />
+  <Token Text="THEN" UId="1461" />
+  <NewLine UId="1462" />
+  <Blank Num="8" UId="1463" />
+  <Access Scope="LocalVariable" UId="1464">
+    <Symbol UId="1465">
+      <Component Name="Arm2" UId="1466" />
+    </Symbol>
+  </Access>
+  <Blank UId="1467" />
+  <Token Text=":=" UId="1468" />
+  <Blank UId="1469" />
+  <Token Text="-" UId="1470" />
+  <Access Scope="LocalVariable" UId="1471">
+    <Symbol UId="1472">
+      <Component Name="speed" UId="1473" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="1474" />
+  <NewLine UId="1475" />
+  <Blank Num="8" UId="1476" />
+  <Access Scope="LocalVariable" UId="1477">
+    <Symbol UId="1478">
+      <Component Name="Arm1" UId="1479" />
+    </Symbol>
+  </Access>
+  <Blank UId="1480" />
+  <Token Text=":=" UId="1481" />
+  <Blank UId="1482" />
+  <Token Text="-" UId="1483" />
+  <Access Scope="LocalVariable" UId="1484">
+    <Symbol UId="1485">
+      <Component Name="speed" UId="1486" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="1487" />
+  <NewLine UId="1488" />
+  <Blank Num="8" UId="1489" />
+  <Access Scope="LocalVariable" UId="1490">
+    <Symbol UId="1491">
+      <Component Name="closeUpperClamp" UId="1492" />
+    </Symbol>
+  </Access>
+  <Blank UId="1493" />
+  <Token Text=":=" UId="1494" />
+  <Blank UId="1495" />
+  <Access Scope="LiteralConstant" UId="1496">
+    <Constant UId="1497">
+      <ConstantValue UId="1499">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1500" />
+  <NewLine UId="1501" />
+  <Blank Num="8" UId="1502" />
+  <Access Scope="LocalVariable" UId="1503">
+    <Symbol UId="1504">
+      <Component Name="closeLowerClamp" UId="1505" />
+    </Symbol>
+  </Access>
+  <Blank UId="1506" />
+  <Token Text=":=" UId="1507" />
+  <Blank UId="1508" />
+  <Access Scope="LiteralConstant" UId="1509">
+    <Constant UId="1510">
+      <ConstantValue UId="1512">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1513" />
+  <NewLine UId="1514" />
+  <Blank Num="8" UId="1515" />
+  <Access Scope="LocalVariable" UId="1516">
+    <Symbol UId="1517">
+      <Component Name="openUpperClamp" UId="1518" />
+    </Symbol>
+  </Access>
+  <Blank UId="1519" />
+  <Token Text=":=" UId="1520" />
+  <Blank UId="1521" />
+  <Access Scope="LiteralConstant" UId="1522">
+    <Constant UId="1523">
+      <ConstantValue UId="1525">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1526" />
+  <NewLine UId="1527" />
+  <Blank Num="8" UId="1528" />
+  <Access Scope="LocalVariable" UId="1529">
+    <Symbol UId="1530">
+      <Component Name="openLowerClamp" UId="1531" />
+    </Symbol>
+  </Access>
+  <Blank UId="1532" />
+  <Token Text=":=" UId="1533" />
+  <Blank UId="1534" />
+  <Access Scope="LiteralConstant" UId="1535">
+    <Constant UId="1536">
+      <ConstantValue UId="1538">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1539" />
+  <NewLine UId="1540" />
+  <Blank Num="4" UId="1541" />
+  <Token Text="ELSIF" UId="1542" />
+  <Blank UId="1543" />
+  <Access Scope="LocalVariable" UId="1544">
+    <Symbol UId="1545">
+      <Component Name="hmi_button_close" UId="1546" />
+    </Symbol>
+  </Access>
+  <Blank UId="1547" />
+  <Token Text="THEN" UId="1548" />
+  <NewLine UId="1549" />
+  <Blank Num="8" UId="1550" />
+  <Access Scope="LocalVariable" UId="1551">
+    <Symbol UId="1552">
+      <Component Name="Arm1" UId="1553" />
+    </Symbol>
+  </Access>
+  <Blank UId="1554" />
+  <Token Text=":=" UId="1555" />
+  <Blank UId="1556" />
+  <Access Scope="LiteralConstant" UId="1557">
+    <Constant UId="1558">
+      <ConstantValue UId="1560">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1561" />
+  <NewLine UId="1562" />
+  <Blank Num="8" UId="1563" />
+  <Access Scope="LocalVariable" UId="1564">
+    <Symbol UId="1565">
+      <Component Name="Arm2" UId="1566" />
+    </Symbol>
+  </Access>
+  <Blank UId="1567" />
+  <Token Text=":=" UId="1568" />
+  <Blank UId="1569" />
+  <Access Scope="LiteralConstant" UId="1570">
+    <Constant UId="1571">
+      <ConstantValue UId="1573">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1574" />
+  <NewLine UId="1575" />
+  <Blank Num="8" UId="1576" />
+  <Access Scope="LocalVariable" UId="1577">
+    <Symbol UId="1578">
+      <Component Name="closeUpperClamp" UId="1579" />
+    </Symbol>
+  </Access>
+  <Blank UId="1580" />
+  <Token Text=":=" UId="1581" />
+  <Blank UId="1582" />
+  <Access Scope="LiteralConstant" UId="1583">
+    <Constant UId="1584">
+      <ConstantValue UId="1586">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1587" />
+  <NewLine UId="1588" />
+  <Blank Num="8" UId="1589" />
+  <Access Scope="LocalVariable" UId="1590">
+    <Symbol UId="1591">
+      <Component Name="closeLowerClamp" UId="1592" />
+    </Symbol>
+  </Access>
+  <Blank UId="1593" />
+  <Token Text=":=" UId="1594" />
+  <Blank UId="1595" />
+  <Access Scope="LiteralConstant" UId="1596">
+    <Constant UId="1597">
+      <ConstantValue UId="1599">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1600" />
+  <NewLine UId="1601" />
+  <Blank Num="8" UId="1602" />
+  <Access Scope="LocalVariable" UId="1603">
+    <Symbol UId="1604">
+      <Component Name="openUpperClamp" UId="1605" />
+    </Symbol>
+  </Access>
+  <Blank UId="1606" />
+  <Token Text=":=" UId="1607" />
+  <Blank UId="1608" />
+  <Access Scope="LiteralConstant" UId="1609">
+    <Constant UId="1610">
+      <ConstantValue UId="1612">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1613" />
+  <NewLine UId="1614" />
+  <Blank Num="8" UId="1615" />
+  <Access Scope="LocalVariable" UId="1616">
+    <Symbol UId="1617">
+      <Component Name="openLowerClamp" UId="1618" />
+    </Symbol>
+  </Access>
+  <Blank UId="1619" />
+  <Token Text=":=" UId="1620" />
+  <Blank UId="1621" />
+  <Access Scope="LiteralConstant" UId="1622">
+    <Constant UId="1623">
+      <ConstantValue UId="1625">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1626" />
+  <NewLine UId="1627" />
+  <Blank Num="4" UId="1628" />
+  <Token Text="ELSIF" UId="1629" />
+  <Blank UId="1630" />
+  <Access Scope="LocalVariable" UId="1631">
+    <Symbol UId="1632">
+      <Component Name="hmi_button_open" UId="1633" />
+    </Symbol>
+  </Access>
+  <Blank UId="1634" />
+  <Token Text="THEN" UId="1635" />
+  <NewLine UId="1636" />
+  <Blank Num="8" UId="1637" />
+  <Access Scope="LocalVariable" UId="1638">
+    <Symbol UId="1639">
+      <Component Name="Arm1" UId="1640" />
+    </Symbol>
+  </Access>
+  <Blank UId="1641" />
+  <Token Text=":=" UId="1642" />
+  <Blank UId="1643" />
+  <Access Scope="LiteralConstant" UId="1644">
+    <Constant UId="1645">
+      <ConstantValue UId="1647">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1648" />
+  <NewLine UId="1649" />
+  <Blank Num="8" UId="1650" />
+  <Access Scope="LocalVariable" UId="1651">
+    <Symbol UId="1652">
+      <Component Name="Arm2" UId="1653" />
+    </Symbol>
+  </Access>
+  <Blank UId="1654" />
+  <Token Text=":=" UId="1655" />
+  <Blank UId="1656" />
+  <Access Scope="LiteralConstant" UId="1657">
+    <Constant UId="1658">
+      <ConstantValue UId="1660">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1661" />
+  <NewLine UId="1662" />
+  <Blank Num="8" UId="1663" />
+  <Access Scope="LocalVariable" UId="1664">
+    <Symbol UId="1665">
+      <Component Name="closeUpperClamp" UId="1666" />
+    </Symbol>
+  </Access>
+  <Blank UId="1667" />
+  <Token Text=":=" UId="1668" />
+  <Blank UId="1669" />
+  <Access Scope="LiteralConstant" UId="1670">
+    <Constant UId="1671">
+      <ConstantValue UId="1673">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1674" />
+  <NewLine UId="1675" />
+  <Blank Num="8" UId="1676" />
+  <Access Scope="LocalVariable" UId="1677">
+    <Symbol UId="1678">
+      <Component Name="closeLowerClamp" UId="1679" />
+    </Symbol>
+  </Access>
+  <Blank UId="1680" />
+  <Token Text=":=" UId="1681" />
+  <Blank UId="1682" />
+  <Access Scope="LiteralConstant" UId="1683">
+    <Constant UId="1684">
+      <ConstantValue UId="1686">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1687" />
+  <NewLine UId="1688" />
+  <Blank Num="8" UId="1689" />
+  <Access Scope="LocalVariable" UId="1690">
+    <Symbol UId="1691">
+      <Component Name="openUpperClamp" UId="1692" />
+    </Symbol>
+  </Access>
+  <Blank UId="1693" />
+  <Token Text=":=" UId="1694" />
+  <Blank UId="1695" />
+  <Access Scope="LiteralConstant" UId="1696">
+    <Constant UId="1697">
+      <ConstantValue UId="1699">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1700" />
+  <NewLine UId="1701" />
+  <Blank Num="8" UId="1702" />
+  <Access Scope="LocalVariable" UId="1703">
+    <Symbol UId="1704">
+      <Component Name="openLowerClamp" UId="1705" />
+    </Symbol>
+  </Access>
+  <Blank UId="1706" />
+  <Token Text=":=" UId="1707" />
+  <Blank UId="1708" />
+  <Access Scope="LiteralConstant" UId="1709">
+    <Constant UId="1710">
+      <ConstantValue UId="1712">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1713" />
+  <NewLine UId="1714" />
+  <Blank Num="4" UId="1715" />
+  <Token Text="ELSE" UId="1716" />
+  <NewLine UId="1717" />
+  <Blank Num="8" UId="1718" />
+  <Access Scope="LocalVariable" UId="1719">
+    <Symbol UId="1720">
+      <Component Name="Arm2" UId="1721" />
+    </Symbol>
+  </Access>
+  <Blank UId="1722" />
+  <Token Text=":=" UId="1723" />
+  <Blank UId="1724" />
+  <Access Scope="LiteralConstant" UId="1725">
+    <Constant UId="1726">
+      <ConstantValue UId="1728">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1729" />
+  <NewLine UId="1730" />
+  <Blank Num="8" UId="1731" />
+  <Access Scope="LocalVariable" UId="1732">
+    <Symbol UId="1733">
+      <Component Name="Arm1" UId="1734" />
+    </Symbol>
+  </Access>
+  <Blank UId="1735" />
+  <Token Text=":=" UId="1736" />
+  <Blank UId="1737" />
+  <Access Scope="LiteralConstant" UId="1738">
+    <Constant UId="1739">
+      <ConstantValue UId="1741">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1742" />
+  <NewLine UId="1743" />
+  <Blank Num="8" UId="1744" />
+  <Access Scope="LocalVariable" UId="1745">
+    <Symbol UId="1746">
+      <Component Name="closeUpperClamp" UId="1747" />
+    </Symbol>
+  </Access>
+  <Blank UId="1748" />
+  <Token Text=":=" UId="1749" />
+  <Blank UId="1750" />
+  <Access Scope="LiteralConstant" UId="1751">
+    <Constant UId="1752">
+      <ConstantValue UId="1754">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1755" />
+  <NewLine UId="1756" />
+  <Blank Num="8" UId="1757" />
+  <Access Scope="LocalVariable" UId="1758">
+    <Symbol UId="1759">
+      <Component Name="closeLowerClamp" UId="1760" />
+    </Symbol>
+  </Access>
+  <Blank UId="1761" />
+  <Token Text=":=" UId="1762" />
+  <Blank UId="1763" />
+  <Access Scope="LiteralConstant" UId="1764">
+    <Constant UId="1765">
+      <ConstantValue UId="1767">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1768" />
+  <NewLine UId="1769" />
+  <Blank Num="8" UId="1770" />
+  <Access Scope="LocalVariable" UId="1771">
+    <Symbol UId="1772">
+      <Component Name="openUpperClamp" UId="1773" />
+    </Symbol>
+  </Access>
+  <Blank UId="1774" />
+  <Token Text=":=" UId="1775" />
+  <Blank UId="1776" />
+  <Access Scope="LiteralConstant" UId="1777">
+    <Constant UId="1778">
+      <ConstantValue UId="1780">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1781" />
+  <NewLine UId="1782" />
+  <Blank Num="8" UId="1783" />
+  <Access Scope="LocalVariable" UId="1784">
+    <Symbol UId="1785">
+      <Component Name="openLowerClamp" UId="1786" />
+    </Symbol>
+  </Access>
+  <Blank UId="1787" />
+  <Token Text=":=" UId="1788" />
+  <Blank UId="1789" />
+  <Access Scope="LiteralConstant" UId="1790">
+    <Constant UId="1791">
+      <ConstantValue UId="1793">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1794" />
+  <NewLine UId="1795" />
+  <Blank Num="4" UId="1796" />
+  <Token Text="END_IF" UId="1797" />
+  <Token Text=";" UId="1798" />
+  <NewLine UId="1799" />
+  <Token Text="ELSE" UId="1800" />
+  <NewLine UId="1801" />
+  <Blank Num="4" UId="1802" />
+  <Access Scope="LocalVariable" UId="1803">
+    <Symbol UId="1804">
+      <Component Name="Arm1" UId="1805" />
+    </Symbol>
+  </Access>
+  <Blank UId="1806" />
+  <Token Text=":=" UId="1807" />
+  <Blank UId="1808" />
+  <Access Scope="LiteralConstant" UId="1809">
+    <Constant UId="1810">
+      <ConstantValue UId="1812">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1813" />
+  <NewLine UId="1814" />
+  <Blank Num="4" UId="1815" />
+  <Access Scope="LocalVariable" UId="1816">
+    <Symbol UId="1817">
+      <Component Name="Arm2" UId="1818" />
+    </Symbol>
+  </Access>
+  <Blank UId="1819" />
+  <Token Text=":=" UId="1820" />
+  <Blank UId="1821" />
+  <Access Scope="LiteralConstant" UId="1822">
+    <Constant UId="1823">
+      <ConstantValue UId="1825">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1826" />
+  <NewLine UId="1827" />
+  <Blank Num="4" UId="1828" />
+  <Access Scope="LocalVariable" UId="1829">
+    <Symbol UId="1830">
+      <Component Name="closeUpperClamp" UId="1831" />
+    </Symbol>
+  </Access>
+  <Blank UId="1832" />
+  <Token Text=":=" UId="1833" />
+  <Blank UId="1834" />
+  <Access Scope="LiteralConstant" UId="1835">
+    <Constant UId="1836">
+      <ConstantValue UId="1838">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1839" />
+  <NewLine UId="1840" />
+  <Blank Num="4" UId="1841" />
+  <Access Scope="LocalVariable" UId="1842">
+    <Symbol UId="1843">
+      <Component Name="closeLowerClamp" UId="1844" />
+    </Symbol>
+  </Access>
+  <Blank UId="1845" />
+  <Token Text=":=" UId="1846" />
+  <Blank UId="1847" />
+  <Access Scope="LiteralConstant" UId="1848">
+    <Constant UId="1849">
+      <ConstantValue UId="1851">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1852" />
+  <NewLine UId="1853" />
+  <Blank Num="4" UId="1854" />
+  <Access Scope="LocalVariable" UId="1855">
+    <Symbol UId="1856">
+      <Component Name="openUpperClamp" UId="1857" />
+    </Symbol>
+  </Access>
+  <Blank UId="1858" />
+  <Token Text=":=" UId="1859" />
+  <Blank UId="1860" />
+  <Access Scope="LiteralConstant" UId="1861">
+    <Constant UId="1862">
+      <ConstantValue UId="1864">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1865" />
+  <NewLine UId="1866" />
+  <Blank Num="4" UId="1867" />
+  <Access Scope="LocalVariable" UId="1868">
+    <Symbol UId="1869">
+      <Component Name="openLowerClamp" UId="1870" />
+    </Symbol>
+  </Access>
+  <Blank UId="1871" />
+  <Token Text=":=" UId="1872" />
+  <Blank UId="1873" />
+  <Access Scope="LiteralConstant" UId="1874">
+    <Constant UId="1875">
+      <ConstantValue UId="1877">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="1878" />
+  <NewLine UId="1879" />
+  <Token Text="END_IF" UId="1880" />
+  <Token Text=";" UId="1881" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Manual operating</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <Token Text="IF" UId="21" />
+  <Blank UId="22" />
+  <Access Scope="LocalVariable" UId="23">
+    <Symbol UId="24">
+      <Component Name="Arm_1_Angle_Value" UId="25" />
+    </Symbol>
+  </Access>
+  <Blank UId="26" />
+  <Token Text="&gt;" UId="27" />
+  <Blank UId="28" />
+  <Access Scope="LocalVariable" UId="29">
+    <Symbol UId="30">
+      <Component Name="hmi_set_angle" UId="31" />
+    </Symbol>
+  </Access>
+  <Blank UId="32" />
+  <Token Text="THEN" UId="33" />
+  <NewLine UId="34" />
+  <Blank Num="4" UId="35" />
+  <Access Scope="LocalVariable" UId="36">
+    <Symbol UId="37">
+      <Component Name="Arm1SetPosReached" UId="38" />
+    </Symbol>
+  </Access>
+  <Blank UId="39" />
+  <Token Text=":=" UId="40" />
+  <Blank UId="41" />
+  <Access Scope="LiteralConstant" UId="42">
+    <Constant UId="43">
+      <ConstantValue UId="45">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="46" />
+  <NewLine UId="47" />
+  <Blank Num="4" UId="48" />
+  <NewLine UId="49" />
+  <Token Text="ELSE" UId="50" />
+  <NewLine UId="51" />
+  <Blank Num="4" UId="52" />
+  <Access Scope="LocalVariable" UId="53">
+    <Symbol UId="54">
+      <Component Name="Arm1SetPosReached" UId="55" />
+    </Symbol>
+  </Access>
+  <Blank UId="56" />
+  <Token Text=":=" UId="57" />
+  <Blank UId="58" />
+  <Access Scope="LiteralConstant" UId="59">
+    <Constant UId="60">
+      <ConstantValue UId="62">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="63" />
+  <NewLine UId="64" />
+  <Token Text="END_IF" UId="65" />
+  <Token Text=";" UId="66" />
+  <NewLine UId="67" />
+  <Token Text="IF" UId="68" />
+  <Blank UId="69" />
+  <Access Scope="LocalVariable" UId="70">
+    <Symbol UId="71">
+      <Component Name="Arm_2_Angle_Value" UId="72" />
+    </Symbol>
+  </Access>
+  <Blank UId="73" />
+  <Token Text="&gt;" UId="74" />
+  <Blank UId="75" />
+  <Access Scope="LocalVariable" UId="76">
+    <Symbol UId="77">
+      <Component Name="hmi_set_angle" UId="78" />
+    </Symbol>
+  </Access>
+  <Blank UId="79" />
+  <Token Text="THEN" UId="80" />
+  <NewLine UId="81" />
+  <Blank Num="4" UId="82" />
+  <Access Scope="LocalVariable" UId="83">
+    <Symbol UId="84">
+      <Component Name="Arm2SetPosReached" UId="85" />
+    </Symbol>
+  </Access>
+  <Blank UId="86" />
+  <Token Text=":=" UId="87" />
+  <Blank UId="88" />
+  <Access Scope="LiteralConstant" UId="89">
+    <Constant UId="90">
+      <ConstantValue UId="92">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="93" />
+  <NewLine UId="94" />
+  <Token Text="ELSE" UId="95" />
+  <NewLine UId="96" />
+  <Blank Num="4" UId="97" />
+  <Access Scope="LocalVariable" UId="98">
+    <Symbol UId="99">
+      <Component Name="Arm2SetPosReached" UId="100" />
+    </Symbol>
+  </Access>
+  <Blank UId="101" />
+  <Token Text=":=" UId="102" />
+  <Blank UId="103" />
+  <Access Scope="LiteralConstant" UId="104">
+    <Constant UId="105">
+      <ConstantValue UId="107">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="108" />
+  <NewLine UId="109" />
+  <Token Text="END_IF" UId="110" />
+  <Token Text=";" UId="111" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="D" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="E" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FB>
+</Document>

@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="SL_Go_Forward" Datatype="Bool" />
+    <Member Name="SL_Go_Backward" Datatype="Bool" />
+    <Member Name="SL_Velocity" Datatype="Int" />
+    <Member Name="SL_Hydraulic_Unit" Datatype="Bool" />
+    <Member Name="SL_Actuators_Push" Datatype="Bool" />
+    <Member Name="SL_Actuators_Pull" Datatype="Bool" />
+    <Member Name="Go_to_ST35" Datatype="Bool" />
+    <Member Name="Go_to_ST02" Datatype="Bool" />
+    <Member Name="Go_to_ST03" Datatype="Bool" />
+    <Member Name="Go_to_ST04" Datatype="Bool" />
+    <Member Name="SR_SL_Hyd_Up" Datatype="Bool" />
+    <Member Name="SR_SL_Hyd_Down" Datatype="Bool" />
+    <Member Name="SR_Go_Forward" Datatype="Bool" />
+    <Member Name="SR_Go_Backward" Datatype="Bool" />
+    <Member Name="SR_Velocity" Datatype="Int" />
+    <Member Name="SR_Hydraulic_Unit" Datatype="Bool" />
+    <Member Name="SR_Actuators_Push" Datatype="Bool" />
+    <Member Name="SR_Actuators_Pull" Datatype="Bool" />
+    <Member Name="Reset_Drives" Datatype="Bool" />
+    <Member Name="Reset_Hydro" Datatype="Bool" />
+    <Member Name="Homing_SL1" Datatype="Int" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <StartValue>1850</StartValue>
+    </Member>
+    <Member Name="Homing_SL2" Datatype="Int" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <StartValue>7446</StartValue>
+    </Member>
+    <Member Name="Homing_SL3" Datatype="Int" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <StartValue>13443</StartValue>
+    </Member>
+    <Member Name="Homing_SL4" Datatype="Int" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <StartValue>19050</StartValue>
+    </Member>
+    <Member Name="Homing_SR1" Datatype="Int" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <StartValue>1853</StartValue>
+    </Member>
+    <Member Name="Homing_SR2" Datatype="Int" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <StartValue>7449</StartValue>
+    </Member>
+    <Member Name="Homing_SR3" Datatype="Int" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <StartValue>13454</StartValue>
+    </Member>
+    <Member Name="Homing_SR4" Datatype="Int" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <StartValue>19050</StartValue>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>HMI_SideShifter_1</Name>
+      <Namespace />
+      <Number>2</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

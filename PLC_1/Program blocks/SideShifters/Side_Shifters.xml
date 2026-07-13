@@ -1,0 +1,4108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.FB ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input">
+    <Member Name="set_Hydraulic_Up" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="set_Hydraulic_Down" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="set_SL_Hydraulic_Up" Datatype="Bool" />
+    <Member Name="set_SL_Hydraulic_Down" Datatype="Bool" />
+    <Member Name="set_SR_Hydraulic_Up" Datatype="Bool" />
+    <Member Name="set_SR_Hydraulic_Down" Datatype="Bool" />
+    <Member Name="set_SL_Hydraulic_Unit" Datatype="Bool" />
+    <Member Name="set_SR_Hydraulic_Unit" Datatype="Bool" />
+    <Member Name="set_Go_To_ST1" Datatype="Bool" />
+    <Member Name="set_Go_To_ST2" Datatype="Bool" />
+    <Member Name="set_Go_To_ST3" Datatype="Bool" />
+    <Member Name="set_Go_To_ST4" Datatype="Bool" />
+    <Member Name="ST1_Empty" Datatype="Bool" />
+    <Member Name="ST2_Empty" Datatype="Bool" />
+    <Member Name="ST3_Empty" Datatype="Bool" />
+    <Member Name="ST4_Empty" Datatype="Bool" />
+    <Member Name="Homing_1_SR" Datatype="Int" />
+    <Member Name="Homing_2_SR" Datatype="Int" />
+    <Member Name="Homing_3_SR" Datatype="Int" />
+    <Member Name="Homing_4_SR" Datatype="Int" />
+    <Member Name="Homing_1_SL" Datatype="Int" />
+    <Member Name="Homing_2_SL" Datatype="Int" />
+    <Member Name="Homing_3_SL" Datatype="Int" />
+    <Member Name="Homing_4_SL" Datatype="Int" />
+    <Member Name="SL_Drive_Forward" Datatype="Bool" />
+    <Member Name="SL_Drive_Backward" Datatype="Bool" />
+    <Member Name="SR_Drive_Forward" Datatype="Bool" />
+    <Member Name="SR_Drive_Backward" Datatype="Bool" />
+    <Member Name="iSL_Sen_Drv_1" Datatype="Bool" />
+    <Member Name="iSL_Sen_Drv_2" Datatype="Bool" />
+    <Member Name="iSL_Sen_Drv_3" Datatype="Bool" />
+    <Member Name="iSL_Sen_Drv_4" Datatype="Bool" />
+    <Member Name="iSR_Sen_Drv_1" Datatype="Bool" />
+    <Member Name="iSR_Sen_Drv_2" Datatype="Bool" />
+    <Member Name="iSR_Sen_Drv_3" Datatype="Bool" />
+    <Member Name="iSR_Sen_Drv_4" Datatype="Bool" />
+    <Member Name="iSL_Sen_Val1_Up" Datatype="Bool" />
+    <Member Name="iSL_Sen_Val1_Down" Datatype="Bool" />
+    <Member Name="iSL_Sen_Val2_Up" Datatype="Bool" />
+    <Member Name="iSL_Sen_Val2_Down" Datatype="Bool" />
+    <Member Name="iSR_Sen_Val1_Up" Datatype="Bool" />
+    <Member Name="iSR_Sen_Val1_Down" Datatype="Bool" />
+    <Member Name="iSR_Sen_Val2_Up" Datatype="Bool" />
+    <Member Name="iSR_Sen_Val2_Down" Datatype="Bool" />
+    <Member Name="iSL_Distance" Datatype="Int" />
+    <Member Name="iSR_Correct" Datatype="Int" />
+    <Member Name="iSR_Distance" Datatype="Int" />
+    <Member Name="iSL_Hydraulic_Filtr" Datatype="Bool" />
+    <Member Name="iSR_Hydraulic_Empty" Datatype="Bool" />
+    <Member Name="HWIdentSL" Datatype="HW_IO" />
+    <Member Name="HWIdentSR" Datatype="HW_IO" />
+    <Member Name="Reset_Drive" Datatype="Bool" />
+    <Member Name="Reset_Hydro" Datatype="Bool" />
+  </Section>
+  <Section Name="Output">
+    <Member Name="oSL_Valve_Up" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="oSL_Valve_Down" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="oSL_Hydraulic_Unit" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="oSR_Valve_Up" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="oSR_Valve_Down" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="oSR_Hydraulic_Unit" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="oHydraulic_Status_LED_UP_1" Datatype="Bool" />
+    <Member Name="oHydraulic_Status_LED_UP_2" Datatype="Bool" />
+    <Member Name="oHydraulic_Status_LED_DOWN_1" Datatype="Bool" />
+    <Member Name="oHydraulic_Status_LED_DOWN_2" Datatype="Bool" />
+    <Member Name="oSL_Communication_OK" Datatype="Bool" />
+    <Member Name="oSR_Communication_OK" Datatype="Bool" />
+    <Member Name="oSL_Forward_Flag" Datatype="Bool" />
+    <Member Name="oSL_Backward_Flag" Datatype="Bool" />
+    <Member Name="oSR_Forward_Flag" Datatype="Bool" />
+    <Member Name="oSR_Backward_Flag" Datatype="Bool" />
+    <Member Name="oST1_1_Move_Flag" Datatype="Bool" />
+    <Member Name="oST1_2_Move_Flag" Datatype="Bool" />
+    <Member Name="oST2_1_Move_Flag" Datatype="Bool" />
+    <Member Name="oST2_2_Move_Flag" Datatype="Bool" />
+    <Member Name="oST3_1_Move_flag" Datatype="Bool" />
+    <Member Name="oST3_2_Move_Flag" Datatype="Bool" />
+    <Member Name="oST4_1_Move_Flag" Datatype="Bool" />
+    <Member Name="oST4_2_Move_Flag" Datatype="Bool" />
+  </Section>
+  <Section Name="InOut">
+    <Member Name="iSL_Drive_Param" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_STATUS_V2.1&quot;" />
+    <Member Name="iSR_Drive_Param" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_STATUS_V2.1&quot;" />
+    <Member Name="oSL_Drive_Param" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
+    <Member Name="oSR_Drive_Param" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
+  </Section>
+  <Section Name="Static">
+    <Member Name="Hydraulic_SL" Datatype="&quot;Side_Hydraulic&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Hydraulic_SR" Datatype="&quot;Side_Hydraulic&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Side_Driver_Instance" Datatype="&quot;Side_Driver&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Side_Shifter_Auto_Instance" Datatype="&quot;Side_Shifter_Auto&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="SL_Auto_Speed" Datatype="Int">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <StartValue>1000</StartValue>
+    </Member>
+    <Member Name="SR_Auto_Speed" Datatype="Int">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <StartValue>1000</StartValue>
+    </Member>
+    <Member Name="SL_Auto_Forward" Datatype="Bool" />
+    <Member Name="SL_Auto_Backward" Datatype="Bool" />
+    <Member Name="SR_Auto_Forward" Datatype="Bool" />
+    <Member Name="SR_Auto_Backward" Datatype="Bool" />
+    <Member Name="SR_Distance_Correct" Datatype="Int" />
+    <Member Name="SL_Error_Laser" Datatype="Bool" />
+    <Member Name="SR_Error_Laser" Datatype="Bool" />
+    <Member Name="SL_SR_InPosition" Datatype="Bool" />
+    <Member Name="SL_Sen_Up" Datatype="Bool" />
+    <Member Name="SL_Sen_Down" Datatype="Bool" />
+    <Member Name="SR_Sen_Up" Datatype="Bool" />
+    <Member Name="SR_Sen_Down" Datatype="Bool" />
+    <Member Name="SL_Error_Hyd" Datatype="Bool" />
+    <Member Name="SR_Error_Hyd" Datatype="Bool" />
+    <Member Name="Error_Drive" Datatype="Bool" />
+    <Member Name="Error_Hydro" Datatype="Bool" />
+    <Member Name="Status_Sen_Up" Datatype="Bool" />
+    <Member Name="Status_Sen_Down" Datatype="Bool" />
+    <Member Name="RL_Speed" Datatype="Int" />
+    <Member Name="RR_Speed" Datatype="Int" />
+    <Member Name="Step_Move_Pallets" Datatype="Int" />
+    <Member Name="Row_Start" Datatype="Int" />
+    <Member Name="Row_Destination" Datatype="Int" />
+    <Member Name="Column_Start" Datatype="Int" />
+    <Member Name="Column_Destination" Datatype="Int" />
+    <Member Name="TON_iSR_Error" Datatype="TON_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="TON_iSL_Error" Datatype="TON_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+  </Section>
+  <Section Name="Temp">
+    <Member Name="i" Datatype="SInt" />
+    <Member Name="FoundIndex" Datatype="SInt" />
+  </Section>
+  <Section Name="Constant" />
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>Side_Shifters</Name>
+      <Namespace />
+      <Number>12</Number>
+      <ProgrammingLanguage>LAD</ProgrammingLanguage>
+      <SetENOAutomatically>false</SetENOAutomatically>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="set_Hydraulic_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="SL_SR_InPosition" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="Error_Hydro" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="24">
+      <Symbol>
+        <Component Name="set_Hydraulic_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="25">
+      <Symbol>
+        <Component Name="SL_SR_InPosition" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="26">
+      <Symbol>
+        <Component Name="Error_Hydro" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="27">
+      <Symbol>
+        <Component Name="set_SL_Hydraulic_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="28">
+      <Symbol>
+        <Component Name="set_SL_Hydraulic_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="29">
+      <Symbol>
+        <Component Name="iSL_Sen_Val1_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="30">
+      <Symbol>
+        <Component Name="iSL_Sen_Val1_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="31">
+      <Symbol>
+        <Component Name="iSL_Sen_Val2_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="32">
+      <Symbol>
+        <Component Name="iSL_Sen_Val2_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="33">
+      <Symbol>
+        <Component Name="Reset_Hydro" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="34">
+      <Symbol>
+        <Component Name="oSL_Valve_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="35">
+      <Symbol>
+        <Component Name="oSL_Valve_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="36">
+      <Symbol>
+        <Component Name="oSL_Hydraulic_Unit" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="37">
+      <Symbol>
+        <Component Name="SL_Sen_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="38">
+      <Symbol>
+        <Component Name="SL_Sen_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="39">
+      <Symbol>
+        <Component Name="SL_Error_Hyd" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="40" />
+    <Part Name="Contact" UId="41" />
+    <Part Name="Contact" UId="42">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="43" />
+    <Part Name="Contact" UId="44" />
+    <Part Name="Contact" UId="45">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="46" />
+    <Part Name="Contact" UId="47" />
+    <Call UId="48">
+      <CallInfo Name="Side_Hydraulic" BlockType="FB">
+        <Instance Scope="LocalVariable" UId="49">
+          <Component Name="Hydraulic_SL" />
+        </Instance>
+        <Parameter Name="setUp" Section="Input" Type="Bool" />
+        <Parameter Name="setDown" Section="Input" Type="Bool" />
+        <Parameter Name="manual_Up" Section="Input" Type="Bool" />
+        <Parameter Name="manual_Down" Section="Input" Type="Bool" />
+        <Parameter Name="Sensor1_Up" Section="Input" Type="Bool" />
+        <Parameter Name="Sensor1_Down" Section="Input" Type="Bool" />
+        <Parameter Name="Sensor2_Up" Section="Input" Type="Bool" />
+        <Parameter Name="Sensor2_Down" Section="Input" Type="Bool" />
+        <Parameter Name="Reset" Section="Input" Type="Bool" />
+        <Parameter Name="Actuator_Up" Section="Output" Type="Bool" />
+        <Parameter Name="Actuator_Down" Section="Output" Type="Bool" />
+        <Parameter Name="Hydraulic_Unit" Section="Output" Type="Bool" />
+        <Parameter Name="Alarm_Push_Actuators" Section="Output" Type="Bool" />
+        <Parameter Name="Alarm_Pull_Actuators" Section="Output" Type="Bool" />
+        <Parameter Name="Sensors_Down" Section="Output" Type="Bool" />
+        <Parameter Name="Sensors_Up" Section="Output" Type="Bool" />
+        <Parameter Name="Error" Section="Output" Type="Bool" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="52">
+      <Powerrail />
+      <NameCon UId="48" Name="en" />
+      <NameCon UId="40" Name="in" />
+      <NameCon UId="43" Name="in" />
+      <NameCon UId="46" Name="in" />
+      <NameCon UId="47" Name="in" />
+    </Wire>
+    <Wire UId="53">
+      <IdentCon UId="21" />
+      <NameCon UId="40" Name="operand" />
+    </Wire>
+    <Wire UId="54">
+      <NameCon UId="40" Name="out" />
+      <NameCon UId="41" Name="in" />
+    </Wire>
+    <Wire UId="55">
+      <IdentCon UId="22" />
+      <NameCon UId="41" Name="operand" />
+    </Wire>
+    <Wire UId="56">
+      <NameCon UId="41" Name="out" />
+      <NameCon UId="42" Name="in" />
+    </Wire>
+    <Wire UId="57">
+      <IdentCon UId="23" />
+      <NameCon UId="42" Name="operand" />
+    </Wire>
+    <Wire UId="58">
+      <NameCon UId="42" Name="out" />
+      <NameCon UId="48" Name="setUp" />
+    </Wire>
+    <Wire UId="59">
+      <IdentCon UId="24" />
+      <NameCon UId="43" Name="operand" />
+    </Wire>
+    <Wire UId="60">
+      <NameCon UId="43" Name="out" />
+      <NameCon UId="44" Name="in" />
+    </Wire>
+    <Wire UId="61">
+      <IdentCon UId="25" />
+      <NameCon UId="44" Name="operand" />
+    </Wire>
+    <Wire UId="62">
+      <NameCon UId="44" Name="out" />
+      <NameCon UId="45" Name="in" />
+    </Wire>
+    <Wire UId="63">
+      <IdentCon UId="26" />
+      <NameCon UId="45" Name="operand" />
+    </Wire>
+    <Wire UId="64">
+      <NameCon UId="45" Name="out" />
+      <NameCon UId="48" Name="setDown" />
+    </Wire>
+    <Wire UId="65">
+      <IdentCon UId="27" />
+      <NameCon UId="46" Name="operand" />
+    </Wire>
+    <Wire UId="66">
+      <NameCon UId="46" Name="out" />
+      <NameCon UId="48" Name="manual_Up" />
+    </Wire>
+    <Wire UId="67">
+      <IdentCon UId="28" />
+      <NameCon UId="47" Name="operand" />
+    </Wire>
+    <Wire UId="68">
+      <NameCon UId="47" Name="out" />
+      <NameCon UId="48" Name="manual_Down" />
+    </Wire>
+    <Wire UId="69">
+      <IdentCon UId="29" />
+      <NameCon UId="48" Name="Sensor1_Up" />
+    </Wire>
+    <Wire UId="70">
+      <IdentCon UId="30" />
+      <NameCon UId="48" Name="Sensor1_Down" />
+    </Wire>
+    <Wire UId="71">
+      <IdentCon UId="31" />
+      <NameCon UId="48" Name="Sensor2_Up" />
+    </Wire>
+    <Wire UId="72">
+      <IdentCon UId="32" />
+      <NameCon UId="48" Name="Sensor2_Down" />
+    </Wire>
+    <Wire UId="73">
+      <IdentCon UId="33" />
+      <NameCon UId="48" Name="Reset" />
+    </Wire>
+    <Wire UId="74">
+      <NameCon UId="48" Name="Actuator_Up" />
+      <IdentCon UId="34" />
+    </Wire>
+    <Wire UId="75">
+      <NameCon UId="48" Name="Actuator_Down" />
+      <IdentCon UId="35" />
+    </Wire>
+    <Wire UId="76">
+      <NameCon UId="48" Name="Hydraulic_Unit" />
+      <IdentCon UId="36" />
+    </Wire>
+    <Wire UId="77">
+      <NameCon UId="48" Name="Alarm_Push_Actuators" />
+      <OpenCon UId="50" />
+    </Wire>
+    <Wire UId="78">
+      <NameCon UId="48" Name="Alarm_Pull_Actuators" />
+      <OpenCon UId="51" />
+    </Wire>
+    <Wire UId="79">
+      <NameCon UId="48" Name="Sensors_Down" />
+      <IdentCon UId="37" />
+    </Wire>
+    <Wire UId="80">
+      <NameCon UId="48" Name="Sensors_Up" />
+      <IdentCon UId="38" />
+    </Wire>
+    <Wire UId="81">
+      <NameCon UId="48" Name="Error" />
+      <IdentCon UId="39" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Hydraulic control SL</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="set_Hydraulic_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="SL_SR_InPosition" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="Error_Hydro" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="24">
+      <Symbol>
+        <Component Name="set_Hydraulic_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="25">
+      <Symbol>
+        <Component Name="SL_SR_InPosition" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="26">
+      <Symbol>
+        <Component Name="Error_Hydro" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="27">
+      <Symbol>
+        <Component Name="set_SR_Hydraulic_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="28">
+      <Symbol>
+        <Component Name="set_SR_Hydraulic_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="29">
+      <Symbol>
+        <Component Name="iSR_Sen_Val1_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="30">
+      <Symbol>
+        <Component Name="iSR_Sen_Val1_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="31">
+      <Symbol>
+        <Component Name="iSR_Sen_Val2_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="32">
+      <Symbol>
+        <Component Name="iSR_Sen_Val2_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="33">
+      <Symbol>
+        <Component Name="Reset_Hydro" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="34">
+      <Symbol>
+        <Component Name="oSR_Valve_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="35">
+      <Symbol>
+        <Component Name="oSR_Valve_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="36">
+      <Symbol>
+        <Component Name="oSR_Hydraulic_Unit" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="37">
+      <Symbol>
+        <Component Name="SR_Sen_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="38">
+      <Symbol>
+        <Component Name="SR_Sen_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="39">
+      <Symbol>
+        <Component Name="SR_Error_Hyd" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="40" />
+    <Part Name="Contact" UId="41" />
+    <Part Name="Contact" UId="42">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="43" />
+    <Part Name="Contact" UId="44" />
+    <Part Name="Contact" UId="45">
+      <Negated Name="operand" />
+    </Part>
+    <Call UId="46">
+      <CallInfo Name="Side_Hydraulic" BlockType="FB">
+        <Instance Scope="LocalVariable" UId="47">
+          <Component Name="Hydraulic_SR" />
+        </Instance>
+        <Parameter Name="setUp" Section="Input" Type="Bool" />
+        <Parameter Name="setDown" Section="Input" Type="Bool" />
+        <Parameter Name="manual_Up" Section="Input" Type="Bool" />
+        <Parameter Name="manual_Down" Section="Input" Type="Bool" />
+        <Parameter Name="Sensor1_Up" Section="Input" Type="Bool" />
+        <Parameter Name="Sensor1_Down" Section="Input" Type="Bool" />
+        <Parameter Name="Sensor2_Up" Section="Input" Type="Bool" />
+        <Parameter Name="Sensor2_Down" Section="Input" Type="Bool" />
+        <Parameter Name="Reset" Section="Input" Type="Bool" />
+        <Parameter Name="Actuator_Up" Section="Output" Type="Bool" />
+        <Parameter Name="Actuator_Down" Section="Output" Type="Bool" />
+        <Parameter Name="Hydraulic_Unit" Section="Output" Type="Bool" />
+        <Parameter Name="Alarm_Push_Actuators" Section="Output" Type="Bool" />
+        <Parameter Name="Alarm_Pull_Actuators" Section="Output" Type="Bool" />
+        <Parameter Name="Sensors_Down" Section="Output" Type="Bool" />
+        <Parameter Name="Sensors_Up" Section="Output" Type="Bool" />
+        <Parameter Name="Error" Section="Output" Type="Bool" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="50">
+      <Powerrail />
+      <NameCon UId="46" Name="en" />
+      <NameCon UId="40" Name="in" />
+      <NameCon UId="43" Name="in" />
+    </Wire>
+    <Wire UId="51">
+      <IdentCon UId="21" />
+      <NameCon UId="40" Name="operand" />
+    </Wire>
+    <Wire UId="52">
+      <NameCon UId="40" Name="out" />
+      <NameCon UId="41" Name="in" />
+    </Wire>
+    <Wire UId="53">
+      <IdentCon UId="22" />
+      <NameCon UId="41" Name="operand" />
+    </Wire>
+    <Wire UId="54">
+      <NameCon UId="41" Name="out" />
+      <NameCon UId="42" Name="in" />
+    </Wire>
+    <Wire UId="55">
+      <IdentCon UId="23" />
+      <NameCon UId="42" Name="operand" />
+    </Wire>
+    <Wire UId="56">
+      <NameCon UId="42" Name="out" />
+      <NameCon UId="46" Name="setUp" />
+    </Wire>
+    <Wire UId="57">
+      <IdentCon UId="24" />
+      <NameCon UId="43" Name="operand" />
+    </Wire>
+    <Wire UId="58">
+      <NameCon UId="43" Name="out" />
+      <NameCon UId="44" Name="in" />
+    </Wire>
+    <Wire UId="59">
+      <IdentCon UId="25" />
+      <NameCon UId="44" Name="operand" />
+    </Wire>
+    <Wire UId="60">
+      <NameCon UId="44" Name="out" />
+      <NameCon UId="45" Name="in" />
+    </Wire>
+    <Wire UId="61">
+      <IdentCon UId="26" />
+      <NameCon UId="45" Name="operand" />
+    </Wire>
+    <Wire UId="62">
+      <NameCon UId="45" Name="out" />
+      <NameCon UId="46" Name="setDown" />
+    </Wire>
+    <Wire UId="63">
+      <IdentCon UId="27" />
+      <NameCon UId="46" Name="manual_Up" />
+    </Wire>
+    <Wire UId="64">
+      <IdentCon UId="28" />
+      <NameCon UId="46" Name="manual_Down" />
+    </Wire>
+    <Wire UId="65">
+      <IdentCon UId="29" />
+      <NameCon UId="46" Name="Sensor1_Up" />
+    </Wire>
+    <Wire UId="66">
+      <IdentCon UId="30" />
+      <NameCon UId="46" Name="Sensor1_Down" />
+    </Wire>
+    <Wire UId="67">
+      <IdentCon UId="31" />
+      <NameCon UId="46" Name="Sensor2_Up" />
+    </Wire>
+    <Wire UId="68">
+      <IdentCon UId="32" />
+      <NameCon UId="46" Name="Sensor2_Down" />
+    </Wire>
+    <Wire UId="69">
+      <IdentCon UId="33" />
+      <NameCon UId="46" Name="Reset" />
+    </Wire>
+    <Wire UId="70">
+      <NameCon UId="46" Name="Actuator_Up" />
+      <IdentCon UId="34" />
+    </Wire>
+    <Wire UId="71">
+      <NameCon UId="46" Name="Actuator_Down" />
+      <IdentCon UId="35" />
+    </Wire>
+    <Wire UId="72">
+      <NameCon UId="46" Name="Hydraulic_Unit" />
+      <IdentCon UId="36" />
+    </Wire>
+    <Wire UId="73">
+      <NameCon UId="46" Name="Alarm_Push_Actuators" />
+      <OpenCon UId="48" />
+    </Wire>
+    <Wire UId="74">
+      <NameCon UId="46" Name="Alarm_Pull_Actuators" />
+      <OpenCon UId="49" />
+    </Wire>
+    <Wire UId="75">
+      <NameCon UId="46" Name="Sensors_Down" />
+      <IdentCon UId="37" />
+    </Wire>
+    <Wire UId="76">
+      <NameCon UId="46" Name="Sensors_Up" />
+      <IdentCon UId="38" />
+    </Wire>
+    <Wire UId="77">
+      <NameCon UId="46" Name="Error" />
+      <IdentCon UId="39" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Hydraulik control SR</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="D" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="SL_Error_Hyd" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="SR_Error_Hyd" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="Error_Hydro" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="24" />
+    <Part Name="Contact" UId="25" />
+    <Part Name="O" UId="26">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="Coil" UId="27" />
+  </Parts>
+  <Wires>
+    <Wire UId="28">
+      <Powerrail />
+      <NameCon UId="24" Name="in" />
+      <NameCon UId="25" Name="in" />
+    </Wire>
+    <Wire UId="29">
+      <IdentCon UId="21" />
+      <NameCon UId="24" Name="operand" />
+    </Wire>
+    <Wire UId="30">
+      <NameCon UId="24" Name="out" />
+      <NameCon UId="26" Name="in1" />
+    </Wire>
+    <Wire UId="31">
+      <IdentCon UId="22" />
+      <NameCon UId="25" Name="operand" />
+    </Wire>
+    <Wire UId="32">
+      <NameCon UId="25" Name="out" />
+      <NameCon UId="26" Name="in2" />
+    </Wire>
+    <Wire UId="33">
+      <NameCon UId="26" Name="out" />
+      <NameCon UId="27" Name="in" />
+    </Wire>
+    <Wire UId="34">
+      <IdentCon UId="23" />
+      <NameCon UId="27" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="E" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="10" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Hyd error</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="12" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="SL_Sen_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="SR_Sen_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="oHydraulic_Status_LED_UP_1" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="24">
+      <Symbol>
+        <Component Name="oHydraulic_Status_LED_UP_2" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="25">
+      <Symbol>
+        <Component Name="Status_Sen_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="26">
+      <Symbol>
+        <Component Name="SL_Sen_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="27">
+      <Symbol>
+        <Component Name="SR_Sen_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="28">
+      <Symbol>
+        <Component Name="oHydraulic_Status_LED_DOWN_1" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="29">
+      <Symbol>
+        <Component Name="oHydraulic_Status_LED_DOWN_2" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="30">
+      <Symbol>
+        <Component Name="Status_Sen_Down" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="31" />
+    <Part Name="Contact" UId="32" />
+    <Part Name="Coil" UId="33" />
+    <Part Name="Coil" UId="34" />
+    <Part Name="Coil" UId="35" />
+    <Part Name="Contact" UId="36" />
+    <Part Name="Contact" UId="37" />
+    <Part Name="Coil" UId="38" />
+    <Part Name="Coil" UId="39" />
+    <Part Name="Coil" UId="40" />
+  </Parts>
+  <Wires>
+    <Wire UId="41">
+      <Powerrail />
+      <NameCon UId="31" Name="in" />
+      <NameCon UId="36" Name="in" />
+    </Wire>
+    <Wire UId="42">
+      <IdentCon UId="21" />
+      <NameCon UId="31" Name="operand" />
+    </Wire>
+    <Wire UId="43">
+      <NameCon UId="31" Name="out" />
+      <NameCon UId="32" Name="in" />
+    </Wire>
+    <Wire UId="44">
+      <IdentCon UId="22" />
+      <NameCon UId="32" Name="operand" />
+    </Wire>
+    <Wire UId="45">
+      <NameCon UId="32" Name="out" />
+      <NameCon UId="33" Name="in" />
+      <NameCon UId="34" Name="in" />
+      <NameCon UId="35" Name="in" />
+    </Wire>
+    <Wire UId="46">
+      <IdentCon UId="23" />
+      <NameCon UId="33" Name="operand" />
+    </Wire>
+    <Wire UId="47">
+      <IdentCon UId="24" />
+      <NameCon UId="34" Name="operand" />
+    </Wire>
+    <Wire UId="48">
+      <IdentCon UId="25" />
+      <NameCon UId="35" Name="operand" />
+    </Wire>
+    <Wire UId="49">
+      <IdentCon UId="26" />
+      <NameCon UId="36" Name="operand" />
+    </Wire>
+    <Wire UId="50">
+      <NameCon UId="36" Name="out" />
+      <NameCon UId="37" Name="in" />
+    </Wire>
+    <Wire UId="51">
+      <IdentCon UId="27" />
+      <NameCon UId="37" Name="operand" />
+    </Wire>
+    <Wire UId="52">
+      <NameCon UId="37" Name="out" />
+      <NameCon UId="38" Name="in" />
+      <NameCon UId="39" Name="in" />
+      <NameCon UId="40" Name="in" />
+    </Wire>
+    <Wire UId="53">
+      <IdentCon UId="28" />
+      <NameCon UId="38" Name="operand" />
+    </Wire>
+    <Wire UId="54">
+      <IdentCon UId="29" />
+      <NameCon UId="39" Name="operand" />
+    </Wire>
+    <Wire UId="55">
+      <IdentCon UId="30" />
+      <NameCon UId="40" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="13" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="15" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="16" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Set status</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="17" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="iSR_Distance" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="iSR_Correct" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="SR_Distance_Correct" />
+      </Symbol>
+    </Access>
+    <Part Name="Add" UId="24" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+      <AutomaticTyped Name="SrcType" />
+    </Part>
+  </Parts>
+  <Wires>
+    <Wire UId="25">
+      <Powerrail />
+      <NameCon UId="24" Name="en" />
+    </Wire>
+    <Wire UId="26">
+      <IdentCon UId="21" />
+      <NameCon UId="24" Name="in1" />
+    </Wire>
+    <Wire UId="27">
+      <IdentCon UId="22" />
+      <NameCon UId="24" Name="in2" />
+    </Wire>
+    <Wire UId="28">
+      <NameCon UId="24" Name="out" />
+      <IdentCon UId="23" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="18" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="19" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="1A" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="1B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Make correct on SR distance</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="1C" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="iSL_Distance" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="22">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>200</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="TypedConstant" UId="23">
+      <Constant>
+        <ConstantValue>T#3.5s</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="LocalVariable" UId="24">
+      <Symbol>
+        <Component Name="SL_Error_Laser" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="25">
+      <Symbol>
+        <Component Name="iSR_Distance" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="26">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>200</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="TypedConstant" UId="27">
+      <Constant>
+        <ConstantValue>T#3.5s</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="LocalVariable" UId="28">
+      <Symbol>
+        <Component Name="SR_Error_Laser" />
+      </Symbol>
+    </Access>
+    <Part Name="Lt" UId="29">
+      <TemplateValue Name="SrcType" Type="Type">Int</TemplateValue>
+    </Part>
+    <Part Name="TON" Version="1.0" UId="30">
+      <Instance Scope="LocalVariable" UId="31">
+        <Component Name="TON_iSL_Error" />
+      </Instance>
+      <TemplateValue Name="time_type" Type="Type">Time</TemplateValue>
+    </Part>
+    <Part Name="Coil" UId="32" />
+    <Part Name="Lt" UId="33">
+      <TemplateValue Name="SrcType" Type="Type">Int</TemplateValue>
+    </Part>
+    <Part Name="TON" Version="1.0" UId="34">
+      <Instance Scope="LocalVariable" UId="35">
+        <Component Name="TON_iSR_Error" />
+      </Instance>
+      <TemplateValue Name="time_type" Type="Type">Time</TemplateValue>
+    </Part>
+    <Part Name="Coil" UId="36" />
+  </Parts>
+  <Wires>
+    <Wire UId="39">
+      <Powerrail />
+      <NameCon UId="29" Name="pre" />
+      <NameCon UId="33" Name="pre" />
+    </Wire>
+    <Wire UId="40">
+      <IdentCon UId="21" />
+      <NameCon UId="29" Name="in1" />
+    </Wire>
+    <Wire UId="41">
+      <IdentCon UId="22" />
+      <NameCon UId="29" Name="in2" />
+    </Wire>
+    <Wire UId="42">
+      <NameCon UId="29" Name="out" />
+      <NameCon UId="30" Name="IN" />
+    </Wire>
+    <Wire UId="43">
+      <IdentCon UId="23" />
+      <NameCon UId="30" Name="PT" />
+    </Wire>
+    <Wire UId="44">
+      <NameCon UId="30" Name="Q" />
+      <NameCon UId="32" Name="in" />
+    </Wire>
+    <Wire UId="45">
+      <NameCon UId="30" Name="ET" />
+      <OpenCon UId="37" />
+    </Wire>
+    <Wire UId="46">
+      <IdentCon UId="24" />
+      <NameCon UId="32" Name="operand" />
+    </Wire>
+    <Wire UId="47">
+      <IdentCon UId="25" />
+      <NameCon UId="33" Name="in1" />
+    </Wire>
+    <Wire UId="48">
+      <IdentCon UId="26" />
+      <NameCon UId="33" Name="in2" />
+    </Wire>
+    <Wire UId="49">
+      <NameCon UId="33" Name="out" />
+      <NameCon UId="34" Name="IN" />
+    </Wire>
+    <Wire UId="50">
+      <IdentCon UId="27" />
+      <NameCon UId="34" Name="PT" />
+    </Wire>
+    <Wire UId="51">
+      <NameCon UId="34" Name="Q" />
+      <NameCon UId="36" Name="in" />
+    </Wire>
+    <Wire UId="52">
+      <NameCon UId="34" Name="ET" />
+      <OpenCon UId="38" />
+    </Wire>
+    <Wire UId="53">
+      <IdentCon UId="28" />
+      <NameCon UId="36" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="1D" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="1E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="1F" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="20" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Laser error</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="21" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="SL_Auto_Forward" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="SR_Sen_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="SR_Sen_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="24">
+      <Symbol>
+        <Component Name="SL_Error_Laser" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="25">
+      <Symbol>
+        <Component Name="SR_Error_Laser" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="26">
+      <Symbol>
+        <Component Name="SL_Sen_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="27">
+      <Symbol>
+        <Component Name="SL_Sen_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="28">
+      <Symbol>
+        <Component Name="SL_Drive_Forward" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="29">
+      <Symbol>
+        <Component Name="SR_Auto_Forward" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="30">
+      <Symbol>
+        <Component Name="SL_Sen_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="31">
+      <Symbol>
+        <Component Name="SL_Sen_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="32">
+      <Symbol>
+        <Component Name="SL_Error_Laser" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="33">
+      <Symbol>
+        <Component Name="SR_Error_Laser" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="34">
+      <Symbol>
+        <Component Name="SR_Sen_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="35">
+      <Symbol>
+        <Component Name="SR_Sen_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="36">
+      <Symbol>
+        <Component Name="SR_Drive_Forward" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="37">
+      <Symbol>
+        <Component Name="SL_Auto_Backward" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="38">
+      <Symbol>
+        <Component Name="SR_Sen_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="39">
+      <Symbol>
+        <Component Name="SR_Sen_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="40">
+      <Symbol>
+        <Component Name="SL_Error_Laser" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="41">
+      <Symbol>
+        <Component Name="SR_Error_Laser" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="42">
+      <Symbol>
+        <Component Name="SL_Sen_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="43">
+      <Symbol>
+        <Component Name="SL_Sen_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="44">
+      <Symbol>
+        <Component Name="SL_Drive_Backward" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="45">
+      <Symbol>
+        <Component Name="SR_Auto_Backward" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="46">
+      <Symbol>
+        <Component Name="SL_Sen_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="47">
+      <Symbol>
+        <Component Name="SL_Sen_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="48">
+      <Symbol>
+        <Component Name="SL_Error_Laser" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="49">
+      <Symbol>
+        <Component Name="SR_Error_Laser" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="50">
+      <Symbol>
+        <Component Name="SR_Sen_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="51">
+      <Symbol>
+        <Component Name="SR_Sen_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="52">
+      <Symbol>
+        <Component Name="SR_Drive_Backward" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="53">
+      <Symbol>
+        <Component Name="Reset_Drive" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="54">
+      <Symbol>
+        <Component Name="SL_Auto_Speed" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="55">
+      <Symbol>
+        <Component Name="SR_Auto_Speed" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="56">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>300</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="LiteralConstant" UId="57">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>300</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="LocalVariable" UId="58">
+      <Symbol>
+        <Component Name="HWIdentSL" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="59">
+      <Symbol>
+        <Component Name="HWIdentSR" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="60">
+      <Symbol>
+        <Component Name="oSL_Drive_Param" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="61">
+      <Symbol>
+        <Component Name="oSR_Drive_Param" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="62">
+      <Symbol>
+        <Component Name="iSL_Drive_Param" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="63">
+      <Symbol>
+        <Component Name="iSR_Drive_Param" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="64">
+      <Symbol>
+        <Component Name="oSL_Forward_Flag" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="65">
+      <Symbol>
+        <Component Name="oSL_Backward_Flag" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="66">
+      <Symbol>
+        <Component Name="oSR_Forward_Flag" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="67">
+      <Symbol>
+        <Component Name="oSR_Backward_Flag" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="68">
+      <Symbol>
+        <Component Name="Error_Drive" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="69" />
+    <Part Name="Contact" UId="70" />
+    <Part Name="Contact" UId="71" />
+    <Part Name="O" UId="72">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="73">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="74">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="75" />
+    <Part Name="Contact" UId="76" />
+    <Part Name="Contact" UId="77" />
+    <Part Name="O" UId="78">
+      <TemplateValue Name="Card" Type="Cardinality">3</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="79" />
+    <Part Name="Contact" UId="80" />
+    <Part Name="Contact" UId="81" />
+    <Part Name="O" UId="82">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="83">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="84">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="85" />
+    <Part Name="Contact" UId="86" />
+    <Part Name="Contact" UId="87" />
+    <Part Name="O" UId="88">
+      <TemplateValue Name="Card" Type="Cardinality">3</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="89" />
+    <Part Name="Contact" UId="90" />
+    <Part Name="Contact" UId="91" />
+    <Part Name="O" UId="92">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="93">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="94">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="95" />
+    <Part Name="Contact" UId="96" />
+    <Part Name="Contact" UId="97" />
+    <Part Name="O" UId="98">
+      <TemplateValue Name="Card" Type="Cardinality">3</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="99" />
+    <Part Name="Contact" UId="100" />
+    <Part Name="Contact" UId="101" />
+    <Part Name="O" UId="102">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="103">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="104">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="105" />
+    <Part Name="Contact" UId="106" />
+    <Part Name="Contact" UId="107" />
+    <Part Name="O" UId="108">
+      <TemplateValue Name="Card" Type="Cardinality">3</TemplateValue>
+    </Part>
+    <Call UId="109">
+      <CallInfo Name="Side_Driver" BlockType="FB">
+        <Instance Scope="LocalVariable" UId="110">
+          <Component Name="Side_Driver_Instance" />
+        </Instance>
+        <Parameter Name="Reset" Section="Input" Type="Bool" />
+        <Parameter Name="Jog_Forward_SL" Section="Input" Type="Bool" />
+        <Parameter Name="Jog_Forward_SR" Section="Input" Type="Bool" />
+        <Parameter Name="Jog_Backward_SL" Section="Input" Type="Bool" />
+        <Parameter Name="Jog_Backward_SR" Section="Input" Type="Bool" />
+        <Parameter Name="Set_SL_Speed" Section="Input" Type="Int" />
+        <Parameter Name="Set_SR_Speed" Section="Input" Type="Int" />
+        <Parameter Name="Set_Acc" Section="Input" Type="Int" />
+        <Parameter Name="Set_Dcc" Section="Input" Type="Int" />
+        <Parameter Name="HWIdentSL" Section="Input" Type="HW_IO" />
+        <Parameter Name="HWIdentSR" Section="Input" Type="HW_IO" />
+        <Parameter Name="oSL_Communication_OK" Section="Output" Type="Bool" />
+        <Parameter Name="oSR_Communication_OK" Section="Output" Type="Bool" />
+        <Parameter Name="oSL_Forward_Flag" Section="Output" Type="Bool" />
+        <Parameter Name="oSL_Backward_Flag" Section="Output" Type="Bool" />
+        <Parameter Name="oSR_Forward_Flag" Section="Output" Type="Bool" />
+        <Parameter Name="oSR_Backward_Flag" Section="Output" Type="Bool" />
+        <Parameter Name="oError" Section="Output" Type="Bool" />
+        <Parameter Name="iSL_Drive_Param" Section="InOut" Type="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
+        <Parameter Name="iSR_Drive_Param" Section="InOut" Type="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
+        <Parameter Name="oSL_Drive_Param" Section="InOut" Type="&quot;SEW_MOVIKIT_VelocityDrive_STATUS_V2.1&quot;" />
+        <Parameter Name="oSR_Drive_Param" Section="InOut" Type="&quot;SEW_MOVIKIT_VelocityDrive_STATUS_V2.1&quot;" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="113">
+      <Powerrail />
+      <NameCon UId="109" Name="en" />
+      <NameCon UId="69" Name="in" />
+      <NameCon UId="77" Name="in" />
+      <NameCon UId="79" Name="in" />
+      <NameCon UId="87" Name="in" />
+      <NameCon UId="89" Name="in" />
+      <NameCon UId="97" Name="in" />
+      <NameCon UId="99" Name="in" />
+      <NameCon UId="107" Name="in" />
+    </Wire>
+    <Wire UId="114">
+      <IdentCon UId="21" />
+      <NameCon UId="69" Name="operand" />
+    </Wire>
+    <Wire UId="115">
+      <NameCon UId="69" Name="out" />
+      <NameCon UId="70" Name="in" />
+      <NameCon UId="71" Name="in" />
+    </Wire>
+    <Wire UId="116">
+      <IdentCon UId="22" />
+      <NameCon UId="70" Name="operand" />
+    </Wire>
+    <Wire UId="117">
+      <NameCon UId="70" Name="out" />
+      <NameCon UId="72" Name="in1" />
+    </Wire>
+    <Wire UId="118">
+      <IdentCon UId="23" />
+      <NameCon UId="71" Name="operand" />
+    </Wire>
+    <Wire UId="119">
+      <NameCon UId="71" Name="out" />
+      <NameCon UId="72" Name="in2" />
+    </Wire>
+    <Wire UId="120">
+      <NameCon UId="72" Name="out" />
+      <NameCon UId="73" Name="in" />
+    </Wire>
+    <Wire UId="121">
+      <IdentCon UId="24" />
+      <NameCon UId="73" Name="operand" />
+    </Wire>
+    <Wire UId="122">
+      <NameCon UId="73" Name="out" />
+      <NameCon UId="74" Name="in" />
+    </Wire>
+    <Wire UId="123">
+      <IdentCon UId="25" />
+      <NameCon UId="74" Name="operand" />
+    </Wire>
+    <Wire UId="124">
+      <NameCon UId="74" Name="out" />
+      <NameCon UId="75" Name="in" />
+      <NameCon UId="76" Name="in" />
+    </Wire>
+    <Wire UId="125">
+      <IdentCon UId="26" />
+      <NameCon UId="75" Name="operand" />
+    </Wire>
+    <Wire UId="126">
+      <NameCon UId="75" Name="out" />
+      <NameCon UId="78" Name="in1" />
+    </Wire>
+    <Wire UId="127">
+      <IdentCon UId="27" />
+      <NameCon UId="76" Name="operand" />
+    </Wire>
+    <Wire UId="128">
+      <NameCon UId="76" Name="out" />
+      <NameCon UId="78" Name="in2" />
+    </Wire>
+    <Wire UId="129">
+      <IdentCon UId="28" />
+      <NameCon UId="77" Name="operand" />
+    </Wire>
+    <Wire UId="130">
+      <NameCon UId="77" Name="out" />
+      <NameCon UId="78" Name="in3" />
+    </Wire>
+    <Wire UId="131">
+      <NameCon UId="78" Name="out" />
+      <NameCon UId="109" Name="Jog_Forward_SL" />
+    </Wire>
+    <Wire UId="132">
+      <IdentCon UId="29" />
+      <NameCon UId="79" Name="operand" />
+    </Wire>
+    <Wire UId="133">
+      <NameCon UId="79" Name="out" />
+      <NameCon UId="80" Name="in" />
+      <NameCon UId="81" Name="in" />
+    </Wire>
+    <Wire UId="134">
+      <IdentCon UId="30" />
+      <NameCon UId="80" Name="operand" />
+    </Wire>
+    <Wire UId="135">
+      <NameCon UId="80" Name="out" />
+      <NameCon UId="82" Name="in1" />
+    </Wire>
+    <Wire UId="136">
+      <IdentCon UId="31" />
+      <NameCon UId="81" Name="operand" />
+    </Wire>
+    <Wire UId="137">
+      <NameCon UId="81" Name="out" />
+      <NameCon UId="82" Name="in2" />
+    </Wire>
+    <Wire UId="138">
+      <NameCon UId="82" Name="out" />
+      <NameCon UId="83" Name="in" />
+    </Wire>
+    <Wire UId="139">
+      <IdentCon UId="32" />
+      <NameCon UId="83" Name="operand" />
+    </Wire>
+    <Wire UId="140">
+      <NameCon UId="83" Name="out" />
+      <NameCon UId="84" Name="in" />
+    </Wire>
+    <Wire UId="141">
+      <IdentCon UId="33" />
+      <NameCon UId="84" Name="operand" />
+    </Wire>
+    <Wire UId="142">
+      <NameCon UId="84" Name="out" />
+      <NameCon UId="85" Name="in" />
+      <NameCon UId="86" Name="in" />
+    </Wire>
+    <Wire UId="143">
+      <IdentCon UId="34" />
+      <NameCon UId="85" Name="operand" />
+    </Wire>
+    <Wire UId="144">
+      <NameCon UId="85" Name="out" />
+      <NameCon UId="88" Name="in1" />
+    </Wire>
+    <Wire UId="145">
+      <IdentCon UId="35" />
+      <NameCon UId="86" Name="operand" />
+    </Wire>
+    <Wire UId="146">
+      <NameCon UId="86" Name="out" />
+      <NameCon UId="88" Name="in2" />
+    </Wire>
+    <Wire UId="147">
+      <IdentCon UId="36" />
+      <NameCon UId="87" Name="operand" />
+    </Wire>
+    <Wire UId="148">
+      <NameCon UId="87" Name="out" />
+      <NameCon UId="88" Name="in3" />
+    </Wire>
+    <Wire UId="149">
+      <NameCon UId="88" Name="out" />
+      <NameCon UId="109" Name="Jog_Forward_SR" />
+    </Wire>
+    <Wire UId="150">
+      <IdentCon UId="37" />
+      <NameCon UId="89" Name="operand" />
+    </Wire>
+    <Wire UId="151">
+      <NameCon UId="89" Name="out" />
+      <NameCon UId="90" Name="in" />
+      <NameCon UId="91" Name="in" />
+    </Wire>
+    <Wire UId="152">
+      <IdentCon UId="38" />
+      <NameCon UId="90" Name="operand" />
+    </Wire>
+    <Wire UId="153">
+      <NameCon UId="90" Name="out" />
+      <NameCon UId="92" Name="in1" />
+    </Wire>
+    <Wire UId="154">
+      <IdentCon UId="39" />
+      <NameCon UId="91" Name="operand" />
+    </Wire>
+    <Wire UId="155">
+      <NameCon UId="91" Name="out" />
+      <NameCon UId="92" Name="in2" />
+    </Wire>
+    <Wire UId="156">
+      <NameCon UId="92" Name="out" />
+      <NameCon UId="93" Name="in" />
+    </Wire>
+    <Wire UId="157">
+      <IdentCon UId="40" />
+      <NameCon UId="93" Name="operand" />
+    </Wire>
+    <Wire UId="158">
+      <NameCon UId="93" Name="out" />
+      <NameCon UId="94" Name="in" />
+    </Wire>
+    <Wire UId="159">
+      <IdentCon UId="41" />
+      <NameCon UId="94" Name="operand" />
+    </Wire>
+    <Wire UId="160">
+      <NameCon UId="94" Name="out" />
+      <NameCon UId="95" Name="in" />
+      <NameCon UId="96" Name="in" />
+    </Wire>
+    <Wire UId="161">
+      <IdentCon UId="42" />
+      <NameCon UId="95" Name="operand" />
+    </Wire>
+    <Wire UId="162">
+      <NameCon UId="95" Name="out" />
+      <NameCon UId="98" Name="in1" />
+    </Wire>
+    <Wire UId="163">
+      <IdentCon UId="43" />
+      <NameCon UId="96" Name="operand" />
+    </Wire>
+    <Wire UId="164">
+      <NameCon UId="96" Name="out" />
+      <NameCon UId="98" Name="in2" />
+    </Wire>
+    <Wire UId="165">
+      <IdentCon UId="44" />
+      <NameCon UId="97" Name="operand" />
+    </Wire>
+    <Wire UId="166">
+      <NameCon UId="97" Name="out" />
+      <NameCon UId="98" Name="in3" />
+    </Wire>
+    <Wire UId="167">
+      <NameCon UId="98" Name="out" />
+      <NameCon UId="109" Name="Jog_Backward_SL" />
+    </Wire>
+    <Wire UId="168">
+      <IdentCon UId="45" />
+      <NameCon UId="99" Name="operand" />
+    </Wire>
+    <Wire UId="169">
+      <NameCon UId="99" Name="out" />
+      <NameCon UId="100" Name="in" />
+      <NameCon UId="101" Name="in" />
+    </Wire>
+    <Wire UId="170">
+      <IdentCon UId="46" />
+      <NameCon UId="100" Name="operand" />
+    </Wire>
+    <Wire UId="171">
+      <NameCon UId="100" Name="out" />
+      <NameCon UId="102" Name="in1" />
+    </Wire>
+    <Wire UId="172">
+      <IdentCon UId="47" />
+      <NameCon UId="101" Name="operand" />
+    </Wire>
+    <Wire UId="173">
+      <NameCon UId="101" Name="out" />
+      <NameCon UId="102" Name="in2" />
+    </Wire>
+    <Wire UId="174">
+      <NameCon UId="102" Name="out" />
+      <NameCon UId="103" Name="in" />
+    </Wire>
+    <Wire UId="175">
+      <IdentCon UId="48" />
+      <NameCon UId="103" Name="operand" />
+    </Wire>
+    <Wire UId="176">
+      <NameCon UId="103" Name="out" />
+      <NameCon UId="104" Name="in" />
+    </Wire>
+    <Wire UId="177">
+      <IdentCon UId="49" />
+      <NameCon UId="104" Name="operand" />
+    </Wire>
+    <Wire UId="178">
+      <NameCon UId="104" Name="out" />
+      <NameCon UId="105" Name="in" />
+      <NameCon UId="106" Name="in" />
+    </Wire>
+    <Wire UId="179">
+      <IdentCon UId="50" />
+      <NameCon UId="105" Name="operand" />
+    </Wire>
+    <Wire UId="180">
+      <NameCon UId="105" Name="out" />
+      <NameCon UId="108" Name="in1" />
+    </Wire>
+    <Wire UId="181">
+      <IdentCon UId="51" />
+      <NameCon UId="106" Name="operand" />
+    </Wire>
+    <Wire UId="182">
+      <NameCon UId="106" Name="out" />
+      <NameCon UId="108" Name="in2" />
+    </Wire>
+    <Wire UId="183">
+      <IdentCon UId="52" />
+      <NameCon UId="107" Name="operand" />
+    </Wire>
+    <Wire UId="184">
+      <NameCon UId="107" Name="out" />
+      <NameCon UId="108" Name="in3" />
+    </Wire>
+    <Wire UId="185">
+      <NameCon UId="108" Name="out" />
+      <NameCon UId="109" Name="Jog_Backward_SR" />
+    </Wire>
+    <Wire UId="186">
+      <IdentCon UId="53" />
+      <NameCon UId="109" Name="Reset" />
+    </Wire>
+    <Wire UId="187">
+      <IdentCon UId="54" />
+      <NameCon UId="109" Name="Set_SL_Speed" />
+    </Wire>
+    <Wire UId="188">
+      <IdentCon UId="55" />
+      <NameCon UId="109" Name="Set_SR_Speed" />
+    </Wire>
+    <Wire UId="189">
+      <IdentCon UId="56" />
+      <NameCon UId="109" Name="Set_Acc" />
+    </Wire>
+    <Wire UId="190">
+      <IdentCon UId="57" />
+      <NameCon UId="109" Name="Set_Dcc" />
+    </Wire>
+    <Wire UId="191">
+      <IdentCon UId="58" />
+      <NameCon UId="109" Name="HWIdentSL" />
+    </Wire>
+    <Wire UId="192">
+      <IdentCon UId="59" />
+      <NameCon UId="109" Name="HWIdentSR" />
+    </Wire>
+    <Wire UId="193">
+      <IdentCon UId="60" />
+      <NameCon UId="109" Name="iSL_Drive_Param" />
+    </Wire>
+    <Wire UId="194">
+      <IdentCon UId="61" />
+      <NameCon UId="109" Name="iSR_Drive_Param" />
+    </Wire>
+    <Wire UId="195">
+      <IdentCon UId="62" />
+      <NameCon UId="109" Name="oSL_Drive_Param" />
+    </Wire>
+    <Wire UId="196">
+      <IdentCon UId="63" />
+      <NameCon UId="109" Name="oSR_Drive_Param" />
+    </Wire>
+    <Wire UId="197">
+      <NameCon UId="109" Name="oSL_Communication_OK" />
+      <OpenCon UId="111" />
+    </Wire>
+    <Wire UId="198">
+      <NameCon UId="109" Name="oSR_Communication_OK" />
+      <OpenCon UId="112" />
+    </Wire>
+    <Wire UId="199">
+      <NameCon UId="109" Name="oSL_Forward_Flag" />
+      <IdentCon UId="64" />
+    </Wire>
+    <Wire UId="200">
+      <NameCon UId="109" Name="oSL_Backward_Flag" />
+      <IdentCon UId="65" />
+    </Wire>
+    <Wire UId="201">
+      <NameCon UId="109" Name="oSR_Forward_Flag" />
+      <IdentCon UId="66" />
+    </Wire>
+    <Wire UId="202">
+      <NameCon UId="109" Name="oSR_Backward_Flag" />
+      <IdentCon UId="67" />
+    </Wire>
+    <Wire UId="203">
+      <NameCon UId="109" Name="oError" />
+      <IdentCon UId="68" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="22" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="23" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="24" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="25" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Side drive</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="26" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="iSL_Distance" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="SR_Distance_Correct" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="Homing_1_SR" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="24">
+      <Symbol>
+        <Component Name="Homing_2_SR" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="25">
+      <Symbol>
+        <Component Name="Homing_3_SR" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="26">
+      <Symbol>
+        <Component Name="Homing_4_SR" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="27">
+      <Symbol>
+        <Component Name="Homing_1_SL" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="28">
+      <Symbol>
+        <Component Name="Homing_2_SL" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="29">
+      <Symbol>
+        <Component Name="Homing_3_SL" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="30">
+      <Symbol>
+        <Component Name="Homing_4_SL" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="31">
+      <Symbol>
+        <Component Name="set_Go_To_ST1" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="32">
+      <Symbol>
+        <Component Name="set_Go_To_ST2" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="33">
+      <Symbol>
+        <Component Name="set_Go_To_ST3" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="34">
+      <Symbol>
+        <Component Name="set_Go_To_ST4" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="35">
+      <Symbol>
+        <Component Name="ST1_Empty" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="36">
+      <Symbol>
+        <Component Name="ST2_Empty" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="37">
+      <Symbol>
+        <Component Name="ST3_Empty" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="38">
+      <Symbol>
+        <Component Name="ST4_Empty" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="39">
+      <Symbol>
+        <Component Name="SL_Sen_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="40">
+      <Symbol>
+        <Component Name="SR_Sen_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="41">
+      <Symbol>
+        <Component Name="SL_Auto_Forward" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="42">
+      <Symbol>
+        <Component Name="SL_Auto_Backward" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="43">
+      <Symbol>
+        <Component Name="SL_Auto_Speed" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="44">
+      <Symbol>
+        <Component Name="SR_Auto_Forward" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="45">
+      <Symbol>
+        <Component Name="SR_Auto_Backward" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="46">
+      <Symbol>
+        <Component Name="SR_Auto_Speed" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="47">
+      <Symbol>
+        <Component Name="oST1_1_Move_Flag" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="48">
+      <Symbol>
+        <Component Name="oST2_1_Move_Flag" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="49">
+      <Symbol>
+        <Component Name="oST3_1_Move_flag" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="50">
+      <Symbol>
+        <Component Name="oST4_1_Move_Flag" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="51">
+      <Symbol>
+        <Component Name="oST1_2_Move_Flag" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="52">
+      <Symbol>
+        <Component Name="oST2_2_Move_Flag" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="53">
+      <Symbol>
+        <Component Name="oST3_2_Move_Flag" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="54">
+      <Symbol>
+        <Component Name="oST4_2_Move_Flag" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="55">
+      <Symbol>
+        <Component Name="SL_SR_InPosition" />
+      </Symbol>
+    </Access>
+    <Call UId="56">
+      <CallInfo Name="Side_Shifter_Auto" BlockType="FB">
+        <Instance Scope="LocalVariable" UId="57">
+          <Component Name="Side_Shifter_Auto_Instance" />
+        </Instance>
+        <Parameter Name="iSL_Distance" Section="Input" Type="Int" />
+        <Parameter Name="iSR_Distance" Section="Input" Type="Int" />
+        <Parameter Name="Home_1_SR" Section="Input" Type="Int" />
+        <Parameter Name="Home_2_SR" Section="Input" Type="Int" />
+        <Parameter Name="Home_3_SR" Section="Input" Type="Int" />
+        <Parameter Name="Home_4_SR" Section="Input" Type="Int" />
+        <Parameter Name="Home_1_SL" Section="Input" Type="Int" />
+        <Parameter Name="Home_2_SL" Section="Input" Type="Int" />
+        <Parameter Name="Home_3_SL" Section="Input" Type="Int" />
+        <Parameter Name="Home_4_SL" Section="Input" Type="Int" />
+        <Parameter Name="iGo_H1" Section="Input" Type="Bool" />
+        <Parameter Name="iGo_H2" Section="Input" Type="Bool" />
+        <Parameter Name="iGo_H3" Section="Input" Type="Bool" />
+        <Parameter Name="iGo_H4" Section="Input" Type="Bool" />
+        <Parameter Name="ST1_Empty" Section="Input" Type="Bool" />
+        <Parameter Name="ST2_Empty" Section="Input" Type="Bool" />
+        <Parameter Name="ST3_Empty" Section="Input" Type="Bool" />
+        <Parameter Name="ST4_Empty" Section="Input" Type="Bool" />
+        <Parameter Name="SL_Sen_up" Section="Input" Type="Bool" />
+        <Parameter Name="SR_Sen_up" Section="Input" Type="Bool" />
+        <Parameter Name="qSL_Go_Forward" Section="Output" Type="Bool" />
+        <Parameter Name="qSL_Go_Backward" Section="Output" Type="Bool" />
+        <Parameter Name="qSL_SetSpeed" Section="Output" Type="Int" />
+        <Parameter Name="qSR_Go_Forward" Section="Output" Type="Bool" />
+        <Parameter Name="qSR_Go_Backward" Section="Output" Type="Bool" />
+        <Parameter Name="qSR_SetSpeed" Section="Output" Type="Int" />
+        <Parameter Name="qST1_Flash_Sz1" Section="Output" Type="Bool" />
+        <Parameter Name="qST2_Flash_Sz1" Section="Output" Type="Bool" />
+        <Parameter Name="qST3_Flash_Sz1" Section="Output" Type="Bool" />
+        <Parameter Name="qST4_Flash_Sz1" Section="Output" Type="Bool" />
+        <Parameter Name="qST1_Flash_Sz2" Section="Output" Type="Bool" />
+        <Parameter Name="qST2_Flash_Sz2" Section="Output" Type="Bool" />
+        <Parameter Name="qST3_Flash_Sz2" Section="Output" Type="Bool" />
+        <Parameter Name="qST4_Flash_Sz2" Section="Output" Type="Bool" />
+        <Parameter Name="Alarm_Desync" Section="Output" Type="Bool" />
+        <Parameter Name="inPosition" Section="Output" Type="Bool" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="59">
+      <Powerrail />
+      <NameCon UId="56" Name="en" />
+    </Wire>
+    <Wire UId="60">
+      <IdentCon UId="21" />
+      <NameCon UId="56" Name="iSL_Distance" />
+    </Wire>
+    <Wire UId="61">
+      <IdentCon UId="22" />
+      <NameCon UId="56" Name="iSR_Distance" />
+    </Wire>
+    <Wire UId="62">
+      <IdentCon UId="23" />
+      <NameCon UId="56" Name="Home_1_SR" />
+    </Wire>
+    <Wire UId="63">
+      <IdentCon UId="24" />
+      <NameCon UId="56" Name="Home_2_SR" />
+    </Wire>
+    <Wire UId="64">
+      <IdentCon UId="25" />
+      <NameCon UId="56" Name="Home_3_SR" />
+    </Wire>
+    <Wire UId="65">
+      <IdentCon UId="26" />
+      <NameCon UId="56" Name="Home_4_SR" />
+    </Wire>
+    <Wire UId="66">
+      <IdentCon UId="27" />
+      <NameCon UId="56" Name="Home_1_SL" />
+    </Wire>
+    <Wire UId="67">
+      <IdentCon UId="28" />
+      <NameCon UId="56" Name="Home_2_SL" />
+    </Wire>
+    <Wire UId="68">
+      <IdentCon UId="29" />
+      <NameCon UId="56" Name="Home_3_SL" />
+    </Wire>
+    <Wire UId="69">
+      <IdentCon UId="30" />
+      <NameCon UId="56" Name="Home_4_SL" />
+    </Wire>
+    <Wire UId="70">
+      <IdentCon UId="31" />
+      <NameCon UId="56" Name="iGo_H1" />
+    </Wire>
+    <Wire UId="71">
+      <IdentCon UId="32" />
+      <NameCon UId="56" Name="iGo_H2" />
+    </Wire>
+    <Wire UId="72">
+      <IdentCon UId="33" />
+      <NameCon UId="56" Name="iGo_H3" />
+    </Wire>
+    <Wire UId="73">
+      <IdentCon UId="34" />
+      <NameCon UId="56" Name="iGo_H4" />
+    </Wire>
+    <Wire UId="74">
+      <IdentCon UId="35" />
+      <NameCon UId="56" Name="ST1_Empty" />
+    </Wire>
+    <Wire UId="75">
+      <IdentCon UId="36" />
+      <NameCon UId="56" Name="ST2_Empty" />
+    </Wire>
+    <Wire UId="76">
+      <IdentCon UId="37" />
+      <NameCon UId="56" Name="ST3_Empty" />
+    </Wire>
+    <Wire UId="77">
+      <IdentCon UId="38" />
+      <NameCon UId="56" Name="ST4_Empty" />
+    </Wire>
+    <Wire UId="78">
+      <IdentCon UId="39" />
+      <NameCon UId="56" Name="SL_Sen_up" />
+    </Wire>
+    <Wire UId="79">
+      <IdentCon UId="40" />
+      <NameCon UId="56" Name="SR_Sen_up" />
+    </Wire>
+    <Wire UId="80">
+      <NameCon UId="56" Name="qSL_Go_Forward" />
+      <IdentCon UId="41" />
+    </Wire>
+    <Wire UId="81">
+      <NameCon UId="56" Name="qSL_Go_Backward" />
+      <IdentCon UId="42" />
+    </Wire>
+    <Wire UId="82">
+      <NameCon UId="56" Name="qSL_SetSpeed" />
+      <IdentCon UId="43" />
+    </Wire>
+    <Wire UId="83">
+      <NameCon UId="56" Name="qSR_Go_Forward" />
+      <IdentCon UId="44" />
+    </Wire>
+    <Wire UId="84">
+      <NameCon UId="56" Name="qSR_Go_Backward" />
+      <IdentCon UId="45" />
+    </Wire>
+    <Wire UId="85">
+      <NameCon UId="56" Name="qSR_SetSpeed" />
+      <IdentCon UId="46" />
+    </Wire>
+    <Wire UId="86">
+      <NameCon UId="56" Name="qST1_Flash_Sz1" />
+      <IdentCon UId="47" />
+    </Wire>
+    <Wire UId="87">
+      <NameCon UId="56" Name="qST2_Flash_Sz1" />
+      <IdentCon UId="48" />
+    </Wire>
+    <Wire UId="88">
+      <NameCon UId="56" Name="qST3_Flash_Sz1" />
+      <IdentCon UId="49" />
+    </Wire>
+    <Wire UId="89">
+      <NameCon UId="56" Name="qST4_Flash_Sz1" />
+      <IdentCon UId="50" />
+    </Wire>
+    <Wire UId="90">
+      <NameCon UId="56" Name="qST1_Flash_Sz2" />
+      <IdentCon UId="51" />
+    </Wire>
+    <Wire UId="91">
+      <NameCon UId="56" Name="qST2_Flash_Sz2" />
+      <IdentCon UId="52" />
+    </Wire>
+    <Wire UId="92">
+      <NameCon UId="56" Name="qST3_Flash_Sz2" />
+      <IdentCon UId="53" />
+    </Wire>
+    <Wire UId="93">
+      <NameCon UId="56" Name="qST4_Flash_Sz2" />
+      <IdentCon UId="54" />
+    </Wire>
+    <Wire UId="94">
+      <NameCon UId="56" Name="Alarm_Desync" />
+      <OpenCon UId="58" />
+    </Wire>
+    <Wire UId="95">
+      <NameCon UId="56" Name="inPosition" />
+      <IdentCon UId="55" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="27" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="28" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="29" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="2A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Auto moving</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="2B" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="SL_Drive_Forward" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="SL_Drive_Backward" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="RL_Speed" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="24">
+      <Symbol>
+        <Component Name="SL_Auto_Speed" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="25">
+      <Symbol>
+        <Component Name="SR_Drive_Forward" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="26">
+      <Symbol>
+        <Component Name="SR_Drive_Backward" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="27">
+      <Symbol>
+        <Component Name="RR_Speed" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="28">
+      <Symbol>
+        <Component Name="SR_Auto_Speed" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="29" />
+    <Part Name="Contact" UId="30" />
+    <Part Name="O" UId="31">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="Move" UId="32" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="33" />
+    <Part Name="Contact" UId="34" />
+    <Part Name="O" UId="35">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="Move" UId="36" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+    </Part>
+  </Parts>
+  <Wires>
+    <Wire UId="37">
+      <Powerrail />
+      <NameCon UId="29" Name="in" />
+      <NameCon UId="30" Name="in" />
+      <NameCon UId="33" Name="in" />
+      <NameCon UId="34" Name="in" />
+    </Wire>
+    <Wire UId="38">
+      <IdentCon UId="21" />
+      <NameCon UId="29" Name="operand" />
+    </Wire>
+    <Wire UId="39">
+      <NameCon UId="29" Name="out" />
+      <NameCon UId="31" Name="in1" />
+    </Wire>
+    <Wire UId="40">
+      <IdentCon UId="22" />
+      <NameCon UId="30" Name="operand" />
+    </Wire>
+    <Wire UId="41">
+      <NameCon UId="30" Name="out" />
+      <NameCon UId="31" Name="in2" />
+    </Wire>
+    <Wire UId="42">
+      <NameCon UId="31" Name="out" />
+      <NameCon UId="32" Name="en" />
+    </Wire>
+    <Wire UId="43">
+      <IdentCon UId="23" />
+      <NameCon UId="32" Name="in" />
+    </Wire>
+    <Wire UId="44">
+      <NameCon UId="32" Name="out1" />
+      <IdentCon UId="24" />
+    </Wire>
+    <Wire UId="45">
+      <IdentCon UId="25" />
+      <NameCon UId="33" Name="operand" />
+    </Wire>
+    <Wire UId="46">
+      <NameCon UId="33" Name="out" />
+      <NameCon UId="35" Name="in1" />
+    </Wire>
+    <Wire UId="47">
+      <IdentCon UId="26" />
+      <NameCon UId="34" Name="operand" />
+    </Wire>
+    <Wire UId="48">
+      <NameCon UId="34" Name="out" />
+      <NameCon UId="35" Name="in2" />
+    </Wire>
+    <Wire UId="49">
+      <NameCon UId="35" Name="out" />
+      <NameCon UId="36" Name="en" />
+    </Wire>
+    <Wire UId="50">
+      <IdentCon UId="27" />
+      <NameCon UId="36" Name="in" />
+    </Wire>
+    <Wire UId="51">
+      <NameCon UId="36" Name="out1" />
+      <IdentCon UId="28" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="2C" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="2D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="2E" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="2F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Set speed in auto</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="30" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <Token Text="IF" UId="21" />
+  <Blank UId="22" />
+  <Access Scope="LocalVariable" UId="23">
+    <Symbol UId="24">
+      <Component Name="HWIdentSL" UId="25" />
+    </Symbol>
+  </Access>
+  <Blank UId="26" />
+  <Token Text="=" UId="27" />
+  <Blank UId="28" />
+  <Access Scope="GlobalConstant" UId="29">
+    <Constant Name="S1R1M~Module_I_O_(05_words)_1" UId="30" />
+  </Access>
+  <Blank UId="33" />
+  <Token Text="THEN" UId="34" />
+  <NewLine UId="35" />
+  <Blank Num="2" UId="36" />
+  <NewLine UId="37" />
+  <Blank Num="4" UId="38" />
+  <Token Text="IF" UId="39" />
+  <Blank UId="40" />
+  <Token Text="(" UId="41" />
+  <Access Scope="LocalVariable" UId="42">
+    <Symbol UId="43">
+      <Component Name="Hydraulic_SL" UId="44" />
+      <Token Text="." UId="45" />
+      <Component Name="Actuator_Up" UId="46" />
+    </Symbol>
+  </Access>
+  <Blank UId="47" />
+  <Token Text="OR" UId="48" />
+  <Blank UId="49" />
+  <Access Scope="LocalVariable" UId="50">
+    <Symbol UId="51">
+      <Component Name="Hydraulic_SR" UId="52" />
+      <Token Text="." UId="53" />
+      <Component Name="Actuator_Up" UId="54" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="55" />
+  <Blank UId="56" />
+  <Token Text="AND" UId="57" />
+  <Blank UId="58" />
+  <Access Scope="LocalVariable" UId="59">
+    <Symbol UId="60">
+      <Component Name="Status_Sen_Up" UId="61" />
+    </Symbol>
+  </Access>
+  <Blank UId="62" />
+  <Token Text="AND" UId="63" />
+  <Blank UId="64" />
+  <Access Scope="LocalVariable" UId="65">
+    <Symbol UId="66">
+      <Component Name="Step_Move_Pallets" UId="67" />
+    </Symbol>
+  </Access>
+  <Blank UId="68" />
+  <Token Text="=" UId="69" />
+  <Blank UId="70" />
+  <Access Scope="LiteralConstant" UId="71">
+    <Constant UId="72">
+      <ConstantValue UId="74">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="75" />
+  <Token Text="THEN" UId="76" />
+  <NewLine UId="77" />
+  <Blank Num="8" UId="78" />
+  <Access Scope="LocalVariable" UId="79">
+    <Symbol UId="80">
+      <Component Name="Step_Move_Pallets" UId="81" />
+    </Symbol>
+  </Access>
+  <Blank UId="82" />
+  <Token Text=":=" UId="83" />
+  <Blank UId="84" />
+  <Access Scope="LiteralConstant" UId="85">
+    <Constant UId="86">
+      <ConstantValue UId="88">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="89" />
+  <NewLine UId="90" />
+  <Blank Num="8" UId="91" />
+  <Token Text="IF" UId="92" />
+  <Blank UId="93" />
+  <Access Scope="LocalVariable" UId="94">
+    <Symbol UId="95">
+      <Component Name="oST1_1_Move_Flag" UId="96" />
+    </Symbol>
+  </Access>
+  <Blank UId="97" />
+  <Token Text="THEN" UId="98" />
+  <NewLine UId="99" />
+  <Blank Num="12" UId="100" />
+  <Access Scope="LocalVariable" UId="101">
+    <Symbol UId="102">
+      <Component Name="Row_Start" UId="103" />
+    </Symbol>
+  </Access>
+  <Blank UId="104" />
+  <Token Text=":=" UId="105" />
+  <Blank UId="106" />
+  <Access Scope="LiteralConstant" UId="107">
+    <Constant UId="108">
+      <ConstantValue UId="110">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="111" />
+  <NewLine UId="112" />
+  <Blank Num="12" UId="113" />
+  <Access Scope="LocalVariable" UId="114">
+    <Symbol UId="115">
+      <Component Name="Column_Start" UId="116" />
+    </Symbol>
+  </Access>
+  <Blank UId="117" />
+  <Token Text=":=" UId="118" />
+  <Blank UId="119" />
+  <Access Scope="LiteralConstant" UId="120">
+    <Constant UId="121">
+      <ConstantValue UId="123">11</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="124" />
+  <NewLine UId="125" />
+  <Blank Num="8" UId="126" />
+  <Token Text="ELSIF" UId="127" />
+  <Blank UId="128" />
+  <Access Scope="LocalVariable" UId="129">
+    <Symbol UId="130">
+      <Component Name="oST2_1_Move_Flag" UId="131" />
+    </Symbol>
+  </Access>
+  <Blank UId="132" />
+  <Token Text="THEN" UId="133" />
+  <NewLine UId="134" />
+  <Blank Num="12" UId="135" />
+  <Access Scope="LocalVariable" UId="136">
+    <Symbol UId="137">
+      <Component Name="Row_Start" UId="138" />
+    </Symbol>
+  </Access>
+  <Blank UId="139" />
+  <Token Text=":=" UId="140" />
+  <Blank UId="141" />
+  <Access Scope="LiteralConstant" UId="142">
+    <Constant UId="143">
+      <ConstantValue UId="145">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="146" />
+  <NewLine UId="147" />
+  <Blank Num="12" UId="148" />
+  <Access Scope="LocalVariable" UId="149">
+    <Symbol UId="150">
+      <Component Name="Column_Start" UId="151" />
+    </Symbol>
+  </Access>
+  <Blank UId="152" />
+  <Token Text=":=" UId="153" />
+  <Blank UId="154" />
+  <Access Scope="LiteralConstant" UId="155">
+    <Constant UId="156">
+      <ConstantValue UId="158">12</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="159" />
+  <NewLine UId="160" />
+  <Blank Num="8" UId="161" />
+  <Token Text="ELSIF" UId="162" />
+  <Blank UId="163" />
+  <Access Scope="LocalVariable" UId="164">
+    <Symbol UId="165">
+      <Component Name="oST3_1_Move_flag" UId="166" />
+    </Symbol>
+  </Access>
+  <Blank UId="167" />
+  <Token Text="THEN" UId="168" />
+  <NewLine UId="169" />
+  <Blank Num="12" UId="170" />
+  <Access Scope="LocalVariable" UId="171">
+    <Symbol UId="172">
+      <Component Name="Row_Start" UId="173" />
+    </Symbol>
+  </Access>
+  <Blank UId="174" />
+  <Token Text=":=" UId="175" />
+  <Blank UId="176" />
+  <Access Scope="LiteralConstant" UId="177">
+    <Constant UId="178">
+      <ConstantValue UId="180">3</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="181" />
+  <NewLine UId="182" />
+  <Blank Num="12" UId="183" />
+  <Access Scope="LocalVariable" UId="184">
+    <Symbol UId="185">
+      <Component Name="Column_Start" UId="186" />
+    </Symbol>
+  </Access>
+  <Blank UId="187" />
+  <Token Text=":=" UId="188" />
+  <Blank UId="189" />
+  <Access Scope="LiteralConstant" UId="190">
+    <Constant UId="191">
+      <ConstantValue UId="193">11</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="194" />
+  <NewLine UId="195" />
+  <Blank Num="8" UId="196" />
+  <Token Text="ELSIF" UId="197" />
+  <Blank UId="198" />
+  <Access Scope="LocalVariable" UId="199">
+    <Symbol UId="200">
+      <Component Name="oST4_1_Move_Flag" UId="201" />
+    </Symbol>
+  </Access>
+  <Blank UId="202" />
+  <Token Text="THEN" UId="203" />
+  <NewLine UId="204" />
+  <Blank Num="12" UId="205" />
+  <Access Scope="LocalVariable" UId="206">
+    <Symbol UId="207">
+      <Component Name="Row_Start" UId="208" />
+    </Symbol>
+  </Access>
+  <Blank UId="209" />
+  <Token Text=":=" UId="210" />
+  <Blank UId="211" />
+  <Access Scope="LiteralConstant" UId="212">
+    <Constant UId="213">
+      <ConstantValue UId="215">4</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="216" />
+  <NewLine UId="217" />
+  <Blank Num="12" UId="218" />
+  <Access Scope="LocalVariable" UId="219">
+    <Symbol UId="220">
+      <Component Name="Column_Start" UId="221" />
+    </Symbol>
+  </Access>
+  <Blank UId="222" />
+  <Token Text=":=" UId="223" />
+  <Blank UId="224" />
+  <Access Scope="LiteralConstant" UId="225">
+    <Constant UId="226">
+      <ConstantValue UId="228">11</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="229" />
+  <NewLine UId="230" />
+  <Blank Num="8" UId="231" />
+  <Token Text="END_IF" UId="232" />
+  <Token Text=";" UId="233" />
+  <NewLine UId="234" />
+  <Blank Num="8" UId="235" />
+  <NewLine UId="236" />
+  <Blank Num="4" UId="237" />
+  <Token Text="ELSIF" UId="238" />
+  <Blank UId="239" />
+  <Token Text="(" UId="240" />
+  <Access Scope="LocalVariable" UId="241">
+    <Symbol UId="242">
+      <Component Name="Hydraulic_SL" UId="243" />
+      <Token Text="." UId="244" />
+      <Component Name="Actuator_Down" UId="245" />
+    </Symbol>
+  </Access>
+  <Blank UId="246" />
+  <Token Text="OR" UId="247" />
+  <Blank UId="248" />
+  <Access Scope="LocalVariable" UId="249">
+    <Symbol UId="250">
+      <Component Name="Hydraulic_SR" UId="251" />
+      <Token Text="." UId="252" />
+      <Component Name="Actuator_Down" UId="253" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="254" />
+  <Blank UId="255" />
+  <Token Text="AND" UId="256" />
+  <Blank UId="257" />
+  <Access Scope="LocalVariable" UId="258">
+    <Symbol UId="259">
+      <Component Name="Status_Sen_Up" UId="260" />
+    </Symbol>
+  </Access>
+  <Blank UId="261" />
+  <Token Text="AND" UId="262" />
+  <Blank UId="263" />
+  <Access Scope="LocalVariable" UId="264">
+    <Symbol UId="265">
+      <Component Name="Step_Move_Pallets" UId="266" />
+    </Symbol>
+  </Access>
+  <Blank UId="267" />
+  <Token Text="=" UId="268" />
+  <Blank UId="269" />
+  <Access Scope="LiteralConstant" UId="270">
+    <Constant UId="271">
+      <ConstantValue UId="273">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="274" />
+  <Token Text="THEN" UId="275" />
+  <NewLine UId="276" />
+  <Blank Num="8" UId="277" />
+  <Access Scope="LocalVariable" UId="278">
+    <Symbol UId="279">
+      <Component Name="Step_Move_Pallets" UId="280" />
+    </Symbol>
+  </Access>
+  <Blank UId="281" />
+  <Token Text=":=" UId="282" />
+  <Blank UId="283" />
+  <Access Scope="LiteralConstant" UId="284">
+    <Constant UId="285">
+      <ConstantValue UId="287">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="288" />
+  <NewLine UId="289" />
+  <Blank Num="8" UId="290" />
+  <Token Text="IF" UId="291" />
+  <Blank UId="292" />
+  <Access Scope="LocalVariable" UId="293">
+    <Symbol UId="294">
+      <Component Name="oST1_1_Move_Flag" UId="295" />
+    </Symbol>
+  </Access>
+  <Blank UId="296" />
+  <Token Text="THEN" UId="297" />
+  <NewLine UId="298" />
+  <Blank Num="12" UId="299" />
+  <Access Scope="LocalVariable" UId="300">
+    <Symbol UId="301">
+      <Component Name="Row_Destination" UId="302" />
+    </Symbol>
+  </Access>
+  <Blank UId="303" />
+  <Token Text=":=" UId="304" />
+  <Blank UId="305" />
+  <Access Scope="LiteralConstant" UId="306">
+    <Constant UId="307">
+      <ConstantValue UId="309">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="310" />
+  <NewLine UId="311" />
+  <Blank Num="12" UId="312" />
+  <Access Scope="LocalVariable" UId="313">
+    <Symbol UId="314">
+      <Component Name="Column_Destination" UId="315" />
+    </Symbol>
+  </Access>
+  <Blank UId="316" />
+  <Token Text=":=" UId="317" />
+  <Blank UId="318" />
+  <Access Scope="LiteralConstant" UId="319">
+    <Constant UId="320">
+      <ConstantValue UId="322">11</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="323" />
+  <NewLine UId="324" />
+  <Blank Num="8" UId="325" />
+  <Token Text="ELSIF" UId="326" />
+  <Blank UId="327" />
+  <Access Scope="LocalVariable" UId="328">
+    <Symbol UId="329">
+      <Component Name="oST2_1_Move_Flag" UId="330" />
+    </Symbol>
+  </Access>
+  <Blank UId="331" />
+  <Token Text="THEN" UId="332" />
+  <NewLine UId="333" />
+  <Blank Num="12" UId="334" />
+  <Access Scope="LocalVariable" UId="335">
+    <Symbol UId="336">
+      <Component Name="Row_Destination" UId="337" />
+    </Symbol>
+  </Access>
+  <Blank UId="338" />
+  <Token Text=":=" UId="339" />
+  <Blank UId="340" />
+  <Access Scope="LiteralConstant" UId="341">
+    <Constant UId="342">
+      <ConstantValue UId="344">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="345" />
+  <NewLine UId="346" />
+  <Blank Num="12" UId="347" />
+  <Access Scope="LocalVariable" UId="348">
+    <Symbol UId="349">
+      <Component Name="Column_Destination" UId="350" />
+    </Symbol>
+  </Access>
+  <Blank UId="351" />
+  <Token Text=":=" UId="352" />
+  <Blank UId="353" />
+  <Access Scope="LiteralConstant" UId="354">
+    <Constant UId="355">
+      <ConstantValue UId="357">12</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="358" />
+  <NewLine UId="359" />
+  <Blank Num="8" UId="360" />
+  <Token Text="ELSIF" UId="361" />
+  <Blank UId="362" />
+  <Access Scope="LocalVariable" UId="363">
+    <Symbol UId="364">
+      <Component Name="oST3_1_Move_flag" UId="365" />
+    </Symbol>
+  </Access>
+  <Blank UId="366" />
+  <Token Text="THEN" UId="367" />
+  <NewLine UId="368" />
+  <Blank Num="12" UId="369" />
+  <Access Scope="LocalVariable" UId="370">
+    <Symbol UId="371">
+      <Component Name="Row_Destination" UId="372" />
+    </Symbol>
+  </Access>
+  <Blank UId="373" />
+  <Token Text=":=" UId="374" />
+  <Blank UId="375" />
+  <Access Scope="LiteralConstant" UId="376">
+    <Constant UId="377">
+      <ConstantValue UId="379">3</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="380" />
+  <NewLine UId="381" />
+  <Blank Num="12" UId="382" />
+  <Access Scope="LocalVariable" UId="383">
+    <Symbol UId="384">
+      <Component Name="Column_Destination" UId="385" />
+    </Symbol>
+  </Access>
+  <Blank UId="386" />
+  <Token Text=":=" UId="387" />
+  <Blank UId="388" />
+  <Access Scope="LiteralConstant" UId="389">
+    <Constant UId="390">
+      <ConstantValue UId="392">11</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="393" />
+  <NewLine UId="394" />
+  <Blank Num="8" UId="395" />
+  <Token Text="ELSIF" UId="396" />
+  <Blank UId="397" />
+  <Access Scope="LocalVariable" UId="398">
+    <Symbol UId="399">
+      <Component Name="oST4_1_Move_Flag" UId="400" />
+    </Symbol>
+  </Access>
+  <Blank UId="401" />
+  <Token Text="THEN" UId="402" />
+  <NewLine UId="403" />
+  <Blank Num="12" UId="404" />
+  <Access Scope="LocalVariable" UId="405">
+    <Symbol UId="406">
+      <Component Name="Row_Destination" UId="407" />
+    </Symbol>
+  </Access>
+  <Blank UId="408" />
+  <Token Text=":=" UId="409" />
+  <Blank UId="410" />
+  <Access Scope="LiteralConstant" UId="411">
+    <Constant UId="412">
+      <ConstantValue UId="414">4</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="415" />
+  <NewLine UId="416" />
+  <Blank Num="12" UId="417" />
+  <Access Scope="LocalVariable" UId="418">
+    <Symbol UId="419">
+      <Component Name="Column_Destination" UId="420" />
+    </Symbol>
+  </Access>
+  <Blank UId="421" />
+  <Token Text=":=" UId="422" />
+  <Blank UId="423" />
+  <Access Scope="LiteralConstant" UId="424">
+    <Constant UId="425">
+      <ConstantValue UId="427">11</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="428" />
+  <NewLine UId="429" />
+  <Blank Num="8" UId="430" />
+  <Token Text="END_IF" UId="431" />
+  <Token Text=";" UId="432" />
+  <NewLine UId="433" />
+  <Blank Num="8" UId="434" />
+  <NewLine UId="435" />
+  <Blank Num="4" UId="436" />
+  <Token Text="ELSIF" UId="437" />
+  <Blank UId="438" />
+  <Access Scope="LocalVariable" UId="439">
+    <Symbol UId="440">
+      <Component Name="Step_Move_Pallets" UId="441" />
+    </Symbol>
+  </Access>
+  <Blank UId="442" />
+  <Token Text="=" UId="443" />
+  <Blank UId="444" />
+  <Access Scope="LiteralConstant" UId="445">
+    <Constant UId="446">
+      <ConstantValue UId="448">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="449" />
+  <Token Text="THEN" UId="450" />
+  <NewLine UId="451" />
+  <Blank Num="8" UId="452" />
+  <Token Text="FOR" UId="453" />
+  <Blank UId="454" />
+  <Access Scope="LocalVariable" UId="455">
+    <Symbol UId="456">
+      <Component Name="i" UId="457" />
+    </Symbol>
+  </Access>
+  <Blank UId="458" />
+  <Token Text=":=" UId="459" />
+  <Blank UId="460" />
+  <Access Scope="LiteralConstant" UId="461">
+    <Constant UId="462">
+      <ConstantValue UId="464">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="465" />
+  <Token Text="TO" UId="466" />
+  <Blank UId="467" />
+  <Access Scope="LiteralConstant" UId="468">
+    <Constant UId="469">
+      <ConstantValue UId="471">24</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="472" />
+  <Token Text="DO" UId="473" />
+  <NewLine UId="474" />
+  <Blank Num="12" UId="475" />
+  <Token Text="IF" UId="476" />
+  <Blank UId="477" />
+  <Token Text="(" UId="478" />
+  <Access Scope="GlobalVariable" UId="479">
+    <Symbol UId="480">
+      <Component Name="Pallets_Stations" UId="481">
+        <BooleanAttribute Name="HasQuotes" UId="482">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="483" />
+      <Component Name="Pallets" UId="484">
+        <Token Text="[" UId="485" />
+        <Access Scope="LocalVariable" UId="486">
+          <Symbol UId="487">
+            <Component Name="i" UId="488" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="489" />
+      </Component>
+      <Token Text="." UId="490" />
+      <Component Name="Station_Current_Position" UId="491">
+        <Token Text="[" UId="492" />
+        <Access Scope="LiteralConstant" UId="493">
+          <Constant UId="494">
+            <ConstantValue UId="496">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="497" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="498" />
+  <Token Text="=" UId="499" />
+  <Blank UId="500" />
+  <Access Scope="LocalVariable" UId="501">
+    <Symbol UId="502">
+      <Component Name="Row_Start" UId="503" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="504" />
+  <Blank UId="505" />
+  <Token Text="AND" UId="506" />
+  <NewLine UId="507" />
+  <Blank Num="16" UId="508" />
+  <Token Text="(" UId="509" />
+  <Access Scope="GlobalVariable" UId="510">
+    <Symbol UId="511">
+      <Component Name="Pallets_Stations" UId="512">
+        <BooleanAttribute Name="HasQuotes" UId="513">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="514" />
+      <Component Name="Pallets" UId="515">
+        <Token Text="[" UId="516" />
+        <Access Scope="LocalVariable" UId="517">
+          <Symbol UId="518">
+            <Component Name="i" UId="519" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="520" />
+      </Component>
+      <Token Text="." UId="521" />
+      <Component Name="Station_Current_Position" UId="522">
+        <Token Text="[" UId="523" />
+        <Access Scope="LiteralConstant" UId="524">
+          <Constant UId="525">
+            <ConstantValue UId="527">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="528" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="529" />
+  <Token Text="=" UId="530" />
+  <Blank UId="531" />
+  <Access Scope="LocalVariable" UId="532">
+    <Symbol UId="533">
+      <Component Name="Column_Start" UId="534" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="535" />
+  <Blank UId="536" />
+  <Token Text="THEN" UId="537" />
+  <NewLine UId="538" />
+  <Blank Num="16" UId="539" />
+  <Access Scope="LocalVariable" UId="540">
+    <Symbol UId="541">
+      <Component Name="FoundIndex" UId="542" />
+    </Symbol>
+  </Access>
+  <Blank UId="543" />
+  <Token Text=":=" UId="544" />
+  <Blank UId="545" />
+  <Access Scope="LocalVariable" UId="546">
+    <Symbol UId="547">
+      <Component Name="i" UId="548" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="549" />
+  <NewLine UId="550" />
+  <Blank Num="16" UId="551" />
+  <Token Text="EXIT" UId="552" />
+  <Token Text=";" UId="553" />
+  <NewLine UId="554" />
+  <Blank Num="12" UId="555" />
+  <Token Text="END_IF" UId="556" />
+  <Token Text=";" UId="557" />
+  <NewLine UId="558" />
+  <Blank Num="8" UId="559" />
+  <Token Text="END_FOR" UId="560" />
+  <Token Text=";" UId="561" />
+  <NewLine UId="562" />
+  <Blank Num="8" UId="563" />
+  <NewLine UId="564" />
+  <Blank Num="8" UId="565" />
+  <Token Text="IF" UId="566" />
+  <Blank UId="567" />
+  <Access Scope="LocalVariable" UId="568">
+    <Symbol UId="569">
+      <Component Name="FoundIndex" UId="570" />
+    </Symbol>
+  </Access>
+  <Blank UId="571" />
+  <Token Text="&lt;&gt;" UId="572" />
+  <Blank UId="573" />
+  <Access Scope="LiteralConstant" UId="574">
+    <Constant UId="575">
+      <ConstantValue UId="577">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="578" />
+  <Token Text="THEN" UId="579" />
+  <NewLine UId="580" />
+  <Blank Num="12" UId="581" />
+  <Access Scope="GlobalVariable" UId="582">
+    <Symbol UId="583">
+      <Component Name="Pallets_Stations" UId="584">
+        <BooleanAttribute Name="HasQuotes" UId="585">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="586" />
+      <Component Name="Pallets" UId="587">
+        <Token Text="[" UId="588" />
+        <Access Scope="LocalVariable" UId="589">
+          <Symbol UId="590">
+            <Component Name="FoundIndex" UId="591" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="592" />
+      </Component>
+      <Token Text="." UId="593" />
+      <Component Name="Station_Current_Position" UId="594">
+        <Token Text="[" UId="595" />
+        <Access Scope="LiteralConstant" UId="596">
+          <Constant UId="597">
+            <ConstantValue UId="599">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="600" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="601" />
+  <Token Text=":=" UId="602" />
+  <Blank UId="603" />
+  <Access Scope="LocalVariable" UId="604">
+    <Symbol UId="605">
+      <Component Name="Row_Destination" UId="606" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="607" />
+  <NewLine UId="608" />
+  <Blank Num="12" UId="609" />
+  <Access Scope="GlobalVariable" UId="610">
+    <Symbol UId="611">
+      <Component Name="Pallets_Stations" UId="612">
+        <BooleanAttribute Name="HasQuotes" UId="613">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="614" />
+      <Component Name="Pallets" UId="615">
+        <Token Text="[" UId="616" />
+        <Access Scope="LocalVariable" UId="617">
+          <Symbol UId="618">
+            <Component Name="FoundIndex" UId="619" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="620" />
+      </Component>
+      <Token Text="." UId="621" />
+      <Component Name="Station_Current_Position" UId="622">
+        <Token Text="[" UId="623" />
+        <Access Scope="LiteralConstant" UId="624">
+          <Constant UId="625">
+            <ConstantValue UId="627">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="628" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="629" />
+  <Token Text=":=" UId="630" />
+  <Blank UId="631" />
+  <Access Scope="LocalVariable" UId="632">
+    <Symbol UId="633">
+      <Component Name="Column_Destination" UId="634" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="635" />
+  <NewLine UId="636" />
+  <Blank Num="8" UId="637" />
+  <Token Text="END_IF" UId="638" />
+  <Token Text=";" UId="639" />
+  <NewLine UId="640" />
+  <Blank Num="8" UId="641" />
+  <Access Scope="LocalVariable" UId="642">
+    <Symbol UId="643">
+      <Component Name="Step_Move_Pallets" UId="644" />
+    </Symbol>
+  </Access>
+  <Blank UId="645" />
+  <Token Text=":=" UId="646" />
+  <Blank UId="647" />
+  <Access Scope="LiteralConstant" UId="648">
+    <Constant UId="649">
+      <ConstantValue UId="651">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="652" />
+  <NewLine UId="653" />
+  <Blank Num="8" UId="654" />
+  <NewLine UId="655" />
+  <Blank Num="4" UId="656" />
+  <Token Text="END_IF" UId="657" />
+  <Token Text=";" UId="658" />
+  <NewLine UId="659" />
+  <Token Text="END_IF" UId="660" />
+  <Token Text=";" UId="661" />
+  <NewLine UId="662" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="31" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="32" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="33" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="34" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>SS1 - Move Pallet</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="35" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <Token Text="IF" UId="21" />
+  <Blank UId="22" />
+  <Access Scope="LocalVariable" UId="23">
+    <Symbol UId="24">
+      <Component Name="HWIdentSL" UId="25" />
+    </Symbol>
+  </Access>
+  <Blank UId="26" />
+  <Token Text="=" UId="27" />
+  <Blank UId="28" />
+  <Access Scope="GlobalConstant" UId="29">
+    <Constant Name="S2R2M~Module_I_O_(05_words)_1" UId="30" />
+  </Access>
+  <Blank UId="33" />
+  <Token Text="THEN" UId="34" />
+  <NewLine UId="35" />
+  <Blank Num="4" UId="36" />
+  <Access Scope="LocalVariable" UId="37">
+    <Symbol UId="38">
+      <Component Name="Column_Start" UId="39" />
+    </Symbol>
+  </Access>
+  <Blank UId="40" />
+  <Token Text=":=" UId="41" />
+  <Blank UId="42" />
+  <Access Scope="LiteralConstant" UId="43">
+    <Constant UId="44">
+      <ConstantValue UId="46">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="47" />
+  <NewLine UId="48" />
+  <Blank Num="4" UId="49" />
+  <Token Text="IF" UId="50" />
+  <Blank UId="51" />
+  <Token Text="(" UId="52" />
+  <Access Scope="LocalVariable" UId="53">
+    <Symbol UId="54">
+      <Component Name="Hydraulic_SL" UId="55" />
+      <Token Text="." UId="56" />
+      <Component Name="Actuator_Up" UId="57" />
+    </Symbol>
+  </Access>
+  <Blank UId="58" />
+  <Token Text="OR" UId="59" />
+  <Blank UId="60" />
+  <Access Scope="LocalVariable" UId="61">
+    <Symbol UId="62">
+      <Component Name="Hydraulic_SR" UId="63" />
+      <Token Text="." UId="64" />
+      <Component Name="Actuator_Up" UId="65" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="66" />
+  <Blank UId="67" />
+  <Token Text="AND" UId="68" />
+  <Blank UId="69" />
+  <Access Scope="LocalVariable" UId="70">
+    <Symbol UId="71">
+      <Component Name="Status_Sen_Up" UId="72" />
+    </Symbol>
+  </Access>
+  <Blank UId="73" />
+  <Token Text="AND" UId="74" />
+  <Blank UId="75" />
+  <Access Scope="LocalVariable" UId="76">
+    <Symbol UId="77">
+      <Component Name="Step_Move_Pallets" UId="78" />
+    </Symbol>
+  </Access>
+  <Blank UId="79" />
+  <Token Text="=" UId="80" />
+  <Blank UId="81" />
+  <Access Scope="LiteralConstant" UId="82">
+    <Constant UId="83">
+      <ConstantValue UId="85">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="86" />
+  <Token Text="THEN" UId="87" />
+  <NewLine UId="88" />
+  <Blank Num="8" UId="89" />
+  <Access Scope="LocalVariable" UId="90">
+    <Symbol UId="91">
+      <Component Name="Step_Move_Pallets" UId="92" />
+    </Symbol>
+  </Access>
+  <Blank UId="93" />
+  <Token Text=":=" UId="94" />
+  <Blank UId="95" />
+  <Access Scope="LiteralConstant" UId="96">
+    <Constant UId="97">
+      <ConstantValue UId="99">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="100" />
+  <NewLine UId="101" />
+  <Blank Num="8" UId="102" />
+  <Token Text="IF" UId="103" />
+  <Blank UId="104" />
+  <Access Scope="LocalVariable" UId="105">
+    <Symbol UId="106">
+      <Component Name="oST1_1_Move_Flag" UId="107" />
+    </Symbol>
+  </Access>
+  <Blank UId="108" />
+  <Token Text="THEN" UId="109" />
+  <NewLine UId="110" />
+  <Blank Num="12" UId="111" />
+  <Access Scope="LocalVariable" UId="112">
+    <Symbol UId="113">
+      <Component Name="Row_Start" UId="114" />
+    </Symbol>
+  </Access>
+  <Blank UId="115" />
+  <Token Text=":=" UId="116" />
+  <Blank UId="117" />
+  <Access Scope="LiteralConstant" UId="118">
+    <Constant UId="119">
+      <ConstantValue UId="121">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="122" />
+  <NewLine UId="123" />
+  <Blank Num="8" UId="124" />
+  <Token Text="ELSIF" UId="125" />
+  <Blank UId="126" />
+  <Access Scope="LocalVariable" UId="127">
+    <Symbol UId="128">
+      <Component Name="oST2_1_Move_Flag" UId="129" />
+    </Symbol>
+  </Access>
+  <Blank UId="130" />
+  <Token Text="THEN" UId="131" />
+  <NewLine UId="132" />
+  <Blank Num="12" UId="133" />
+  <Access Scope="LocalVariable" UId="134">
+    <Symbol UId="135">
+      <Component Name="Row_Start" UId="136" />
+    </Symbol>
+  </Access>
+  <Blank UId="137" />
+  <Token Text=":=" UId="138" />
+  <Blank UId="139" />
+  <Access Scope="LiteralConstant" UId="140">
+    <Constant UId="141">
+      <ConstantValue UId="143">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="144" />
+  <NewLine UId="145" />
+  <Blank Num="8" UId="146" />
+  <Token Text="ELSIF" UId="147" />
+  <Blank UId="148" />
+  <Access Scope="LocalVariable" UId="149">
+    <Symbol UId="150">
+      <Component Name="oST3_1_Move_flag" UId="151" />
+    </Symbol>
+  </Access>
+  <Blank UId="152" />
+  <Token Text="THEN" UId="153" />
+  <NewLine UId="154" />
+  <Blank Num="12" UId="155" />
+  <Access Scope="LocalVariable" UId="156">
+    <Symbol UId="157">
+      <Component Name="Row_Start" UId="158" />
+    </Symbol>
+  </Access>
+  <Blank UId="159" />
+  <Token Text=":=" UId="160" />
+  <Blank UId="161" />
+  <Access Scope="LiteralConstant" UId="162">
+    <Constant UId="163">
+      <ConstantValue UId="165">3</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="166" />
+  <NewLine UId="167" />
+  <Blank Num="8" UId="168" />
+  <Token Text="ELSIF" UId="169" />
+  <Blank UId="170" />
+  <Access Scope="LocalVariable" UId="171">
+    <Symbol UId="172">
+      <Component Name="oST4_1_Move_Flag" UId="173" />
+    </Symbol>
+  </Access>
+  <Blank UId="174" />
+  <Token Text="THEN" UId="175" />
+  <NewLine UId="176" />
+  <Blank Num="12" UId="177" />
+  <Access Scope="LocalVariable" UId="178">
+    <Symbol UId="179">
+      <Component Name="Row_Start" UId="180" />
+    </Symbol>
+  </Access>
+  <Blank UId="181" />
+  <Token Text=":=" UId="182" />
+  <Blank UId="183" />
+  <Access Scope="LiteralConstant" UId="184">
+    <Constant UId="185">
+      <ConstantValue UId="187">4</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="188" />
+  <NewLine UId="189" />
+  <Blank Num="8" UId="190" />
+  <Token Text="END_IF" UId="191" />
+  <Token Text=";" UId="192" />
+  <NewLine UId="193" />
+  <Blank Num="8" UId="194" />
+  <NewLine UId="195" />
+  <Blank Num="4" UId="196" />
+  <Token Text="ELSIF" UId="197" />
+  <Blank UId="198" />
+  <Token Text="(" UId="199" />
+  <Access Scope="LocalVariable" UId="200">
+    <Symbol UId="201">
+      <Component Name="Hydraulic_SL" UId="202" />
+      <Token Text="." UId="203" />
+      <Component Name="Actuator_Down" UId="204" />
+    </Symbol>
+  </Access>
+  <Blank UId="205" />
+  <Token Text="OR" UId="206" />
+  <Blank UId="207" />
+  <Access Scope="LocalVariable" UId="208">
+    <Symbol UId="209">
+      <Component Name="Hydraulic_SR" UId="210" />
+      <Token Text="." UId="211" />
+      <Component Name="Actuator_Down" UId="212" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="213" />
+  <Blank UId="214" />
+  <Token Text="AND" UId="215" />
+  <Blank UId="216" />
+  <Access Scope="LocalVariable" UId="217">
+    <Symbol UId="218">
+      <Component Name="Status_Sen_Up" UId="219" />
+    </Symbol>
+  </Access>
+  <Blank UId="220" />
+  <Token Text="AND" UId="221" />
+  <Blank UId="222" />
+  <Access Scope="LocalVariable" UId="223">
+    <Symbol UId="224">
+      <Component Name="Step_Move_Pallets" UId="225" />
+    </Symbol>
+  </Access>
+  <Blank UId="226" />
+  <Token Text="=" UId="227" />
+  <Blank UId="228" />
+  <Access Scope="LiteralConstant" UId="229">
+    <Constant UId="230">
+      <ConstantValue UId="232">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="233" />
+  <Token Text="THEN" UId="234" />
+  <NewLine UId="235" />
+  <Blank Num="8" UId="236" />
+  <Access Scope="LocalVariable" UId="237">
+    <Symbol UId="238">
+      <Component Name="Step_Move_Pallets" UId="239" />
+    </Symbol>
+  </Access>
+  <Blank UId="240" />
+  <Token Text=":=" UId="241" />
+  <Blank UId="242" />
+  <Access Scope="LiteralConstant" UId="243">
+    <Constant UId="244">
+      <ConstantValue UId="246">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="247" />
+  <NewLine UId="248" />
+  <Blank Num="8" UId="249" />
+  <Token Text="IF" UId="250" />
+  <Blank UId="251" />
+  <Access Scope="LocalVariable" UId="252">
+    <Symbol UId="253">
+      <Component Name="oST1_1_Move_Flag" UId="254" />
+    </Symbol>
+  </Access>
+  <Blank UId="255" />
+  <Token Text="THEN" UId="256" />
+  <NewLine UId="257" />
+  <Blank Num="12" UId="258" />
+  <Access Scope="LocalVariable" UId="259">
+    <Symbol UId="260">
+      <Component Name="Row_Destination" UId="261" />
+    </Symbol>
+  </Access>
+  <Blank UId="262" />
+  <Token Text=":=" UId="263" />
+  <Blank UId="264" />
+  <Access Scope="LiteralConstant" UId="265">
+    <Constant UId="266">
+      <ConstantValue UId="268">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="269" />
+  <NewLine UId="270" />
+  <Blank Num="8" UId="271" />
+  <Token Text="ELSIF" UId="272" />
+  <Blank UId="273" />
+  <Access Scope="LocalVariable" UId="274">
+    <Symbol UId="275">
+      <Component Name="oST2_1_Move_Flag" UId="276" />
+    </Symbol>
+  </Access>
+  <Blank UId="277" />
+  <Token Text="THEN" UId="278" />
+  <NewLine UId="279" />
+  <Blank Num="12" UId="280" />
+  <Access Scope="LocalVariable" UId="281">
+    <Symbol UId="282">
+      <Component Name="Row_Destination" UId="283" />
+    </Symbol>
+  </Access>
+  <Blank UId="284" />
+  <Token Text=":=" UId="285" />
+  <Blank UId="286" />
+  <Access Scope="LiteralConstant" UId="287">
+    <Constant UId="288">
+      <ConstantValue UId="290">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="291" />
+  <NewLine UId="292" />
+  <Blank Num="8" UId="293" />
+  <Token Text="ELSIF" UId="294" />
+  <Blank UId="295" />
+  <Access Scope="LocalVariable" UId="296">
+    <Symbol UId="297">
+      <Component Name="oST3_1_Move_flag" UId="298" />
+    </Symbol>
+  </Access>
+  <Blank UId="299" />
+  <Token Text="THEN" UId="300" />
+  <NewLine UId="301" />
+  <Blank Num="12" UId="302" />
+  <Access Scope="LocalVariable" UId="303">
+    <Symbol UId="304">
+      <Component Name="Row_Destination" UId="305" />
+    </Symbol>
+  </Access>
+  <Blank UId="306" />
+  <Token Text=":=" UId="307" />
+  <Blank UId="308" />
+  <Access Scope="LiteralConstant" UId="309">
+    <Constant UId="310">
+      <ConstantValue UId="312">3</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="313" />
+  <NewLine UId="314" />
+  <Blank Num="8" UId="315" />
+  <Token Text="ELSIF" UId="316" />
+  <Blank UId="317" />
+  <Access Scope="LocalVariable" UId="318">
+    <Symbol UId="319">
+      <Component Name="oST4_1_Move_Flag" UId="320" />
+    </Symbol>
+  </Access>
+  <Blank UId="321" />
+  <Token Text="THEN" UId="322" />
+  <NewLine UId="323" />
+  <Blank Num="12" UId="324" />
+  <Access Scope="LocalVariable" UId="325">
+    <Symbol UId="326">
+      <Component Name="Row_Destination" UId="327" />
+    </Symbol>
+  </Access>
+  <Blank UId="328" />
+  <Token Text=":=" UId="329" />
+  <Blank UId="330" />
+  <Access Scope="LiteralConstant" UId="331">
+    <Constant UId="332">
+      <ConstantValue UId="334">4</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="335" />
+  <NewLine UId="336" />
+  <Blank Num="8" UId="337" />
+  <Token Text="END_IF" UId="338" />
+  <Token Text=";" UId="339" />
+  <NewLine UId="340" />
+  <Blank Num="8" UId="341" />
+  <NewLine UId="342" />
+  <Blank Num="4" UId="343" />
+  <Token Text="ELSIF" UId="344" />
+  <Blank UId="345" />
+  <Access Scope="LocalVariable" UId="346">
+    <Symbol UId="347">
+      <Component Name="Step_Move_Pallets" UId="348" />
+    </Symbol>
+  </Access>
+  <Blank UId="349" />
+  <Token Text="=" UId="350" />
+  <Blank UId="351" />
+  <Access Scope="LiteralConstant" UId="352">
+    <Constant UId="353">
+      <ConstantValue UId="355">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="356" />
+  <Token Text="THEN" UId="357" />
+  <NewLine UId="358" />
+  <Blank Num="8" UId="359" />
+  <Token Text="FOR" UId="360" />
+  <Blank UId="361" />
+  <Access Scope="LocalVariable" UId="362">
+    <Symbol UId="363">
+      <Component Name="i" UId="364" />
+    </Symbol>
+  </Access>
+  <Blank UId="365" />
+  <Token Text=":=" UId="366" />
+  <Blank UId="367" />
+  <Access Scope="LiteralConstant" UId="368">
+    <Constant UId="369">
+      <ConstantValue UId="371">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="372" />
+  <Token Text="TO" UId="373" />
+  <Blank UId="374" />
+  <Access Scope="LiteralConstant" UId="375">
+    <Constant UId="376">
+      <ConstantValue UId="378">24</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="379" />
+  <Token Text="DO" UId="380" />
+  <NewLine UId="381" />
+  <Blank Num="12" UId="382" />
+  <Token Text="IF" UId="383" />
+  <Blank UId="384" />
+  <Token Text="(" UId="385" />
+  <Access Scope="GlobalVariable" UId="386">
+    <Symbol UId="387">
+      <Component Name="Pallets_Stations" UId="388">
+        <BooleanAttribute Name="HasQuotes" UId="389">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="390" />
+      <Component Name="Pallets" UId="391">
+        <Token Text="[" UId="392" />
+        <Access Scope="LocalVariable" UId="393">
+          <Symbol UId="394">
+            <Component Name="i" UId="395" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="396" />
+      </Component>
+      <Token Text="." UId="397" />
+      <Component Name="Station_Current_Position" UId="398">
+        <Token Text="[" UId="399" />
+        <Access Scope="LiteralConstant" UId="400">
+          <Constant UId="401">
+            <ConstantValue UId="403">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="404" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="405" />
+  <Token Text="=" UId="406" />
+  <Blank UId="407" />
+  <Access Scope="LocalVariable" UId="408">
+    <Symbol UId="409">
+      <Component Name="Row_Start" UId="410" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="411" />
+  <Blank UId="412" />
+  <Token Text="AND" UId="413" />
+  <NewLine UId="414" />
+  <Blank Num="16" UId="415" />
+  <Token Text="(" UId="416" />
+  <Access Scope="GlobalVariable" UId="417">
+    <Symbol UId="418">
+      <Component Name="Pallets_Stations" UId="419">
+        <BooleanAttribute Name="HasQuotes" UId="420">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="421" />
+      <Component Name="Pallets" UId="422">
+        <Token Text="[" UId="423" />
+        <Access Scope="LocalVariable" UId="424">
+          <Symbol UId="425">
+            <Component Name="i" UId="426" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="427" />
+      </Component>
+      <Token Text="." UId="428" />
+      <Component Name="Station_Current_Position" UId="429">
+        <Token Text="[" UId="430" />
+        <Access Scope="LiteralConstant" UId="431">
+          <Constant UId="432">
+            <ConstantValue UId="434">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="435" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="436" />
+  <Token Text="=" UId="437" />
+  <Blank UId="438" />
+  <Access Scope="LocalVariable" UId="439">
+    <Symbol UId="440">
+      <Component Name="Column_Start" UId="441" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="442" />
+  <Blank UId="443" />
+  <Token Text="THEN" UId="444" />
+  <NewLine UId="445" />
+  <Blank Num="16" UId="446" />
+  <Access Scope="LocalVariable" UId="447">
+    <Symbol UId="448">
+      <Component Name="FoundIndex" UId="449" />
+    </Symbol>
+  </Access>
+  <Blank UId="450" />
+  <Token Text=":=" UId="451" />
+  <Blank UId="452" />
+  <Access Scope="LocalVariable" UId="453">
+    <Symbol UId="454">
+      <Component Name="i" UId="455" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="456" />
+  <NewLine UId="457" />
+  <Blank Num="16" UId="458" />
+  <Token Text="EXIT" UId="459" />
+  <Token Text=";" UId="460" />
+  <NewLine UId="461" />
+  <Blank Num="12" UId="462" />
+  <Token Text="END_IF" UId="463" />
+  <Token Text=";" UId="464" />
+  <NewLine UId="465" />
+  <Blank Num="8" UId="466" />
+  <Token Text="END_FOR" UId="467" />
+  <Token Text=";" UId="468" />
+  <NewLine UId="469" />
+  <Blank Num="8" UId="470" />
+  <NewLine UId="471" />
+  <Blank Num="8" UId="472" />
+  <Token Text="IF" UId="473" />
+  <Blank UId="474" />
+  <Access Scope="LocalVariable" UId="475">
+    <Symbol UId="476">
+      <Component Name="FoundIndex" UId="477" />
+    </Symbol>
+  </Access>
+  <Blank UId="478" />
+  <Token Text="&lt;&gt;" UId="479" />
+  <Blank UId="480" />
+  <Access Scope="LiteralConstant" UId="481">
+    <Constant UId="482">
+      <ConstantValue UId="484">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="485" />
+  <Token Text="THEN" UId="486" />
+  <NewLine UId="487" />
+  <Blank Num="12" UId="488" />
+  <Access Scope="GlobalVariable" UId="489">
+    <Symbol UId="490">
+      <Component Name="Pallets_Stations" UId="491">
+        <BooleanAttribute Name="HasQuotes" UId="492">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="493" />
+      <Component Name="Pallets" UId="494">
+        <Token Text="[" UId="495" />
+        <Access Scope="LocalVariable" UId="496">
+          <Symbol UId="497">
+            <Component Name="FoundIndex" UId="498" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="499" />
+      </Component>
+      <Token Text="." UId="500" />
+      <Component Name="Station_Current_Position" UId="501">
+        <Token Text="[" UId="502" />
+        <Access Scope="LiteralConstant" UId="503">
+          <Constant UId="504">
+            <ConstantValue UId="506">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="507" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="508" />
+  <Token Text=":=" UId="509" />
+  <Blank UId="510" />
+  <Access Scope="LocalVariable" UId="511">
+    <Symbol UId="512">
+      <Component Name="Row_Destination" UId="513" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="514" />
+  <NewLine UId="515" />
+  <Blank Num="12" UId="516" />
+  <Access Scope="GlobalVariable" UId="517">
+    <Symbol UId="518">
+      <Component Name="Pallets_Stations" UId="519">
+        <BooleanAttribute Name="HasQuotes" UId="520">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="521" />
+      <Component Name="Pallets" UId="522">
+        <Token Text="[" UId="523" />
+        <Access Scope="LocalVariable" UId="524">
+          <Symbol UId="525">
+            <Component Name="FoundIndex" UId="526" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="527" />
+      </Component>
+      <Token Text="." UId="528" />
+      <Component Name="Station_Current_Position" UId="529">
+        <Token Text="[" UId="530" />
+        <Access Scope="LiteralConstant" UId="531">
+          <Constant UId="532">
+            <ConstantValue UId="534">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="535" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="536" />
+  <Token Text=":=" UId="537" />
+  <Blank UId="538" />
+  <Access Scope="LocalVariable" UId="539">
+    <Symbol UId="540">
+      <Component Name="Column_Destination" UId="541" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="542" />
+  <NewLine UId="543" />
+  <Blank Num="8" UId="544" />
+  <Token Text="END_IF" UId="545" />
+  <Token Text=";" UId="546" />
+  <NewLine UId="547" />
+  <Blank Num="8" UId="548" />
+  <Access Scope="LocalVariable" UId="549">
+    <Symbol UId="550">
+      <Component Name="Step_Move_Pallets" UId="551" />
+    </Symbol>
+  </Access>
+  <Blank UId="552" />
+  <Token Text=":=" UId="553" />
+  <Blank UId="554" />
+  <Access Scope="LiteralConstant" UId="555">
+    <Constant UId="556">
+      <ConstantValue UId="558">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="559" />
+  <NewLine UId="560" />
+  <Blank Num="8" UId="561" />
+  <NewLine UId="562" />
+  <Blank Num="4" UId="563" />
+  <Token Text="END_IF" UId="564" />
+  <Token Text=";" UId="565" />
+  <NewLine UId="566" />
+  <Token Text="END_IF" UId="567" />
+  <Token Text=";" UId="568" />
+  <NewLine UId="569" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="36" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="37" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="38" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="39" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>SS2 - Move Pallet</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="3A" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="3B" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FB>
+</Document>
