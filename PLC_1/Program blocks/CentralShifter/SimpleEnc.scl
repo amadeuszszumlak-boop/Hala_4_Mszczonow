@@ -1,0 +1,77 @@
+﻿FUNCTION_BLOCK "SimpleEnc"
+{ S7_Optimized_Access := 'FALSE' }
+VERSION : 0.1
+   VAR_INPUT 
+      position : DInt;
+      init : Bool;
+   END_VAR
+
+   VAR_IN_OUT 
+      tel81 {InstructionName := 'PD_TEL81'; LibVersion := '7.0'} : PD_TEL81;
+   END_VAR
+
+   VAR 
+      statError : Bool;
+      statOldPos : DInt;
+   END_VAR
+
+   VAR_TEMP 
+      tempReqCmd : Bool;
+      tempDPos : DInt;
+   END_VAR
+
+
+BEGIN
+	//=============================================================================
+	// SIEMENS AG - zmodyfikowane dla pozycji w mm
+	//-----------------------------------------------------------------------------
+	// Functionality: make the encoder telegram 81 with position in mm
+	//-----------------------------------------------------------------------------
+	
+	// Inicjalizacja
+	IF #init THEN
+	    #statOldPos := #position;                 // zapamiętaj startową pozycję w mm
+	    #tel81.Input.G1_XIST1 := 0;               // wyzeruj inkrementalną
+	    #tel81.Input.G1_XIST2 := DINT_TO_DWORD(#position);  // ustaw absolutną
+	    #tel81.Input.G1_ZSW.SensorError := FALSE;
+	    #statError := FALSE;
+	END_IF;
+	
+	// Oblicz przyrost względem poprzedniej pozycji
+	#tempDPos := #position - #statOldPos;
+	
+	// Zapisz przyrost (inkrementalna pozycja)
+	#tel81.Input.G1_XIST1 := #tel81.Input.G1_XIST1 + DINT_TO_DWORD(#tempDPos);
+	
+	// Aktualizacja poprzedniej pozycji
+	#statOldPos := #position;
+	
+	// Zapisz absolutną pozycję w mm
+	#tel81.Input.G1_XIST2 := DINT_TO_DWORD(#position);
+	#tel81.Input.G1_ZSW.AbsoluteValueCyclicallyExecuted := TRUE;
+	
+	// Obsługa błędu – uproszczona
+	IF #statError THEN
+	    IF #tel81.Output.G1_STW.AcknowledgeError THEN
+	        #statError := FALSE;
+	        #tel81.Input.G1_XIST1 := 0;
+	        #tel81.Input.G1_XIST2 := DINT_TO_DWORD(#position);
+	        #tel81.Input.G1_ZSW.SensorError := FALSE;
+	    END_IF;
+	END_IF;
+	
+	// Interpretuje żądania sterownika (STW)
+	#tempReqCmd := #tel81.Output.G1_STW.Command0Request
+	OR #tel81.Output.G1_STW.Command1Request
+	OR #tel81.Output.G1_STW.Command2Request
+	OR #tel81.Output.G1_STW.RequestParkingEncoder;
+	
+	// jeśli encoder jest tylko „mm” (brak obsługi innych trybów), traktujemy to jako błąd
+	IF #tempReqCmd THEN
+	    #tel81.Input.G1_ZSW.SensorError := TRUE;
+	    #tel81.Input.G1_XIST2 := 16#0F01;
+	    #statError := TRUE;
+	END_IF;
+	
+END_FUNCTION_BLOCK
+

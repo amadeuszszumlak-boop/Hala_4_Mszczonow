@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.InstanceDB ID="0">
+    <AttributeList>
+      <InstanceOfName>CentralShifter</InstanceOfName>
+      <InstanceOfType>FB</InstanceOfType>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input">
+    <Member Name="QR_Reader" Datatype="DInt" />
+  </Section>
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="MC_POWER_CS_PP" Datatype="MC_POWER" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_POWER_CS_PL" Datatype="MC_POWER" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_POWER_CS_TP" Datatype="MC_POWER" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_POWER_CS_TL" Datatype="MC_POWER" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_POWER_CS_Virtual" Datatype="MC_POWER" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_RESET_CS_PP" Datatype="MC_RESET" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_RESET_CS_PL" Datatype="MC_RESET" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_RESET_CS_TP" Datatype="MC_RESET" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_RESET_CS_TL" Datatype="MC_RESET" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_GEARIN_CS_PP" Datatype="MC_GEARIN" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_GEARIN_CS_PL" Datatype="MC_GEARIN" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_GEARIN_CS_TP" Datatype="MC_GEARIN" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_GEARIN_CS_TL" Datatype="MC_GEARIN" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_HOME_CS_PP" Datatype="MC_HOME" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_HOME_CS_PL" Datatype="MC_HOME" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_HOME_CS_TP" Datatype="MC_HOME" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_HOME_CS_TL" Datatype="MC_HOME" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_RESET_CS_Virtual" Datatype="MC_RESET" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_MOVEJOG_CS_PL" Datatype="MC_MOVEJOG" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_HOME_CS_Virtual" Datatype="MC_HOME" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_MOVEJOG_CS_PP" Datatype="MC_MOVEJOG" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_MOVEJOG_CS_TL" Datatype="MC_MOVEJOG" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_MOVEJOG_CS_TP" Datatype="MC_MOVEJOG" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_MOVEJOG_CS_Virtual" Datatype="MC_MOVEJOG" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_MOVERELATIVE_CS_Virtual" Datatype="MC_MOVERELATIVE" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_MOVEABSOLUTE_CS_Virtual" Datatype="MC_MOVEABSOLUTE" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Homeing_Status" Datatype="Int">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Jog_Backward_Home" Datatype="Bool" />
+    <Member Name="Jog_Forward_Home" Datatype="Bool" />
+    <Member Name="Jog_Velocity" Datatype="Int" />
+    <Member Name="CentralShifter_Auto_Instance" Datatype="&quot;CentralShifter_AutoDrive&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Jog_Speed" Datatype="Real">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Auto_Forward" Datatype="Bool" />
+    <Member Name="Auto_Backward" Datatype="Bool" />
+    <Member Name="Auto_Turn_OFF" Datatype="TON_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="CentralShifter_SideShifters_Instance" Datatype="&quot;CentralShifter_SideShifters&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="Input" />
+        <Section Name="Output" />
+        <Section Name="InOut" />
+        <Section Name="Static">
+          <Member Name="Stations" Datatype="Array[7..13] of &quot;CS_Sides_Stations&quot;">
+            <Sections>
+              <Section Name="None">
+                <Member Name="RL_H3_Pos" Datatype="DInt">
+                  <Subelement Path="12">
+                    <StartValue>13515</StartValue>
+                  </Subelement>
+                  <Subelement Path="13">
+                    <StartValue>13500</StartValue>
+                  </Subelement>
+                </Member>
+                <Member Name="RR_H3_Pos" Datatype="DInt">
+                  <Subelement Path="12">
+                    <StartValue>13525</StartValue>
+                  </Subelement>
+                  <Subelement Path="13">
+                    <StartValue>13525</StartValue>
+                  </Subelement>
+                </Member>
+                <Member Name="RL_Mid_Pos" Datatype="DInt">
+                  <Subelement Path="12">
+                    <StartValue>7932</StartValue>
+                  </Subelement>
+                  <Subelement Path="13">
+                    <StartValue>7916</StartValue>
+                  </Subelement>
+                </Member>
+                <Member Name="RR_Mid_Pos" Datatype="DInt">
+                  <Subelement Path="12">
+                    <StartValue>7932</StartValue>
+                  </Subelement>
+                  <Subelement Path="13">
+                    <StartValue>7939</StartValue>
+                  </Subelement>
+                </Member>
+                <Member Name="RL_H5_Pos" Datatype="DInt">
+                  <Subelement Path="12">
+                    <StartValue>1924</StartValue>
+                  </Subelement>
+                  <Subelement Path="13">
+                    <StartValue>1918</StartValue>
+                  </Subelement>
+                </Member>
+                <Member Name="RR_H5_Pos" Datatype="DInt">
+                  <Subelement Path="12">
+                    <StartValue>1934</StartValue>
+                  </Subelement>
+                  <Subelement Path="13">
+                    <StartValue>1915</StartValue>
+                  </Subelement>
+                </Member>
+                <Member Name="Correction" Datatype="Int">
+                  <Subelement Path="12">
+                    <StartValue>10</StartValue>
+                  </Subelement>
+                  <Subelement Path="13">
+                    <StartValue>15</StartValue>
+                  </Subelement>
+                </Member>
+              </Section>
+            </Sections>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="Position_To_Side_Drive" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Deceleration" Datatype="Real" />
+    <Member Name="Arrived_Pos" Datatype="Int" />
+    <Member Name="CS_Velocity" Datatype="MC_MOVEVELOCITY" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="CentralShifter_Move_Pallets_Instance" Datatype="&quot;CentralShifter_Move_Pallets&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="prevBusy_Jog" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_SETSENSOR_Instance" Datatype="MC_SETSENSOR" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="prevPower" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Status_Power_Synch" Datatype="Bool" />
+    <Member Name="Positions_Central" Datatype="Array[7..13] of DInt" />
+    <Member Name="Central_Auto_Control_Instance" Datatype="&quot;Central_Auto_Control&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="tPowerCheck" Datatype="TON_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="SinaParaS_CS_M_PL" Datatype="SinaParaS" Version="1.1">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="SinaParaS_CS_M_PP" Datatype="SinaParaS" Version="1.1">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="SinaParaS_CS_M_TL" Datatype="SinaParaS" Version="1.1">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="SinaParaS_CS_M_TP" Datatype="SinaParaS" Version="1.1">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Active_Alarm" Datatype="Byte">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_GEARINVELOCITY_pp" Datatype="MC_GEARINVELOCITY" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_GEARINVELOCITY_tl" Datatype="MC_GEARINVELOCITY" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_GEARINVELOCITY_tp" Datatype="MC_GEARINVELOCITY" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_GEARINVELOCITY_pl" Datatype="MC_GEARINVELOCITY" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="TorqueFB_TEL750_PP" Datatype="&quot;TorqueFB_TEL750&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <Name>CentralShifter_DB</Name>
+      <Namespace />
+      <Number>31</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.InstanceDB>
+</Document>

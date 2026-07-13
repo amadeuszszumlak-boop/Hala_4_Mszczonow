@@ -1,0 +1,15 @@
+﻿FUNCTION_BLOCK "CentralShifter_HMI_Move_Pallet"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR 
+      Column_Start : SInt;
+      Column_Destination : SInt;
+      Row_Start : SInt;
+      Row_Destination : SInt;
+      Step : SInt;
+   END_VAR
+
+
+BEGIN
+END_FUNCTION_BLOCK
+

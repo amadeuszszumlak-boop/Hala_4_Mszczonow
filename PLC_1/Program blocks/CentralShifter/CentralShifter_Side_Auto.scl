@@ -1,0 +1,218 @@
+﻿FUNCTION_BLOCK "CentralShifter_Side_Auto"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      iSR_Distance : Int;
+      iSR_Correction : Int;
+      iSL_Distance : Int;
+      iGoUp : Bool;
+      iGoMid : Bool;
+      iGoDown : Bool;
+      RL_Position_Up : DInt;
+      RL_Position_Mid : DInt;
+      RL_Position_Down : DInt;
+      RR_Position_Up : DInt;
+      RR_Position_Mid : DInt;
+      RR_Position_Down : DInt;
+   END_VAR
+
+   VAR_OUTPUT 
+      qSL_Go_Forward : Bool;
+      qSL_Go_Backward : Bool;
+      qSR_Go_Forward : Bool;
+      qSR_Go_Backward : Bool;
+      qSL_SetSpeed : Int;
+      qSR_SetSpeed : Int;
+      qInPosition : Bool;
+      qInPosH3 : Bool;
+      qInPosCS : Bool;
+      qInPosH5 : Bool;
+      qLight_Up : Bool;
+      qLight_Mid : Bool;
+      qLight_Down : Bool;
+   END_VAR
+
+   VAR 
+      distanceSL_SR : DInt;
+      SR_Correct_Distance : DInt;
+      moveActive : Bool;
+      targetPosRL : DInt;
+      targetPosRR : DInt;
+      distanceToTargetSL : DInt;
+      distanceToTargetSR : DInt;
+      Delta : Real;
+   END_VAR
+
+   VAR CONSTANT 
+      Tolerance : Int := 2;
+      Tolerance_Hydro : Int := 7;
+      Tolerance_Light : Int := 10;
+      DistanceSlowZone : Int := 300;
+      K : Real := 1.5;
+      Tolerance_CS : Int := 25;
+   END_VAR
+
+
+BEGIN
+	// Reset komend ruchu
+	#qSL_Go_Forward := FALSE;
+	#qSL_Go_Backward := FALSE;
+	#qSR_Go_Forward := FALSE;
+	#qSR_Go_Backward := FALSE;
+	
+	#SR_Correct_Distance := #iSR_Correction + #iSR_Distance;
+	#distanceSL_SR := #SR_Correct_Distance - #iSL_Distance;
+	
+	
+	// --- Miganie tylko gdy przycisk TRZYMANY i moveActive ---
+	IF #moveActive AND "Clock_2Hz" THEN
+	    IF #iGoDown THEN
+	        #qLight_Down := 1;
+	    ELSE
+	        #qLight_Down := 0;
+	    END_IF;
+	    IF #iGoMid THEN
+	        #qLight_Mid := 1;
+	    ELSE
+	        #qLight_Mid := 0;
+	    END_IF;
+	    IF #iGoUp THEN
+	        #qLight_Up := 1;
+	    ELSE
+	        #qLight_Up := 0;
+	    END_IF;
+	ELSE
+	    // Gdy nie ma ruchu — zgaś lampki
+	    #qLight_Down:= 0;
+	    #qLight_Mid := 0;
+	    #qLight_Up := 0;
+	END_IF;
+	
+	
+	// --- Obsługa dynamicznego wyboru celu ---
+	IF #iGoUp THEN
+	    #targetPosRL := #RL_Position_Up;
+	    #targetPosRR := #RR_Position_Up;
+	    #moveActive := TRUE;
+	ELSIF #iGoMid THEN
+	    #targetPosRL := #RL_Position_Mid;
+	    #targetPosRR := #RR_Position_Mid;
+	    #moveActive := TRUE;
+	ELSIF #iGoDown THEN
+	    #targetPosRL := #RL_Position_Down;
+	    #targetPosRR := #RR_Position_Down;
+	    #moveActive := TRUE;
+	ELSE
+	    // Żaden przycisk nie trzymany — przerwij ruch
+	    #moveActive := FALSE;
+	END_IF;
+	
+	IF NOT "Data_From_Safety".Safety_Active THEN
+	    #moveActive := 0;
+	    ;
+	END_IF;
+	
+	// --- Jeśli ruch aktywny ---
+	IF #moveActive THEN
+	    // --- SL (główny) ---
+	    #distanceToTargetSL := ABS(#iSL_Distance - #targetPosRL);
+	    #distanceToTargetSR := ABS(#SR_Correct_Distance - #targetPosRR);
+	    
+	    IF #distanceToTargetSL > #Tolerance THEN
+	        IF #iSL_Distance > #targetPosRL THEN
+	            #qSL_Go_Forward := FALSE;
+	            #qSL_Go_Backward := TRUE;
+	        ELSE
+	            #qSL_Go_Forward := TRUE;
+	            #qSL_Go_Backward := FALSE;
+	        END_IF;
+	        
+	        IF #distanceToTargetSL <= #DistanceSlowZone THEN
+	            #qSL_SetSpeed := 300;
+	        ELSE
+	            #qSL_SetSpeed := 1000;
+	        END_IF;
+	        
+	    ELSE
+	        #qSL_Go_Forward := FALSE;
+	        #qSL_Go_Backward := FALSE;
+	        #qSL_SetSpeed := 0;
+	        #moveActive := FALSE;
+	    END_IF;
+	    
+	    // --- SR (podąża) ---
+	    #distanceSL_SR := #SR_Correct_Distance - #iSL_Distance;
+	    //#absDelta := ABS(#distanceSL_SR);
+	    // IF #distanceToTargetSL > #Tolerance THEN
+	    
+	    IF #distanceToTargetSR > #Tolerance THEN
+	        IF #SR_Correct_Distance > #targetPosRR THEN
+	            #qSR_Go_Forward := FALSE;
+	            #qSR_Go_Backward := TRUE;
+	        ELSE
+	            #qSR_Go_Forward := TRUE;
+	            #qSR_Go_Backward := FALSE;
+	        END_IF;
+	    END_IF;
+	    
+	    // Kierunek SR = kierunek SL
+	    // #qSR_Go_Forward := #qSL_Go_Forward;
+	    //#qSR_Go_Backward := #qSL_Go_Backward;
+	    
+	    // Korekcja prędkości
+	    #Delta := #distanceSL_SR * #K;
+	    IF #Delta > 1000 THEN
+	        #Delta := 1000;
+	    ELSIF #Delta < -1000 THEN
+	        #Delta := -1000;
+	    END_IF;
+	    //zamien znaki
+	    IF #qSR_Go_Forward THEN
+	        #qSR_SetSpeed := #qSL_SetSpeed - #Delta;
+	    ELSIF #qSR_Go_Backward THEN
+	        #qSR_SetSpeed := #qSL_SetSpeed + #Delta;
+	    END_IF;
+	    
+	    // Ograniczenia
+	    IF #qSR_SetSpeed > 1500 THEN
+	        #qSR_SetSpeed := 1500;
+	    ELSIF #qSR_SetSpeed < 200 THEN
+	        #qSR_SetSpeed := 200;
+	    END_IF;
+	    
+	    // END_IF;
+	END_IF;
+	
+	#qInPosition := FALSE;
+	#qInPosH3 := FALSE;
+	#qInPosCS := FALSE;
+	#qInPosH5 := FALSE;
+	
+	// dolna
+	IF (ABS(#iSL_Distance - #RL_Position_Down) <= #Tolerance_Hydro AND ABS(#SR_Correct_Distance - #RR_Position_Down) <= #Tolerance_Hydro) THEN
+	    #qInPosition := TRUE;
+	    #qInPosH5 := TRUE;
+	    
+	// cs
+	ELSIF (ABS(#iSL_Distance - #RL_Position_Mid) <= #Tolerance_Hydro AND ABS(#SR_Correct_Distance - #RR_Position_Mid) <= #Tolerance_Hydro) THEN
+	    #qInPosition := TRUE;
+	    #qInPosCS := TRUE;
+	    
+	// górna
+	ELSIF (ABS(#iSL_Distance - #RL_Position_Up) <= #Tolerance_Hydro AND ABS(#SR_Correct_Distance - #RR_Position_Up) <= #Tolerance_Hydro) THEN
+	    #qInPosition := TRUE;
+	    #qInPosH3 := TRUE;
+	END_IF;
+	
+	
+	
+	IF (ABS(#iSL_Distance - #RL_Position_Down) <= #Tolerance_Light AND ABS(#SR_Correct_Distance - #RL_Position_Down) <= #Tolerance_Light) THEN
+	    #qLight_Down := 1;
+	ELSIF (ABS(#iSL_Distance - #RL_Position_Mid) <= #Tolerance_Light AND ABS(#SR_Correct_Distance - #RL_Position_Mid) <= #Tolerance_Light) THEN
+	    #qLight_Mid := 1;
+	ELSIF (ABS(#iSL_Distance - #RL_Position_Up) <= #Tolerance_Light AND ABS(#SR_Correct_Distance - #RL_Position_Up) <= #Tolerance_Light) THEN
+	    #qLight_Up := 1;
+	END_IF;
+	
+END_FUNCTION_BLOCK
+

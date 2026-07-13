@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="CS_PP_Reset" Datatype="Bool" />
+    <Member Name="CS_PL_Reset" Datatype="Bool" />
+    <Member Name="CS_TP_Reset" Datatype="Bool" />
+    <Member Name="CS_TL_Reset" Datatype="Bool" />
+    <Member Name="CS_Virtual_Reset" Datatype="Bool" />
+    <Member Name="CS_Reset" Datatype="Bool" />
+    <Member Name="CS_Homing" Datatype="Bool" />
+    <Member Name="CS_PP_Power" Datatype="Bool" />
+    <Member Name="CS_PL_Power" Datatype="Bool" />
+    <Member Name="CS_TP_Power" Datatype="Bool" />
+    <Member Name="CS_TL_Power" Datatype="Bool" />
+    <Member Name="CS_Virtual_Power" Datatype="Bool" />
+    <Member Name="CS_Power" Datatype="Bool" />
+    <Member Name="CS_Gear_In" Datatype="Bool" />
+    <Member Name="CS_Destination_Pos" Datatype="Int">
+      <StartValue>7</StartValue>
+    </Member>
+    <Member Name="CS_Drive_To_Des" Datatype="Bool" />
+    <Member Name="CS_RL_Hydraulic_Up" Datatype="Bool" />
+    <Member Name="CS_RL_Hydraulic_Down" Datatype="Bool" />
+    <Member Name="CS_RP_Hydraulic_Up" Datatype="Bool" />
+    <Member Name="CS_RP_Hydraulic_Down" Datatype="Bool" />
+    <Member Name="CS_RL_Go_Forward" Datatype="Bool" />
+    <Member Name="CS_RP_Go_Forward" Datatype="Bool" />
+    <Member Name="CS_RP_Go_Backward" Datatype="Bool" />
+    <Member Name="CS_RL_Go_Backward" Datatype="Bool" />
+    <Member Name="CS_RL_RP_Reset" Datatype="Bool" />
+    <Member Name="CS_Sides_Go_Up" Datatype="Bool" />
+    <Member Name="CS_Sides_Go_Down" Datatype="Bool" />
+    <Member Name="CS_Sides_Go_Mid" Datatype="Bool" />
+    <Member Name="CS_Auto" Datatype="Bool" />
+    <Member Name="CS_Side_Pos_Up" Datatype="DInt" />
+    <Member Name="CS_Side_Pos_Mid" Datatype="DInt" />
+    <Member Name="CS_Side_Pos_Down" Datatype="DInt" />
+    <Member Name="CS_Pallet_Left_Move" Datatype="Bool" />
+    <Member Name="CS_Pallet_Right_Move" Datatype="Bool" />
+    <Member Name="CS_Pallet_Centering" Datatype="Bool" />
+    <Member Name="CS_Go_Left" Datatype="Bool" />
+    <Member Name="CS_Go_Right" Datatype="Bool" />
+    <Member Name="CS_Auto_Hyd_Up" Datatype="Bool" />
+    <Member Name="CS_Auto_Hyd_Down" Datatype="Bool" />
+    <Member Name="CS_Reset_Hydro" Datatype="Bool" />
+    <Member Name="CS_Auto_Pos_Start" Datatype="Int" />
+    <Member Name="CS_Auto_Pos_End" Datatype="Int" />
+    <Member Name="CS_Permission_Auto" Datatype="Bool" />
+    <Member Name="CS_Status_Auto_Go_to_Des" Datatype="SInt" />
+    <Member Name="Alarms" Datatype="Word">
+      <Comment>
+        <MultiLanguageText Lang="en-US">PP/PL/TP/TL Power, GearIN, MoveVirtual</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>HMI_Central_Shifter</Name>
+      <Namespace />
+      <Number>32</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

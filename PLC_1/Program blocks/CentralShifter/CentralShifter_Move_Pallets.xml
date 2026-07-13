@@ -1,0 +1,855 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.FB ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input" />
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="Motor_Driver_Instance" Datatype="&quot;Side_Driver&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Speed" Datatype="Int">
+      <StartValue>400</StartValue>
+    </Member>
+    <Member Name="Auto_Go_Left" Datatype="Bool" />
+    <Member Name="Auto_Go_Right" Datatype="Bool" />
+    <Member Name="CSM1_Comm_ok" Datatype="Bool" />
+    <Member Name="CSM2_Comm_ok" Datatype="Bool" />
+    <Member Name="prevCentering" Datatype="Bool" />
+    <Member Name="tCenteringTimer" Datatype="TON_TIME" Version="1.0" />
+  </Section>
+  <Section Name="Temp">
+    <Member Name="czujnik lewy" Datatype="Bool" />
+    <Member Name="czujnik prawy" Datatype="Bool" />
+  </Section>
+  <Section Name="Constant" />
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>CentralShifter_Move_Pallets</Name>
+      <Namespace />
+      <Number>19</Number>
+      <ProgrammingLanguage>LAD</ProgrammingLanguage>
+      <SetENOAutomatically>false</SetENOAutomatically>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="HMI_Central_Shifter" />
+        <Component Name="CS_Pallet_Left_Move" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="Auto_Go_Left" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="HMI_Central_Shifter" />
+        <Component Name="CS_Pallet_Left_Move" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="24">
+      <Symbol>
+        <Component Name="Auto_Go_Left" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="HMI_Central_Shifter" />
+        <Component Name="CS_Pallet_Right_Move" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="26">
+      <Symbol>
+        <Component Name="Auto_Go_Right" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
+      <Symbol>
+        <Component Name="HMI_Central_Shifter" />
+        <Component Name="CS_Pallet_Right_Move" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="28">
+      <Symbol>
+        <Component Name="Auto_Go_Right" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="29">
+      <Symbol>
+        <Component Name="HMI_Pallets" />
+        <Component Name="Reset_Drivers" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="30">
+      <Symbol>
+        <Component Name="Speed" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="31">
+      <Symbol>
+        <Component Name="Speed" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="32">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>300</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="LiteralConstant" UId="33">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>300</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalConstant" UId="34">
+      <Constant Name="CSM1~Module_I_O_(05_words)_1" />
+    </Access>
+    <Access Scope="GlobalConstant" UId="35">
+      <Constant Name="CSM2~Module_I_O_(05_words)_1" />
+    </Access>
+    <Access Scope="GlobalVariable" UId="36">
+      <Symbol>
+        <Component Name="CS_MOVIKIT" />
+        <Component Name="CS_M1_PO" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="37">
+      <Symbol>
+        <Component Name="CS_MOVIKIT" />
+        <Component Name="CS_M2_PO" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="38">
+      <Symbol>
+        <Component Name="CS_MOVIKIT" />
+        <Component Name="CS_M1_PI" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="39">
+      <Symbol>
+        <Component Name="CS_MOVIKIT" />
+        <Component Name="CS_M2_PI" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="40" />
+    <Part Name="Contact" UId="41" />
+    <Part Name="O" UId="42">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="43" />
+    <Part Name="Contact" UId="44" />
+    <Part Name="O" UId="45">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="46" />
+    <Part Name="Contact" UId="47" />
+    <Part Name="O" UId="48">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="49" />
+    <Part Name="Contact" UId="50" />
+    <Part Name="O" UId="51">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Call UId="52">
+      <CallInfo Name="Side_Driver" BlockType="FB">
+        <Instance Scope="LocalVariable" UId="53">
+          <Component Name="Motor_Driver_Instance" />
+        </Instance>
+        <Parameter Name="Reset" Section="Input" Type="Bool" />
+        <Parameter Name="Jog_Forward_SL" Section="Input" Type="Bool" />
+        <Parameter Name="Jog_Forward_SR" Section="Input" Type="Bool" />
+        <Parameter Name="Jog_Backward_SL" Section="Input" Type="Bool" />
+        <Parameter Name="Jog_Backward_SR" Section="Input" Type="Bool" />
+        <Parameter Name="Set_SL_Speed" Section="Input" Type="Int" />
+        <Parameter Name="Set_SR_Speed" Section="Input" Type="Int" />
+        <Parameter Name="Set_Acc" Section="Input" Type="Int" />
+        <Parameter Name="Set_Dcc" Section="Input" Type="Int" />
+        <Parameter Name="HWIdentSL" Section="Input" Type="HW_IO" />
+        <Parameter Name="HWIdentSR" Section="Input" Type="HW_IO" />
+        <Parameter Name="oSL_Communication_OK" Section="Output" Type="Bool" />
+        <Parameter Name="oSR_Communication_OK" Section="Output" Type="Bool" />
+        <Parameter Name="oSL_Forward_Flag" Section="Output" Type="Bool" />
+        <Parameter Name="oSL_Backward_Flag" Section="Output" Type="Bool" />
+        <Parameter Name="oSR_Forward_Flag" Section="Output" Type="Bool" />
+        <Parameter Name="oSR_Backward_Flag" Section="Output" Type="Bool" />
+        <Parameter Name="oError" Section="Output" Type="Bool" />
+        <Parameter Name="iSL_Drive_Param" Section="InOut" Type="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
+        <Parameter Name="iSR_Drive_Param" Section="InOut" Type="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
+        <Parameter Name="oSL_Drive_Param" Section="InOut" Type="&quot;SEW_MOVIKIT_VelocityDrive_STATUS_V2.1&quot;" />
+        <Parameter Name="oSR_Drive_Param" Section="InOut" Type="&quot;SEW_MOVIKIT_VelocityDrive_STATUS_V2.1&quot;" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="61">
+      <Powerrail />
+      <NameCon UId="52" Name="en" />
+      <NameCon UId="40" Name="in" />
+      <NameCon UId="41" Name="in" />
+      <NameCon UId="43" Name="in" />
+      <NameCon UId="44" Name="in" />
+      <NameCon UId="46" Name="in" />
+      <NameCon UId="47" Name="in" />
+      <NameCon UId="49" Name="in" />
+      <NameCon UId="50" Name="in" />
+    </Wire>
+    <Wire UId="62">
+      <IdentCon UId="21" />
+      <NameCon UId="40" Name="operand" />
+    </Wire>
+    <Wire UId="63">
+      <NameCon UId="40" Name="out" />
+      <NameCon UId="42" Name="in1" />
+    </Wire>
+    <Wire UId="64">
+      <IdentCon UId="22" />
+      <NameCon UId="41" Name="operand" />
+    </Wire>
+    <Wire UId="65">
+      <NameCon UId="41" Name="out" />
+      <NameCon UId="42" Name="in2" />
+    </Wire>
+    <Wire UId="66">
+      <NameCon UId="42" Name="out" />
+      <NameCon UId="52" Name="Jog_Forward_SL" />
+    </Wire>
+    <Wire UId="67">
+      <IdentCon UId="23" />
+      <NameCon UId="43" Name="operand" />
+    </Wire>
+    <Wire UId="68">
+      <NameCon UId="43" Name="out" />
+      <NameCon UId="45" Name="in1" />
+    </Wire>
+    <Wire UId="69">
+      <IdentCon UId="24" />
+      <NameCon UId="44" Name="operand" />
+    </Wire>
+    <Wire UId="70">
+      <NameCon UId="44" Name="out" />
+      <NameCon UId="45" Name="in2" />
+    </Wire>
+    <Wire UId="71">
+      <NameCon UId="45" Name="out" />
+      <NameCon UId="52" Name="Jog_Forward_SR" />
+    </Wire>
+    <Wire UId="72">
+      <IdentCon UId="25" />
+      <NameCon UId="46" Name="operand" />
+    </Wire>
+    <Wire UId="73">
+      <NameCon UId="46" Name="out" />
+      <NameCon UId="48" Name="in1" />
+    </Wire>
+    <Wire UId="74">
+      <IdentCon UId="26" />
+      <NameCon UId="47" Name="operand" />
+    </Wire>
+    <Wire UId="75">
+      <NameCon UId="47" Name="out" />
+      <NameCon UId="48" Name="in2" />
+    </Wire>
+    <Wire UId="76">
+      <NameCon UId="48" Name="out" />
+      <NameCon UId="52" Name="Jog_Backward_SL" />
+    </Wire>
+    <Wire UId="77">
+      <IdentCon UId="27" />
+      <NameCon UId="49" Name="operand" />
+    </Wire>
+    <Wire UId="78">
+      <NameCon UId="49" Name="out" />
+      <NameCon UId="51" Name="in1" />
+    </Wire>
+    <Wire UId="79">
+      <IdentCon UId="28" />
+      <NameCon UId="50" Name="operand" />
+    </Wire>
+    <Wire UId="80">
+      <NameCon UId="50" Name="out" />
+      <NameCon UId="51" Name="in2" />
+    </Wire>
+    <Wire UId="81">
+      <NameCon UId="51" Name="out" />
+      <NameCon UId="52" Name="Jog_Backward_SR" />
+    </Wire>
+    <Wire UId="82">
+      <IdentCon UId="29" />
+      <NameCon UId="52" Name="Reset" />
+    </Wire>
+    <Wire UId="83">
+      <IdentCon UId="30" />
+      <NameCon UId="52" Name="Set_SL_Speed" />
+    </Wire>
+    <Wire UId="84">
+      <IdentCon UId="31" />
+      <NameCon UId="52" Name="Set_SR_Speed" />
+    </Wire>
+    <Wire UId="85">
+      <IdentCon UId="32" />
+      <NameCon UId="52" Name="Set_Acc" />
+    </Wire>
+    <Wire UId="86">
+      <IdentCon UId="33" />
+      <NameCon UId="52" Name="Set_Dcc" />
+    </Wire>
+    <Wire UId="87">
+      <IdentCon UId="34" />
+      <NameCon UId="52" Name="HWIdentSL" />
+    </Wire>
+    <Wire UId="88">
+      <IdentCon UId="35" />
+      <NameCon UId="52" Name="HWIdentSR" />
+    </Wire>
+    <Wire UId="89">
+      <IdentCon UId="36" />
+      <NameCon UId="52" Name="iSL_Drive_Param" />
+    </Wire>
+    <Wire UId="90">
+      <IdentCon UId="37" />
+      <NameCon UId="52" Name="iSR_Drive_Param" />
+    </Wire>
+    <Wire UId="91">
+      <IdentCon UId="38" />
+      <NameCon UId="52" Name="oSL_Drive_Param" />
+    </Wire>
+    <Wire UId="92">
+      <IdentCon UId="39" />
+      <NameCon UId="52" Name="oSR_Drive_Param" />
+    </Wire>
+    <Wire UId="93">
+      <NameCon UId="52" Name="oSL_Communication_OK" />
+      <OpenCon UId="54" />
+    </Wire>
+    <Wire UId="94">
+      <NameCon UId="52" Name="oSR_Communication_OK" />
+      <OpenCon UId="55" />
+    </Wire>
+    <Wire UId="95">
+      <NameCon UId="52" Name="oSL_Forward_Flag" />
+      <OpenCon UId="56" />
+    </Wire>
+    <Wire UId="96">
+      <NameCon UId="52" Name="oSL_Backward_Flag" />
+      <OpenCon UId="57" />
+    </Wire>
+    <Wire UId="97">
+      <NameCon UId="52" Name="oSR_Forward_Flag" />
+      <OpenCon UId="58" />
+    </Wire>
+    <Wire UId="98">
+      <NameCon UId="52" Name="oSR_Backward_Flag" />
+      <OpenCon UId="59" />
+    </Wire>
+    <Wire UId="99">
+      <NameCon UId="52" Name="oError" />
+      <OpenCon UId="60" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <NewLine UId="21" />
+  <LineComment UId="22">
+    <Text UId="23"> Logika timera — włącza się tylko gdy trwa centrowanie</Text>
+  </LineComment>
+  <NewLine UId="24" />
+  <Access Scope="LocalVariable" UId="25">
+    <Symbol UId="26">
+      <Component Name="tCenteringTimer" UId="27" />
+    </Symbol>
+  </Access>
+  <Access Scope="Call" UId="28">
+    <Instruction UId="29">
+      <Token Text="(" UId="30" />
+      <NewLine UId="31" />
+      <Blank Num="16" UId="32" />
+      <Parameter Name="IN" UId="33">
+        <Blank UId="34" />
+        <Token Text=":=" UId="35" />
+        <Blank UId="36" />
+        <Access Scope="GlobalVariable" UId="37">
+          <Symbol UId="38">
+            <Component Name="HMI_Central_Shifter" UId="39">
+              <BooleanAttribute Name="HasQuotes" UId="40">true</BooleanAttribute>
+            </Component>
+            <Token Text="." UId="41" />
+            <Component Name="CS_Pallet_Centering" UId="42" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="43" />
+      <NewLine UId="44" />
+      <Blank Num="16" UId="45" />
+      <Parameter Name="PT" UId="46">
+        <Blank UId="47" />
+        <Token Text=":=" UId="48" />
+        <Blank UId="49" />
+        <Access Scope="TypedConstant" UId="50">
+          <Constant UId="51">
+            <ConstantValue UId="52">T#5S</ConstantValue>
+          </Constant>
+        </Access>
+      </Parameter>
+      <NewLine UId="53" />
+      <Token Text=")" UId="54" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="55" />
+  <NewLine Num="3" UId="56" />
+  <Token Text="IF" UId="57" />
+  <Blank UId="58" />
+  <Access Scope="LocalVariable" UId="59">
+    <Symbol UId="60">
+      <Component Name="tCenteringTimer" UId="61" />
+      <Token Text="." UId="62" />
+      <Component Name="Q" UId="63" />
+    </Symbol>
+  </Access>
+  <Blank UId="64" />
+  <Token Text="THEN" UId="65" />
+  <NewLine UId="66" />
+  <Blank Num="4" UId="67" />
+  <Access Scope="GlobalVariable" UId="68">
+    <Symbol UId="69">
+      <Component Name="HMI_Central_Shifter" UId="70">
+        <BooleanAttribute Name="HasQuotes" UId="71">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="72" />
+      <Component Name="CS_Pallet_Centering" UId="73" />
+    </Symbol>
+  </Access>
+  <Blank UId="74" />
+  <Token Text=":=" UId="75" />
+  <Blank UId="76" />
+  <Access Scope="LiteralConstant" UId="77">
+    <Constant UId="78">
+      <ConstantValue UId="80">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="81" />
+  <NewLine UId="82" />
+  <Token Text="END_IF" UId="83" />
+  <Token Text=";" UId="84" />
+  <NewLine Num="2" UId="85" />
+  <LineComment UId="86">
+    <Text UId="87"> --- Dotychczasowa logika sterowania ---</Text>
+  </LineComment>
+  <NewLine UId="88" />
+  <Token Text="IF" UId="89" />
+  <Blank UId="90" />
+  <Access Scope="GlobalVariable" UId="91">
+    <Symbol UId="92">
+      <Component Name="HMI_Central_Shifter" UId="93">
+        <BooleanAttribute Name="HasQuotes" UId="94">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="95" />
+      <Component Name="CS_Pallet_Centering" UId="96" />
+    </Symbol>
+  </Access>
+  <Blank UId="97" />
+  <Token Text="AND" UId="98" />
+  <Blank UId="99" />
+  <Access Scope="GlobalVariable" UId="100">
+    <Symbol UId="101">
+      <Component Name="iCS_SensorHoming_Left" UId="102">
+        <BooleanAttribute Name="HasQuotes" UId="103">true</BooleanAttribute>
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="104" />
+  <Token Text="AND" UId="105" />
+  <Blank UId="106" />
+  <Token Text="NOT" UId="107" />
+  <Blank UId="108" />
+  <Access Scope="GlobalVariable" UId="109">
+    <Symbol UId="110">
+      <Component Name="iCS_SensorHoming_Right" UId="111">
+        <BooleanAttribute Name="HasQuotes" UId="112">true</BooleanAttribute>
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="113" />
+  <Token Text="THEN" UId="114" />
+  <NewLine UId="115" />
+  <Blank Num="4" UId="116" />
+  <Access Scope="GlobalVariable" UId="117">
+    <Symbol UId="118">
+      <Component Name="HMI_Central_Shifter" UId="119">
+        <BooleanAttribute Name="HasQuotes" UId="120">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="121" />
+      <Component Name="CS_Pallet_Left_Move" UId="122" />
+    </Symbol>
+  </Access>
+  <Blank UId="123" />
+  <Token Text=":=" UId="124" />
+  <Blank UId="125" />
+  <Access Scope="LiteralConstant" UId="126">
+    <Constant UId="127">
+      <ConstantValue UId="129">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="130" />
+  <NewLine UId="131" />
+  <Blank Num="4" UId="132" />
+  <Access Scope="GlobalVariable" UId="133">
+    <Symbol UId="134">
+      <Component Name="HMI_Central_Shifter" UId="135">
+        <BooleanAttribute Name="HasQuotes" UId="136">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="137" />
+      <Component Name="CS_Pallet_Right_Move" UId="138" />
+    </Symbol>
+  </Access>
+  <Blank UId="139" />
+  <Token Text=":=" UId="140" />
+  <Blank UId="141" />
+  <Access Scope="LiteralConstant" UId="142">
+    <Constant UId="143">
+      <ConstantValue UId="145">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="146" />
+  <NewLine UId="147" />
+  <Blank Num="4" UId="148" />
+  <NewLine UId="149" />
+  <Token Text="ELSIF" UId="150" />
+  <Blank UId="151" />
+  <Access Scope="GlobalVariable" UId="152">
+    <Symbol UId="153">
+      <Component Name="HMI_Central_Shifter" UId="154">
+        <BooleanAttribute Name="HasQuotes" UId="155">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="156" />
+      <Component Name="CS_Pallet_Centering" UId="157" />
+    </Symbol>
+  </Access>
+  <Blank UId="158" />
+  <Token Text="AND" UId="159" />
+  <Blank UId="160" />
+  <Access Scope="GlobalVariable" UId="161">
+    <Symbol UId="162">
+      <Component Name="iCS_SensorHoming_Right" UId="163">
+        <BooleanAttribute Name="HasQuotes" UId="164">true</BooleanAttribute>
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="165" />
+  <Token Text="AND" UId="166" />
+  <Blank UId="167" />
+  <Token Text="NOT" UId="168" />
+  <Blank UId="169" />
+  <Access Scope="GlobalVariable" UId="170">
+    <Symbol UId="171">
+      <Component Name="iCS_SensorHoming_Left" UId="172">
+        <BooleanAttribute Name="HasQuotes" UId="173">true</BooleanAttribute>
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="174" />
+  <Token Text="THEN" UId="175" />
+  <NewLine UId="176" />
+  <Blank Num="4" UId="177" />
+  <Access Scope="GlobalVariable" UId="178">
+    <Symbol UId="179">
+      <Component Name="HMI_Central_Shifter" UId="180">
+        <BooleanAttribute Name="HasQuotes" UId="181">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="182" />
+      <Component Name="CS_Pallet_Left_Move" UId="183" />
+    </Symbol>
+  </Access>
+  <Blank UId="184" />
+  <Token Text=":=" UId="185" />
+  <Blank UId="186" />
+  <Access Scope="LiteralConstant" UId="187">
+    <Constant UId="188">
+      <ConstantValue UId="190">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="191" />
+  <NewLine UId="192" />
+  <Blank Num="4" UId="193" />
+  <Access Scope="GlobalVariable" UId="194">
+    <Symbol UId="195">
+      <Component Name="HMI_Central_Shifter" UId="196">
+        <BooleanAttribute Name="HasQuotes" UId="197">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="198" />
+      <Component Name="CS_Pallet_Right_Move" UId="199" />
+    </Symbol>
+  </Access>
+  <Blank UId="200" />
+  <Token Text=":=" UId="201" />
+  <Blank UId="202" />
+  <Access Scope="LiteralConstant" UId="203">
+    <Constant UId="204">
+      <ConstantValue UId="206">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="207" />
+  <NewLine UId="208" />
+  <Blank Num="4" UId="209" />
+  <NewLine UId="210" />
+  <Token Text="ELSIF" UId="211" />
+  <Blank UId="212" />
+  <Access Scope="GlobalVariable" UId="213">
+    <Symbol UId="214">
+      <Component Name="HMI_Central_Shifter" UId="215">
+        <BooleanAttribute Name="HasQuotes" UId="216">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="217" />
+      <Component Name="CS_Pallet_Centering" UId="218" />
+    </Symbol>
+  </Access>
+  <Blank UId="219" />
+  <Token Text="THEN" UId="220" />
+  <NewLine UId="221" />
+  <Blank Num="4" UId="222" />
+  <Access Scope="GlobalVariable" UId="223">
+    <Symbol UId="224">
+      <Component Name="HMI_Central_Shifter" UId="225">
+        <BooleanAttribute Name="HasQuotes" UId="226">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="227" />
+      <Component Name="CS_Pallet_Left_Move" UId="228" />
+    </Symbol>
+  </Access>
+  <Blank UId="229" />
+  <Token Text=":=" UId="230" />
+  <Blank UId="231" />
+  <Access Scope="LiteralConstant" UId="232">
+    <Constant UId="233">
+      <ConstantValue UId="235">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="236" />
+  <NewLine UId="237" />
+  <Blank Num="4" UId="238" />
+  <Access Scope="GlobalVariable" UId="239">
+    <Symbol UId="240">
+      <Component Name="HMI_Central_Shifter" UId="241">
+        <BooleanAttribute Name="HasQuotes" UId="242">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="243" />
+      <Component Name="CS_Pallet_Right_Move" UId="244" />
+    </Symbol>
+  </Access>
+  <Blank UId="245" />
+  <Token Text=":=" UId="246" />
+  <Blank UId="247" />
+  <Access Scope="LiteralConstant" UId="248">
+    <Constant UId="249">
+      <ConstantValue UId="251">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="252" />
+  <NewLine UId="253" />
+  <Blank Num="4" UId="254" />
+  <Access Scope="GlobalVariable" UId="255">
+    <Symbol UId="256">
+      <Component Name="HMI_Central_Shifter" UId="257">
+        <BooleanAttribute Name="HasQuotes" UId="258">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="259" />
+      <Component Name="CS_Pallet_Centering" UId="260" />
+    </Symbol>
+  </Access>
+  <Blank UId="261" />
+  <Token Text=":=" UId="262" />
+  <Blank UId="263" />
+  <Access Scope="LiteralConstant" UId="264">
+    <Constant UId="265">
+      <ConstantValue UId="267">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="268" />
+  <NewLine UId="269" />
+  <Token Text="END_IF" UId="270" />
+  <Token Text=";" UId="271" />
+  <NewLine Num="2" UId="272" />
+  <Token Text="IF" UId="273" />
+  <Blank UId="274" />
+  <Token Text="NOT" UId="275" />
+  <Blank UId="276" />
+  <Access Scope="GlobalVariable" UId="277">
+    <Symbol UId="278">
+      <Component Name="HMI_Central_Shifter" UId="279">
+        <BooleanAttribute Name="HasQuotes" UId="280">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="281" />
+      <Component Name="CS_Pallet_Centering" UId="282" />
+    </Symbol>
+  </Access>
+  <Blank UId="283" />
+  <Token Text="AND" UId="284" />
+  <Blank UId="285" />
+  <Access Scope="LocalVariable" UId="286">
+    <Symbol UId="287">
+      <Component Name="prevCentering" UId="288" />
+    </Symbol>
+  </Access>
+  <Blank UId="289" />
+  <Token Text="THEN" UId="290" />
+  <NewLine UId="291" />
+  <Blank Num="4" UId="292" />
+  <LineComment UId="293">
+    <Text UId="294"> Jednorazowe wyłączenie jazdy w lewo i prawo</Text>
+  </LineComment>
+  <NewLine UId="295" />
+  <Blank Num="4" UId="296" />
+  <Access Scope="GlobalVariable" UId="297">
+    <Symbol UId="298">
+      <Component Name="HMI_Central_Shifter" UId="299">
+        <BooleanAttribute Name="HasQuotes" UId="300">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="301" />
+      <Component Name="CS_Pallet_Left_Move" UId="302" />
+    </Symbol>
+  </Access>
+  <Blank UId="303" />
+  <Token Text=":=" UId="304" />
+  <Blank UId="305" />
+  <Access Scope="LiteralConstant" UId="306">
+    <Constant UId="307">
+      <ConstantValue UId="309">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="310" />
+  <NewLine UId="311" />
+  <Blank Num="4" UId="312" />
+  <Access Scope="GlobalVariable" UId="313">
+    <Symbol UId="314">
+      <Component Name="HMI_Central_Shifter" UId="315">
+        <BooleanAttribute Name="HasQuotes" UId="316">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="317" />
+      <Component Name="CS_Pallet_Right_Move" UId="318" />
+    </Symbol>
+  </Access>
+  <Blank UId="319" />
+  <Token Text=":=" UId="320" />
+  <Blank UId="321" />
+  <Access Scope="LiteralConstant" UId="322">
+    <Constant UId="323">
+      <ConstantValue UId="325">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="326" />
+  <NewLine UId="327" />
+  <Token Text="END_IF" UId="328" />
+  <Token Text=";" UId="329" />
+  <NewLine Num="2" UId="330" />
+  <LineComment UId="331">
+    <Text UId="332"> Aktualizacja stanu poprzedniego</Text>
+  </LineComment>
+  <NewLine UId="333" />
+  <Access Scope="LocalVariable" UId="334">
+    <Symbol UId="335">
+      <Component Name="prevCentering" UId="336" />
+    </Symbol>
+  </Access>
+  <Blank UId="337" />
+  <Token Text=":=" UId="338" />
+  <Blank UId="339" />
+  <Access Scope="GlobalVariable" UId="340">
+    <Symbol UId="341">
+      <Component Name="HMI_Central_Shifter" UId="342">
+        <BooleanAttribute Name="HasQuotes" UId="343">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="344" />
+      <Component Name="CS_Pallet_Centering" UId="345" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="346" />
+  <NewLine UId="347" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="D" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="E" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FB>
+</Document>
