@@ -1,0 +1,608 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.OB ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input">
+    <Member Name="Initial_Call" Datatype="Bool" Informative="true">
+      <Comment>
+        <MultiLanguageText Lang="en-US">Initial call of this OB</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Event_Count" Datatype="Int" Informative="true">
+      <Comment>
+        <MultiLanguageText Lang="en-US">Events discarded</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+  <Section Name="Temp" />
+  <Section Name="Constant" />
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <Name>CyclicInterrupt</Name>
+      <Namespace />
+      <Number>30</Number>
+      <ProgrammingLanguage>LAD</ProgrammingLanguage>
+      <SecondaryType>CyclicInterrupt</SecondaryType>
+      <SetENOAutomatically>false</SetENOAutomatically>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="S5_Button_down" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="Tippler_HMI" />
+        <Component Name="HMI_Control" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="Tippler_HMI" />
+        <Component Name="Button_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="Tippler_HMI" />
+        <Component Name="HMI_Control" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="S6_Button_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="Tippler_HMI" />
+        <Component Name="HMI_Control" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
+      <Symbol>
+        <Component Name="Tippler_HMI" />
+        <Component Name="Button_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="Tippler_HMI" />
+        <Component Name="HMI_Control" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="29">
+      <Symbol>
+        <Component Name="System_To_Moving_Pallets_DB" />
+        <Component Name="oCeterTippler" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="30">
+      <Symbol>
+        <Component Name="Tag_59" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="31">
+      <Symbol>
+        <Component Name="iS1L_Distance_Value" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="32">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>7480</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="33">
+      <Symbol>
+        <Component Name="iS1L_Distance_Value" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="34">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>13430</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="35">
+      <Symbol>
+        <Component Name="Arm1_LowerClampOpen" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="36">
+      <Symbol>
+        <Component Name="Arm1_UpperClampOpen" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="37">
+      <Symbol>
+        <Component Name="Arm2_LowerClampOpen" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="38">
+      <Symbol>
+        <Component Name="Arm2_UpperClampOpen" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="39">
+      <Symbol>
+        <Component Name="Arm1_LowerClampClosed" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="40">
+      <Symbol>
+        <Component Name="Arm1_UpperClampClosed" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="41">
+      <Symbol>
+        <Component Name="Arm2_LowerClampClosed" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="42">
+      <Symbol>
+        <Component Name="Arm2_UpperClampClosed" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="43">
+      <Symbol>
+        <Component Name="Arm1_Inclinometer" />
+        <Component Name="Process Data Input - Angle Y / vibration acceleration Peak_max" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="44">
+      <Symbol>
+        <Component Name="Arm2_Inclinometer" />
+        <Component Name="Process Data Input - Angle X / effective value of the vibration velocity" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="45">
+      <Symbol>
+        <Component Name="S5_Arm1_BasePos" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="46">
+      <Symbol>
+        <Component Name="S5_Arm2_BasePos" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="47">
+      <Symbol>
+        <Component Name="Data_To_Safety" />
+        <Component Name="Main_Valve_Arms" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="48">
+      <Symbol>
+        <Component Name="Data_To_Safety" />
+        <Component Name="Main_Valve_Clamps" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="49">
+      <Symbol>
+        <Component Name="Data_To_Safety" />
+        <Component Name="Tip_Hydraulic_Unit" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="50">
+      <Symbol>
+        <Component Name="TipArm1" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="51">
+      <Symbol>
+        <Component Name="TipArm2" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="52">
+      <Symbol>
+        <Component Name="LowerClampsOpen" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="53">
+      <Symbol>
+        <Component Name="UpperClampsOpen" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="54">
+      <Symbol>
+        <Component Name="LowerClampsClose" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="55">
+      <Symbol>
+        <Component Name="UpperClampsClose" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="56">
+      <Symbol>
+        <Component Name="Data_To_Safety" />
+        <Component Name="Tip_Hydraulic_Unit" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="57">
+      <Symbol>
+        <Component Name="TipHydContactor" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="58">
+      <Symbol>
+        <Component Name="TipHydSoftstart" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="59" />
+    <Part Name="Contact" UId="60">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="61" />
+    <Part Name="Contact" UId="62" />
+    <Part Name="O" UId="63">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="64" />
+    <Part Name="Contact" UId="65">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="66" />
+    <Part Name="Contact" UId="67" />
+    <Part Name="O" UId="68">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="69" />
+    <Part Name="Contact" UId="70" />
+    <Part Name="O" UId="71">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="Lt" UId="72">
+      <TemplateValue Name="SrcType" Type="Type">Int</TemplateValue>
+    </Part>
+    <Part Name="Gt" UId="73">
+      <TemplateValue Name="SrcType" Type="Type">Int</TemplateValue>
+    </Part>
+    <Part Name="O" UId="74">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Call UId="75">
+      <CallInfo Name="Tippler" BlockType="FB">
+        <Instance Scope="GlobalVariable" UId="76">
+          <Component Name="Tippler_DB" />
+        </Instance>
+        <Parameter Name="Pallet_On_Tippler" Section="Input" Type="Bool" />
+        <Parameter Name="iA1LowClamp_BasePos" Section="Input" Type="Bool" />
+        <Parameter Name="iA1UpClamp_BasePos" Section="Input" Type="Bool" />
+        <Parameter Name="iA2LowClamp_BasePos" Section="Input" Type="Bool" />
+        <Parameter Name="iA2UpClamp_BasePos" Section="Input" Type="Bool" />
+        <Parameter Name="iA1LowClamp_WorkPos" Section="Input" Type="Bool" />
+        <Parameter Name="iA1UpClamp_WorkPos" Section="Input" Type="Bool" />
+        <Parameter Name="iA2LowClamp_WorkPos" Section="Input" Type="Bool" />
+        <Parameter Name="iA2UpClamp_WorkPos" Section="Input" Type="Bool" />
+        <Parameter Name="iArm1_AngleValue" Section="Input" Type="Int" />
+        <Parameter Name="iArm2_AngleValue" Section="Input" Type="Int" />
+        <Parameter Name="iArm1_BasePos" Section="Input" Type="Bool" />
+        <Parameter Name="iArm2_BasePos" Section="Input" Type="Bool" />
+        <Parameter Name="HMI_Control" Section="Input" Type="Bool" />
+        <Parameter Name="HMI_ButtonUp" Section="Input" Type="Bool" />
+        <Parameter Name="HMI_ButtonDown" Section="Input" Type="Bool" />
+        <Parameter Name="iButton_Down" Section="Input" Type="Bool" />
+        <Parameter Name="iButton_Up" Section="Input" Type="Bool" />
+        <Parameter Name="Fq_Main_Valve_Arms" Section="Output" Type="Bool" />
+        <Parameter Name="Fq_Main_Valve_Clamps" Section="Output" Type="Bool" />
+        <Parameter Name="Fq_HydraulicUnit" Section="Output" Type="Bool" />
+        <Parameter Name="qArm1" Section="Output" Type="Int" />
+        <Parameter Name="qArm2" Section="Output" Type="Int" />
+        <Parameter Name="qLowerClamps_Backward" Section="Output" Type="Bool" />
+        <Parameter Name="qUpperClamps_Backward" Section="Output" Type="Bool" />
+        <Parameter Name="qLowerClamps_Forward" Section="Output" Type="Bool" />
+        <Parameter Name="qUpperClamps_Forward" Section="Output" Type="Bool" />
+      </CallInfo>
+    </Call>
+    <Part Name="Contact" UId="77" />
+    <Part Name="Coil" UId="78" />
+    <Part Name="Coil" UId="79" />
+  </Parts>
+  <Wires>
+    <Wire UId="84">
+      <Powerrail />
+      <NameCon UId="75" Name="en" />
+      <NameCon UId="59" Name="in" />
+      <NameCon UId="61" Name="in" />
+      <NameCon UId="64" Name="in" />
+      <NameCon UId="66" Name="in" />
+      <NameCon UId="77" Name="in" />
+    </Wire>
+    <Wire UId="85">
+      <IdentCon UId="21" />
+      <NameCon UId="59" Name="operand" />
+    </Wire>
+    <Wire UId="86">
+      <NameCon UId="59" Name="out" />
+      <NameCon UId="60" Name="in" />
+    </Wire>
+    <Wire UId="87">
+      <IdentCon UId="22" />
+      <NameCon UId="60" Name="operand" />
+    </Wire>
+    <Wire UId="88">
+      <NameCon UId="60" Name="out" />
+      <NameCon UId="63" Name="in1" />
+    </Wire>
+    <Wire UId="89">
+      <IdentCon UId="23" />
+      <NameCon UId="61" Name="operand" />
+    </Wire>
+    <Wire UId="90">
+      <NameCon UId="61" Name="out" />
+      <NameCon UId="62" Name="in" />
+    </Wire>
+    <Wire UId="91">
+      <IdentCon UId="24" />
+      <NameCon UId="62" Name="operand" />
+    </Wire>
+    <Wire UId="92">
+      <NameCon UId="62" Name="out" />
+      <NameCon UId="63" Name="in2" />
+    </Wire>
+    <Wire UId="93">
+      <NameCon UId="63" Name="out" />
+      <NameCon UId="75" Name="iButton_Down" />
+    </Wire>
+    <Wire UId="94">
+      <IdentCon UId="25" />
+      <NameCon UId="64" Name="operand" />
+    </Wire>
+    <Wire UId="95">
+      <NameCon UId="64" Name="out" />
+      <NameCon UId="65" Name="in" />
+    </Wire>
+    <Wire UId="96">
+      <IdentCon UId="26" />
+      <NameCon UId="65" Name="operand" />
+    </Wire>
+    <Wire UId="97">
+      <NameCon UId="65" Name="out" />
+      <NameCon UId="68" Name="in1" />
+    </Wire>
+    <Wire UId="98">
+      <IdentCon UId="27" />
+      <NameCon UId="66" Name="operand" />
+    </Wire>
+    <Wire UId="99">
+      <NameCon UId="66" Name="out" />
+      <NameCon UId="67" Name="in" />
+    </Wire>
+    <Wire UId="100">
+      <IdentCon UId="28" />
+      <NameCon UId="67" Name="operand" />
+    </Wire>
+    <Wire UId="101">
+      <NameCon UId="67" Name="out" />
+      <NameCon UId="68" Name="in2" />
+    </Wire>
+    <Wire UId="102">
+      <NameCon UId="68" Name="out" />
+      <NameCon UId="69" Name="in" />
+      <NameCon UId="70" Name="in" />
+    </Wire>
+    <Wire UId="103">
+      <IdentCon UId="29" />
+      <NameCon UId="69" Name="operand" />
+    </Wire>
+    <Wire UId="104">
+      <NameCon UId="69" Name="out" />
+      <NameCon UId="71" Name="in1" />
+    </Wire>
+    <Wire UId="105">
+      <IdentCon UId="30" />
+      <NameCon UId="70" Name="operand" />
+    </Wire>
+    <Wire UId="106">
+      <NameCon UId="70" Name="out" />
+      <NameCon UId="71" Name="in2" />
+    </Wire>
+    <Wire UId="107">
+      <NameCon UId="71" Name="out" />
+      <NameCon UId="72" Name="pre" />
+      <NameCon UId="73" Name="pre" />
+    </Wire>
+    <Wire UId="108">
+      <IdentCon UId="31" />
+      <NameCon UId="72" Name="in1" />
+    </Wire>
+    <Wire UId="109">
+      <IdentCon UId="32" />
+      <NameCon UId="72" Name="in2" />
+    </Wire>
+    <Wire UId="110">
+      <NameCon UId="72" Name="out" />
+      <NameCon UId="74" Name="in1" />
+    </Wire>
+    <Wire UId="111">
+      <IdentCon UId="33" />
+      <NameCon UId="73" Name="in1" />
+    </Wire>
+    <Wire UId="112">
+      <IdentCon UId="34" />
+      <NameCon UId="73" Name="in2" />
+    </Wire>
+    <Wire UId="113">
+      <NameCon UId="73" Name="out" />
+      <NameCon UId="74" Name="in2" />
+    </Wire>
+    <Wire UId="114">
+      <NameCon UId="74" Name="out" />
+      <NameCon UId="75" Name="iButton_Up" />
+    </Wire>
+    <Wire UId="115">
+      <OpenCon UId="80" />
+      <NameCon UId="75" Name="Pallet_On_Tippler" />
+    </Wire>
+    <Wire UId="116">
+      <IdentCon UId="35" />
+      <NameCon UId="75" Name="iA1LowClamp_BasePos" />
+    </Wire>
+    <Wire UId="117">
+      <IdentCon UId="36" />
+      <NameCon UId="75" Name="iA1UpClamp_BasePos" />
+    </Wire>
+    <Wire UId="118">
+      <IdentCon UId="37" />
+      <NameCon UId="75" Name="iA2LowClamp_BasePos" />
+    </Wire>
+    <Wire UId="119">
+      <IdentCon UId="38" />
+      <NameCon UId="75" Name="iA2UpClamp_BasePos" />
+    </Wire>
+    <Wire UId="120">
+      <IdentCon UId="39" />
+      <NameCon UId="75" Name="iA1LowClamp_WorkPos" />
+    </Wire>
+    <Wire UId="121">
+      <IdentCon UId="40" />
+      <NameCon UId="75" Name="iA1UpClamp_WorkPos" />
+    </Wire>
+    <Wire UId="122">
+      <IdentCon UId="41" />
+      <NameCon UId="75" Name="iA2LowClamp_WorkPos" />
+    </Wire>
+    <Wire UId="123">
+      <IdentCon UId="42" />
+      <NameCon UId="75" Name="iA2UpClamp_WorkPos" />
+    </Wire>
+    <Wire UId="124">
+      <IdentCon UId="43" />
+      <NameCon UId="75" Name="iArm1_AngleValue" />
+    </Wire>
+    <Wire UId="125">
+      <IdentCon UId="44" />
+      <NameCon UId="75" Name="iArm2_AngleValue" />
+    </Wire>
+    <Wire UId="126">
+      <IdentCon UId="45" />
+      <NameCon UId="75" Name="iArm1_BasePos" />
+    </Wire>
+    <Wire UId="127">
+      <IdentCon UId="46" />
+      <NameCon UId="75" Name="iArm2_BasePos" />
+    </Wire>
+    <Wire UId="128">
+      <OpenCon UId="81" />
+      <NameCon UId="75" Name="HMI_Control" />
+    </Wire>
+    <Wire UId="129">
+      <OpenCon UId="82" />
+      <NameCon UId="75" Name="HMI_ButtonUp" />
+    </Wire>
+    <Wire UId="130">
+      <OpenCon UId="83" />
+      <NameCon UId="75" Name="HMI_ButtonDown" />
+    </Wire>
+    <Wire UId="131">
+      <NameCon UId="75" Name="Fq_Main_Valve_Arms" />
+      <IdentCon UId="47" />
+    </Wire>
+    <Wire UId="132">
+      <NameCon UId="75" Name="Fq_Main_Valve_Clamps" />
+      <IdentCon UId="48" />
+    </Wire>
+    <Wire UId="133">
+      <NameCon UId="75" Name="Fq_HydraulicUnit" />
+      <IdentCon UId="49" />
+    </Wire>
+    <Wire UId="134">
+      <NameCon UId="75" Name="qArm1" />
+      <IdentCon UId="50" />
+    </Wire>
+    <Wire UId="135">
+      <NameCon UId="75" Name="qArm2" />
+      <IdentCon UId="51" />
+    </Wire>
+    <Wire UId="136">
+      <NameCon UId="75" Name="qLowerClamps_Backward" />
+      <IdentCon UId="52" />
+    </Wire>
+    <Wire UId="137">
+      <NameCon UId="75" Name="qUpperClamps_Backward" />
+      <IdentCon UId="53" />
+    </Wire>
+    <Wire UId="138">
+      <NameCon UId="75" Name="qLowerClamps_Forward" />
+      <IdentCon UId="54" />
+    </Wire>
+    <Wire UId="139">
+      <NameCon UId="75" Name="qUpperClamps_Forward" />
+      <IdentCon UId="55" />
+    </Wire>
+    <Wire UId="140">
+      <IdentCon UId="56" />
+      <NameCon UId="77" Name="operand" />
+    </Wire>
+    <Wire UId="141">
+      <NameCon UId="77" Name="out" />
+      <NameCon UId="78" Name="in" />
+      <NameCon UId="79" Name="in" />
+    </Wire>
+    <Wire UId="142">
+      <IdentCon UId="57" />
+      <NameCon UId="78" Name="operand" />
+    </Wire>
+    <Wire UId="143">
+      <IdentCon UId="58" />
+      <NameCon UId="79" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="8" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="9" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.OB>
+</Document>

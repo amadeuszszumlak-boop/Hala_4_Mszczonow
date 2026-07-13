@@ -1,0 +1,251 @@
+﻿FUNCTION "Initialisations" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_TEMP 
+      i : Int;
+      j : Int;
+   END_VAR
+
+
+BEGIN
+	REGION Stations_Sensors
+	    
+	    // row 1
+	    
+	    "Pallets_Stations".Stations[1, 1].SensorA := "Sz5_ST35_SenA";
+	    "Pallets_Stations".Stations[1, 1].SensorB := "Sz5_ST35_SenB";
+	    "Pallets_Stations".Stations[1, 1].SensorC := "Sz5_ST35_SenC";
+	    "Pallets_Stations".Stations[1, 1].SensorD := "Sz5_ST35_SenD";
+	    
+	    "Pallets_Stations".Stations[1, 2].SensorA := "Sz5_ST34_SenA";
+	    "Pallets_Stations".Stations[1, 2].SensorB := "Sz5_ST34_SenB";
+	    "Pallets_Stations".Stations[1, 2].SensorC := "Sz5_ST34_SenC";
+	    "Pallets_Stations".Stations[1, 2].SensorD := "Sz5_ST34_SenD";
+	    
+	    "Pallets_Stations".Stations[1, 3].SensorA := "Sz4_ST33_SenA";
+	    "Pallets_Stations".Stations[1, 3].SensorB := "Sz4_ST33_SenB";
+	    "Pallets_Stations".Stations[1, 3].SensorC := "Sz4_ST33_SenC";
+	    "Pallets_Stations".Stations[1, 3].SensorD := "Sz4_ST33_SenD";
+	    
+	    "Pallets_Stations".Stations[1, 4].SensorA := "Sz4_ST32_SenA";
+	    "Pallets_Stations".Stations[1, 4].SensorB := "Sz4_ST32_SenB";
+	    "Pallets_Stations".Stations[1, 4].SensorC := "Sz4_ST32_SenC";
+	    "Pallets_Stations".Stations[1, 4].SensorD := "Sz4_ST32_SenD";
+	    
+	    "Pallets_Stations".Stations[1, 5].SensorA := "Sz3_ST31_SenA";
+	    "Pallets_Stations".Stations[1, 5].SensorB := "Sz3_ST31_SenB";
+	    "Pallets_Stations".Stations[1, 5].SensorC := "Sz3_ST31_SenC";
+	    "Pallets_Stations".Stations[1, 5].SensorD := "Sz3_ST31_SenD";
+	    
+	    "Pallets_Stations".Stations[1, 6].SensorA := "Sz3_ST30_SenA";
+	    "Pallets_Stations".Stations[1, 6].SensorB := "Sz3_ST30_SenB";
+	    "Pallets_Stations".Stations[1, 6].SensorC := "Sz3_ST30_SenC";
+	    "Pallets_Stations".Stations[1, 6].SensorD := "Sz3_ST30_SenD";
+	    
+	    "Pallets_Stations".Stations[1, 7].SensorA := "Sz3_ST29_SenA";
+	    "Pallets_Stations".Stations[1, 7].SensorB := "Sz3_ST29_SenB";
+	    "Pallets_Stations".Stations[1, 7].SensorC := "Sz3_ST29_SenC";
+	    "Pallets_Stations".Stations[1, 7].SensorD := "Sz3_ST29_SenD";
+	    
+	    "Pallets_Stations".Stations[1, 8].SensorA := "Sz2_ST28_SenA";
+	    "Pallets_Stations".Stations[1, 8].SensorB := "Sz2_ST28_SenB";
+	    "Pallets_Stations".Stations[1, 8].SensorC := "Sz2_ST28_SenC";
+	    "Pallets_Stations".Stations[1, 8].SensorD := "Sz2_ST28_SenD";
+	    
+	    "Pallets_Stations".Stations[1, 9].SensorA := "Sz2_ST27_SenA";
+	    "Pallets_Stations".Stations[1, 9].SensorB := "Sz2_ST27_SenB";
+	    "Pallets_Stations".Stations[1, 9].SensorC := "Sz2_ST27_SenC";
+	    "Pallets_Stations".Stations[1, 9].SensorD := "Sz2_ST27_SenD";
+	    
+	    "Pallets_Stations".Stations[1, 10].SensorA := "Sz1_St26_SenA";
+	    "Pallets_Stations".Stations[1, 10].SensorB := "Sz1_St26_SenB";
+	    "Pallets_Stations".Stations[1, 10].SensorC := "Sz1_St26_SenC";
+	    "Pallets_Stations".Stations[1, 10].SensorD := "Sz1_St26_SenD";
+	    
+	    "Pallets_Stations".Stations[1, 11].SensorA := "Sz1_St25_SenA";
+	    "Pallets_Stations".Stations[1, 11].SensorB := "Sz1_St25_SenB";
+	    "Pallets_Stations".Stations[1, 11].SensorC := "Sz1_St25_SenC";
+	    "Pallets_Stations".Stations[1, 11].SensorD := "Sz1_St25_SenD";
+	    
+	    //row 2
+	    
+	    "Pallets_Stations".Stations[2, 2].SensorA := "Sz5_ST01_SenA";
+	    "Pallets_Stations".Stations[2, 2].SensorB := "Sz5_ST01_SenB";
+	    "Pallets_Stations".Stations[2, 2].SensorC := "Sz5_ST01_SenC";
+	    "Pallets_Stations".Stations[2, 2].SensorD := "Sz5_ST01_SenD";
+	    
+	    "Pallets_Stations".Stations[2, 1].SensorA := "Sz5_ST02_SenA";
+	    "Pallets_Stations".Stations[2, 1].SensorB := "Sz5_ST02_SenB";
+	    "Pallets_Stations".Stations[2, 1].SensorC := "Sz5_ST02_SenC";
+	    "Pallets_Stations".Stations[2, 1].SensorD := "Sz5_ST02_SenD";
+	    
+	    "Pallets_Stations".Stations[2, 3].SensorA := "Sz5_ST38_SenA";
+	    "Pallets_Stations".Stations[2, 3].SensorB := "Sz5_ST38_SenB";
+	    "Pallets_Stations".Stations[2, 3].SensorC := "Sz5_ST38_SenC";
+	    "Pallets_Stations".Stations[2, 3].SensorD := "Sz5_ST38_SenD";
+	    
+	    "Pallets_Stations".Stations[2, 4].SensorA := "Sz4_ST36_SenA";
+	    "Pallets_Stations".Stations[2, 4].SensorB := "Sz4_ST36_SenB";
+	    "Pallets_Stations".Stations[2, 4].SensorC := "Sz4_ST36_SenC";
+	    "Pallets_Stations".Stations[2, 4].SensorD := "Sz4_ST36_SenD";
+	    
+	    "Pallets_Stations".Stations[2, 5].SensorA := "Sz4_ST37_SenA";
+	    "Pallets_Stations".Stations[2, 5].SensorB := "Sz4_ST37_SenB";
+	    "Pallets_Stations".Stations[2, 5].SensorC := "Sz4_ST37_SenC";
+	    "Pallets_Stations".Stations[2, 5].SensorD := "Sz4_ST37_SenD";
+	    
+	    "Pallets_Stations".Stations[2, 6].SensorA := "Sz3_ST18_SenA";
+	    "Pallets_Stations".Stations[2, 6].SensorB := "Sz3_ST18_SenB";
+	    "Pallets_Stations".Stations[2, 6].SensorC := "Sz3_ST18_SenC";
+	    "Pallets_Stations".Stations[2, 6].SensorD := "Sz3_ST18_SenD";
+	    
+	    "Pallets_Stations".Stations[2, 7].SensorA := "Sz3_ST19_SenA";
+	    "Pallets_Stations".Stations[2, 7].SensorB := "Sz3_ST19_SenB";
+	    "Pallets_Stations".Stations[2, 7].SensorC := "Sz3_ST19_SenC";
+	    "Pallets_Stations".Stations[2, 7].SensorD := "Sz3_ST19_SenD";
+	    
+	    "Pallets_Stations".Stations[2, 8].SensorA := "Sz3_ST20_SenA";
+	    "Pallets_Stations".Stations[2, 8].SensorB := "Sz3_ST20_SenB";
+	    "Pallets_Stations".Stations[2, 8].SensorC := "Sz3_ST20_SenC";
+	    "Pallets_Stations".Stations[2, 8].SensorD := "Sz3_ST20_SenD";
+	    
+	    "Pallets_Stations".Stations[2, 9].SensorA := "Sz2_ST21_SenA";
+	    "Pallets_Stations".Stations[2, 9].SensorB := "Sz2_ST21_SenB";
+	    "Pallets_Stations".Stations[2, 9].SensorC := "Sz2_ST21_SenC";
+	    "Pallets_Stations".Stations[2, 9].SensorD := "Sz2_ST21_SenD";
+	    
+	    "Pallets_Stations".Stations[2, 10].SensorA := "Sz2_ST22_SenA";
+	    "Pallets_Stations".Stations[2, 10].SensorB := "Sz2_ST22_SenB";
+	    "Pallets_Stations".Stations[2, 10].SensorC := "Sz2_ST22_SenC";
+	    "Pallets_Stations".Stations[2, 10].SensorD := "Sz2_ST22_SenD";
+	    
+	    "Pallets_Stations".Stations[2, 11].SensorA := "Sz1_St23_SenA";
+	    "Pallets_Stations".Stations[2, 11].SensorB := "Sz1_St23_SenB";
+	    "Pallets_Stations".Stations[2, 11].SensorC := "Sz1_St23_SenC";
+	    "Pallets_Stations".Stations[2, 11].SensorD := "Sz1_St23_SenD";
+	    
+	    "Pallets_Stations".Stations[2, 12].SensorA := "Sz1_St24_SenA";
+	    "Pallets_Stations".Stations[2, 12].SensorB := "Sz1_St24_SenB";
+	    "Pallets_Stations".Stations[2, 12].SensorC := "Sz1_St24_SenC";
+	    "Pallets_Stations".Stations[2, 12].SensorD := "Sz1_St24_SenD";
+	    
+	    // row 3
+	    
+	    "Pallets_Stations".Stations[3, 1].SensorA := "Sz7_ST03_SenA";
+	    "Pallets_Stations".Stations[3, 1].SensorB := "Sz7_ST03_SenB";
+	    "Pallets_Stations".Stations[3, 1].SensorC := "Sz7_ST03_SenC";
+	    "Pallets_Stations".Stations[3, 1].SensorD := "Sz7_ST03_SenD";
+	    
+	    "Pallets_Stations".Stations[3, 11].SensorA := "Sz11_ST17_SenA";
+	    "Pallets_Stations".Stations[3, 11].SensorB := "Sz11_ST17_SenB";
+	    "Pallets_Stations".Stations[3, 11].SensorC := "Sz11_ST17_SenC";
+	    "Pallets_Stations".Stations[3, 11].SensorD := "Sz11_ST17_SenD";
+	    
+	    // row 4
+	    
+	    "Pallets_Stations".Stations[4, 1].SensorA := "Sz7_ST04_SenA";
+	    "Pallets_Stations".Stations[4, 1].SensorB := "Sz7_ST04_SenB";
+	    "Pallets_Stations".Stations[4, 1].SensorC := "Sz7_ST04_SenC";
+	    "Pallets_Stations".Stations[4, 1].SensorD := "Sz7_ST04_SenD";
+	    
+	    "Pallets_Stations".Stations[4, 2].SensorA := "Sz7_ST05_SenA";
+	    "Pallets_Stations".Stations[4, 2].SensorB := "Sz7_ST05_SenB";
+	    "Pallets_Stations".Stations[4, 2].SensorC := "Sz7_ST05_SenC";
+	    "Pallets_Stations".Stations[4, 2].SensorD := "Sz7_ST05_SenD";
+	    
+	    "Pallets_Stations".Stations[4, 3].SensorA := "Sz8_ST06_SenA";
+	    "Pallets_Stations".Stations[4, 3].SensorB := "Sz8_ST06_SenB";
+	    "Pallets_Stations".Stations[4, 3].SensorC := "Sz8_ST06_SenC";
+	    "Pallets_Stations".Stations[4, 3].SensorD := "Sz8_ST06_SenD";
+	    
+	    "Pallets_Stations".Stations[4, 4].SensorA := "Sz8_ST07_SenA";
+	    "Pallets_Stations".Stations[4, 4].SensorB := "Sz8_ST07_SenB";
+	    "Pallets_Stations".Stations[4, 4].SensorC := "Sz8_ST07_SenC";
+	    "Pallets_Stations".Stations[4, 4].SensorD := "Sz8_ST07_SenD";
+	    
+	    "Pallets_Stations".Stations[4, 5].SensorA := "Sz8_ST08_SenA";
+	    "Pallets_Stations".Stations[4, 5].SensorB := "Sz8_ST08_SenB";
+	    "Pallets_Stations".Stations[4, 5].SensorC := "Sz8_ST08_SenC";
+	    "Pallets_Stations".Stations[4, 5].SensorD := "Sz8_ST08_SenD";
+	    
+	    "Pallets_Stations".Stations[4, 6].SensorA := "Sz9_ST09_SenA";
+	    "Pallets_Stations".Stations[4, 6].SensorB := "Sz9_ST09_SenB";
+	    "Pallets_Stations".Stations[4, 6].SensorC := "Sz9_ST09_SenC";
+	    "Pallets_Stations".Stations[4, 6].SensorD := "Sz9_ST09_SenD";
+	    
+	    "Pallets_Stations".Stations[4, 7].SensorA := "Sz9_ST10_SenA";
+	    "Pallets_Stations".Stations[4, 7].SensorB := "Sz9_ST10_SenB";
+	    "Pallets_Stations".Stations[4, 7].SensorC := "Sz9_ST10_SenC";
+	    "Pallets_Stations".Stations[4, 7].SensorD := "Sz9_ST10_SenD";
+	    
+	    "Pallets_Stations".Stations[4, 8].SensorA := "Sz10_ST11_SenA";
+	    "Pallets_Stations".Stations[4, 8].SensorB := "Sz10_ST11_SenB";
+	    "Pallets_Stations".Stations[4, 8].SensorC := "Sz10_ST11_SenC";
+	    "Pallets_Stations".Stations[4, 8].SensorD := "Sz10_ST11_SenD";
+	    
+	    "Pallets_Stations".Stations[4, 9].SensorA := "Sz10_ST12_SenA";
+	    "Pallets_Stations".Stations[4, 9].SensorB := "Sz10_ST12_SenB";
+	    "Pallets_Stations".Stations[4, 9].SensorC := "Sz10_ST12_SenC";
+	    "Pallets_Stations".Stations[4, 9].SensorD := "Sz10_ST12_SenD";
+	    
+	    "Pallets_Stations".Stations[4, 10].SensorA := "Sz11_ST13_SenA";
+	    "Pallets_Stations".Stations[4, 10].SensorB := "Sz11_ST13_SenB";
+	    "Pallets_Stations".Stations[4, 10].SensorC := "Sz11_ST13_SenC";
+	    "Pallets_Stations".Stations[4, 10].SensorD := "Sz11_ST13_SenD";
+	    
+	    "Pallets_Stations".Stations[4, 11].SensorA := "Sz11_ST14_SenA";
+	    "Pallets_Stations".Stations[4, 11].SensorB := "Sz11_ST14_SenB";
+	    "Pallets_Stations".Stations[4, 11].SensorC := "Sz11_ST14_SenC";
+	    "Pallets_Stations".Stations[4, 11].SensorD := "Sz11_ST14_SenD";
+	    
+	END_REGION
+	
+	REGION Station_Status
+	    
+	    FOR #i := 1 TO 4 DO
+	        FOR #j := 1 TO 12 DO
+	            // CentralShifter
+	            IF (#i = 3 AND (#j >= 2 AND #j <= 10)) OR
+	                ((#i = 1 OR #i = 3 OR #i = 4) AND #j = 12) THEN // Last column
+	                "Pallets_Stations".Stations[#i, #j].IsOccupied := TRUE;
+	                "Pallets_Stations".Stations[#i, #j].IsEmpty := FALSE;
+	                // All sensors are True
+	            ELSIF "Pallets_Stations".Stations[#i, #j].SensorA AND
+	                "Pallets_Stations".Stations[#i, #j].SensorB AND
+	                "Pallets_Stations".Stations[#i, #j].SensorC AND
+	                "Pallets_Stations".Stations[#i, #j].SensorD THEN
+	                "Pallets_Stations".Stations[#i, #j].IsOccupied := TRUE;
+	                "Pallets_Stations".Stations[#i, #j].IsEmpty := FALSE;
+	                // All sensors are False
+	            ELSIF NOT "Pallets_Stations".Stations[#i, #j].SensorA AND
+	                NOT "Pallets_Stations".Stations[#i, #j].SensorB AND
+	                NOT "Pallets_Stations".Stations[#i, #j].SensorC AND
+	                NOT "Pallets_Stations".Stations[#i, #j].SensorD THEN
+	                "Pallets_Stations".Stations[#i, #j].IsEmpty := TRUE;
+	                "Pallets_Stations".Stations[#i, #j].IsOccupied := FALSE;
+	            ELSE
+	                // Unknown state
+	                "Pallets_Stations".Stations[#i, #j].IsEmpty := FALSE;
+	                "Pallets_Stations".Stations[#i, #j].IsOccupied := FALSE;
+	            END_IF;
+	            
+	            CASE #i OF
+	                1:
+	                    "CopyStationBase"(InStation := "Pallets_Stations".Stations[#i, #j],
+	                                      OutStation => "Pallets_Stations".Stations_ROW1[#j]);
+	                2:
+	                    "CopyStationBase"(InStation := "Pallets_Stations".Stations[#i, #j],
+	                                      OutStation => "Pallets_Stations".Stations_ROW2[#j]);
+	                3:
+	                    "CopyStationBase"(InStation := "Pallets_Stations".Stations[#i, #j],
+	                                      OutStation => "Pallets_Stations".Stations_ROW3[#j]);
+	                4:
+	                    "CopyStationBase"(InStation := "Pallets_Stations".Stations[#i, #j],
+	                                      OutStation => "Pallets_Stations".Stations_ROW4[#j]);
+	            END_CASE;
+	        END_FOR;
+	    END_FOR;
+	    
+	END_REGION
+END_FUNCTION
+

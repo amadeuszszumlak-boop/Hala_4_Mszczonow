@@ -1,0 +1,157 @@
+﻿FUNCTION_BLOCK "TorqueFB_TEL750"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      enable : Bool;
+      refTorque : Real;
+      addTorque : Real;
+      upperLimit : Real := 0.0;
+      lowerLimit : Real := 0.0;
+      HWIDSTW : HW_IO;   // Hardware Identifer set point slot
+      HWIDZSW : HW_IO;   // Hardware Identifer actual value slot
+   END_VAR
+
+   VAR_OUTPUT 
+      busy : Bool;
+      inUpperLimit : Bool;
+      inLowerLimit : Bool;
+      actTorque : Real;
+      error : Bool;
+      errorID : Word;
+      diaID : Word;
+   END_VAR
+
+   VAR 
+      swSend : Array[0..2] of Word;
+      swReceive : Word;
+      sxSend : Struct
+         M_ADD1 : Word;
+         M_LIMIT_POS : Word;
+         M_LIMIT_NEG : Word;
+      END_STRUCT;
+      sxReceive : Struct
+         M_ACT : Word;
+      END_STRUCT;
+   END_VAR
+
+   VAR_TEMP 
+      piRetSFC : Int;
+   END_VAR
+
+
+BEGIN
+	//***********************************************************************************
+	//SIEMENS AG
+	//(c)Copyright 2023 All Rights Reserved
+	//-----------------------------------------------------------------------------
+	// Library: DriveLib
+	// Tested with: -
+	// Engineering: TIA Portal V18
+	// Restrictions: -
+	// Requirements: S7-1200 / S7-1500
+	// Version:    V1.0
+	// Functionality: cyclic communication between a SINAMICS and a PLC via TEL750.
+	//                The parametrisation of these words is described in the manual of the
+	//                SINAMICS
+	// Contactor: mc_gmc_mp_asia.cn@siemens.com
+	//***********************************************************************************
+	
+	#busy := FALSE;
+	#error := FALSE;
+	#inUpperLimit := FALSE;
+	#inLowerLimit := FALSE;
+	#actTorque := 0.0;
+	#errorID := 16#0000;
+	#diaID := 16#0000;
+	
+	IF NOT #enable THEN
+	    #sxSend.M_ADD1 := 16#0;
+	    #sxSend.M_LIMIT_POS := 16#4000;
+	    #sxSend.M_LIMIT_NEG := 16#C000;
+	END_IF;
+	
+	IF #enable THEN
+	    IF #refTorque <= 0.0 THEN
+	        #error := TRUE;
+	        #errorID := 16#8001;
+	    ELSIF #upperLimit > #refTorque THEN
+	        #error := TRUE;
+	        #errorID := 16#8002;
+	    ELSIF #lowerLimit < - #refTorque THEN
+	        #error := TRUE;
+	        #errorID := 16#8003;
+	    ELSIF #upperLimit<=#lowerLimit THEN
+	        #error := TRUE;
+	        #errorID := 16#8004;
+	    ELSIF #upperLimit<0.0 THEN
+	        #error := TRUE;
+	        #errorID := 16#8005;
+	    ELSIF #lowerLimit>0.0 THEN
+	        #error := TRUE;
+	        #errorID := 16#8006;
+	    ELSE
+	        #error := FALSE;
+	        #errorID := 16#0000;
+	    END_IF;
+	    
+	    IF NOT #error THEN
+	        #busy := TRUE;
+	        #sxSend.M_ADD1 := INT_TO_WORD(REAL_TO_INT(#addTorque * 16384.0 / #refTorque));
+	        #sxSend.M_LIMIT_POS := INT_TO_WORD(REAL_TO_INT(#upperLimit * 16384.0 / #refTorque));
+	        #sxSend.M_LIMIT_NEG := INT_TO_WORD(REAL_TO_INT(#lowerLimit * 16384.0 / #refTorque));
+	    ELSE
+	        #busy := FALSE;
+	        #sxSend.M_ADD1 := 16#0;
+	        #sxSend.M_LIMIT_POS := 16#4000;
+	        #sxSend.M_LIMIT_NEG := 16#C000;
+	    END_IF;
+	END_IF;
+	#swSend[0] := #sxSend.M_ADD1;
+	#swSend[1] := #sxSend.M_LIMIT_POS;
+	#swSend[2] := #sxSend.M_LIMIT_NEG;
+	
+	#piRetSFC := DPWR_DAT(LADDR := #HWIDSTW,
+	                      RECORD := #swSend);
+	#diaID := INT_TO_WORD(#piRetSFC);
+	
+	IF #piRetSFC = 0 THEN
+	    #piRetSFC := DPRD_DAT(LADDR := #HWIDZSW, RECORD => #swReceive);
+	    #diaID := INT_TO_WORD(#piRetSFC);
+	    IF #piRetSFC = 0 THEN
+	        #sxReceive.M_ACT := #swReceive;
+	    ELSE
+	        #error := TRUE;
+	        #errorID := 16#8008;
+	        #sxReceive.M_ACT := 16#000;
+	    END_IF;
+	ELSE
+	    #error := TRUE;
+	    #errorID := 16#8007;
+	END_IF;
+	
+	#actTorque := INT_TO_REAL(WORD_TO_INT(#sxReceive.M_ACT)) * #refTorque / 16384.0;
+	
+	IF #enable THEN
+	    
+	    IF #upperLimit > 0.0 THEN
+	        IF #actTorque >= #upperLimit THEN
+	            #inUpperLimit := TRUE;
+	        END_IF;
+	    ELSE
+	        IF #actTorque >= #refTorque THEN
+	            #inUpperLimit := TRUE;
+	        END_IF;
+	    END_IF;
+	    IF #lowerLimit < 0.0 THEN
+	        IF #actTorque <= #lowerLimit THEN
+	            #inLowerLimit := TRUE;
+	        END_IF;
+	    ELSE
+	        IF #actTorque <= -#refTorque THEN
+	            #inLowerLimit := TRUE;
+	        END_IF;
+	    END_IF;
+	END_IF;
+	        
+END_FUNCTION_BLOCK
+

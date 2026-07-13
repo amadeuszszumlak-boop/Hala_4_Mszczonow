@@ -1,0 +1,22 @@
+﻿FUNCTION "CopyStationBase" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      InStation : "Station";
+   END_VAR
+
+   VAR_OUTPUT 
+      OutStation : "StationLight";
+   END_VAR
+
+
+BEGIN
+	#OutStation.SensorA := #InStation.SensorA;
+	#OutStation.SensorB := #InStation.SensorB;
+	#OutStation.SensorC := #InStation.SensorC;
+	#OutStation.SensorD := #InStation.SensorD;
+	#OutStation.IsEmpty := #InStation.IsEmpty;
+	#OutStation.IsOccupied := #InStation.IsOccupied;
+	
+END_FUNCTION
+

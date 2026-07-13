@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="ActiveScreenName" Datatype="String" />
+    <Member Name="Tip_MT_Control" Datatype="Bool" />
+    <Member Name="Tip_HMI_Control" Datatype="Bool" />
+    <Member Name="Tip_Up" Datatype="Bool" />
+    <Member Name="Tip_Down" Datatype="Bool" />
+    <Member Name="TipMT_Arm_Selection" Datatype="Int" />
+    <Member Name="TipMT_Button_Up" Datatype="Bool" />
+    <Member Name="TipMT_Button_Down" Datatype="Bool" />
+    <Member Name="TipMT_Set_Angle" Datatype="Int" />
+    <Member Name="TipMT_Button_Open" Datatype="Bool" />
+    <Member Name="TipMT_Button_Close" Datatype="Bool" />
+    <Member Name="Safety_ACK" Datatype="Bool" />
+    <Member Name="Reset_Drives" Datatype="Bool" />
+    <Member Name="Reset_Safety" Datatype="Bool" />
+    <Member Name="Reset_Reinicialisation" Datatype="Bool" />
+    <Member Name="CNTUp" Datatype="Bool" />
+    <Member Name="CNTDown" Datatype="Bool" />
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>HMI_DB</Name>
+      <Namespace />
+      <Number>15</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>
