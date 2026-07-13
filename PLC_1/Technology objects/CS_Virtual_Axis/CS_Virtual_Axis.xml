@@ -1,0 +1,351 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.TechnologicalObjects.TechnologicalInstanceDB ID="0">
+    <AttributeList>
+      <InstanceOfName>TO_PositioningAxis</InstanceOfName>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Base">
+    <Sections Datatype="TO_SpeedAxis" Version="7.0">
+      <Section Name="Base">
+        <Sections Datatype="TO_Axis" Version="7.0">
+          <Section Name="Base">
+            <Sections Datatype="TO_Object" Version="7.0">
+              <Section Name="Input" />
+              <Section Name="Output" />
+              <Section Name="InOut" />
+              <Section Name="Static" />
+            </Sections>
+          </Section>
+          <Section Name="Input" />
+          <Section Name="Output" />
+          <Section Name="InOut" />
+          <Section Name="Static" />
+        </Sections>
+      </Section>
+      <Section Name="Input" />
+      <Section Name="Output" />
+      <Section Name="InOut" />
+      <Section Name="Static">
+        <Member Name="LoadGear" Datatype="TO_Struct_LoadGear" Version="7.0">
+          <Sections>
+            <Section Name="None">
+              <Member Name="Numerator" Datatype="UDInt">
+                <StartValue>6843</StartValue>
+              </Member>
+              <Member Name="Denominator" Datatype="UDInt">
+                <StartValue>100</StartValue>
+              </Member>
+            </Section>
+          </Sections>
+        </Member>
+        <Member Name="VirtualAxis" Datatype="TO_Struct_VirtualAxis" Version="7.0">
+          <Sections>
+            <Section Name="None">
+              <Member Name="Mode" Datatype="UDInt">
+                <StartValue>1</StartValue>
+              </Member>
+            </Section>
+          </Sections>
+        </Member>
+      </Section>
+    </Sections>
+  </Section>
+  <Section Name="Input" />
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="Position" Datatype="LReal">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="ActualPosition" Datatype="LReal">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="ActualVelocity" Datatype="LReal">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="ActualAcceleration" Datatype="LReal">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="OperativeSensor" Datatype="UDInt">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="ModuloCycle" Datatype="DInt">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="ActualModuloCycle" Datatype="DInt">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Clamping" Datatype="TO_Struct_Clamping" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Sensor" Datatype="Array[1..4] of TO_Struct_Sensor" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="None">
+          <Member Name="Type" Datatype="DInt">
+            <Subelement Path="1">
+              <StartValue>1</StartValue>
+            </Subelement>
+          </Member>
+          <Member Name="System" Datatype="DInt">
+            <Subelement Path="1">
+              <StartValue>0</StartValue>
+            </Subelement>
+          </Member>
+          <Member Name="MountingMode" Datatype="DInt">
+            <Subelement Path="1">
+              <StartValue>1</StartValue>
+            </Subelement>
+          </Member>
+          <Member Name="Interface" Datatype="TO_Struct_SensorInterface" Version="7.0">
+            <Sections>
+              <Section Name="None">
+                <Member Name="AddressIn" Datatype="VREF" Version="1.0">
+                  <Sections>
+                    <Section Name="None">
+                      <Member Name="RID" Datatype="DWord">
+                        <Subelement Path="1">
+                          <StartValue>16#208070e</StartValue>
+                        </Subelement>
+                      </Member>
+                      <Member Name="AREA" Datatype="Byte">
+                        <Subelement Path="1">
+                          <StartValue>16#84</StartValue>
+                        </Subelement>
+                      </Member>
+                      <Member Name="DB_NUMBER" Datatype="UInt">
+                        <Subelement Path="1">
+                          <StartValue>44</StartValue>
+                        </Subelement>
+                      </Member>
+                    </Section>
+                  </Sections>
+                </Member>
+                <Member Name="AddressOut" Datatype="VREF" Version="1.0">
+                  <Sections>
+                    <Section Name="None">
+                      <Member Name="RID" Datatype="DWord">
+                        <Subelement Path="1">
+                          <StartValue>16#208070f</StartValue>
+                        </Subelement>
+                      </Member>
+                      <Member Name="AREA" Datatype="Byte">
+                        <Subelement Path="1">
+                          <StartValue>16#84</StartValue>
+                        </Subelement>
+                      </Member>
+                      <Member Name="DB_NUMBER" Datatype="UInt">
+                        <Subelement Path="1">
+                          <StartValue>44</StartValue>
+                        </Subelement>
+                      </Member>
+                      <Member Name="OFFSET" Datatype="UDInt">
+                        <Subelement Path="1">
+                          <StartValue>96</StartValue>
+                        </Subelement>
+                      </Member>
+                    </Section>
+                  </Sections>
+                </Member>
+              </Section>
+            </Sections>
+          </Member>
+          <Member Name="Parameter" Datatype="TO_Struct_SensorParameter" Version="7.0">
+            <Sections>
+              <Section Name="None">
+                <Member Name="Resolution" Datatype="LReal">
+                  <Subelement Path="1">
+                    <StartValue>1.0</StartValue>
+                  </Subelement>
+                </Member>
+                <Member Name="FineResolutionXist1" Datatype="UDInt">
+                  <Subelement Path="1">
+                    <StartValue>0</StartValue>
+                  </Subelement>
+                </Member>
+                <Member Name="FineResolutionXist2" Datatype="UDInt">
+                  <Subelement Path="1">
+                    <StartValue>0</StartValue>
+                  </Subelement>
+                </Member>
+              </Section>
+            </Sections>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="Extrapolation" Datatype="TO_Struct_Extrapolation" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Mechanics" Datatype="TO_Struct_Mechanics" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="None">
+          <Member Name="LeadScrew" Datatype="LReal">
+            <StartValue>1257.0</StartValue>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="Properties" Datatype="TO_Struct_Properties" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Modulo" Datatype="TO_Struct_Modulo" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="PositionLimits_SW" Datatype="TO_Struct_PositionLimitsSW" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="PositionLimits_HW" Datatype="TO_Struct_PositionLimitsHW" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Homing" Datatype="TO_Struct_Homing" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="PositionControl" Datatype="TO_Struct_PositionControl" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="SetpointFilter" Datatype="TO_Struct_SetpointFilter" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="DynamicAxisModel" Datatype="TO_Struct_DynamicAxisModel" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="FollowingError" Datatype="TO_Struct_FollowingError" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="CrossPlcSynchronousOperation" Datatype="TO_Struct_CrossPlcSynchronousOperation" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="PositioningMonitoring" Datatype="TO_Struct_PositioningMonitoring" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="StandstillSignal" Datatype="TO_Struct_StandstillSignal" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="StatusPositioning" Datatype="TO_Struct_StatusPositioning" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="StatusServo" Datatype="TO_Struct_StatusServo" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="StatusProvidedLeadingValue" Datatype="TO_Struct_StatusProvidedLeadingValue" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="StatusSensor" Datatype="Array[1..4] of TO_Struct_StatusSensor" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="StatusExtrapolation" Datatype="TO_Struct_StatusExtrapolation" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="StatusKinematicsMotion" Datatype="TO_Struct_StatusKinematicsMotion" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <Name>CS_Virtual_Axis</Name>
+      <Namespace />
+      <Number>10</Number>
+      <OfSystemLibElement>TO_PositioningAxis</OfSystemLibElement>
+      <OfSystemLibVersion>7.0</OfSystemLibVersion>
+      <ParameterData>
+<Parameters xmlns="http://www.siemens.com/automation/Openness/SW/Parameters/v1">
+  <Parameter Name="VirtualAxis.Mode" Value="1" />
+  <Parameter Name="Sensor[1].Type" Value="1" />
+  <Parameter Name="_Sensor[1].Interface.Telegram" Value="81" />
+  <AdditionalData xmlns="http://www.siemens.com/automation/Openness/SW/Motion/Axis/v1">
+    <Connection Interface="Sensor[1]" SensorIndexInActorTelegram="1" PathToDBMember="EncoderTel81.Tel81.Sensor_1" />
+  </AdditionalData>
+</Parameters></ParameterData>
+      <ProgrammingLanguage>Motion_DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.TechnologicalObjects.TechnologicalInstanceDB>
+</Document>

@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="MSt34_Fl1_PI" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_STATUS_V2.1&quot;" />
+    <Member Name="MSt34_Fl1_PO" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
+    <Member Name="MSt34_Fl2_PI" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_STATUS_V2.1&quot;" />
+    <Member Name="MSt34_Fl2_PO" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
+    <Member Name="MSt34_Fl3_PI" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_STATUS_V2.1&quot;" />
+    <Member Name="MSt34_Fl3_PO" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
+    <Member Name="MSt34_Fl4_PI" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_STATUS_V2.1&quot;" />
+    <Member Name="MSt34_Fl4_PO" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
+    <Member Name="MSt34_Fl5_PI" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_STATUS_V2.1&quot;" />
+    <Member Name="MSt34_Fl5_PO" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
+    <Member Name="MSt34_Fl6_PI" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_STATUS_V2.1&quot;" />
+    <Member Name="MSt34_Fl6_PO" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
+    <Member Name="MSt32_Fl1_PI" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_STATUS_V2.1&quot;" />
+    <Member Name="MSt32_Fl1_PO" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
+    <Member Name="MSt32_Fl2_PI" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_STATUS_V2.1&quot;" />
+    <Member Name="MSt32_Fl2_PO" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
+    <Member Name="MSt32_Fl3_PI" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_STATUS_V2.1&quot;" />
+    <Member Name="MSt32_Fl3_PO" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
+    <Member Name="MSt32_Fl4_PI" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_STATUS_V2.1&quot;" />
+    <Member Name="MSt32_Fl4_PO" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
+    <Member Name="MSt32_Fl5_PI" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_STATUS_V2.1&quot;" />
+    <Member Name="MSt32_Fl5_PO" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
+    <Member Name="MSt32_Fl6_PI" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_STATUS_V2.1&quot;" />
+    <Member Name="MSt32_Fl6_PO" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
+    <Member Name="MSt31_Fl1_PI" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_STATUS_V2.1&quot;" />
+    <Member Name="MSt31_Fl1_PO" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
+    <Member Name="MSt31_Fl2_PI" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_STATUS_V2.1&quot;" />
+    <Member Name="MSt31_Fl2_PO" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
+    <Member Name="MSt31_Fl3_PI" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_STATUS_V2.1&quot;" />
+    <Member Name="MSt31_Fl3_PO" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
+    <Member Name="MSt31_Fl4_PI" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_STATUS_V2.1&quot;" />
+    <Member Name="MSt31_Fl4_PO" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
+    <Member Name="MSt31_Fl5_PI" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_STATUS_V2.1&quot;" />
+    <Member Name="MSt31_Fl5_PO" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
+    <Member Name="MSt31_Fl6_PI" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_STATUS_V2.1&quot;" />
+    <Member Name="MSt31_Fl6_PO" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>Station_Movikit</Name>
+      <Namespace />
+      <Number>5</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

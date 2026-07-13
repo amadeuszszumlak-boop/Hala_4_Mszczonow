@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.TechnologicalObjects.TechnologicalInstanceDB ID="0">
+    <AttributeList>
+      <InstanceOfName>TO_SynchronousAxis</InstanceOfName>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Base">
+    <Sections Datatype="TO_PositioningAxis" Version="7.0">
+      <Section Name="Base">
+        <Sections Datatype="TO_SpeedAxis" Version="7.0">
+          <Section Name="Base">
+            <Sections Datatype="TO_Axis" Version="7.0">
+              <Section Name="Base">
+                <Sections Datatype="TO_Object" Version="7.0">
+                  <Section Name="Input" />
+                  <Section Name="Output" />
+                  <Section Name="InOut" />
+                  <Section Name="Static" />
+                </Sections>
+              </Section>
+              <Section Name="Input" />
+              <Section Name="Output" />
+              <Section Name="InOut" />
+              <Section Name="Static" />
+            </Sections>
+          </Section>
+          <Section Name="Input" />
+          <Section Name="Output" />
+          <Section Name="InOut" />
+          <Section Name="Static">
+            <Member Name="Actor" Datatype="TO_Struct_Actor" Version="7.0">
+              <Sections>
+                <Section Name="None">
+                  <Member Name="InverseDirection" Datatype="Bool">
+                    <StartValue>true</StartValue>
+                  </Member>
+                  <Member Name="DataAdaption" Datatype="DInt">
+                    <StartValue>1</StartValue>
+                  </Member>
+                  <Member Name="Interface" Datatype="TO_Struct_ActorInterface" Version="7.0">
+                    <Sections>
+                      <Section Name="None">
+                        <Member Name="AddressIn" Datatype="VREF" Version="1.0">
+                          <Sections>
+                            <Section Name="None">
+                              <Member Name="RID" Datatype="DWord">
+                                <StartValue>16#208072a</StartValue>
+                              </Member>
+                              <Member Name="AREA" Datatype="Byte">
+                                <StartValue>16#81</StartValue>
+                              </Member>
+                              <Member Name="OFFSET" Datatype="UDInt">
+                                <StartValue>9624</StartValue>
+                              </Member>
+                            </Section>
+                          </Sections>
+                        </Member>
+                        <Member Name="AddressOut" Datatype="VREF" Version="1.0">
+                          <Sections>
+                            <Section Name="None">
+                              <Member Name="RID" Datatype="DWord">
+                                <StartValue>16#208072b</StartValue>
+                              </Member>
+                              <Member Name="AREA" Datatype="Byte">
+                                <StartValue>16#82</StartValue>
+                              </Member>
+                              <Member Name="OFFSET" Datatype="UDInt">
+                                <StartValue>9624</StartValue>
+                              </Member>
+                            </Section>
+                          </Sections>
+                        </Member>
+                        <Member Name="EnableTorqueData" Datatype="Bool">
+                          <StartValue>true</StartValue>
+                        </Member>
+                        <Member Name="TorqueDataAddressIn" Datatype="VREF" Version="1.0">
+                          <Sections>
+                            <Section Name="None">
+                              <Member Name="RID" Datatype="DWord">
+                                <StartValue>16#2080742</StartValue>
+                              </Member>
+                              <Member Name="AREA" Datatype="Byte">
+                                <StartValue>16#81</StartValue>
+                              </Member>
+                              <Member Name="OFFSET" Datatype="UDInt">
+                                <StartValue>11456</StartValue>
+                              </Member>
+                            </Section>
+                          </Sections>
+                        </Member>
+                        <Member Name="TorqueDataAddressOut" Datatype="VREF" Version="1.0">
+                          <Sections>
+                            <Section Name="None">
+                              <Member Name="RID" Datatype="DWord">
+                                <StartValue>16#2080743</StartValue>
+                              </Member>
+                              <Member Name="AREA" Datatype="Byte">
+                                <StartValue>16#82</StartValue>
+                              </Member>
+                              <Member Name="OFFSET" Datatype="UDInt">
+                                <StartValue>11456</StartValue>
+                              </Member>
+                            </Section>
+                          </Sections>
+                        </Member>
+                      </Section>
+                    </Sections>
+                  </Member>
+                  <Member Name="DriveParameter" Datatype="TO_Struct_ActorDriveParameter" Version="7.0">
+                    <Sections>
+                      <Section Name="None">
+                        <Member Name="ReferenceSpeed" Datatype="LReal">
+                          <StartValue>6000.0</StartValue>
+                        </Member>
+                        <Member Name="MaxSpeed" Datatype="LReal">
+                          <StartValue>6000.0</StartValue>
+                        </Member>
+                        <Member Name="ReferenceTorque" Datatype="LReal">
+                          <StartValue>47.04</StartValue>
+                        </Member>
+                      </Section>
+                    </Sections>
+                  </Member>
+                </Section>
+              </Sections>
+            </Member>
+            <Member Name="LoadGear" Datatype="TO_Struct_LoadGear" Version="7.0">
+              <Sections>
+                <Section Name="None">
+                  <Member Name="Numerator" Datatype="UDInt">
+                    <StartValue>6843</StartValue>
+                  </Member>
+                  <Member Name="Denominator" Datatype="UDInt">
+                    <StartValue>100</StartValue>
+                  </Member>
+                </Section>
+              </Sections>
+            </Member>
+          </Section>
+        </Sections>
+      </Section>
+      <Section Name="Input" />
+      <Section Name="Output" />
+      <Section Name="InOut" />
+      <Section Name="Static">
+        <Member Name="Sensor" Datatype="Array[1..4] of TO_Struct_Sensor" Version="7.0">
+          <Sections>
+            <Section Name="None">
+              <Member Name="Type" Datatype="DInt">
+                <Subelement Path="1">
+                  <StartValue>2</StartValue>
+                </Subelement>
+              </Member>
+              <Member Name="InverseDirection" Datatype="Bool">
+                <Subelement Path="1">
+                  <StartValue>true</StartValue>
+                </Subelement>
+              </Member>
+              <Member Name="DataAdaption" Datatype="DInt">
+                <Subelement Path="1">
+                  <StartValue>1</StartValue>
+                </Subelement>
+              </Member>
+              <Member Name="Interface" Datatype="TO_Struct_SensorInterface" Version="7.0">
+                <Sections>
+                  <Section Name="None">
+                    <Member Name="AddressIn" Datatype="VREF" Version="1.0">
+                      <Sections>
+                        <Section Name="None">
+                          <Member Name="RID" Datatype="DWord">
+                            <Subelement Path="1">
+                              <StartValue>16#208072a</StartValue>
+                            </Subelement>
+                          </Member>
+                          <Member Name="AREA" Datatype="Byte">
+                            <Subelement Path="1">
+                              <StartValue>16#81</StartValue>
+                            </Subelement>
+                          </Member>
+                          <Member Name="OFFSET" Datatype="UDInt">
+                            <Subelement Path="1">
+                              <StartValue>9624</StartValue>
+                            </Subelement>
+                          </Member>
+                        </Section>
+                      </Sections>
+                    </Member>
+                    <Member Name="AddressOut" Datatype="VREF" Version="1.0">
+                      <Sections>
+                        <Section Name="None">
+                          <Member Name="RID" Datatype="DWord">
+                            <Subelement Path="1">
+                              <StartValue>16#208072b</StartValue>
+                            </Subelement>
+                          </Member>
+                          <Member Name="AREA" Datatype="Byte">
+                            <Subelement Path="1">
+                              <StartValue>16#82</StartValue>
+                            </Subelement>
+                          </Member>
+                          <Member Name="OFFSET" Datatype="UDInt">
+                            <Subelement Path="1">
+                              <StartValue>9624</StartValue>
+                            </Subelement>
+                          </Member>
+                        </Section>
+                      </Sections>
+                    </Member>
+                  </Section>
+                </Sections>
+              </Member>
+              <Member Name="Parameter" Datatype="TO_Struct_SensorParameter" Version="7.0">
+                <Sections>
+                  <Section Name="None">
+                    <Member Name="FineResolutionXist2" Datatype="UDInt">
+                      <Subelement Path="1">
+                        <StartValue>0</StartValue>
+                      </Subelement>
+                    </Member>
+                    <Member Name="DeterminableRevolutions" Datatype="UDInt">
+                      <Subelement Path="1">
+                        <StartValue>4096</StartValue>
+                      </Subelement>
+                    </Member>
+                  </Section>
+                </Sections>
+              </Member>
+            </Section>
+          </Sections>
+        </Member>
+        <Member Name="Mechanics" Datatype="TO_Struct_Mechanics" Version="7.0">
+          <Sections>
+            <Section Name="None">
+              <Member Name="LeadScrew" Datatype="LReal">
+                <StartValue>1256.0</StartValue>
+              </Member>
+            </Section>
+          </Sections>
+        </Member>
+        <Member Name="PositionControl" Datatype="TO_Struct_PositionControl" Version="7.0">
+          <Sections>
+            <Section Name="None">
+              <Member Name="Kv" Datatype="LReal">
+                <StartValue>1.5</StartValue>
+              </Member>
+              <Member Name="EnableDSC" Datatype="Bool">
+                <StartValue>true</StartValue>
+              </Member>
+            </Section>
+          </Sections>
+        </Member>
+        <Member Name="DynamicAxisModel" Datatype="TO_Struct_DynamicAxisModel" Version="7.0">
+          <Sections>
+            <Section Name="None">
+              <Member Name="VelocityTimeConstant" Datatype="LReal">
+                <StartValue>0.004</StartValue>
+              </Member>
+            </Section>
+          </Sections>
+        </Member>
+      </Section>
+    </Sections>
+  </Section>
+  <Section Name="Input" />
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="StatusSynchronizedMotion" Datatype="TO_Struct_StatusSynchronizedMotion" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <Name>CS_Drive_TP</Name>
+      <Namespace />
+      <Number>22</Number>
+      <OfSystemLibElement>TO_SynchronousAxis</OfSystemLibElement>
+      <OfSystemLibVersion>7.0</OfSystemLibVersion>
+      <ParameterData>
+<Parameters xmlns="http://www.siemens.com/automation/Openness/SW/Parameters/v1">
+  <Parameter Name="Actor.Interface.EnableTorqueData" Value="True" />
+  <Parameter Name="_Actor.Interface.Telegram" Value="105" />
+  <Parameter Name="_Actor.DataAdaptionOffline" Value="True" />
+  <Parameter Name="_Sensor[1].Interface.Telegram" Value="105" />
+  <Parameter Name="_Sensor[1].DataAdaptionOffline" Value="True" />
+  <AdditionalData xmlns="http://www.siemens.com/automation/Openness/SW/Motion/Axis/v1">
+    <Connection Interface="Actor" InputAddress="9624" OutputAddress="9624" />
+    <Connection Interface="Sensor[1]" InputAddress="9624" OutputAddress="9624" SensorIndexInActorTelegram="1" />
+    <Connection Interface="Torque" InputAddress="11456" OutputAddress="11456" />
+    <SynchronousAxisMasterValues>
+      <SetPointCoupling Ref="CS_Virtual_Axis" Type="TO_PositioningAxis" />
+      <SetPointCoupling Ref="CS_Drive_PL" Type="TO_SynchronousAxis" />
+    </SynchronousAxisMasterValues>
+  </AdditionalData>
+</Parameters></ParameterData>
+      <ProgrammingLanguage>Motion_DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.TechnologicalObjects.TechnologicalInstanceDB>
+</Document>

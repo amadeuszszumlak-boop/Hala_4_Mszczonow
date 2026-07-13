@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Types.PlcStruct ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="None">
+    <Member Name="x_Bit_8_Fault" Datatype="Bool" />
+    <Member Name="x_Bit_9_Warning" Datatype="Bool" />
+    <Member Name="x_Bit_10_DriveTrain2_active" Datatype="Bool" />
+    <Member Name="x_Bit_11_Setp_actual_speed_comp_signal_active" Datatype="Bool" />
+    <Member Name="x_Bit_12_SW_Limit_switches_inactive" Datatype="Bool" />
+    <Member Name="x_Bit_13_Reserved" Datatype="Bool" />
+    <Member Name="x_Bit_14_StandBy_Mode_active" Datatype="Bool" />
+    <Member Name="x_Bit_15_Heartbeat_OUT" Datatype="Bool" />
+    <Member Name="x_Bit_0_Ready" Datatype="Bool" />
+    <Member Name="x_Bit_1_STO_inactive" Datatype="Bool" />
+    <Member Name="x_Bit_2_Output_Stage_enabled" Datatype="Bool" />
+    <Member Name="x_Bit_3_Brake_released" Datatype="Bool" />
+    <Member Name="x_Bit_4_Motor_turning" Datatype="Bool" />
+    <Member Name="x_Bit_5_Active_Drive_referenced" Datatype="Bool" />
+    <Member Name="x_Bit_6_New_Relative_Position_applied" Datatype="Bool" />
+    <Member Name="x_Bit_7_In_Position" Datatype="Bool" />
+    <Member Name="iActual_Speed" Datatype="Int" />
+    <Member Name="wStatus_main_fault_sub_fault" Datatype="Word">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="iActual_Torque" Datatype="Int" />
+    <Member Name="wDigital_Inputs" Datatype="Word" />
+    <Member Name="bStatus_Fault" Datatype="Byte" />
+    <Member Name="bStatus_subFault" Datatype="Byte" />
+  </Section>
+</Sections></Interface>
+      <Name>SEW_MOVIKIT_VelocityDrive_STATUS_V2.1</Name>
+      <Namespace />
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Types.PlcStruct>
+</Document>
