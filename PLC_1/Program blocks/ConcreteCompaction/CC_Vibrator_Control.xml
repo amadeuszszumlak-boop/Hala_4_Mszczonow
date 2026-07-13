@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.FB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input">
+    <Member Name="StartVibrating" Datatype="Bool" />
+    <Member Name="Reset" Datatype="Bool" />
+    <Member Name="Axis" Datatype="TO_SpeedAxis" Version="7.0" />
+    <Member Name="tmpVelocity" Datatype="LReal">
+      <StartValue>2840.0</StartValue>
+    </Member>
+  </Section>
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="MC_Power_data" Datatype="MC_POWER" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_Reset_data" Datatype="MC_RESET" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_MoveJog_data" Datatype="MC_MOVEJOG" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_HALT_data" Datatype="MC_HALT" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+  </Section>
+  <Section Name="Temp" />
+  <Section Name="Constant" />
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>CC_Vibrator_Control</Name>
+      <Namespace />
+      <Number>103</Number>
+      <ProgrammingLanguage>LAD</ProgrammingLanguage>
+      <SetENOAutomatically>false</SetENOAutomatically>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="StartVibrating" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="Axis" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="23">
+      <Constant>
+        <ConstantType>DInt</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="LiteralConstant" UId="24">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>1</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="LocalVariable" UId="25">
+      <Symbol>
+        <Component Name="Axis" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="26">
+      <Symbol>
+        <Component Name="Reset" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="27">
+      <Symbol>
+        <Component Name="MC_Power_data" />
+        <Component Name="Status" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="28">
+      <Symbol>
+        <Component Name="StartVibrating" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="29">
+      <Symbol>
+        <Component Name="Axis" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="30">
+      <Symbol>
+        <Component Name="tmpVelocity" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="31">
+      <Constant>
+        <ConstantType>Bool</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+    <Part Name="Contact" UId="32" />
+    <Part Name="MC_POWER" Version="7.0" UId="33">
+      <Instance Scope="LocalVariable" UId="34">
+        <Component Name="MC_Power_data" />
+      </Instance>
+    </Part>
+    <Part Name="MC_RESET" Version="7.0" UId="35">
+      <Instance Scope="LocalVariable" UId="36">
+        <Component Name="MC_Reset_data" />
+      </Instance>
+    </Part>
+    <Part Name="Contact" UId="37" />
+    <Part Name="Contact" UId="38" />
+    <Part Name="MC_MOVEJOG" Version="7.0" UId="39">
+      <Instance Scope="LocalVariable" UId="40">
+        <Component Name="MC_MoveJog_data" />
+      </Instance>
+    </Part>
+  </Parts>
+  <Wires>
+    <Wire UId="60">
+      <Powerrail />
+      <NameCon UId="33" Name="en" />
+      <NameCon UId="32" Name="in" />
+      <NameCon UId="35" Name="en" />
+      <NameCon UId="39" Name="en" />
+      <NameCon UId="37" Name="in" />
+    </Wire>
+    <Wire UId="61">
+      <IdentCon UId="21" />
+      <NameCon UId="32" Name="operand" />
+    </Wire>
+    <Wire UId="62">
+      <NameCon UId="32" Name="out" />
+      <NameCon UId="33" Name="Enable" />
+    </Wire>
+    <Wire UId="63">
+      <IdentCon UId="22" />
+      <NameCon UId="33" Name="Axis" />
+    </Wire>
+    <Wire UId="64">
+      <IdentCon UId="23" />
+      <NameCon UId="33" Name="StartMode" />
+    </Wire>
+    <Wire UId="65">
+      <IdentCon UId="24" />
+      <NameCon UId="33" Name="StopMode" />
+    </Wire>
+    <Wire UId="66">
+      <NameCon UId="33" Name="Status" />
+      <OpenCon UId="41" />
+    </Wire>
+    <Wire UId="67">
+      <NameCon UId="33" Name="Busy" />
+      <OpenCon UId="42" />
+    </Wire>
+    <Wire UId="68">
+      <NameCon UId="33" Name="Error" />
+      <OpenCon UId="43" />
+    </Wire>
+    <Wire UId="69">
+      <NameCon UId="33" Name="ErrorId" />
+      <OpenCon UId="44" />
+    </Wire>
+    <Wire UId="70">
+      <IdentCon UId="25" />
+      <NameCon UId="35" Name="Axis" />
+    </Wire>
+    <Wire UId="71">
+      <IdentCon UId="26" />
+      <NameCon UId="35" Name="Execute" />
+    </Wire>
+    <Wire UId="72">
+      <OpenCon UId="45" />
+      <NameCon UId="35" Name="Restart" />
+    </Wire>
+    <Wire UId="73">
+      <NameCon UId="35" Name="Done" />
+      <OpenCon UId="46" />
+    </Wire>
+    <Wire UId="74">
+      <NameCon UId="35" Name="Busy" />
+      <OpenCon UId="47" />
+    </Wire>
+    <Wire UId="75">
+      <NameCon UId="35" Name="CommandAborted" />
+      <OpenCon UId="48" />
+    </Wire>
+    <Wire UId="76">
+      <NameCon UId="35" Name="Error" />
+      <OpenCon UId="49" />
+    </Wire>
+    <Wire UId="77">
+      <NameCon UId="35" Name="ErrorId" />
+      <OpenCon UId="50" />
+    </Wire>
+    <Wire UId="78">
+      <IdentCon UId="27" />
+      <NameCon UId="37" Name="operand" />
+    </Wire>
+    <Wire UId="79">
+      <NameCon UId="37" Name="out" />
+      <NameCon UId="38" Name="in" />
+    </Wire>
+    <Wire UId="80">
+      <IdentCon UId="28" />
+      <NameCon UId="38" Name="operand" />
+    </Wire>
+    <Wire UId="81">
+      <NameCon UId="38" Name="out" />
+      <NameCon UId="39" Name="JogForward" />
+    </Wire>
+    <Wire UId="82">
+      <IdentCon UId="29" />
+      <NameCon UId="39" Name="Axis" />
+    </Wire>
+    <Wire UId="83">
+      <OpenCon UId="51" />
+      <NameCon UId="39" Name="JogBackward" />
+    </Wire>
+    <Wire UId="84">
+      <IdentCon UId="30" />
+      <NameCon UId="39" Name="Velocity" />
+    </Wire>
+    <Wire UId="85">
+      <OpenCon UId="52" />
+      <NameCon UId="39" Name="Acceleration" />
+    </Wire>
+    <Wire UId="86">
+      <OpenCon UId="53" />
+      <NameCon UId="39" Name="Deceleration" />
+    </Wire>
+    <Wire UId="87">
+      <OpenCon UId="54" />
+      <NameCon UId="39" Name="Jerk" />
+    </Wire>
+    <Wire UId="88">
+      <IdentCon UId="31" />
+      <NameCon UId="39" Name="PositionControlled" />
+    </Wire>
+    <Wire UId="89">
+      <NameCon UId="39" Name="InVelocity" />
+      <OpenCon UId="55" />
+    </Wire>
+    <Wire UId="90">
+      <NameCon UId="39" Name="Busy" />
+      <OpenCon UId="56" />
+    </Wire>
+    <Wire UId="91">
+      <NameCon UId="39" Name="CommandAborted" />
+      <OpenCon UId="57" />
+    </Wire>
+    <Wire UId="92">
+      <NameCon UId="39" Name="Error" />
+      <OpenCon UId="58" />
+    </Wire>
+    <Wire UId="93">
+      <NameCon UId="39" Name="ErrorId" />
+      <OpenCon UId="59" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Hydraulic Unit Motion Control</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="8" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="9" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FB>
+</Document>

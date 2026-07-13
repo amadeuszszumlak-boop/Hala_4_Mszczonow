@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.InstanceDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <InstanceOfName>CC_Main</InstanceOfName>
+      <InstanceOfType>FB</InstanceOfType>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input">
+    <Member Name="HMI_Reset" Datatype="Bool" />
+    <Member Name="ST23_Selected" Datatype="Bool" />
+    <Member Name="CNT_DownPos1" Datatype="Bool" />
+    <Member Name="CNT_DownPos2" Datatype="Bool" />
+    <Member Name="CNT_UpPos1" Datatype="Bool" />
+    <Member Name="CNT_UpPos2" Datatype="Bool" />
+    <Member Name="Hydraulic_Roller_DownPos1" Datatype="Bool" />
+    <Member Name="Hydraulic_Roller_DownPos2" Datatype="Bool" />
+    <Member Name="Hydraulic_Roller_UpPos1" Datatype="Bool" />
+    <Member Name="Hydraulic_Roller_UpPos2" Datatype="Bool" />
+    <Member Name="Drive_Roller_DownPos1" Datatype="Bool" />
+    <Member Name="Drive_Roller_DownPos2" Datatype="Bool" />
+    <Member Name="Drive_Roller_UpPos1" Datatype="Bool" />
+    <Member Name="Drive_Roller_UpPos2" Datatype="Bool" />
+    <Member Name="Module_DownPos1" Datatype="Bool" />
+    <Member Name="Module_DownPos2" Datatype="Bool" />
+    <Member Name="Module_UpPos1" Datatype="Bool" />
+    <Member Name="Module_UpPos2" Datatype="Bool" />
+  </Section>
+  <Section Name="Output">
+    <Member Name="Hydraulic_Main_Valve_Control" Datatype="Bool" />
+  </Section>
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="Hydraulic_Unit_Active" Datatype="Bool" />
+    <Member Name="Any_Valve_Active" Datatype="Bool" />
+    <Member Name="HydUnitTimerOff" Datatype="TON_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HydraulicUnit_MC_Power" Datatype="MC_POWER" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HydraulicUnit_MC_MoveJog" Datatype="MC_MOVEJOG" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HydraulicUnit_MC_Reset" Datatype="MC_RESET" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Vibrator_Control_MOD1" Datatype="&quot;CC_Vibrator_Control&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Vibrator_Control_MOD2" Datatype="&quot;CC_Vibrator_Control&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Vibrator_Control_MOD3" Datatype="&quot;CC_Vibrator_Control&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Module_Control_ST23" Datatype="&quot;CC_Vib_Modules&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="ST23_UP_whenMoving" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="ST24_UP_whenMoving" Datatype="Bool" />
+    <Member Name="ST25_UP_whenMoving" Datatype="Bool" />
+    <Member Name="MC_Power_Vib1" Datatype="MC_POWER" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_RESET_Vib1" Datatype="MC_RESET" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="MC_MOVEJOG_Vib1" Datatype="MC_MOVEJOG" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="ST24_DriveRollsUP" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="ST24_DriveRollsDown" Datatype="Bool" />
+    <Member Name="ST25_DriveRollsUp" Datatype="Bool" />
+    <Member Name="ST25_DriveRollsDown" Datatype="Bool" />
+    <Member Name="ST23_Station_Control" Datatype="&quot;CC_Station_Control&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="ST24_Station_Control" Datatype="&quot;CC_Station_Control&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="ST25_Station_Control" Datatype="&quot;CC_Station_Control&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="ST24_Selected" Datatype="Bool" />
+  </Section>
+</Sections></Interface>
+      <Name>DB_CC_Main</Name>
+      <Namespace />
+      <Number>101</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.InstanceDB>
+</Document>

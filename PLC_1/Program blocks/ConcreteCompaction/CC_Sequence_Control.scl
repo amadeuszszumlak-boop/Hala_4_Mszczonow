@@ -1,0 +1,134 @@
+﻿FUNCTION_BLOCK "CC_Sequence_Control"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Button_DriveRollers_Down : Bool;
+      Button_DriveRollers_Up : Bool;
+      Button_modules_Down : Bool;
+      Button_modules_Up : Bool;
+      Button_Pallete_Down : Bool;
+      Button_Pallete_Up : Bool;
+      Button_Wib : Bool;
+      Seq_Forward : Bool;
+      Seq_Backward : Bool;
+      Drive_Rollers_DownPos : Bool;
+      Drive_Rollers_UpPos : Bool;
+      Pallete_DownPos : Bool;
+      Pallete_UpPos : Bool;
+      Modules_DownPos : Bool;
+      Modules_UpPos : Bool;
+      Centering_DownPos : Bool;
+      Centering_UpPos : Bool;
+   END_VAR
+
+   VAR_OUTPUT 
+      ReqPalleteUp : Bool;
+      ReqPalleteDown : Bool;
+      ReqDriveRollerUp : Bool;
+      ReqDriveRollerDown : Bool;
+      ReqModulesUp : Bool;
+      ReqModulesDown : Bool;
+      ReqVibrationEnable : Bool;
+      Station_basePos : Bool;
+   END_VAR
+
+   VAR 
+      Step { S7_SetPoint := 'True'} : Int;
+      Button_Backward_TON {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+   END_VAR
+
+   VAR CONSTANT 
+      sNOT_AUTOMATIC : Int;
+      sBASE_POSITION : Int := 1;
+      sMOVING_DRIVE_ROLLER : Int := 2;
+      sMOVING_PALLETE : Int := 3;
+      sMOVING_COMPACTION_MODULE : Int := 4;
+      sCOMPACTING : Int := 5;
+   END_VAR
+
+
+BEGIN
+	// Reset outputów
+	#ReqPalleteUp := FALSE;
+	#ReqPalleteDown := FALSE;
+	#ReqDriveRollerUp := FALSE;
+	#ReqDriveRollerDown := FALSE;
+	#ReqVibrationEnable := FALSE;
+	#ReqModulesUp := FALSE;
+	#ReqModulesDown := FALSE;
+	#Station_basePos := FALSE;
+	
+	IF #Button_DriveRollers_Down OR #Button_DriveRollers_Up OR #Button_Pallete_Down OR #Button_Pallete_Up OR #Button_modules_Down OR #Button_modules_Up OR #Button_Wib THEN
+	    #Step := #sNOT_AUTOMATIC;
+	ELSIF #Pallete_UpPos AND NOT #Seq_Forward AND #Drive_Rollers_UpPos AND #Modules_DownPos AND #Centering_DownPos THEN
+	    #Step := #sBASE_POSITION;
+	    #Station_basePos := true;
+	END_IF;
+	
+	
+	CASE #Step OF
+	    #sBASE_POSITION:
+	        IF #Seq_Forward THEN
+	            #Step := #sMOVING_DRIVE_ROLLER;
+	        END_IF;
+	    #sMOVING_DRIVE_ROLLER:
+	        #ReqPalleteUp := TRUE;
+	        IF #Seq_Forward THEN
+	            #ReqDriveRollerDown := TRUE;
+	            IF #Drive_Rollers_DownPos THEN
+	                #Step := #sMOVING_PALLETE;
+	            END_IF;
+	        ELSIF #Seq_Backward THEN
+	            #ReqDriveRollerUp := TRUE;
+	            IF #Drive_Rollers_UpPos THEN
+	                #Step := #sBASE_POSITION;
+	            END_IF;
+	        END_IF;
+	        
+	    #sMOVING_PALLETE:
+	        IF #Seq_Forward THEN
+	            #ReqPalleteDown := TRUE;
+	            IF #Pallete_DownPos THEN
+	                #Step := #sMOVING_COMPACTION_MODULE;
+	            END_IF;
+	        ELSIF #Seq_Backward THEN
+	            #ReqPalleteUp := TRUE;
+	            IF #Pallete_UpPos THEN
+	                #Step := #sMOVING_DRIVE_ROLLER;
+	            END_IF;
+	        END_IF;
+	        
+	    #sMOVING_COMPACTION_MODULE:
+	        IF #Seq_Forward THEN
+	            #ReqModulesUp := TRUE;
+	         //   IF #Modules_UpPos THEN
+	                #Step := #sCOMPACTING;
+	         //   END_IF;
+	        ELSIF #Seq_Backward THEN
+	            #ReqModulesDown := TRUE;
+	            IF #Modules_DownPos THEN
+	                #Step := #sMOVING_PALLETE;
+	            END_IF;
+	        END_IF;
+	        
+	    #sCOMPACTING:
+	        // Warunek zakończenia kompaktowania (np. czas lub czujnik)
+	        IF #Seq_Forward THEN
+	            #ReqVibrationEnable := TRUE;
+	            #Step := #sCOMPACTING;
+	        ELSIF #Seq_Backward THEN
+	            #Step := #sMOVING_COMPACTION_MODULE;
+	        END_IF;
+	        
+	    #sNOT_AUTOMATIC:
+	        #ReqDriveRollerDown := #Button_DriveRollers_Down;
+	        #ReqDriveRollerUp := #Button_DriveRollers_Up;
+	        #ReqModulesDown := #Button_modules_Down;
+	        #ReqModulesUp := #Button_modules_Up;
+	        #ReqPalleteDown := #Button_Pallete_Down;
+	        #ReqPalleteUp := #Button_Pallete_Up;
+	        #ReqVibrationEnable := #Button_Wib;
+	        
+	END_CASE;
+END_FUNCTION_BLOCK
+

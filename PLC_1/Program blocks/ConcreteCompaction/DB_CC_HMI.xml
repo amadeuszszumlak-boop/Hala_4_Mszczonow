@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="Safety_ACK" Datatype="Bool" />
+    <Member Name="Reset_Drives" Datatype="Bool" />
+    <Member Name="Reset_Safety" Datatype="Bool" />
+    <Member Name="Error_Status" Datatype="Bool" />
+    <Member Name="CC_ST23_RollsUp" Datatype="Bool" />
+    <Member Name="CC_ST23_RollsDown" Datatype="Bool" />
+    <Member Name="CC_ST23_ModulesUp" Datatype="Bool" />
+    <Member Name="CC_ST23_ModulesDown" Datatype="Bool" />
+    <Member Name="CC_ST23_Wibrating" Datatype="Bool" />
+    <Member Name="CC_ST23_DriveRollerUp" Datatype="Bool" />
+    <Member Name="CC_ST23_DriveRollerDown" Datatype="Bool" />
+    <Member Name="CC_ST23_WibratingAuto" Datatype="Bool" />
+    <Member Name="CC_ST23_UnlockPallete" Datatype="Bool" />
+    <Member Name="CC_ST24_RollsUp" Datatype="Bool" />
+    <Member Name="CC_ST24_RollsDown" Datatype="Bool" />
+    <Member Name="CC_ST24_ModulesUp" Datatype="Bool" />
+    <Member Name="CC_ST24_ModulesDown" Datatype="Bool" />
+    <Member Name="CC_ST24_Wibrating" Datatype="Bool" />
+    <Member Name="CC_ST24_DriveRollerUp" Datatype="Bool" />
+    <Member Name="CC_ST24_DriveRollerDown" Datatype="Bool" />
+    <Member Name="CC_ST24_WibratingAuto" Datatype="Bool" />
+    <Member Name="CC_ST24_UnlockPallete" Datatype="Bool" />
+    <Member Name="CC_ST25_RollsUp" Datatype="Bool" />
+    <Member Name="CC_ST25_RollsDown" Datatype="Bool" />
+    <Member Name="CC_ST25_ModulesUp" Datatype="Bool" />
+    <Member Name="CC_ST25_ModulesDown" Datatype="Bool" />
+    <Member Name="CC_ST25_Wibrating" Datatype="Bool" />
+    <Member Name="CC_ST25_DriveRollerUp" Datatype="Bool" />
+    <Member Name="CC_ST25_DriveRollerDown" Datatype="Bool" />
+    <Member Name="CC_ST25_WibratingAuto" Datatype="Bool" />
+    <Member Name="CC_ST25_UnlockPallete" Datatype="Bool" />
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>DB_CC_HMI</Name>
+      <Namespace />
+      <Number>100</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

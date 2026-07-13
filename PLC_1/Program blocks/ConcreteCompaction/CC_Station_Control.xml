@@ -1,0 +1,1289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.FB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input">
+    <Member Name="HMI_Reset" Datatype="Bool" />
+    <Member Name="Station_Empty" Datatype="Bool" />
+    <Member Name="Station_Occupied" Datatype="Bool" />
+    <Member Name="Button_Seq_Forward" Datatype="Bool" />
+    <Member Name="Button_Seq_Backward" Datatype="Bool" />
+    <Member Name="HMI_Drive_Rollers_Down" Datatype="Bool" />
+    <Member Name="HMI_Drive_Rollers_Up" Datatype="Bool" />
+    <Member Name="HMI_Hydraulic_Down" Datatype="Bool" />
+    <Member Name="HMI_Hydraulic_Up" Datatype="Bool" />
+    <Member Name="HMI_Modules_Down" Datatype="Bool" />
+    <Member Name="HMI_Modules_Up" Datatype="Bool" />
+    <Member Name="HMI_Vibrating" Datatype="Bool" />
+    <Member Name="CNT_DownPos1" Datatype="Bool" />
+    <Member Name="CNT_DownPos2" Datatype="Bool" />
+    <Member Name="CNT_UpPos1" Datatype="Bool" />
+    <Member Name="CNT_UpPos2" Datatype="Bool" />
+    <Member Name="Hydraulic_Roller_DownPos1" Datatype="Bool" />
+    <Member Name="Hydraulic_Roller_DownPos2" Datatype="Bool" />
+    <Member Name="Hydraulic_Roller_UpPos1" Datatype="Bool" />
+    <Member Name="Hydraulic_Roller_UpPos2" Datatype="Bool" />
+    <Member Name="Hydraulic_Unit_Ready" Datatype="Bool" />
+    <Member Name="Drive_Roller_DownPos1" Datatype="Bool" />
+    <Member Name="Drive_Roller_DownPos2" Datatype="Bool" />
+    <Member Name="Drive_Roller_UpPos1" Datatype="Bool" />
+    <Member Name="Drive_Roller_UpPos2" Datatype="Bool" />
+    <Member Name="Modules_DownPos1" Datatype="Bool" />
+    <Member Name="Modules_DownPos2" Datatype="Bool" />
+    <Member Name="Modules_UpPos1" Datatype="Bool" />
+    <Member Name="Modules_UpPos2" Datatype="Bool" />
+  </Section>
+  <Section Name="Output">
+    <Member Name="Hydraulic_Unit" Datatype="Bool" />
+    <Member Name="Hydraulic_Rollers_Up" Datatype="Bool" />
+    <Member Name="Hydraulic_Rollers_Down" Datatype="Bool" />
+    <Member Name="Vibration_Enable" Datatype="Bool" />
+    <Member Name="Drive_Rollers_Up" Datatype="Bool" />
+    <Member Name="Modules_Up" Datatype="Bool" />
+  </Section>
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="Hydraulic_Unit_Active" Datatype="Bool" />
+    <Member Name="Hydraulic_Unit_TimerOff" Datatype="TON_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Hydraulic_Unit_MC_Power" Datatype="MC_POWER" Version="7.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Hydraulic_Rollers" Datatype="&quot;CC_Hydraulic_Rollers&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Pneumatic_Rollers" Datatype="&quot;CC_Pneumatic_Roller&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Vibrator_Control" Datatype="&quot;CC_Vibrator_Control&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Sequence_Step" Datatype="Int">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Req_Hydraulic_Rollers_Up" Datatype="Bool" />
+    <Member Name="Req_Hydraulic_Rollers_Down" Datatype="Bool" />
+    <Member Name="Req_Drive_Roller_Up" Datatype="Bool" />
+    <Member Name="Req_Drive_Roller_Down" Datatype="Bool" />
+    <Member Name="Req_Vibration_Enable" Datatype="Bool" />
+    <Member Name="Req_Modules_Up" Datatype="Bool" />
+    <Member Name="Req_Modules_Down" Datatype="Bool" />
+    <Member Name="Sequence_Control" Datatype="&quot;CC_Sequence_Control&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Module_Control" Datatype="&quot;CC_Vib_Modules&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Hyd_Rollers_Up_whenMoving" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+  </Section>
+  <Section Name="Temp" />
+  <Section Name="Constant" />
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>CC_Station_Control</Name>
+      <Namespace />
+      <Number>105</Number>
+      <ProgrammingLanguage>LAD</ProgrammingLanguage>
+      <SetENOAutomatically>false</SetENOAutomatically>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="CNT_DownPos1" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="CNT_UpPos1" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="CNT_DownPos2" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="24">
+      <Symbol>
+        <Component Name="CNT_UpPos2" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="25">
+      <Symbol>
+        <Component Name="Sequence_Control" />
+        <Component Name="Centering_DownPos" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="26" />
+    <Part Name="Contact" UId="27" />
+    <Part Name="Contact" UId="28" />
+    <Part Name="Contact" UId="29" />
+    <Part Name="Coil" UId="30" />
+  </Parts>
+  <Wires>
+    <Wire UId="31">
+      <Powerrail />
+      <NameCon UId="26" Name="in" />
+    </Wire>
+    <Wire UId="32">
+      <IdentCon UId="21" />
+      <NameCon UId="26" Name="operand" />
+    </Wire>
+    <Wire UId="33">
+      <NameCon UId="26" Name="out" />
+      <NameCon UId="27" Name="in" />
+    </Wire>
+    <Wire UId="34">
+      <IdentCon UId="22" />
+      <NameCon UId="27" Name="operand" />
+    </Wire>
+    <Wire UId="35">
+      <NameCon UId="27" Name="out" />
+      <NameCon UId="28" Name="in" />
+    </Wire>
+    <Wire UId="36">
+      <IdentCon UId="23" />
+      <NameCon UId="28" Name="operand" />
+    </Wire>
+    <Wire UId="37">
+      <NameCon UId="28" Name="out" />
+      <NameCon UId="29" Name="in" />
+    </Wire>
+    <Wire UId="38">
+      <IdentCon UId="24" />
+      <NameCon UId="29" Name="operand" />
+    </Wire>
+    <Wire UId="39">
+      <NameCon UId="29" Name="out" />
+      <NameCon UId="30" Name="in" />
+    </Wire>
+    <Wire UId="40">
+      <IdentCon UId="25" />
+      <NameCon UId="30" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Centering devices position down</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="CNT_DownPos1" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="CNT_UpPos1" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="CNT_DownPos2" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="24">
+      <Symbol>
+        <Component Name="CNT_UpPos2" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="25">
+      <Symbol>
+        <Component Name="Sequence_Control" />
+        <Component Name="Centering_UpPos" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="26">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="27" />
+    <Part Name="Contact" UId="28">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="29" />
+    <Part Name="Coil" UId="30" />
+  </Parts>
+  <Wires>
+    <Wire UId="31">
+      <Powerrail />
+      <NameCon UId="26" Name="in" />
+    </Wire>
+    <Wire UId="32">
+      <IdentCon UId="21" />
+      <NameCon UId="26" Name="operand" />
+    </Wire>
+    <Wire UId="33">
+      <NameCon UId="26" Name="out" />
+      <NameCon UId="27" Name="in" />
+    </Wire>
+    <Wire UId="34">
+      <IdentCon UId="22" />
+      <NameCon UId="27" Name="operand" />
+    </Wire>
+    <Wire UId="35">
+      <NameCon UId="27" Name="out" />
+      <NameCon UId="28" Name="in" />
+    </Wire>
+    <Wire UId="36">
+      <IdentCon UId="23" />
+      <NameCon UId="28" Name="operand" />
+    </Wire>
+    <Wire UId="37">
+      <NameCon UId="28" Name="out" />
+      <NameCon UId="29" Name="in" />
+    </Wire>
+    <Wire UId="38">
+      <IdentCon UId="24" />
+      <NameCon UId="29" Name="operand" />
+    </Wire>
+    <Wire UId="39">
+      <NameCon UId="29" Name="out" />
+      <NameCon UId="30" Name="in" />
+    </Wire>
+    <Wire UId="40">
+      <IdentCon UId="25" />
+      <NameCon UId="30" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Centering devices position up</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="D" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="HMI_Drive_Rollers_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="HMI_Drive_Rollers_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="HMI_Modules_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="24">
+      <Symbol>
+        <Component Name="HMI_Modules_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="25">
+      <Symbol>
+        <Component Name="HMI_Hydraulic_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="26">
+      <Symbol>
+        <Component Name="HMI_Hydraulic_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="27">
+      <Symbol>
+        <Component Name="HMI_Vibrating" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="28">
+      <Symbol>
+        <Component Name="Button_Seq_Forward" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="29">
+      <Symbol>
+        <Component Name="Button_Seq_Backward" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="30">
+      <Symbol>
+        <Component Name="Pneumatic_Rollers" />
+        <Component Name="PosDown" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="31">
+      <Symbol>
+        <Component Name="Pneumatic_Rollers" />
+        <Component Name="PosUp" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="32">
+      <Symbol>
+        <Component Name="Hydraulic_Rollers" />
+        <Component Name="PosDown" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="33">
+      <Symbol>
+        <Component Name="Hydraulic_Rollers" />
+        <Component Name="PosUp" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="34">
+      <Symbol>
+        <Component Name="Module_Control" />
+        <Component Name="PosDown" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="35">
+      <Symbol>
+        <Component Name="Module_Control" />
+        <Component Name="PosUp" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="36">
+      <Symbol>
+        <Component Name="Sequence_Control" />
+        <Component Name="Centering_DownPos" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="37">
+      <Symbol>
+        <Component Name="Sequence_Control" />
+        <Component Name="Centering_UpPos" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="38">
+      <Symbol>
+        <Component Name="Sequence_Control" />
+        <Component Name="ReqPalleteUp" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="39">
+      <Symbol>
+        <Component Name="Sequence_Control" />
+        <Component Name="ReqPalleteDown" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="40">
+      <Symbol>
+        <Component Name="Sequence_Control" />
+        <Component Name="ReqDriveRollerUp" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="41">
+      <Symbol>
+        <Component Name="Sequence_Control" />
+        <Component Name="ReqDriveRollerDown" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="42">
+      <Symbol>
+        <Component Name="Sequence_Control" />
+        <Component Name="ReqModulesUp" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="43">
+      <Symbol>
+        <Component Name="Sequence_Control" />
+        <Component Name="ReqModulesDown" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="44">
+      <Symbol>
+        <Component Name="Vibration_Enable" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="45">
+      <Symbol>
+        <Component Name="Sequence_Control" />
+        <Component Name="Station_basePos" />
+      </Symbol>
+    </Access>
+    <Call UId="46">
+      <CallInfo Name="CC_Sequence_Control" BlockType="FB">
+        <Instance Scope="LocalVariable" UId="47">
+          <Component Name="Sequence_Control" />
+        </Instance>
+        <Parameter Name="Button_DriveRollers_Down" Section="Input" Type="Bool" />
+        <Parameter Name="Button_DriveRollers_Up" Section="Input" Type="Bool" />
+        <Parameter Name="Button_modules_Down" Section="Input" Type="Bool" />
+        <Parameter Name="Button_modules_Up" Section="Input" Type="Bool" />
+        <Parameter Name="Button_Pallete_Down" Section="Input" Type="Bool" />
+        <Parameter Name="Button_Pallete_Up" Section="Input" Type="Bool" />
+        <Parameter Name="Button_Wib" Section="Input" Type="Bool" />
+        <Parameter Name="Seq_Forward" Section="Input" Type="Bool" />
+        <Parameter Name="Seq_Backward" Section="Input" Type="Bool" />
+        <Parameter Name="Drive_Rollers_DownPos" Section="Input" Type="Bool" />
+        <Parameter Name="Drive_Rollers_UpPos" Section="Input" Type="Bool" />
+        <Parameter Name="Pallete_DownPos" Section="Input" Type="Bool" />
+        <Parameter Name="Pallete_UpPos" Section="Input" Type="Bool" />
+        <Parameter Name="Modules_DownPos" Section="Input" Type="Bool" />
+        <Parameter Name="Modules_UpPos" Section="Input" Type="Bool" />
+        <Parameter Name="Centering_DownPos" Section="Input" Type="Bool" />
+        <Parameter Name="Centering_UpPos" Section="Input" Type="Bool" />
+        <Parameter Name="ReqPalleteUp" Section="Output" Type="Bool" />
+        <Parameter Name="ReqPalleteDown" Section="Output" Type="Bool" />
+        <Parameter Name="ReqDriveRollerUp" Section="Output" Type="Bool" />
+        <Parameter Name="ReqDriveRollerDown" Section="Output" Type="Bool" />
+        <Parameter Name="ReqModulesUp" Section="Output" Type="Bool" />
+        <Parameter Name="ReqModulesDown" Section="Output" Type="Bool" />
+        <Parameter Name="ReqVibrationEnable" Section="Output" Type="Bool" />
+        <Parameter Name="Station_basePos" Section="Output" Type="Bool" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="48">
+      <Powerrail />
+      <NameCon UId="46" Name="en" />
+    </Wire>
+    <Wire UId="49">
+      <IdentCon UId="21" />
+      <NameCon UId="46" Name="Button_DriveRollers_Down" />
+    </Wire>
+    <Wire UId="50">
+      <IdentCon UId="22" />
+      <NameCon UId="46" Name="Button_DriveRollers_Up" />
+    </Wire>
+    <Wire UId="51">
+      <IdentCon UId="23" />
+      <NameCon UId="46" Name="Button_modules_Down" />
+    </Wire>
+    <Wire UId="52">
+      <IdentCon UId="24" />
+      <NameCon UId="46" Name="Button_modules_Up" />
+    </Wire>
+    <Wire UId="53">
+      <IdentCon UId="25" />
+      <NameCon UId="46" Name="Button_Pallete_Down" />
+    </Wire>
+    <Wire UId="54">
+      <IdentCon UId="26" />
+      <NameCon UId="46" Name="Button_Pallete_Up" />
+    </Wire>
+    <Wire UId="55">
+      <IdentCon UId="27" />
+      <NameCon UId="46" Name="Button_Wib" />
+    </Wire>
+    <Wire UId="56">
+      <IdentCon UId="28" />
+      <NameCon UId="46" Name="Seq_Forward" />
+    </Wire>
+    <Wire UId="57">
+      <IdentCon UId="29" />
+      <NameCon UId="46" Name="Seq_Backward" />
+    </Wire>
+    <Wire UId="58">
+      <IdentCon UId="30" />
+      <NameCon UId="46" Name="Drive_Rollers_DownPos" />
+    </Wire>
+    <Wire UId="59">
+      <IdentCon UId="31" />
+      <NameCon UId="46" Name="Drive_Rollers_UpPos" />
+    </Wire>
+    <Wire UId="60">
+      <IdentCon UId="32" />
+      <NameCon UId="46" Name="Pallete_DownPos" />
+    </Wire>
+    <Wire UId="61">
+      <IdentCon UId="33" />
+      <NameCon UId="46" Name="Pallete_UpPos" />
+    </Wire>
+    <Wire UId="62">
+      <IdentCon UId="34" />
+      <NameCon UId="46" Name="Modules_DownPos" />
+    </Wire>
+    <Wire UId="63">
+      <IdentCon UId="35" />
+      <NameCon UId="46" Name="Modules_UpPos" />
+    </Wire>
+    <Wire UId="64">
+      <IdentCon UId="36" />
+      <NameCon UId="46" Name="Centering_DownPos" />
+    </Wire>
+    <Wire UId="65">
+      <IdentCon UId="37" />
+      <NameCon UId="46" Name="Centering_UpPos" />
+    </Wire>
+    <Wire UId="66">
+      <NameCon UId="46" Name="ReqPalleteUp" />
+      <IdentCon UId="38" />
+    </Wire>
+    <Wire UId="67">
+      <NameCon UId="46" Name="ReqPalleteDown" />
+      <IdentCon UId="39" />
+    </Wire>
+    <Wire UId="68">
+      <NameCon UId="46" Name="ReqDriveRollerUp" />
+      <IdentCon UId="40" />
+    </Wire>
+    <Wire UId="69">
+      <NameCon UId="46" Name="ReqDriveRollerDown" />
+      <IdentCon UId="41" />
+    </Wire>
+    <Wire UId="70">
+      <NameCon UId="46" Name="ReqModulesUp" />
+      <IdentCon UId="42" />
+    </Wire>
+    <Wire UId="71">
+      <NameCon UId="46" Name="ReqModulesDown" />
+      <IdentCon UId="43" />
+    </Wire>
+    <Wire UId="72">
+      <NameCon UId="46" Name="ReqVibrationEnable" />
+      <IdentCon UId="44" />
+    </Wire>
+    <Wire UId="73">
+      <NameCon UId="46" Name="Station_basePos" />
+      <IdentCon UId="45" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="E" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="10" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="12" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="Sequence_Control" />
+        <Component Name="ReqPalleteUp" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="Hyd_Rollers_Up_whenMoving" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="Sequence_Control" />
+        <Component Name="ReqPalleteDown" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="24">
+      <Symbol>
+        <Component Name="Sequence_Control" />
+        <Component Name="ReqPalleteDown" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="25">
+      <Symbol>
+        <Component Name="Station_Empty" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="26">
+      <Symbol>
+        <Component Name="Station_Occupied" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="27">
+      <Symbol>
+        <Component Name="Pneumatic_Rollers" />
+        <Component Name="Step" SliceAccessModifier="x1" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="Tag_66" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="29">
+      <Symbol>
+        <Component Name="Hydraulic_Roller_DownPos1" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="30">
+      <Symbol>
+        <Component Name="Hydraulic_Roller_UpPos1" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="31">
+      <Symbol>
+        <Component Name="Hydraulic_Roller_DownPos2" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="32">
+      <Symbol>
+        <Component Name="Hydraulic_Roller_UpPos2" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="33">
+      <Symbol>
+        <Component Name="Hydraulic_Unit_Ready" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="34">
+      <Symbol>
+        <Component Name="Hydraulic_Unit" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="35">
+      <Symbol>
+        <Component Name="Hydraulic_Rollers_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="36">
+      <Symbol>
+        <Component Name="Hydraulic_Rollers_Down" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="37">
+      <Symbol>
+        <Component Name="Hydraulic_Rollers" />
+        <Component Name="error" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="38">
+      <Symbol>
+        <Component Name="Hydraulic_Rollers" />
+        <Component Name="PosUp" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="39">
+      <Symbol>
+        <Component Name="Hydraulic_Rollers" />
+        <Component Name="PosDown" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="40" />
+    <Part Name="Contact" UId="41" />
+    <Part Name="O" UId="42">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="43">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="44" />
+    <Part Name="Contact" UId="45" />
+    <Part Name="Contact" UId="46" />
+    <Part Name="Contact" UId="47" />
+    <Part Name="Contact" UId="48" />
+    <Part Name="O" UId="49">
+      <TemplateValue Name="Card" Type="Cardinality">3</TemplateValue>
+    </Part>
+    <Call UId="50">
+      <CallInfo Name="CC_Hydraulic_Rollers" BlockType="FB">
+        <Instance Scope="LocalVariable" UId="51">
+          <Component Name="Hydraulic_Rollers" />
+        </Instance>
+        <Parameter Name="ReqUp" Section="Input" Type="Bool" />
+        <Parameter Name="ReqDown" Section="Input" Type="Bool" />
+        <Parameter Name="Sensor1Down" Section="Input" Type="Bool" />
+        <Parameter Name="Sensor1Up" Section="Input" Type="Bool" />
+        <Parameter Name="Sensor2Down" Section="Input" Type="Bool" />
+        <Parameter Name="Sensor2Up" Section="Input" Type="Bool" />
+        <Parameter Name="InterlockMove" Section="Input" Type="Bool" />
+        <Parameter Name="HydUnitReady" Section="Input" Type="Bool" />
+        <Parameter Name="HydraulicUnit" Section="Output" Type="Bool" />
+        <Parameter Name="ValveUp" Section="Output" Type="Bool" />
+        <Parameter Name="ValveDown" Section="Output" Type="Bool" />
+        <Parameter Name="error" Section="Output" Type="Byte" />
+        <Parameter Name="Step" Section="Output" Type="Int" />
+        <Parameter Name="PosUp" Section="Output" Type="Bool" />
+        <Parameter Name="PosDown" Section="Output" Type="Bool" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="53">
+      <Powerrail />
+      <NameCon UId="50" Name="en" />
+      <NameCon UId="40" Name="in" />
+      <NameCon UId="41" Name="in" />
+      <NameCon UId="44" Name="in" />
+      <NameCon UId="45" Name="in" />
+      <NameCon UId="46" Name="in" />
+      <NameCon UId="48" Name="in" />
+    </Wire>
+    <Wire UId="54">
+      <IdentCon UId="21" />
+      <NameCon UId="40" Name="operand" />
+    </Wire>
+    <Wire UId="55">
+      <NameCon UId="40" Name="out" />
+      <NameCon UId="42" Name="in1" />
+    </Wire>
+    <Wire UId="56">
+      <IdentCon UId="22" />
+      <NameCon UId="41" Name="operand" />
+    </Wire>
+    <Wire UId="57">
+      <NameCon UId="41" Name="out" />
+      <NameCon UId="42" Name="in2" />
+    </Wire>
+    <Wire UId="58">
+      <NameCon UId="42" Name="out" />
+      <NameCon UId="43" Name="in" />
+    </Wire>
+    <Wire UId="59">
+      <IdentCon UId="23" />
+      <NameCon UId="43" Name="operand" />
+    </Wire>
+    <Wire UId="60">
+      <NameCon UId="43" Name="out" />
+      <NameCon UId="50" Name="ReqUp" />
+    </Wire>
+    <Wire UId="61">
+      <IdentCon UId="24" />
+      <NameCon UId="44" Name="operand" />
+    </Wire>
+    <Wire UId="62">
+      <NameCon UId="44" Name="out" />
+      <NameCon UId="50" Name="ReqDown" />
+    </Wire>
+    <Wire UId="63">
+      <IdentCon UId="25" />
+      <NameCon UId="45" Name="operand" />
+    </Wire>
+    <Wire UId="64">
+      <NameCon UId="45" Name="out" />
+      <NameCon UId="49" Name="in1" />
+    </Wire>
+    <Wire UId="65">
+      <IdentCon UId="26" />
+      <NameCon UId="46" Name="operand" />
+    </Wire>
+    <Wire UId="66">
+      <NameCon UId="46" Name="out" />
+      <NameCon UId="47" Name="in" />
+    </Wire>
+    <Wire UId="67">
+      <IdentCon UId="27" />
+      <NameCon UId="47" Name="operand" />
+    </Wire>
+    <Wire UId="68">
+      <NameCon UId="47" Name="out" />
+      <NameCon UId="49" Name="in2" />
+    </Wire>
+    <Wire UId="69">
+      <IdentCon UId="28" />
+      <NameCon UId="48" Name="operand" />
+    </Wire>
+    <Wire UId="70">
+      <NameCon UId="48" Name="out" />
+      <NameCon UId="49" Name="in3" />
+    </Wire>
+    <Wire UId="71">
+      <NameCon UId="49" Name="out" />
+      <NameCon UId="50" Name="InterlockMove" />
+    </Wire>
+    <Wire UId="72">
+      <IdentCon UId="29" />
+      <NameCon UId="50" Name="Sensor1Down" />
+    </Wire>
+    <Wire UId="73">
+      <IdentCon UId="30" />
+      <NameCon UId="50" Name="Sensor1Up" />
+    </Wire>
+    <Wire UId="74">
+      <IdentCon UId="31" />
+      <NameCon UId="50" Name="Sensor2Down" />
+    </Wire>
+    <Wire UId="75">
+      <IdentCon UId="32" />
+      <NameCon UId="50" Name="Sensor2Up" />
+    </Wire>
+    <Wire UId="76">
+      <IdentCon UId="33" />
+      <NameCon UId="50" Name="HydUnitReady" />
+    </Wire>
+    <Wire UId="77">
+      <NameCon UId="50" Name="HydraulicUnit" />
+      <IdentCon UId="34" />
+    </Wire>
+    <Wire UId="78">
+      <NameCon UId="50" Name="ValveUp" />
+      <IdentCon UId="35" />
+    </Wire>
+    <Wire UId="79">
+      <NameCon UId="50" Name="ValveDown" />
+      <IdentCon UId="36" />
+    </Wire>
+    <Wire UId="80">
+      <NameCon UId="50" Name="error" />
+      <IdentCon UId="37" />
+    </Wire>
+    <Wire UId="81">
+      <NameCon UId="50" Name="Step" />
+      <OpenCon UId="52" />
+    </Wire>
+    <Wire UId="82">
+      <NameCon UId="50" Name="PosUp" />
+      <IdentCon UId="38" />
+    </Wire>
+    <Wire UId="83">
+      <NameCon UId="50" Name="PosDown" />
+      <IdentCon UId="39" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="13" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="15" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="16" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Hydraulic rollers control</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="17" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="Sequence_Control" />
+        <Component Name="ReqDriveRollerUp" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="Sequence_Control" />
+        <Component Name="ReqDriveRollerDown" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="Drive_Roller_DownPos1" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="24">
+      <Symbol>
+        <Component Name="Drive_Roller_UpPos1" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="25">
+      <Symbol>
+        <Component Name="Drive_Roller_DownPos2" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="26">
+      <Symbol>
+        <Component Name="Drive_Roller_UpPos2" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="27">
+      <Constant>
+        <ConstantType>Bool</ConstantType>
+        <ConstantValue>true</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="LocalVariable" UId="28">
+      <Symbol>
+        <Component Name="Drive_Rollers_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="29">
+      <Symbol>
+        <Component Name="Pneumatic_Rollers" />
+        <Component Name="PosUp" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="30">
+      <Symbol>
+        <Component Name="Pneumatic_Rollers" />
+        <Component Name="PosDown" />
+      </Symbol>
+    </Access>
+    <Call UId="31">
+      <CallInfo Name="CC_Pneumatic_Roller" BlockType="FB">
+        <Instance Scope="LocalVariable" UId="32">
+          <Component Name="Pneumatic_Rollers" />
+        </Instance>
+        <Parameter Name="ReqUp" Section="Input" Type="Bool" />
+        <Parameter Name="ReqDown" Section="Input" Type="Bool" />
+        <Parameter Name="Sensor1Down" Section="Input" Type="Bool" />
+        <Parameter Name="Sensor1Up" Section="Input" Type="Bool" />
+        <Parameter Name="Sensor2Down" Section="Input" Type="Bool" />
+        <Parameter Name="Sensor2Up" Section="Input" Type="Bool" />
+        <Parameter Name="Interlock" Section="Input" Type="Bool" />
+        <Parameter Name="Timeout" Section="Input" Type="Time" />
+        <Parameter Name="Valve" Section="Output" Type="Bool" />
+        <Parameter Name="Error" Section="Output" Type="Bool" />
+        <Parameter Name="Step" Section="Output" Type="Int" />
+        <Parameter Name="PosUp" Section="Output" Type="Bool" />
+        <Parameter Name="PosDown" Section="Output" Type="Bool" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="36">
+      <Powerrail />
+      <NameCon UId="31" Name="en" />
+    </Wire>
+    <Wire UId="37">
+      <IdentCon UId="21" />
+      <NameCon UId="31" Name="ReqUp" />
+    </Wire>
+    <Wire UId="38">
+      <IdentCon UId="22" />
+      <NameCon UId="31" Name="ReqDown" />
+    </Wire>
+    <Wire UId="39">
+      <IdentCon UId="23" />
+      <NameCon UId="31" Name="Sensor1Down" />
+    </Wire>
+    <Wire UId="40">
+      <IdentCon UId="24" />
+      <NameCon UId="31" Name="Sensor1Up" />
+    </Wire>
+    <Wire UId="41">
+      <IdentCon UId="25" />
+      <NameCon UId="31" Name="Sensor2Down" />
+    </Wire>
+    <Wire UId="42">
+      <IdentCon UId="26" />
+      <NameCon UId="31" Name="Sensor2Up" />
+    </Wire>
+    <Wire UId="43">
+      <IdentCon UId="27" />
+      <NameCon UId="31" Name="Interlock" />
+    </Wire>
+    <Wire UId="44">
+      <OpenCon UId="33" />
+      <NameCon UId="31" Name="Timeout" />
+    </Wire>
+    <Wire UId="45">
+      <NameCon UId="31" Name="Valve" />
+      <IdentCon UId="28" />
+    </Wire>
+    <Wire UId="46">
+      <NameCon UId="31" Name="Error" />
+      <OpenCon UId="34" />
+    </Wire>
+    <Wire UId="47">
+      <NameCon UId="31" Name="Step" />
+      <OpenCon UId="35" />
+    </Wire>
+    <Wire UId="48">
+      <NameCon UId="31" Name="PosUp" />
+      <IdentCon UId="29" />
+    </Wire>
+    <Wire UId="49">
+      <NameCon UId="31" Name="PosDown" />
+      <IdentCon UId="30" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="18" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="19" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text> </Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="1A" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="1B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Drive Rollers Pneumatic Control</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="1C" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v5">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="Sequence_Control" />
+        <Component Name="ReqModulesUp" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="Sequence_Control" />
+        <Component Name="ReqModulesDown" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="Modules_DownPos1" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="24">
+      <Symbol>
+        <Component Name="Modules_UpPos1" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="25">
+      <Symbol>
+        <Component Name="Modules_DownPos2" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="26">
+      <Symbol>
+        <Component Name="Modules_UpPos2" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="27">
+      <Constant>
+        <ConstantType>Bool</ConstantType>
+        <ConstantValue>true</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="LocalVariable" UId="28">
+      <Symbol>
+        <Component Name="Modules_Up" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="29">
+      <Symbol>
+        <Component Name="Module_Control" />
+        <Component Name="PosUp" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="30">
+      <Symbol>
+        <Component Name="Module_Control" />
+        <Component Name="PosDown" />
+      </Symbol>
+    </Access>
+    <Call UId="31">
+      <CallInfo Name="CC_Vib_Modules" BlockType="FB">
+        <Instance Scope="LocalVariable" UId="32">
+          <Component Name="Module_Control" />
+        </Instance>
+        <Parameter Name="ReqUp" Section="Input" Type="Bool" />
+        <Parameter Name="ReqDown" Section="Input" Type="Bool" />
+        <Parameter Name="Sensor1Down" Section="Input" Type="Bool" />
+        <Parameter Name="Sensor1Up" Section="Input" Type="Bool" />
+        <Parameter Name="Sensor2Down" Section="Input" Type="Bool" />
+        <Parameter Name="Sensor2Up" Section="Input" Type="Bool" />
+        <Parameter Name="Interlock" Section="Input" Type="Bool" />
+        <Parameter Name="Timeout" Section="Input" Type="Time" />
+        <Parameter Name="Valve" Section="Output" Type="Bool" />
+        <Parameter Name="Error" Section="Output" Type="Bool" />
+        <Parameter Name="Step" Section="Output" Type="Int" />
+        <Parameter Name="PosUp" Section="Output" Type="Bool" />
+        <Parameter Name="PosDown" Section="Output" Type="Bool" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="36">
+      <Powerrail />
+      <NameCon UId="31" Name="en" />
+    </Wire>
+    <Wire UId="37">
+      <IdentCon UId="21" />
+      <NameCon UId="31" Name="ReqUp" />
+    </Wire>
+    <Wire UId="38">
+      <IdentCon UId="22" />
+      <NameCon UId="31" Name="ReqDown" />
+    </Wire>
+    <Wire UId="39">
+      <IdentCon UId="23" />
+      <NameCon UId="31" Name="Sensor1Down" />
+    </Wire>
+    <Wire UId="40">
+      <IdentCon UId="24" />
+      <NameCon UId="31" Name="Sensor1Up" />
+    </Wire>
+    <Wire UId="41">
+      <IdentCon UId="25" />
+      <NameCon UId="31" Name="Sensor2Down" />
+    </Wire>
+    <Wire UId="42">
+      <IdentCon UId="26" />
+      <NameCon UId="31" Name="Sensor2Up" />
+    </Wire>
+    <Wire UId="43">
+      <IdentCon UId="27" />
+      <NameCon UId="31" Name="Interlock" />
+    </Wire>
+    <Wire UId="44">
+      <OpenCon UId="33" />
+      <NameCon UId="31" Name="Timeout" />
+    </Wire>
+    <Wire UId="45">
+      <NameCon UId="31" Name="Valve" />
+      <IdentCon UId="28" />
+    </Wire>
+    <Wire UId="46">
+      <NameCon UId="31" Name="Error" />
+      <OpenCon UId="34" />
+    </Wire>
+    <Wire UId="47">
+      <NameCon UId="31" Name="Step" />
+      <OpenCon UId="35" />
+    </Wire>
+    <Wire UId="48">
+      <NameCon UId="31" Name="PosUp" />
+      <IdentCon UId="29" />
+    </Wire>
+    <Wire UId="49">
+      <NameCon UId="31" Name="PosDown" />
+      <IdentCon UId="30" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="1D" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="1E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="1F" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="20" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="21" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="22" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FB>
+</Document>
