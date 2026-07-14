@@ -554,7 +554,7 @@
     </Instruction>
   </Access>
   <Token Text=";" UId="45" />
-  <NewLine UId="46" />
+  <NewLine Num="2" UId="46" />
   <Access Scope="LocalVariable" UId="47">
     <Symbol UId="48">
       <Component Name="maxIdx" UId="49" />
