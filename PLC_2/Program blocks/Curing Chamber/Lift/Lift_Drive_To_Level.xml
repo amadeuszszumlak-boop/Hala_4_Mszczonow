@@ -103,7 +103,7 @@
     </Symbol>
   </Access>
   <Token Text=";" UId="46" />
-  <NewLine Num="2" UId="47" />
+  <NewLine UId="47" />
 </StructuredText></NetworkSource>
           <ProgrammingLanguage>SCL</ProgrammingLanguage>
         </AttributeList>

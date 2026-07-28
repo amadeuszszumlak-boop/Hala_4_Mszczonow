@@ -2818,6 +2818,25 @@
           </MultilingualText>
         </ObjectList>
       </SW.Tags.PlcTag>
+      <SW.Tags.PlcTag ID="1BD" CompositionName="Tags">
+        <AttributeList>
+          <DataTypeName>Bool</DataTypeName>
+          <LogicalAddress>%M727.1</LogicalAddress>
+          <Name>Tag_76</Name>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="1BE" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="1BF" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Tags.PlcTag>
     </ObjectList>
   </SW.Tags.PlcTagTable>
 </Document>

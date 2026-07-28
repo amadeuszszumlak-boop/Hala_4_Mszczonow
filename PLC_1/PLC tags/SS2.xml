@@ -1644,7 +1644,7 @@
         <AttributeList>
           <DataTypeName>Bool</DataTypeName>
           <LogicalAddress>%Q2202.4</LogicalAddress>
-          <Name>ST24_MOD1_Wib_Contactor</Name>
+          <Name>ST25_MOD1_Wib_Contactor</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="104" CompositionName="Comment">
@@ -1663,7 +1663,7 @@
         <AttributeList>
           <DataTypeName>Bool</DataTypeName>
           <LogicalAddress>%Q2202.5</LogicalAddress>
-          <Name>ST25_MOD1_Wib_Contactor</Name>
+          <Name>ST24_MOD1_Wib_Contactor</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="107" CompositionName="Comment">
@@ -1701,7 +1701,7 @@
         <AttributeList>
           <DataTypeName>Bool</DataTypeName>
           <LogicalAddress>%Q2202.7</LogicalAddress>
-          <Name>ST24_MOD2_Wib_Contactor</Name>
+          <Name>ST25_MOD2_Wib_Contactor</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="10D" CompositionName="Comment">
@@ -1720,7 +1720,7 @@
         <AttributeList>
           <DataTypeName>Bool</DataTypeName>
           <LogicalAddress>%Q2203.0</LogicalAddress>
-          <Name>ST25_MOD2_Wib_Contactor</Name>
+          <Name>ST24_MOD2_Wib_Contactor</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="110" CompositionName="Comment">
@@ -1758,7 +1758,7 @@
         <AttributeList>
           <DataTypeName>Bool</DataTypeName>
           <LogicalAddress>%Q2203.2</LogicalAddress>
-          <Name>ST24_MOD3_Wib_Contactor</Name>
+          <Name>ST25_MOD3_Wib_Contactor</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="116" CompositionName="Comment">
@@ -1777,7 +1777,7 @@
         <AttributeList>
           <DataTypeName>Bool</DataTypeName>
           <LogicalAddress>%Q2203.3</LogicalAddress>
-          <Name>ST25_MOD3_Wib_Contactor</Name>
+          <Name>ST24_MOD3_Wib_Contactor</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="119" CompositionName="Comment">

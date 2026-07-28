@@ -59,7 +59,7 @@
   <Parts>
     <Access Scope="GlobalVariable" UId="21">
       <Symbol>
-        <Component Name="Lift_Poitioning" />
+        <Component Name="Lift_Positioning" />
       </Symbol>
     </Access>
     <Access Scope="LocalVariable" UId="22">
@@ -148,7 +148,7 @@
   <Parts>
     <Access Scope="GlobalVariable" UId="21">
       <Symbol>
-        <Component Name="Lift_Poitioning" />
+        <Component Name="Lift_Positioning" />
       </Symbol>
     </Access>
     <Access Scope="LocalVariable" UId="22">
@@ -237,7 +237,7 @@
   <Parts>
     <Access Scope="GlobalVariable" UId="21">
       <Symbol>
-        <Component Name="Lift_Poitioning" />
+        <Component Name="Lift_Positioning" />
       </Symbol>
     </Access>
     <Access Scope="LocalVariable" UId="22">
@@ -338,7 +338,7 @@
   <Parts>
     <Access Scope="GlobalVariable" UId="21">
       <Symbol>
-        <Component Name="Lift_Poitioning" />
+        <Component Name="Lift_Positioning" />
       </Symbol>
     </Access>
     <Access Scope="LocalVariable" UId="22">
