@@ -1,0 +1,21 @@
+﻿FUNCTION_BLOCK "HMI_Test"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR 
+      Old_Value : USInt;
+      HMI_Connection_Alarm : Bool;
+      Timer_2s {InstructionName := 'TON_TIME'; LibVersion := '1.0'; S7_SetPoint := 'False'} : TON_TIME;
+   END_VAR
+
+
+BEGIN
+	IF #Timer_2s.Q THEN
+	    #HMI_Connection_Alarm := ("HMI_DB".Heart_Bit = #Old_Value);
+	    #Old_Value := "HMI_DB".Heart_Bit;
+	END_IF;
+	
+	#Timer_2s(IN := NOT #Timer_2s.Q,
+	          PT := T#2s);
+	
+END_FUNCTION_BLOCK
+
