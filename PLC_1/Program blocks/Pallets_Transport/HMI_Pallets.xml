@@ -42,6 +42,11 @@
     <Member Name="Station_Block_Request_ROW3" Datatype="Array[1..12] of Bool" />
     <Member Name="Station_Block_Request_ROW4" Datatype="Array[1..12] of Bool" />
     <Member Name="Any_Station_Block_ACTIVE" Datatype="Bool" />
+    <Member Name="Centering_Alarms" Datatype="DWord">
+      <Comment>
+        <MultiLanguageText Lang="en-US">1-7 -&gt; ROW2, 11-17-&gt;ROW4</MultiLanguageText>
+      </Comment>
+    </Member>
   </Section>
 </Sections></Interface>
       <MemoryLayout>Optimized</MemoryLayout>

@@ -32,7 +32,7 @@
       <StartValue>7461</StartValue>
     </Member>
     <Member Name="Homing_SL3" Datatype="Int" Remanence="Retain">
-      <StartValue>13455</StartValue>
+      <StartValue>13450</StartValue>
     </Member>
     <Member Name="Homing_SL4" Datatype="Int" Remanence="Retain">
       <StartValue>19048</StartValue>
@@ -44,7 +44,7 @@
       <StartValue>7469</StartValue>
     </Member>
     <Member Name="Homing_SR3" Datatype="Int" Remanence="Retain">
-      <StartValue>13459</StartValue>
+      <StartValue>13465</StartValue>
     </Member>
     <Member Name="Homing_SR4" Datatype="Int" Remanence="Retain">
       <StartValue>19056</StartValue>

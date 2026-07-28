@@ -22,6 +22,7 @@
     <Member Name="Reset_Reinicialisation" Datatype="Bool" />
     <Member Name="CNTUp" Datatype="Bool" />
     <Member Name="CNTDown" Datatype="Bool" />
+    <Member Name="Heart_Bit" Datatype="USInt" />
   </Section>
 </Sections></Interface>
       <MemoryLayout>Optimized</MemoryLayout>

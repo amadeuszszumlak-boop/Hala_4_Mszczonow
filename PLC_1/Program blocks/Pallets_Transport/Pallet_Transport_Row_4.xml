@@ -22,6 +22,7 @@
     <Member Name="oCentering" Datatype="Bool" />
     <Member Name="Stop_Drive_Button" Datatype="Bool" />
     <Member Name="Stop_Drive_HMI" Datatype="Bool" />
+    <Member Name="Centering_Alarm" Datatype="Bool" />
   </Section>
   <Section Name="InOut">
     <Member Name="iDriveStS_Param" Datatype="&quot;SEW_MOVIKIT_VelocityDrive_SETPOINTS_V2.1&quot;" />
@@ -316,7 +317,7 @@
     </Instruction>
   </Access>
   <Token Text=";" UId="106" />
-  <NewLine Num="2" UId="107" />
+  <NewLine Num="3" UId="107" />
   <Access Scope="LocalVariable" UId="108">
     <Symbol UId="109">
       <Component Name="Timer_Drive_Error_HMI" UId="110" />
@@ -470,7 +471,7 @@
   <NewLine UId="230" />
   <Token Text="END_IF" UId="231" />
   <Token Text=";" UId="232" />
-  <NewLine Num="2" UId="233" />
+  <NewLine Num="3" UId="233" />
   <Token Text="IF" UId="234" />
   <Blank UId="235" />
   <Access Scope="LocalVariable" UId="236">
@@ -2189,7 +2190,7 @@
   <Blank Num="4" UId="44" />
   <Access Scope="LocalVariable" UId="45">
     <Symbol UId="46">
-      <Component Name="isCentering" UId="47" />
+      <Component Name="oCentering" UId="47" />
     </Symbol>
   </Access>
   <Blank UId="48" />
@@ -2205,7 +2206,7 @@
   <Blank Num="4" UId="57" />
   <Access Scope="LocalVariable" UId="58">
     <Symbol UId="59">
-      <Component Name="oCentering" UId="60" />
+      <Component Name="CenteringStep" UId="60" />
     </Symbol>
   </Access>
   <Blank UId="61" />
@@ -2219,278 +2220,279 @@
   <Token Text=";" UId="68" />
   <NewLine UId="69" />
   <Blank Num="4" UId="70" />
-  <Access Scope="LocalVariable" UId="71">
-    <Symbol UId="72">
-      <Component Name="CenteringStep" UId="73" />
+  <Token Text="IF" UId="71" />
+  <Blank UId="72" />
+  <Access Scope="LocalVariable" UId="73">
+    <Symbol UId="74">
+      <Component Name="isCentering" UId="75" />
     </Symbol>
   </Access>
-  <Blank UId="74" />
-  <Token Text=":=" UId="75" />
   <Blank UId="76" />
-  <Access Scope="LiteralConstant" UId="77">
-    <Constant UId="78">
-      <ConstantValue UId="80">0</ConstantValue>
-    </Constant>
-  </Access>
-  <Token Text=";" UId="81" />
-  <NewLine UId="82" />
-  <Token Text="END_IF" UId="83" />
-  <Token Text=";" UId="84" />
-  <NewLine Num="2" UId="85" />
-  <Token Text="IF" UId="86" />
-  <Blank UId="87" />
-  <Access Scope="LocalVariable" UId="88">
-    <Symbol UId="89">
-      <Component Name="isCentering" UId="90" />
+  <Token Text="THEN" UId="77" />
+  <NewLine UId="78" />
+  <Blank Num="8" UId="79" />
+  <Access Scope="LocalVariable" UId="80">
+    <Symbol UId="81">
+      <Component Name="Centering_Alarm" UId="82" />
     </Symbol>
   </Access>
-  <Blank UId="91" />
-  <Token Text="THEN" UId="92" />
-  <NewLine UId="93" />
-  <Blank Num="4" UId="94" />
-  <Token Text="CASE" UId="95" />
+  <Blank UId="83" />
+  <Token Text=":=" UId="84" />
+  <Blank UId="85" />
+  <Access Scope="LiteralConstant" UId="86">
+    <Constant UId="87">
+      <ConstantValue UId="89">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="90" />
+  <NewLine UId="91" />
+  <Blank Num="8" UId="92" />
+  <Access Scope="LocalVariable" UId="93">
+    <Symbol UId="94">
+      <Component Name="isCentering" UId="95" />
+    </Symbol>
+  </Access>
   <Blank UId="96" />
-  <Access Scope="LocalVariable" UId="97">
-    <Symbol UId="98">
-      <Component Name="CenteringStep" UId="99" />
-    </Symbol>
-  </Access>
-  <Blank UId="100" />
-  <Token Text="OF" UId="101" />
-  <NewLine UId="102" />
-  <Blank Num="8" UId="103" />
-  <Access Scope="LiteralConstant" UId="104">
-    <Constant UId="105">
-      <ConstantValue UId="107">0</ConstantValue>
+  <Token Text=":=" UId="97" />
+  <Blank UId="98" />
+  <Access Scope="LiteralConstant" UId="99">
+    <Constant UId="100">
+      <ConstantValue UId="102">FALSE</ConstantValue>
     </Constant>
   </Access>
-  <Token Text=":" UId="108" />
-  <NewLine UId="109" />
-  <Blank Num="12" UId="110" />
-  <Token Text="IF" UId="111" />
-  <Blank UId="112" />
-  <Access Scope="LocalVariable" UId="113">
-    <Symbol UId="114">
-      <Component Name="Destination_Station" UId="115" />
-      <Token Text="." UId="116" />
-      <Component Name="SensorB" UId="117" />
+  <Token Text=";" UId="103" />
+  <NewLine UId="104" />
+  <Blank Num="4" UId="105" />
+  <Token Text="END_IF" UId="106" />
+  <Token Text=";" UId="107" />
+  <NewLine UId="108" />
+  <Token Text="END_IF" UId="109" />
+  <Token Text=";" UId="110" />
+  <NewLine Num="2" UId="111" />
+  <Token Text="IF" UId="112" />
+  <Blank UId="113" />
+  <Access Scope="LocalVariable" UId="114">
+    <Symbol UId="115">
+      <Component Name="isCentering" UId="116" />
     </Symbol>
   </Access>
-  <Blank UId="118" />
-  <Token Text="AND" UId="119" />
-  <NewLine UId="120" />
-  <Blank Num="16" UId="121" />
-  <Access Scope="LocalVariable" UId="122">
-    <Symbol UId="123">
-      <Component Name="Destination_Station" UId="124" />
-      <Token Text="." UId="125" />
-      <Component Name="SensorC" UId="126" />
+  <Blank UId="117" />
+  <Token Text="THEN" UId="118" />
+  <NewLine UId="119" />
+  <Blank Num="4" UId="120" />
+  <Token Text="CASE" UId="121" />
+  <Blank UId="122" />
+  <Access Scope="LocalVariable" UId="123">
+    <Symbol UId="124">
+      <Component Name="CenteringStep" UId="125" />
     </Symbol>
   </Access>
-  <Blank UId="127" />
-  <Token Text="AND" UId="128" />
-  <NewLine UId="129" />
-  <Blank Num="16" UId="130" />
-  <Access Scope="LocalVariable" UId="131">
-    <Symbol UId="132">
-      <Component Name="Destination_Station" UId="133" />
-      <Token Text="." UId="134" />
-      <Component Name="SensorD" UId="135" />
+  <Blank UId="126" />
+  <Token Text="OF" UId="127" />
+  <NewLine UId="128" />
+  <Blank Num="8" UId="129" />
+  <Access Scope="LiteralConstant" UId="130">
+    <Constant UId="131">
+      <ConstantValue UId="133">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="134" />
+  <NewLine UId="135" />
+  <Blank Num="12" UId="136" />
+  <Token Text="IF" UId="137" />
+  <Blank UId="138" />
+  <Access Scope="LocalVariable" UId="139">
+    <Symbol UId="140">
+      <Component Name="Destination_Station" UId="141" />
+      <Token Text="." UId="142" />
+      <Component Name="SensorB" UId="143" />
     </Symbol>
   </Access>
-  <Blank UId="136" />
-  <Token Text="THEN" UId="137" />
-  <NewLine UId="138" />
-  <Blank Num="16" UId="139" />
-  <Access Scope="LocalVariable" UId="140">
-    <Symbol UId="141">
-      <Component Name="Set_Speed" UId="142" />
+  <Blank UId="144" />
+  <Token Text="AND" UId="145" />
+  <NewLine UId="146" />
+  <Blank Num="16" UId="147" />
+  <Access Scope="LocalVariable" UId="148">
+    <Symbol UId="149">
+      <Component Name="Destination_Station" UId="150" />
+      <Token Text="." UId="151" />
+      <Component Name="SensorC" UId="152" />
     </Symbol>
   </Access>
-  <Blank UId="143" />
-  <Token Text=":=" UId="144" />
-  <Blank UId="145" />
-  <Access Scope="LocalConstant" UId="146">
-    <Constant Name="SPEED_BACK" UId="147" />
-  </Access>
-  <Token Text=";" UId="150" />
-  <NewLine UId="151" />
-  <Blank Num="16" UId="152" />
-  <LineComment UId="153">
-    <Text UId="154">#Jog_StS := TRUE;</Text>
-  </LineComment>
+  <Blank UId="153" />
+  <Token Text="AND" UId="154" />
   <NewLine UId="155" />
   <Blank Num="16" UId="156" />
   <Access Scope="LocalVariable" UId="157">
     <Symbol UId="158">
-      <Component Name="Jog_StD" UId="159" />
+      <Component Name="Destination_Station" UId="159" />
+      <Token Text="." UId="160" />
+      <Component Name="SensorD" UId="161" />
     </Symbol>
   </Access>
-  <Blank UId="160" />
-  <Token Text=":=" UId="161" />
   <Blank UId="162" />
-  <Access Scope="LiteralConstant" UId="163">
-    <Constant UId="164">
-      <ConstantValue UId="166">TRUE</ConstantValue>
+  <Token Text="THEN" UId="163" />
+  <NewLine UId="164" />
+  <Blank Num="16" UId="165" />
+  <Access Scope="LocalVariable" UId="166">
+    <Symbol UId="167">
+      <Component Name="Set_Speed" UId="168" />
+    </Symbol>
+  </Access>
+  <Blank UId="169" />
+  <Token Text=":=" UId="170" />
+  <Blank UId="171" />
+  <Access Scope="LocalConstant" UId="172">
+    <Constant Name="SPEED_BACK" UId="173" />
+  </Access>
+  <Token Text=";" UId="176" />
+  <NewLine UId="177" />
+  <Blank Num="16" UId="178" />
+  <LineComment UId="179">
+    <Text UId="180">#Jog_StS := TRUE;</Text>
+  </LineComment>
+  <NewLine UId="181" />
+  <Blank Num="16" UId="182" />
+  <Access Scope="LocalVariable" UId="183">
+    <Symbol UId="184">
+      <Component Name="Jog_StD" UId="185" />
+    </Symbol>
+  </Access>
+  <Blank UId="186" />
+  <Token Text=":=" UId="187" />
+  <Blank UId="188" />
+  <Access Scope="LiteralConstant" UId="189">
+    <Constant UId="190">
+      <ConstantValue UId="192">TRUE</ConstantValue>
     </Constant>
   </Access>
-  <Token Text=";" UId="167" />
-  <NewLine UId="168" />
-  <Blank Num="12" UId="169" />
-  <Token Text="END_IF" UId="170" />
-  <Token Text=";" UId="171" />
-  <NewLine UId="172" />
-  <Blank Num="12" UId="173" />
-  <NewLine UId="174" />
-  <Blank Num="12" UId="175" />
-  <Token Text="IF" UId="176" />
-  <Blank Num="2" UId="177" />
-  <Access Scope="LocalVariable" UId="178">
-    <Symbol UId="179">
-      <Component Name="Destination_Station" UId="180" />
-      <Token Text="." UId="181" />
-      <Component Name="SensorB" UId="182" />
-    </Symbol>
-  </Access>
-  <Blank UId="183" />
-  <Token Text="AND" UId="184" />
-  <NewLine UId="185" />
-  <Blank Num="16" UId="186" />
-  <Access Scope="LocalVariable" UId="187">
-    <Symbol UId="188">
-      <Component Name="Destination_Station" UId="189" />
-      <Token Text="." UId="190" />
-      <Component Name="SensorC" UId="191" />
-    </Symbol>
-  </Access>
-  <Blank UId="192" />
-  <Token Text="AND" UId="193" />
+  <Token Text=";" UId="193" />
   <NewLine UId="194" />
-  <Blank Num="16" UId="195" />
-  <Token Text="NOT" UId="196" />
-  <Blank UId="197" />
-  <Access Scope="LocalVariable" UId="198">
-    <Symbol UId="199">
-      <Component Name="Destination_Station" UId="200" />
-      <Token Text="." UId="201" />
-      <Component Name="SensorD" UId="202" />
+  <Blank Num="12" UId="195" />
+  <Token Text="END_IF" UId="196" />
+  <Token Text=";" UId="197" />
+  <NewLine UId="198" />
+  <Blank Num="12" UId="199" />
+  <NewLine UId="200" />
+  <Blank Num="12" UId="201" />
+  <Token Text="IF" UId="202" />
+  <Blank Num="2" UId="203" />
+  <Access Scope="LocalVariable" UId="204">
+    <Symbol UId="205">
+      <Component Name="Destination_Station" UId="206" />
+      <Token Text="." UId="207" />
+      <Component Name="SensorB" UId="208" />
     </Symbol>
   </Access>
-  <Blank UId="203" />
-  <Token Text="THEN" UId="204" />
-  <NewLine UId="205" />
-  <Blank Num="16" UId="206" />
-  <Access Scope="LocalVariable" UId="207">
-    <Symbol UId="208">
-      <Component Name="CenteringStep" UId="209" />
+  <Blank UId="209" />
+  <Token Text="AND" UId="210" />
+  <NewLine UId="211" />
+  <Blank Num="16" UId="212" />
+  <Access Scope="LocalVariable" UId="213">
+    <Symbol UId="214">
+      <Component Name="Destination_Station" UId="215" />
+      <Token Text="." UId="216" />
+      <Component Name="SensorC" UId="217" />
     </Symbol>
   </Access>
-  <Blank UId="210" />
-  <Token Text=":=" UId="211" />
-  <Blank UId="212" />
-  <Access Scope="LiteralConstant" UId="213">
-    <Constant UId="214">
-      <ConstantValue UId="216">1</ConstantValue>
-    </Constant>
+  <Blank UId="218" />
+  <Token Text="AND" UId="219" />
+  <NewLine UId="220" />
+  <Blank Num="16" UId="221" />
+  <Token Text="NOT" UId="222" />
+  <Blank UId="223" />
+  <Access Scope="LocalVariable" UId="224">
+    <Symbol UId="225">
+      <Component Name="Destination_Station" UId="226" />
+      <Token Text="." UId="227" />
+      <Component Name="SensorD" UId="228" />
+    </Symbol>
   </Access>
-  <Token Text=";" UId="217" />
-  <NewLine UId="218" />
-  <Blank Num="12" UId="219" />
-  <Token Text="END_IF" UId="220" />
-  <Token Text=";" UId="221" />
-  <NewLine UId="222" />
-  <Blank Num="12" UId="223" />
-  <NewLine UId="224" />
-  <Blank Num="8" UId="225" />
-  <Access Scope="LiteralConstant" UId="226">
-    <Constant UId="227">
-      <ConstantValue UId="229">1</ConstantValue>
-    </Constant>
-  </Access>
-  <Token Text=":" UId="230" />
+  <Blank UId="229" />
+  <Token Text="THEN" UId="230" />
   <NewLine UId="231" />
-  <Blank Num="12" UId="232" />
+  <Blank Num="16" UId="232" />
   <Access Scope="LocalVariable" UId="233">
     <Symbol UId="234">
-      <Component Name="Set_Speed" UId="235" />
+      <Component Name="CenteringStep" UId="235" />
     </Symbol>
   </Access>
   <Blank UId="236" />
   <Token Text=":=" UId="237" />
   <Blank UId="238" />
-  <Access Scope="LocalConstant" UId="239">
-    <Constant Name="SPEED_FWD" UId="240" />
+  <Access Scope="LiteralConstant" UId="239">
+    <Constant UId="240">
+      <ConstantValue UId="242">1</ConstantValue>
+    </Constant>
   </Access>
   <Token Text=";" UId="243" />
   <NewLine UId="244" />
   <Blank Num="12" UId="245" />
-  <LineComment UId="246">
-    <Text UId="247">  #Jog_StS := TRUE;</Text>
-  </LineComment>
+  <Token Text="END_IF" UId="246" />
+  <Token Text=";" UId="247" />
   <NewLine UId="248" />
   <Blank Num="12" UId="249" />
-  <Access Scope="LocalVariable" UId="250">
-    <Symbol UId="251">
-      <Component Name="Jog_StD" UId="252" />
-    </Symbol>
-  </Access>
-  <Blank UId="253" />
-  <Token Text=":=" UId="254" />
-  <Blank UId="255" />
-  <Access Scope="LiteralConstant" UId="256">
-    <Constant UId="257">
-      <ConstantValue UId="259">TRUE</ConstantValue>
+  <NewLine UId="250" />
+  <Blank Num="8" UId="251" />
+  <Access Scope="LiteralConstant" UId="252">
+    <Constant UId="253">
+      <ConstantValue UId="255">1</ConstantValue>
     </Constant>
   </Access>
-  <Token Text=";" UId="260" />
-  <NewLine UId="261" />
-  <Blank Num="12" UId="262" />
-  <Token Text="IF" UId="263" />
+  <Token Text=":" UId="256" />
+  <NewLine UId="257" />
+  <Blank Num="12" UId="258" />
+  <Access Scope="LocalVariable" UId="259">
+    <Symbol UId="260">
+      <Component Name="Set_Speed" UId="261" />
+    </Symbol>
+  </Access>
+  <Blank UId="262" />
+  <Token Text=":=" UId="263" />
   <Blank UId="264" />
-  <Access Scope="LocalVariable" UId="265">
-    <Symbol UId="266">
-      <Component Name="Destination_Station" UId="267" />
-      <Token Text="." UId="268" />
-      <Component Name="SensorD" UId="269" />
+  <Access Scope="LocalConstant" UId="265">
+    <Constant Name="SPEED_FWD" UId="266" />
+  </Access>
+  <Token Text=";" UId="269" />
+  <NewLine UId="270" />
+  <Blank Num="12" UId="271" />
+  <LineComment UId="272">
+    <Text UId="273">  #Jog_StS := TRUE;</Text>
+  </LineComment>
+  <NewLine UId="274" />
+  <Blank Num="12" UId="275" />
+  <Access Scope="LocalVariable" UId="276">
+    <Symbol UId="277">
+      <Component Name="Jog_StD" UId="278" />
     </Symbol>
   </Access>
-  <Blank UId="270" />
-  <Token Text="THEN" UId="271" />
-  <NewLine UId="272" />
-  <Blank Num="16" UId="273" />
-  <Access Scope="LocalVariable" UId="274">
-    <Symbol UId="275">
-      <Component Name="CenteringStep" UId="276" />
-    </Symbol>
-  </Access>
-  <Blank UId="277" />
-  <Token Text=":=" UId="278" />
   <Blank UId="279" />
-  <Access Scope="LiteralConstant" UId="280">
-    <Constant UId="281">
-      <ConstantValue UId="283">2</ConstantValue>
+  <Token Text=":=" UId="280" />
+  <Blank UId="281" />
+  <Access Scope="LiteralConstant" UId="282">
+    <Constant UId="283">
+      <ConstantValue UId="285">TRUE</ConstantValue>
     </Constant>
   </Access>
-  <Token Text=";" UId="284" />
-  <NewLine UId="285" />
-  <Blank Num="12" UId="286" />
-  <Token Text="END_IF" UId="287" />
-  <Token Text=";" UId="288" />
-  <NewLine UId="289" />
-  <Blank Num="12" UId="290" />
-  <NewLine UId="291" />
-  <Blank Num="8" UId="292" />
-  <Access Scope="LiteralConstant" UId="293">
-    <Constant UId="294">
-      <ConstantValue UId="296">2</ConstantValue>
-    </Constant>
+  <Token Text=";" UId="286" />
+  <NewLine UId="287" />
+  <Blank Num="12" UId="288" />
+  <Token Text="IF" UId="289" />
+  <Blank UId="290" />
+  <Access Scope="LocalVariable" UId="291">
+    <Symbol UId="292">
+      <Component Name="Destination_Station" UId="293" />
+      <Token Text="." UId="294" />
+      <Component Name="SensorD" UId="295" />
+    </Symbol>
   </Access>
-  <Token Text=":" UId="297" />
+  <Blank UId="296" />
+  <Token Text="THEN" UId="297" />
   <NewLine UId="298" />
-  <Blank Num="12" UId="299" />
+  <Blank Num="16" UId="299" />
   <Access Scope="LocalVariable" UId="300">
     <Symbol UId="301">
-      <Component Name="Set_Speed" UId="302" />
+      <Component Name="CenteringStep" UId="302" />
     </Symbol>
   </Access>
   <Blank UId="303" />
@@ -2498,52 +2500,50 @@
   <Blank UId="305" />
   <Access Scope="LiteralConstant" UId="306">
     <Constant UId="307">
-      <ConstantValue UId="309">0</ConstantValue>
+      <ConstantValue UId="309">2</ConstantValue>
     </Constant>
   </Access>
   <Token Text=";" UId="310" />
   <NewLine UId="311" />
   <Blank Num="12" UId="312" />
-  <LineComment UId="313">
-    <Text UId="314"> #Jog_StS := FALSE;</Text>
-  </LineComment>
+  <Token Text="END_IF" UId="313" />
+  <Token Text=";" UId="314" />
   <NewLine UId="315" />
   <Blank Num="12" UId="316" />
-  <Access Scope="LocalVariable" UId="317">
-    <Symbol UId="318">
-      <Component Name="Jog_StD" UId="319" />
-    </Symbol>
-  </Access>
-  <Blank UId="320" />
-  <Token Text=":=" UId="321" />
-  <Blank UId="322" />
-  <Access Scope="LiteralConstant" UId="323">
-    <Constant UId="324">
-      <ConstantValue UId="326">FALSE</ConstantValue>
+  <NewLine UId="317" />
+  <Blank Num="8" UId="318" />
+  <Access Scope="LiteralConstant" UId="319">
+    <Constant UId="320">
+      <ConstantValue UId="322">2</ConstantValue>
     </Constant>
   </Access>
-  <Token Text=";" UId="327" />
-  <NewLine UId="328" />
-  <Blank Num="12" UId="329" />
-  <Access Scope="LocalVariable" UId="330">
-    <Symbol UId="331">
-      <Component Name="oCentering" UId="332" />
+  <Token Text=":" UId="323" />
+  <NewLine UId="324" />
+  <Blank Num="12" UId="325" />
+  <Access Scope="LocalVariable" UId="326">
+    <Symbol UId="327">
+      <Component Name="Set_Speed" UId="328" />
     </Symbol>
   </Access>
-  <Blank UId="333" />
-  <Token Text=":=" UId="334" />
-  <Blank UId="335" />
-  <Access Scope="LiteralConstant" UId="336">
-    <Constant UId="337">
-      <ConstantValue UId="339">TRUE</ConstantValue>
+  <Blank UId="329" />
+  <Token Text=":=" UId="330" />
+  <Blank UId="331" />
+  <Access Scope="LiteralConstant" UId="332">
+    <Constant UId="333">
+      <ConstantValue UId="335">0</ConstantValue>
     </Constant>
   </Access>
-  <Token Text=";" UId="340" />
+  <Token Text=";" UId="336" />
+  <NewLine UId="337" />
+  <Blank Num="12" UId="338" />
+  <LineComment UId="339">
+    <Text UId="340"> #Jog_StS := FALSE;</Text>
+  </LineComment>
   <NewLine UId="341" />
   <Blank Num="12" UId="342" />
   <Access Scope="LocalVariable" UId="343">
     <Symbol UId="344">
-      <Component Name="CenteringStep" UId="345" />
+      <Component Name="Jog_StD" UId="345" />
     </Symbol>
   </Access>
   <Blank UId="346" />
@@ -2551,7 +2551,7 @@
   <Blank UId="348" />
   <Access Scope="LiteralConstant" UId="349">
     <Constant UId="350">
-      <ConstantValue UId="352">0</ConstantValue>
+      <ConstantValue UId="352">FALSE</ConstantValue>
     </Constant>
   </Access>
   <Token Text=";" UId="353" />
@@ -2559,7 +2559,7 @@
   <Blank Num="12" UId="355" />
   <Access Scope="LocalVariable" UId="356">
     <Symbol UId="357">
-      <Component Name="isCentering" UId="358" />
+      <Component Name="oCentering" UId="358" />
     </Symbol>
   </Access>
   <Blank UId="359" />
@@ -2567,147 +2567,147 @@
   <Blank UId="361" />
   <Access Scope="LiteralConstant" UId="362">
     <Constant UId="363">
-      <ConstantValue UId="365">FALSE</ConstantValue>
+      <ConstantValue UId="365">TRUE</ConstantValue>
     </Constant>
   </Access>
   <Token Text=";" UId="366" />
   <NewLine UId="367" />
-  <Blank Num="4" UId="368" />
-  <Token Text="END_CASE" UId="369" />
-  <Token Text=";" UId="370" />
-  <NewLine UId="371" />
-  <Token Text="END_IF" UId="372" />
-  <Token Text=";" UId="373" />
-  <NewLine Num="3" UId="374" />
-  <Access Scope="LocalVariable" UId="375">
-    <Symbol UId="376">
-      <Component Name="TON_Centering" UId="377" />
+  <Blank Num="12" UId="368" />
+  <Access Scope="LocalVariable" UId="369">
+    <Symbol UId="370">
+      <Component Name="CenteringStep" UId="371" />
     </Symbol>
   </Access>
-  <Access Scope="Call" UId="378">
-    <Instruction UId="379">
-      <Token Text="(" UId="380" />
-      <Parameter Name="IN" UId="381">
-        <Blank UId="382" />
-        <Token Text=":=" UId="383" />
-        <Blank UId="384" />
-        <Access Scope="LocalVariable" UId="385">
-          <Symbol UId="386">
-            <Component Name="isCentering" UId="387" />
+  <Blank UId="372" />
+  <Token Text=":=" UId="373" />
+  <Blank UId="374" />
+  <Access Scope="LiteralConstant" UId="375">
+    <Constant UId="376">
+      <ConstantValue UId="378">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="379" />
+  <NewLine UId="380" />
+  <Blank Num="12" UId="381" />
+  <Access Scope="LocalVariable" UId="382">
+    <Symbol UId="383">
+      <Component Name="isCentering" UId="384" />
+    </Symbol>
+  </Access>
+  <Blank UId="385" />
+  <Token Text=":=" UId="386" />
+  <Blank UId="387" />
+  <Access Scope="LiteralConstant" UId="388">
+    <Constant UId="389">
+      <ConstantValue UId="391">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="392" />
+  <NewLine UId="393" />
+  <Blank Num="12" UId="394" />
+  <Access Scope="LocalVariable" UId="395">
+    <Symbol UId="396">
+      <Component Name="Centering_Alarm" UId="397" />
+    </Symbol>
+  </Access>
+  <Blank UId="398" />
+  <Token Text=":=" UId="399" />
+  <Blank UId="400" />
+  <Access Scope="LiteralConstant" UId="401">
+    <Constant UId="402">
+      <ConstantValue UId="404">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="405" />
+  <NewLine UId="406" />
+  <Blank Num="4" UId="407" />
+  <Token Text="END_CASE" UId="408" />
+  <Token Text=";" UId="409" />
+  <NewLine UId="410" />
+  <Token Text="END_IF" UId="411" />
+  <Token Text=";" UId="412" />
+  <NewLine Num="2" UId="413" />
+  <Access Scope="LocalVariable" UId="414">
+    <Symbol UId="415">
+      <Component Name="TON_Centering" UId="416" />
+    </Symbol>
+  </Access>
+  <Access Scope="Call" UId="417">
+    <Instruction UId="418">
+      <Token Text="(" UId="419" />
+      <Parameter Name="IN" UId="420">
+        <Blank UId="421" />
+        <Token Text=":=" UId="422" />
+        <Blank UId="423" />
+        <Access Scope="LocalVariable" UId="424">
+          <Symbol UId="425">
+            <Component Name="isCentering" UId="426" />
           </Symbol>
         </Access>
       </Parameter>
-      <Token Text="," UId="388" />
-      <NewLine UId="389" />
-      <Blank Num="15" UId="390" />
-      <Parameter Name="PT" UId="391">
-        <Blank UId="392" />
-        <Token Text=":=" UId="393" />
-        <Blank UId="394" />
-        <Access Scope="TypedConstant" UId="395">
-          <Constant UId="396">
-            <ConstantValue UId="397">T#8s</ConstantValue>
+      <Token Text="," UId="427" />
+      <NewLine UId="428" />
+      <Blank Num="15" UId="429" />
+      <Parameter Name="PT" UId="430">
+        <Blank UId="431" />
+        <Token Text=":=" UId="432" />
+        <Blank UId="433" />
+        <Access Scope="TypedConstant" UId="434">
+          <Constant UId="435">
+            <ConstantValue UId="436">T#8s</ConstantValue>
           </Constant>
         </Access>
       </Parameter>
-      <Token Text=")" UId="398" />
+      <Token Text=")" UId="437" />
     </Instruction>
   </Access>
-  <Token Text=";" UId="399" />
-  <NewLine Num="2" UId="400" />
-  <Access Scope="LocalVariable" UId="401">
-    <Symbol UId="402">
-      <Component Name="trigTimeout" UId="403" />
+  <Token Text=";" UId="438" />
+  <NewLine Num="2" UId="439" />
+  <Access Scope="LocalVariable" UId="440">
+    <Symbol UId="441">
+      <Component Name="trigTimeout" UId="442" />
     </Symbol>
   </Access>
-  <Access Scope="Call" UId="404">
-    <Instruction UId="405">
-      <Token Text="(" UId="406" />
-      <Parameter Name="CLK" UId="407">
-        <Blank UId="408" />
-        <Token Text=":=" UId="409" />
-        <Blank UId="410" />
-        <Access Scope="LocalVariable" UId="411">
-          <Symbol UId="412">
-            <Component Name="TON_Centering" UId="413" />
-            <Token Text="." UId="414" />
-            <Component Name="Q" UId="415" />
+  <Access Scope="Call" UId="443">
+    <Instruction UId="444">
+      <Token Text="(" UId="445" />
+      <Parameter Name="CLK" UId="446">
+        <Blank UId="447" />
+        <Token Text=":=" UId="448" />
+        <Blank UId="449" />
+        <Access Scope="LocalVariable" UId="450">
+          <Symbol UId="451">
+            <Component Name="TON_Centering" UId="452" />
+            <Token Text="." UId="453" />
+            <Component Name="Q" UId="454" />
           </Symbol>
         </Access>
       </Parameter>
-      <Token Text=")" UId="416" />
+      <Token Text=")" UId="455" />
     </Instruction>
   </Access>
-  <Token Text=";" UId="417" />
-  <NewLine Num="2" UId="418" />
-  <LineComment UId="419">
-    <Text UId="420"> Wykona się tylko raz, gdy minie 10s</Text>
-  </LineComment>
-  <NewLine UId="421" />
-  <Token Text="IF" UId="422" />
-  <Blank UId="423" />
-  <Access Scope="LocalVariable" UId="424">
-    <Symbol UId="425">
-      <Component Name="trigTimeout" UId="426" />
-      <Token Text="." UId="427" />
-      <Component Name="Q" UId="428" />
-    </Symbol>
-  </Access>
-  <Blank UId="429" />
-  <Token Text="THEN" UId="430" />
-  <NewLine UId="431" />
-  <Blank Num="4" UId="432" />
-  <Access Scope="LocalVariable" UId="433">
-    <Symbol UId="434">
-      <Component Name="isCentering" UId="435" />
-    </Symbol>
-  </Access>
-  <Blank UId="436" />
-  <Token Text=":=" UId="437" />
-  <Blank UId="438" />
-  <Access Scope="LiteralConstant" UId="439">
-    <Constant UId="440">
-      <ConstantValue UId="442">FALSE</ConstantValue>
-    </Constant>
-  </Access>
-  <Token Text=";" UId="443" />
-  <NewLine UId="444" />
-  <Blank Num="4" UId="445" />
-  <Access Scope="LocalVariable" UId="446">
-    <Symbol UId="447">
-      <Component Name="CenteringStep" UId="448" />
-    </Symbol>
-  </Access>
-  <Blank UId="449" />
-  <Token Text=":=" UId="450" />
-  <Blank UId="451" />
-  <Access Scope="LiteralConstant" UId="452">
-    <Constant UId="453">
-      <ConstantValue UId="455">0</ConstantValue>
-    </Constant>
-  </Access>
   <Token Text=";" UId="456" />
-  <NewLine UId="457" />
-  <Blank Num="4" UId="458" />
-  <Access Scope="LocalVariable" UId="459">
-    <Symbol UId="460">
-      <Component Name="Set_Speed" UId="461" />
+  <NewLine Num="2" UId="457" />
+  <LineComment UId="458">
+    <Text UId="459"> Wykona się tylko raz, gdy minie 8s</Text>
+  </LineComment>
+  <NewLine UId="460" />
+  <Token Text="IF" UId="461" />
+  <Blank UId="462" />
+  <Access Scope="LocalVariable" UId="463">
+    <Symbol UId="464">
+      <Component Name="trigTimeout" UId="465" />
+      <Token Text="." UId="466" />
+      <Component Name="Q" UId="467" />
     </Symbol>
   </Access>
-  <Blank UId="462" />
-  <Token Text=":=" UId="463" />
-  <Blank UId="464" />
-  <Access Scope="LiteralConstant" UId="465">
-    <Constant UId="466">
-      <ConstantValue UId="468">0</ConstantValue>
-    </Constant>
-  </Access>
-  <Token Text=";" UId="469" />
+  <Blank UId="468" />
+  <Token Text="THEN" UId="469" />
   <NewLine UId="470" />
   <Blank Num="4" UId="471" />
   <Access Scope="LocalVariable" UId="472">
     <Symbol UId="473">
-      <Component Name="Jog_StD" UId="474" />
+      <Component Name="Centering_Alarm" UId="474" />
     </Symbol>
   </Access>
   <Blank UId="475" />
@@ -2715,7 +2715,7 @@
   <Blank UId="477" />
   <Access Scope="LiteralConstant" UId="478">
     <Constant UId="479">
-      <ConstantValue UId="481">FALSE</ConstantValue>
+      <ConstantValue UId="481">TRUE</ConstantValue>
     </Constant>
   </Access>
   <Token Text=";" UId="482" />
@@ -2723,7 +2723,7 @@
   <Blank Num="4" UId="484" />
   <Access Scope="LocalVariable" UId="485">
     <Symbol UId="486">
-      <Component Name="Jog_StS" UId="487" />
+      <Component Name="isCentering" UId="487" />
     </Symbol>
   </Access>
   <Blank UId="488" />
@@ -2736,8 +2736,72 @@
   </Access>
   <Token Text=";" UId="495" />
   <NewLine UId="496" />
-  <Token Text="END_IF" UId="497" />
-  <Token Text=";" UId="498" />
+  <Blank Num="4" UId="497" />
+  <Access Scope="LocalVariable" UId="498">
+    <Symbol UId="499">
+      <Component Name="CenteringStep" UId="500" />
+    </Symbol>
+  </Access>
+  <Blank UId="501" />
+  <Token Text=":=" UId="502" />
+  <Blank UId="503" />
+  <Access Scope="LiteralConstant" UId="504">
+    <Constant UId="505">
+      <ConstantValue UId="507">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="508" />
+  <NewLine UId="509" />
+  <Blank Num="4" UId="510" />
+  <Access Scope="LocalVariable" UId="511">
+    <Symbol UId="512">
+      <Component Name="Set_Speed" UId="513" />
+    </Symbol>
+  </Access>
+  <Blank UId="514" />
+  <Token Text=":=" UId="515" />
+  <Blank UId="516" />
+  <Access Scope="LiteralConstant" UId="517">
+    <Constant UId="518">
+      <ConstantValue UId="520">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="521" />
+  <NewLine UId="522" />
+  <Blank Num="4" UId="523" />
+  <Access Scope="LocalVariable" UId="524">
+    <Symbol UId="525">
+      <Component Name="Jog_StD" UId="526" />
+    </Symbol>
+  </Access>
+  <Blank UId="527" />
+  <Token Text=":=" UId="528" />
+  <Blank UId="529" />
+  <Access Scope="LiteralConstant" UId="530">
+    <Constant UId="531">
+      <ConstantValue UId="533">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="534" />
+  <NewLine UId="535" />
+  <Blank Num="4" UId="536" />
+  <Access Scope="LocalVariable" UId="537">
+    <Symbol UId="538">
+      <Component Name="Jog_StS" UId="539" />
+    </Symbol>
+  </Access>
+  <Blank UId="540" />
+  <Token Text=":=" UId="541" />
+  <Blank UId="542" />
+  <Access Scope="LiteralConstant" UId="543">
+    <Constant UId="544">
+      <ConstantValue UId="546">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="547" />
+  <NewLine UId="548" />
+  <Token Text="END_IF" UId="549" />
+  <Token Text=";" UId="550" />
 </StructuredText></NetworkSource>
           <ProgrammingLanguage>SCL</ProgrammingLanguage>
         </AttributeList>
@@ -2757,7 +2821,7 @@
               <MultilingualTextItem ID="25" CompositionName="Items">
                 <AttributeList>
                   <Culture>en-US</Culture>
-                  <Text />
+                  <Text>Centering</Text>
                 </AttributeList>
               </MultilingualTextItem>
             </ObjectList>

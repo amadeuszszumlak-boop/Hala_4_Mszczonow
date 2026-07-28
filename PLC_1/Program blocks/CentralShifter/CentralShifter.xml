@@ -4595,7 +4595,13 @@
         <Component Name="CS_R2_Sen_Down" />
       </Symbol>
     </Access>
-    <Access Scope="LocalVariable" UId="25">
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="HMI_Test_DB" />
+        <Component Name="HMI_Connection_Alarm" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="26">
       <Symbol>
         <Component Name="Positions_Central" AccessModifier="Array">
           <Access Scope="GlobalVariable">
@@ -4607,41 +4613,44 @@
         </Component>
       </Symbol>
     </Access>
-    <Access Scope="LocalVariable" UId="26">
+    <Access Scope="LocalVariable" UId="27">
       <Symbol>
         <Component Name="QR_Reader" />
       </Symbol>
     </Access>
-    <Access Scope="LocalVariable" UId="27">
+    <Access Scope="LocalVariable" UId="28">
       <Symbol>
         <Component Name="Jog_Speed" />
       </Symbol>
     </Access>
-    <Access Scope="LocalVariable" UId="28">
+    <Access Scope="LocalVariable" UId="29">
       <Symbol>
         <Component Name="Auto_Backward" />
       </Symbol>
     </Access>
-    <Access Scope="LocalVariable" UId="29">
+    <Access Scope="LocalVariable" UId="30">
       <Symbol>
         <Component Name="Auto_Forward" />
       </Symbol>
     </Access>
-    <Access Scope="LocalVariable" UId="30">
+    <Access Scope="LocalVariable" UId="31">
       <Symbol>
         <Component Name="Deceleration" />
       </Symbol>
     </Access>
-    <Part Name="Contact" UId="31" />
     <Part Name="Contact" UId="32" />
-    <Part Name="O" UId="33">
+    <Part Name="Contact" UId="33" />
+    <Part Name="O" UId="34">
       <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
     </Part>
-    <Part Name="Contact" UId="34" />
     <Part Name="Contact" UId="35" />
-    <Call UId="36">
+    <Part Name="Contact" UId="36" />
+    <Part Name="Contact" UId="37">
+      <Negated Name="operand" />
+    </Part>
+    <Call UId="38">
       <CallInfo Name="CentralShifter_AutoDrive" BlockType="FB">
-        <Instance Scope="LocalVariable" UId="37">
+        <Instance Scope="LocalVariable" UId="39">
           <Component Name="CentralShifter_Auto_Instance" />
         </Instance>
         <Parameter Name="Destination_Pos" Section="Input" Type="DInt" />
@@ -4655,71 +4664,79 @@
     </Call>
   </Parts>
   <Wires>
-    <Wire UId="38">
-      <Powerrail />
-      <NameCon UId="36" Name="en" />
-      <NameCon UId="31" Name="in" />
-      <NameCon UId="32" Name="in" />
-    </Wire>
-    <Wire UId="39">
-      <IdentCon UId="21" />
-      <NameCon UId="31" Name="operand" />
-    </Wire>
     <Wire UId="40">
-      <NameCon UId="31" Name="out" />
-      <NameCon UId="33" Name="in1" />
+      <Powerrail />
+      <NameCon UId="38" Name="en" />
+      <NameCon UId="32" Name="in" />
+      <NameCon UId="33" Name="in" />
     </Wire>
     <Wire UId="41">
-      <IdentCon UId="22" />
+      <IdentCon UId="21" />
       <NameCon UId="32" Name="operand" />
     </Wire>
     <Wire UId="42">
       <NameCon UId="32" Name="out" />
-      <NameCon UId="33" Name="in2" />
+      <NameCon UId="34" Name="in1" />
     </Wire>
     <Wire UId="43">
-      <NameCon UId="33" Name="out" />
-      <NameCon UId="34" Name="in" />
+      <IdentCon UId="22" />
+      <NameCon UId="33" Name="operand" />
     </Wire>
     <Wire UId="44">
-      <IdentCon UId="23" />
-      <NameCon UId="34" Name="operand" />
+      <NameCon UId="33" Name="out" />
+      <NameCon UId="34" Name="in2" />
     </Wire>
     <Wire UId="45">
       <NameCon UId="34" Name="out" />
       <NameCon UId="35" Name="in" />
     </Wire>
     <Wire UId="46">
-      <IdentCon UId="24" />
+      <IdentCon UId="23" />
       <NameCon UId="35" Name="operand" />
     </Wire>
     <Wire UId="47">
       <NameCon UId="35" Name="out" />
-      <NameCon UId="36" Name="Drive_To_Pos" />
+      <NameCon UId="36" Name="in" />
     </Wire>
     <Wire UId="48">
-      <IdentCon UId="25" />
-      <NameCon UId="36" Name="Destination_Pos" />
+      <IdentCon UId="24" />
+      <NameCon UId="36" Name="operand" />
     </Wire>
     <Wire UId="49">
-      <IdentCon UId="26" />
-      <NameCon UId="36" Name="Actual_Pos" />
+      <NameCon UId="36" Name="out" />
+      <NameCon UId="37" Name="in" />
     </Wire>
     <Wire UId="50">
-      <NameCon UId="36" Name="Auto_Speed" />
-      <IdentCon UId="27" />
+      <IdentCon UId="25" />
+      <NameCon UId="37" Name="operand" />
     </Wire>
     <Wire UId="51">
-      <NameCon UId="36" Name="Auto_Drive_Forward" />
-      <IdentCon UId="28" />
+      <NameCon UId="37" Name="out" />
+      <NameCon UId="38" Name="Drive_To_Pos" />
     </Wire>
     <Wire UId="52">
-      <NameCon UId="36" Name="Auto_Drive_Backward" />
-      <IdentCon UId="29" />
+      <IdentCon UId="26" />
+      <NameCon UId="38" Name="Destination_Pos" />
     </Wire>
     <Wire UId="53">
-      <NameCon UId="36" Name="Deceleration" />
+      <IdentCon UId="27" />
+      <NameCon UId="38" Name="Actual_Pos" />
+    </Wire>
+    <Wire UId="54">
+      <NameCon UId="38" Name="Auto_Speed" />
+      <IdentCon UId="28" />
+    </Wire>
+    <Wire UId="55">
+      <NameCon UId="38" Name="Auto_Drive_Forward" />
+      <IdentCon UId="29" />
+    </Wire>
+    <Wire UId="56">
+      <NameCon UId="38" Name="Auto_Drive_Backward" />
       <IdentCon UId="30" />
+    </Wire>
+    <Wire UId="57">
+      <NameCon UId="38" Name="Deceleration" />
+      <IdentCon UId="31" />
     </Wire>
   </Wires>
 </FlgNet></NetworkSource>
